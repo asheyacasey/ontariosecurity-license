@@ -1,0 +1,6 @@
+<div class="progress-bar-container d-flex flex-grow-1 align-items-center">
+  <ng-container *ngFor="let item of [].constructor(total); let i = index">
+    <div class="progress-bar-item" [class.completed]="i < completed"></div>
+  </ng-container>
+  <div class="course-progress-count">{{ completed }}/{{ total }}</div>
+</div>

@@ -1,0 +1,169 @@
+.course-details-header {
+  margin-top: 80px;
+
+  .course-title {
+    padding-top: 5px;
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 30px;
+
+
+    color: #31374D;
+
+  }
+
+  .course-content {
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 32px;
+
+    color: #5E6169;
+
+  }
+
+  .course-price-container {
+
+    .course-price {
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 24px;
+      line-height: 30px;
+
+      color: #31374D;
+    }
+
+    .course-price-description {
+
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 32px;
+
+      text-align: right;
+
+      color: #5E6169;
+
+
+    }
+  }
+
+  .btn-purchase {
+    padding: 18px 42px;
+
+    background: #31374D;
+    border-radius: 4px;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+
+    margin-left: 36px;
+
+  }
+
+}
+
+.course-details-content {
+  margin-top: 32px;
+
+  .course-details-description {
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+
+    color: #31374D;
+
+
+  }
+
+  .course-details-image {
+
+  }
+}
+
+.modules-listing-header {
+  margin-top: 26px;
+  margin-bottom: 22px;
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 30px;
+
+  color: #31374D;
+
+}
+
+.modules-listing-item {
+  margin-bottom: 16px;
+  border: 1px solid #DBDCE7;
+  border-radius: 8px;
+
+  padding: 24px;
+
+  .module-number {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #354FA9;
+
+    .module-number-text {
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 30px;
+
+      color: #FFFFFF;
+
+    }
+  }
+
+  .module-details-container {
+    padding-left: 25px;
+
+    .module-title {
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 32px;
+
+      color: #31374D;
+
+    }
+
+    .module-description {
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+
+
+      color: #31374D;
+
+    }
+  }
+}

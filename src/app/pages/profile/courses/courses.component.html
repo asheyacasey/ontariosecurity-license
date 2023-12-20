@@ -1,0 +1,40 @@
+<h1 class="section-title">Course Progress</h1>
+
+<div class="course-summary row g-5">
+  <ng-container *ngFor="let course of courses">
+    <div class="col-12">
+      <div class="course-card d-flex justify-content-between p-0">
+        <div class="course-card-info d-flex flex-grow-1">
+          <div class="course-image">
+            <img class="img-fluid" alt="Course 1" src="{{ course.imageSmall }}"/>
+          </div>
+          <div class="course-description d-flex flex-column justify-content-center p-2 flex-grow-1">
+            <div class="course-title">{{ course.name }}</div>
+            <div class="course-content">{{ course.modules.length }} modules{{ course.containsCPR ? ' + CPR' : ''}}</div>
+            <div class="course-progress-container align-items-center d-none d-xl-flex flex-grow-1">
+              <div class="course-progress-header">Progress</div>
+              <app-course-progress-bar [total]="course.modules.length"
+                                       [completed]="course.modulesCompleted"></app-course-progress-bar>
+            </div>
+          </div>
+        </div>
+        <div
+          class="course-card-details justify-content-center align-items-center flex-column flex-xl-row d-none d-xl-flex">
+          <a [routerLink]="['/learn', course.id]" class="btn btn-submit mx-5">Continue</a>
+        </div>
+      </div>
+      <div class="row mt-2 d-flex d-xl-none">
+        <div class="col-12 col-md-7 text-md-start text-center">
+          <div class="course-progress-container align-items-center d-flex d-xl-none">
+            <div class="course-progress-header">Progress</div>
+            <app-course-progress-bar [total]="course.modules.length"
+                                     [completed]="course.modulesCompleted"></app-course-progress-bar>
+          </div>
+        </div>
+        <div class="col-12 col-md-5 text-md-end text-center mt-3 mt-md-0">
+          <a [routerLink]="['/learn', course.id]" class="btn btn-submit">Continue</a>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

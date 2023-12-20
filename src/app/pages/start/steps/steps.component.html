@@ -1,0 +1,24 @@
+<div
+  class="breadcrumb-menu d-flex flex-row flex-lg-column justify-content-between align-content-stretch p-sm-3 p-lg-0 mt-lg-4">
+  <ng-container *ngFor="let step of steps">
+    <div class="breadcrumb-menu-item d-flex"
+         [routerLink]="step.link"
+         [class.completed]="step.completed"
+         [class.active]="step.active">
+      <div class="d-flex flex-column flex-grow-1">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="breadcrumb-menu-item-step">{{ step.number }}</div>
+          <div class="breadcrumb-menu-item-description">{{ step.title }}</div>
+        </div>
+        <div class="breadcrumb-menu-item-underline"></div>
+      </div>
+      <div class="breadcrumb-menu-checkmark d-none d-lg-flex justify-content-center align-items-center">
+        <svg width="32" height="23" viewBox="0 0 32 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 10.8462L12.1 20L29 3" stroke="#ACADBF" stroke-width="5" stroke-linecap="round"
+                stroke-linejoin="round"/>
+        </svg>
+
+      </div>
+    </div>
+  </ng-container>
+</div>

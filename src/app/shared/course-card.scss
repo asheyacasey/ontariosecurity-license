@@ -1,0 +1,102 @@
+.course-selection, .course-summary {
+  margin-top: 40px;
+}
+
+.course-card {
+
+  background: #FFFFFF;
+  border-radius: 8px;
+  border: 1px solid #DBDCE7;
+
+  cursor: pointer;
+
+  &.selected {
+    border: 1px solid #31374D;
+  }
+
+
+  .course-image {
+    margin-right: 20px;
+    min-width: 146px;
+
+    & > img {
+      width: 146px;
+      height: 126px;
+
+    }
+
+  }
+
+  .course-description {
+    margin-right: 20px;
+
+    .course-progress-container {
+      margin-top: 20px;
+    }
+  }
+
+  .course-title {
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 32px;
+    color: #31374D;
+
+  }
+
+  .course-content {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #5E6169;
+  }
+
+  // summary
+  .course-card-details {
+    .course-price {
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 24px;
+      line-height: 40px;
+
+      color: #31374D;
+
+      padding-right: 135px;
+    }
+
+    .course-action {
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      /* identical to box height, or 150% */
+      text-decoration-line: underline;
+
+      color: #D03D1C;
+
+      padding-right: 56px;
+
+    }
+
+    @media (max-width: 1200px) {
+      margin-right: 20px;
+
+      .course-price {
+        padding-right: 0;
+      }
+
+      .course-action {
+        padding-right: 0;
+      }
+
+    }
+  }
+
+}

@@ -1,0 +1,104 @@
+<div class="p-5">
+  <h1 class="section-title">Order Summary</h1>
+  <div class="course-summary row g-5">
+    <div class="col-12">
+      <div class="course-card d-flex justify-content-between p-0">
+        <div class="course-card-info d-flex">
+          <div class="course-image">
+            <img class="img-fluid" alt="Course 1" src="{{ course.imageSmall }}"/>
+          </div>
+          <div class="course-description d-flex flex-column justify-content-center p-2">
+            <div class="course-title">{{ course.name }}</div>
+            <div class="course-content">{{ course.modules.length }} modules{{ course.containsCPR ? ' + CPR' : ''}}</div>
+          </div>
+        </div>
+        <div class="course-card-details d-flex justify-content-center align-items-center flex-column flex-xl-row">
+          <div class="course-price">${{ course.price }}</div>
+          <div (click)="onRemoveCourse(course)" class="course-action">Remove</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="course-summary-total-container d-flex justify-content-end align-items-end align-items-xl-start flex-column flex-xl-row">
+    <div class="course-summary-total-text">Total</div>
+    <div class="course-summary-total-values d-flex flex-column">
+      <div class="course-summary-total-amount">${{ course.price }}</div>
+      <div class="course-summary-total-subtext">Tax included</div>
+    </div>
+  </div>
+  <hr class="spacer">
+  <h1 class="section-title py-5">Billing Details</h1>
+  <form class="billing-details-form" [formGroup]="billingDetailsForm" (ngSubmit)="onSubmit()">
+    <div class="row mb-5">
+      <div class="form-section-header col-12 col-xl-4 mb-3">
+        Contact information
+      </div>
+      <div class="col-12 col-xl-8">
+        <div class="row">
+          <div class="col-12 col-xl-6 mb-4">
+            <label for="first-name" class="form-label">First name *</label>
+            <input type="text" class="form-control" id="first-name" formControlName="firstName">
+          </div>
+          <div class="col-12 col-xl-6 mb-4">
+            <label for="last-name" class="form-label">Last name *</label>
+            <input type="text" class="form-control" id="last-name" formControlName="lastName">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-xl-6 mb-3">
+            <label for="email" class="form-label">Email *</label>
+            <input type="email" class="form-control" id="email" formControlName="email">
+          </div>
+          <div class="col-12 col-xl-6 mb-3">
+            <label for="phone" class="form-label">Phone *</label>
+            <input type="text" class="form-control" id="phone" formControlName="phone">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <div class="form-section-header col-12 col-xl-4 mb-3">
+        Address
+      </div>
+      <div class="col-12 col-xl-8">
+        <div class="row">
+          <div class="col-12 mb-4">
+            <label for="address-line-1" class="form-label">Street address *</label>
+            <input type="text" class="form-control mb-2 mb-xl-1" id="address-line-1"
+                   placeholder="House number and street name" formControlName="addressFirstLine">
+            <input type="text" class="form-control" id="address-line-2"
+                   placeholder="Apartment suite, unit, etc." formControlName="addressSecondLine">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-xl-6 mb-3">
+            <label for="country" class="form-label">Country *</label>
+            <select id="country" class="form-control form-select" formControlName="country">
+              <option selected>Canada</option>
+            </select>
+          </div>
+          <div class="col-12 col-xl-6 mb-3">
+            <label for="province" class="form-label">Province *</label>
+            <select id="province" class="form-control form-select" formControlName="province">
+              <option selected>Ontario</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <div class="form-section-header col-12 col-xl-4 mb-3">
+        Payment
+      </div>
+      <div class="col-12 col-xl-8">
+        <div class="row">
+          <div class="col-12">
+            <input class="btn btn-submit w-100" type="submit" value="Complete Payment"
+                   [disabled]="!billingDetailsForm.valid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

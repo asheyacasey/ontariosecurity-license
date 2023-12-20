@@ -1,0 +1,100 @@
+.card-container {
+  background-color: #FFFFFF;
+  border-radius: 8px 8px 0 0;
+
+  &.rounded {
+    border-radius: 8px;
+  }
+
+}
+
+/** forms */
+
+.form-label {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #ACADBF;
+  text-transform: uppercase;
+}
+
+.form-control {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+
+  color: #31374D;
+  background: #FFFFFF;
+
+  border: 1px solid #DBDCE7;
+  border-radius: 8px;
+
+  &::placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+
+    color: #ACADBF;
+  }
+
+}
+
+.btn-submit {
+  background-color: #31374D;
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  padding: 24px 76px;
+
+  border-radius: 8px;
+
+}
+
+.btn-submit:hover {
+  background-color: rgba(49, 55, 77, 0.9);
+  color: #F3F4FA !important;
+
+}
+
+
+/** headers */
+
+h1.section-title {
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 30px;
+
+  color: #31374D;
+
+}
+
+h2.section-subtitle {
+  margin-top: 16px;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: #5E6169;
+
+}
+
+.spacer {
+  margin-top: 32px;
+  margin-bottom: 32px;
+  color: #DBDCE7;
+}

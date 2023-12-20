@@ -1,0 +1,38 @@
+
+.progress-bar-container {
+  margin: 0 19px;
+
+  max-width: 320px;
+  width: 100%;
+
+  .progress-bar-item {
+    max-width: 32px;
+    min-width: 8px;
+    width: 100%;
+    height: 8px;
+    margin-left: 4px;
+
+    background: #DBDCE7;
+    border-radius: 4px;
+
+    &.completed {
+      background: #31374D;
+    }
+
+  }
+}
+
+.course-progress-count {
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #31374D;
+
+  margin-left: 19px;
+
+}
+

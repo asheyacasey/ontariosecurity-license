@@ -1,0 +1,59 @@
+.course-summary-total-container {
+
+  margin-top: 73px;
+
+  .course-summary-total-text {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 40px;
+
+    color: #31374D;
+
+    margin-right: 200px;
+
+  }
+
+  .course-summary-total-values {
+    margin-right: 230px;
+
+    .course-summary-total-amount {
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 24px;
+      line-height: 40px;
+
+      color: #31374D;
+
+    }
+
+    .course-summary-total-subtext {
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+
+      color: #5E6169;
+
+
+    }
+  }
+
+  @media (max-width: 1200px) {
+    margin-top: 20px;
+    .course-summary-total-text {
+      margin-right: 20px;
+    }
+
+    .course-summary-total-values {
+      margin-right: 20px;
+      text-align: right;
+    }
+  }
+}
+

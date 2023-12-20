@@ -1,0 +1,52 @@
+.breadcrumb-menu-item {
+  min-height: 50px;
+
+  cursor: pointer;
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+
+  margin-bottom: 40px;
+  color: #ACADBF;
+
+  &.active {
+    color: #D03D1C;
+
+    .breadcrumb-menu-item-underline {
+      background-color: #D03D1C;
+    }
+  }
+
+  &.completed {
+    .breadcrumb-menu-checkmark {
+      visibility: initial;
+    }
+  }
+
+  .breadcrumb-menu-item-step {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+
+  .breadcrumb-menu-item-description {
+    font-size: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .breadcrumb-menu-item-underline {
+    margin-top: 3px;
+    height: 8px;
+    width: 100%;
+    border-radius: 2px;
+    background-color: #DBDCE7;
+  }
+
+  .breadcrumb-menu-checkmark {
+    width: 76px;
+    padding-left: 10px;
+    visibility: hidden;
+  }
+}

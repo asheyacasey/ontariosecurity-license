@@ -1,0 +1,22 @@
+<div class="row text-center mt-5">
+  <div class="col">
+    <h1 class="signup-header">Sign Up to Get Started</h1>
+    <p class="signup-subheader">Enter your details below</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col d-flex align-items-center justify-content-center">
+    <form class="signup-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+      </div>
+
+      <input type="submit" class="btn btn-submit w-100" value="Sign Up" [disabled]="!registerForm.valid">
+    </form>
+  </div>
+</div>

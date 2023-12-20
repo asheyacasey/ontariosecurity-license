@@ -1,0 +1,23 @@
+<app-header></app-header>
+<div class="container-fluid min-vh-100">
+  <div class="row min-vh-100">
+    <!-- side menu -->
+    <div class="course-learning-modules col-2 p-4 d-none d-xl-block">
+      <app-modules-list></app-modules-list>
+    </div>
+    <!-- main content -->
+    <div class="course-learning-main col-12 col-xl-10 min-vh-100">
+      <div class="row d-flex justify-content-between align-items-center">
+        <div class="col-12 col-xl-10">
+          <h1 class="section-title">{{ sectionTitle }}</h1>
+        </div>
+        <div class="col-12 col-xl-2">
+          <app-timer></app-timer>
+        </div>
+      </div>
+      <hr class="spacer">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>
