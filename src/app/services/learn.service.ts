@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, of, Subject} from "rxjs";
+import {BehaviorSubject, Observable, of, ReplaySubject, Subject} from "rxjs";
 import {CourseProgressModule, CourseTimer} from "../models/course";
 import {LinkedLecture} from "../models/lecture";
-import {LinkedQuiz} from "../models/quiz";
+import {LinkedQuiz, QuizAnswers, QuizProgressDetails, QuizResults} from "../models/quiz";
 
 const MODULES: CourseProgressModule[] = [
   {
     id: 1,
     moduleNumber: 1,
     name: 'Test module',
-    completed: true,
+    completed: false,
     lectureIds: [1, 2, 3]
   },
   {
@@ -103,23 +103,67 @@ const LECTURES: { [id: number]: LinkedLecture } = {
 };
 
 const QUIZ: LinkedQuiz = {
-      id: 2,
-    questionsNumber: 6,
-    module: {
-      id: 1,
-      lectureIds: [1, 2, 3],
-      hasQuiz: true,
-      quizId: 1,
-    },
-    previousLecture: {
-      id: 3,
-      moduleId: 1,
-    },
-    nextLecture: {
-      id: 4,
-      moduleId: 2
-    }
+  id: 2,
+  questionsNumber: 6,
+  module: {
+    id: 1,
+    lectureIds: [1, 2, 3],
+    hasQuiz: true,
+    quizId: 1,
+  },
+  previousLecture: {
+    id: 3,
+    moduleId: 1,
+  },
+  nextLecture: {
+    id: 4,
+    moduleId: 2
+  }
 };
+
+const DETAILS: QuizProgressDetails = {
+  identifier: '250bb3ac-2897-40b6-9a22-75d62f34c8f9',
+  moduleQuiz: {
+    questions: [
+      {
+        id: 1,
+        questionNumber: 1,
+        multiSelection: false,
+        text: 'What is that?',
+        answers: [
+          {
+            id: 1,
+            answerNumber: 1,
+            text: 'First answer'
+          },
+          {
+            id: 2,
+            answerNumber: 2,
+            text: 'Second answer'
+          }
+        ]
+      },
+      {
+        id: 2,
+        questionNumber: 2,
+        multiSelection: true,
+        text: 'What is the other thing?',
+        answers: [
+          {
+            id: 3,
+            answerNumber: 1,
+            text: 'First answer for the second question'
+          },
+          {
+            id: 4,
+            answerNumber: 2,
+            text: 'Second answer for the second question'
+          }
+        ]
+      }
+    ]
+  }
+}
 
 @Injectable({
   providedIn: 'root'
@@ -131,10 +175,12 @@ export class LearnService {
   lectureId?: number;
   quizId?: number;
 
-  courseId$: Subject<number | null> = new BehaviorSubject<number | null>(null);
+  courseId$: Subject<number> = new ReplaySubject<number>(1);
   moduleId$: Subject<number | null> = new BehaviorSubject<number | null>(null);
   lectureId$: Subject<number | null> = new BehaviorSubject<number | null>(null);
   quizId$: Subject<number | null> = new BehaviorSubject<number | null>(null);
+
+  moduleIdCompleted$: Subject<number> = new Subject<number>();
 
   titleSubject: Subject<string | null> = new BehaviorSubject<string | null>(null);
   title$ = this.titleSubject.asObservable();
@@ -155,6 +201,10 @@ export class LearnService {
       this.moduleId = moduleId;
       this.moduleId$.next(moduleId);
     }
+  }
+
+  setModuleIdCompleted(moduleId: number): void {
+    this.moduleIdCompleted$.next(moduleId);
   }
 
   getCourseModules(courseId: number): Observable<CourseProgressModule[]> {
@@ -189,7 +239,19 @@ export class LearnService {
     });
   }
 
-  getQuiz(quizId: number) {
+  getQuiz(quizId: number): Observable<LinkedQuiz> {
     return of(QUIZ);
+  }
+
+  getQuizQuestions(quizId: number): Observable<QuizProgressDetails> {
+    return of(DETAILS)
+  }
+
+  sendQuizAnswers(quizId: number, quizAnswers: QuizAnswers): Observable<QuizResults> {
+    return of({
+      passed: true,
+      requiredPercent: 80,
+      resultPercent: 90
+    })
   }
 }

@@ -1,0 +1,12 @@
+<div class="quiz-question-container d-flex flex-column mt-5">
+  <div class="quiz-question">{{ question.questionNumber}}. {{ question.text }}</div>
+  <div class="quiz-answer" *ngFor="let answer of question.answers">
+    <div class="form-check">
+      <input class="form-check-input" type="{{ question.multiSelection ? 'checkbox': 'radio'}}" name="q{{question.id}}"
+             id="q{{question.id}}_{{answer.id}}" (change)="onOptionChange(answer.id, question.multiSelection, $event)">
+      <label class="form-check-label" for="q{{question.id}}_{{answer.id}}">
+        {{ answer.text }}
+      </label>
+    </div>
+  </div>
+</div>

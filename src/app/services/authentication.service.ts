@@ -8,6 +8,6 @@ export class AuthenticationService {
   constructor() { }
 
   isLoggedIn(): boolean {
-    return true;
+    return false;
   }
 }

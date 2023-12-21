@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {SelectableCourseProgressModule} from "./selectable-course-progress-module";
 import {LearnService} from "../../services/learn.service";
-import {Subject, Subscription, takeUntil} from "rxjs";
+import {Subject, Subscription, take, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-learn',
@@ -57,6 +57,17 @@ export class LearnComponent implements OnInit, OnDestroy {
       }
 
       this.markSelectedModule(module);
+    });
+
+    this.learnService.moduleIdCompleted$.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe((moduleId) => {
+      const module = this.modules.find(m => m.id === moduleId);
+      if (!module) {
+        return;
+      }
+
+      module.completed = true;
     });
   }
 

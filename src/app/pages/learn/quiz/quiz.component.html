@@ -1,26 +1,48 @@
-<div class="course-content row">
-  <div class="col-12">
-    <p>This quiz consists of <strong>{{ quiz?.questionsNumber}}</strong> questions.</p>
-  </div>
-</div>
-<div class="quiz-grade">
-  <div class="card border-danger text-danger">
-    <div class="card-body">
-      You've <strong>failed</strong> the quiz. Your result is 70% (the requirement is 80%).
+<ng-container *ngIf="!moduleQuiz; else questions">
+  <div class="course-content row">
+    <div class="col-12">
+      <p>This quiz consists of <strong>{{ quiz.questionsNumber}}</strong> questions.</p>
     </div>
   </div>
-</div>
-<div class="quiz-grade mt-3">
-  <div class="card border-success text-success">
-    <div class="card-body">
-      You've <strong>passed</strong> the quiz. Your result is 90% (the requirement is 80%).
+  <ng-container *ngIf="quiz.result">
+    <div class="quiz-grade">
+      <div *ngIf="!quiz.result.passed" class="card border-danger text-danger">
+        <div class="card-body">
+          You've <strong>failed</strong> the quiz. Your result is {{ quiz.result.resultPercent}}% (the requirement
+          is {{ quiz.result.requiredPercent }}%).
+        </div>
+      </div>
+      <div *ngIf="quiz.result.passed" class="card border-success text-success">
+        <div class="card-body">
+          You've <strong>passed</strong> the quiz. Your result is {{ quiz.result.resultPercent}}% (the requirement
+          is {{ quiz.result.requiredPercent }}%).
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="course-navigation-quiz d-flex justify-content-center justify-content-md-end mt-3">
+    <a class="btn btn-quiz" (click)="startQuiz()">
+      <span *ngIf="quiz.result;">Retake quiz</span>
+      <span *ngIf="!quiz.result;">Take quiz</span>
+    </a>
+  </div>
+
+  <app-navigation
+    [previousLecture]="quiz.previousLecture || null"
+    [nextLecture]="quiz.nextLecture || null"
+  ></app-navigation>
+</ng-container>
+
+<ng-template #questions>
+  <div class="course-content row">
+    <div class="col-12">
+      <ng-container *ngFor="let question of moduleQuiz?.questions">
+        <app-quiz-question [question]="question" (optionChange)="onOptionChange($event)"></app-quiz-question>
+      </ng-container>
     </div>
   </div>
-</div>
-<div class="course-navigation-quiz d-flex justify-content-center justify-content-md-end mt-3">
-  <a class="btn btn-quiz">Start Quiz</a>
-</div>
-<app-navigation
-[previousLecture]="quiz?.previousLecture || null"
-[nextLecture]="quiz?.nextLecture || null"
-></app-navigation>
+  <div class="course-navigation-quiz d-flex justify-content-center justify-content-md-end mt-3">
+    <a (click)="submitQuiz()" class="btn btn-quiz">Submit Quiz</a>
+  </div>
+</ng-template>
