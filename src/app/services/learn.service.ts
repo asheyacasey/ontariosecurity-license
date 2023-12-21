@@ -1,0 +1,195 @@
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable, of, Subject} from "rxjs";
+import {CourseProgressModule, CourseTimer} from "../models/course";
+import {LinkedLecture} from "../models/lecture";
+import {LinkedQuiz} from "../models/quiz";
+
+const MODULES: CourseProgressModule[] = [
+  {
+    id: 1,
+    moduleNumber: 1,
+    name: 'Test module',
+    completed: true,
+    lectureIds: [1, 2, 3]
+  },
+  {
+    id: 2,
+    moduleNumber: 2,
+    name: 'Second test module',
+    completed: false,
+    lectureIds: [4, 5, 6]
+  },
+  {
+    id: 3,
+    moduleNumber: 3,
+    name: 'Third test module',
+    completed: false,
+    lectureIds: [7, 8, 9]
+  },
+];
+
+const LECTURES: { [id: number]: LinkedLecture } = {
+  1: {
+    id: 1,
+    lectureNumber: 1,
+    name: 'Test 1',
+    content: 'Test content 1',
+    module: {
+      id: 1,
+      lectureIds: [1, 2, 3],
+      hasQuiz: true,
+      quizId: 1,
+    },
+    nextLecture: {
+      id: 2,
+      moduleId: 1
+    }
+  },
+  2: {
+    id: 2,
+    lectureNumber: 2,
+    name: 'Test 2',
+    content: 'Test content 2',
+    module: {
+      id: 1,
+      lectureIds: [1, 2, 3],
+      hasQuiz: true,
+      quizId: 1,
+    },
+    previousLecture: {
+      id: 1,
+      moduleId: 1,
+    },
+    nextLecture: {
+      id: 3,
+      moduleId: 1
+    }
+  },
+  3: {
+    id: 3,
+    lectureNumber: 3,
+    name: 'Test 3',
+    content: 'Test content 3',
+    module: {
+      id: 1,
+      lectureIds: [1, 2, 3],
+      hasQuiz: true,
+      quizId: 1,
+    },
+    previousLecture: {
+      id: 2,
+      moduleId: 1,
+    },
+    nextQuiz: {
+      id: 1,
+      moduleId: 1
+    }
+  },
+  4: {
+    id: 4,
+    lectureNumber: 1,
+    name: 'Test 41',
+    content: 'Test content 41',
+    module: {
+      id: 2,
+      hasQuiz: false,
+      lectureIds: [4]
+    },
+    previousQuiz: {
+      id: 1,
+      moduleId: 1,
+    },
+  },
+};
+
+const QUIZ: LinkedQuiz = {
+      id: 2,
+    questionsNumber: 6,
+    module: {
+      id: 1,
+      lectureIds: [1, 2, 3],
+      hasQuiz: true,
+      quizId: 1,
+    },
+    previousLecture: {
+      id: 3,
+      moduleId: 1,
+    },
+    nextLecture: {
+      id: 4,
+      moduleId: 2
+    }
+};
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LearnService {
+
+  courseId?: number;
+  moduleId?: number;
+  lectureId?: number;
+  quizId?: number;
+
+  courseId$: Subject<number | null> = new BehaviorSubject<number | null>(null);
+  moduleId$: Subject<number | null> = new BehaviorSubject<number | null>(null);
+  lectureId$: Subject<number | null> = new BehaviorSubject<number | null>(null);
+  quizId$: Subject<number | null> = new BehaviorSubject<number | null>(null);
+
+  titleSubject: Subject<string | null> = new BehaviorSubject<string | null>(null);
+  title$ = this.titleSubject.asObservable();
+
+
+  constructor() {
+  }
+
+  setCourseId(courseId: number): void {
+    if (this.courseId !== courseId) {
+      this.courseId = courseId;
+      this.courseId$.next(courseId);
+    }
+  }
+
+  setModuleId(moduleId: number): void {
+    if (this.moduleId !== moduleId) {
+      this.moduleId = moduleId;
+      this.moduleId$.next(moduleId);
+    }
+  }
+
+  getCourseModules(courseId: number): Observable<CourseProgressModule[]> {
+    return of(MODULES);
+  }
+
+  getLecture(lectureId: number): Observable<LinkedLecture> {
+    return of(LECTURES[lectureId]);
+  }
+
+  setLectureId(lectureId: number) {
+    if (this.lectureId !== lectureId) {
+      this.lectureId = lectureId;
+      this.lectureId$.next(lectureId);
+    }
+  }
+
+  setQuizId(quizId: number) {
+    if (this.quizId !== quizId) {
+      this.quizId = quizId;
+      this.quizId$.next(quizId);
+    }
+  }
+
+  setTitle(title: string) {
+    this.titleSubject.next(title);
+  }
+
+  getCourseTimer(courseId: number): Observable<CourseTimer> {
+    return of({
+      secondsLeft: 2000
+    });
+  }
+
+  getQuiz(quizId: number) {
+    return of(QUIZ);
+  }
+}

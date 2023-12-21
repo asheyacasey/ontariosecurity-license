@@ -1,5 +1,3 @@
-//todo: this should be extracted to navigation component
-
 .btn-previous {
   padding: 17px 69px;
 
@@ -36,26 +34,6 @@
 
   &:hover {
     background: #31374D;
-    color: #FFFFFF;
-  }
-}
-
-.btn-quiz {
-  padding: 17px 64px;
-
-  background: #36B251;
-  border-radius: 4px;
-
-  font-family: 'Manrope', sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 27px;
-
-  color: #FFFFFF;
-
-  &:hover {
-    background: #36B251;
     color: #FFFFFF;
   }
 }

@@ -1,0 +1,15 @@
+<div
+  class="course-navigation d-flex flex-row flex-column flex-md-row justify-content-between align-items-center mt-5">
+  <div class="course-navigation-previous order-2 order-md-0 mt-3 mt-md-0">
+    <a (click)="previous()" [class.invisible]="!hasPrevious()" class="btn btn-previous">Previous</a>
+  </div>
+  <div class="course-navigation-pages d-flex order-0 order-md-1">
+    <ng-container *ngFor="let lectureId of lectureIds; let i = index">
+      <div (click)="goToLectureId(lectureId)" class="course-navigation-page"
+           [class.active]="lectureId === currentLectureId">{{ i + 1 }}</div>
+    </ng-container>
+  </div>
+  <div class="course-navigation-next order-1 order-md-2">
+    <a (click)="next()" [class.invisible]="!hasNext()" class="btn btn-next">Next</a>
+  </div>
+</div>

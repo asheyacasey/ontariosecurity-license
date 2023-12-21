@@ -1,62 +1,19 @@
 <div class="course-content row">
   <div class="col-12">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-      labore et dolore magna aliqua. Eleifend quam adipiscing vitae proin sagittis nisl.
-      Iaculis eu non diam phasellus vestibulum. Velit ut tortor pretium viverra suspendisse potenti
-      nullam ac tortor. Sed viverra tellus in hac. Tempor nec feugiat nisl pretium fusce id velit.
-      Ut ornare lectus sit amet est placerat in egestas. Egestas sed sed risus pretium quam vulputate
-      dignissim. Viverra accumsan in nisl nisi scelerisque eu ultrices vitae auctor. Aenean et tortor
-      at risus. Aliquet nibh praesent tristique magna sit amet.
-    </p>
-
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-      labore et dolore magna aliqua. Eleifend quam adipiscing vitae proin sagittis nisl.
-      Iaculis eu non diam phasellus vestibulum. Velit ut tortor pretium viverra suspendisse potenti
-      nullam ac tortor. Sed viverra tellus in hac. Tempor nec feugiat nisl pretium fusce id velit.
-      Ut ornare lectus sit amet est placerat in egestas. Egestas sed sed risus pretium quam vulputate
-      dignissim. Viverra accumsan in nisl nisi scelerisque eu ultrices vitae auctor. Aenean et tortor
-      at risus. Aliquet nibh praesent tristique magna sit amet.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-      labore et dolore magna aliqua. Eleifend quam adipiscing vitae proin sagittis nisl.
-      Iaculis eu non diam phasellus vestibulum. Velit ut tortor pretium viverra suspendisse potenti
-      nullam ac tortor. Sed viverra tellus in hac. Tempor nec feugiat nisl pretium fusce id velit.
-      Ut ornare lectus sit amet est placerat in egestas. Egestas sed sed risus pretium quam vulputate
-      dignissim. Viverra accumsan in nisl nisi scelerisque eu ultrices vitae auctor. Aenean et tortor
-      at risus. Aliquet nibh praesent tristique magna sit amet.
-    </p>
-
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-      labore et dolore magna aliqua. Eleifend quam adipiscing vitae proin sagittis nisl.
-      Iaculis eu non diam phasellus vestibulum. Velit ut tortor pretium viverra suspendisse potenti
-      nullam ac tortor. Sed viverra tellus in hac. Tempor nec feugiat nisl pretium fusce id velit.
-      Ut ornare lectus sit amet est placerat in egestas. Egestas sed sed risus pretium quam vulputate
-      dignissim. Viverra accumsan in nisl nisi scelerisque eu ultrices vitae auctor. Aenean et tortor
-      at risus. Aliquet nibh praesent tristique magna sit amet.
-    </p>
-
+    {{lecture?.content}}
   </div>
 </div>
-<div
-  class="course-navigation d-flex flex-row flex-column flex-md-row justify-content-between align-items-center mt-5">
-  <div class="course-navigation-previous order-2 order-md-0 mt-3 mt-md-0">
-    <a class="btn btn-previous">Previous</a>
-  </div>
-  <div class="course-navigation-pages d-flex order-0 order-md-1">
-    <div class="course-navigation-page active">1</div>
-    <div class="course-navigation-page">2</div>
-    <div class="course-navigation-page">3</div>
-    <div class="course-navigation-page">4</div>
-    <div class="course-navigation-page">5</div>
-  </div>
-  <div class="course-navigation-next order-1 order-md-2">
-    <a class="btn btn-next">Next</a>
-  </div>
-</div>
-<div class="course-navigation-quiz d-flex justify-content-center justify-content-md-end mt-3">
+<app-navigation
+  [previousLecture]="lecture?.previousLecture || null"
+  [previousQuiz]="lecture?.previousQuiz || null"
+  [nextLecture]="lecture?.nextLecture || null"
+  [nextQuiz]="lecture?.nextQuiz || null"
+  [lectureIds]="lecture?.module?.lectureIds || []"
+  [currentLectureId]="lecture?.id || null">
+
+</app-navigation>
+<div *ngIf="lecture?.module?.hasQuiz"
+     (click)="goToQuiz()"
+     class="course-navigation-quiz d-flex justify-content-center justify-content-md-end mt-3">
   <a class="btn btn-quiz">Take Quiz</a>
 </div>

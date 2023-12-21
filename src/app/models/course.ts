@@ -19,3 +19,16 @@ export interface CourseModule {
 export interface CourseProgressOverview extends CourseOverview {
   modulesCompleted: number;
 }
+
+export interface CourseProgressModule {
+  id: number;
+  moduleNumber: number;
+  name: string;
+  completed: boolean;
+  lectureIds: number[];
+}
+
+
+export interface CourseTimer {
+  secondsLeft: number;
+}

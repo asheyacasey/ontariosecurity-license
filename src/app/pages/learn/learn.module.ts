@@ -7,6 +7,8 @@ import {LearnRoutingModule} from "./learn-routing.module";
 import {PartialsModule} from "../../partials/partials.module";
 import { ModulesListComponent } from './modules-list/modules-list.component';
 import { TimerComponent } from './timer/timer.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { TitleComponent } from './title/title.component';
 
 
 
@@ -16,7 +18,9 @@ import { TimerComponent } from './timer/timer.component';
     LectureComponent,
     QuizComponent,
     ModulesListComponent,
-    TimerComponent
+    TimerComponent,
+    NavigationComponent,
+    TitleComponent
   ],
   imports: [
     CommonModule,
