@@ -2,7 +2,9 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, of, ReplaySubject, Subject} from "rxjs";
 import {CourseProgressModule, CourseTimer} from "../models/course";
 import {LinkedLecture} from "../models/lecture";
-import {LinkedQuiz, QuizAnswers, QuizProgressDetails, QuizResults} from "../models/quiz";
+import {LinkedQuiz, QuizAnswers, QuizProgressDetails, QuizResult} from "../models/quiz";
+import {environment} from "../../environments/environment";
+import {HttpClient} from "@angular/common/http";
 
 const MODULES: CourseProgressModule[] = [
   {
@@ -181,12 +183,14 @@ export class LearnService {
   quizId$: Subject<number | null> = new BehaviorSubject<number | null>(null);
 
   moduleIdCompleted$: Subject<number> = new Subject<number>();
+  moduleIdNotCompleted$: Subject<number> = new Subject<number>();
 
   titleSubject: Subject<string | null> = new BehaviorSubject<string | null>(null);
   title$ = this.titleSubject.asObservable();
 
+  private apiUrl: string = environment.apiUrl;
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   setCourseId(courseId: number): void {
@@ -207,12 +211,8 @@ export class LearnService {
     this.moduleIdCompleted$.next(moduleId);
   }
 
-  getCourseModules(courseId: number): Observable<CourseProgressModule[]> {
-    return of(MODULES);
-  }
-
-  getLecture(lectureId: number): Observable<LinkedLecture> {
-    return of(LECTURES[lectureId]);
+  setModuleIdNotCompleted(moduleId: number): void {
+    this.moduleIdNotCompleted$.next(moduleId);
   }
 
   setLectureId(lectureId: number) {
@@ -233,25 +233,24 @@ export class LearnService {
     this.titleSubject.next(title);
   }
 
-  getCourseTimer(courseId: number): Observable<CourseTimer> {
-    return of({
-      secondsLeft: 2000
-    });
+  // todo: move to ModulesService
+  getCourseModules(courseId: number): Observable<CourseProgressModule[]> {
+    return this.http.get<CourseProgressModule[]>(`${this.apiUrl}/course/${courseId}/modules`);
+  }
+
+  getLecture(lectureId: number): Observable<LinkedLecture> {
+    return this.http.get<LinkedLecture>(`${this.apiUrl}/course/${this.courseId}/lecture/${lectureId}`);
   }
 
   getQuiz(quizId: number): Observable<LinkedQuiz> {
-    return of(QUIZ);
+    return this.http.get<LinkedQuiz>(`${this.apiUrl}/course/${this.courseId}/quiz/${quizId}`);
   }
 
   getQuizQuestions(quizId: number): Observable<QuizProgressDetails> {
-    return of(DETAILS)
+    return this.http.post<QuizProgressDetails>(`${this.apiUrl}/course/${this.courseId}/quiz/${quizId}/start`, {});
   }
 
-  sendQuizAnswers(quizId: number, quizAnswers: QuizAnswers): Observable<QuizResults> {
-    return of({
-      passed: true,
-      requiredPercent: 80,
-      resultPercent: 90
-    })
+  sendQuizAnswers(quizId: number, quizAnswers: QuizAnswers): Observable<QuizResult> {
+    return this.http.post<QuizResult>(`${this.apiUrl}/course/${this.courseId}/quiz/${quizId}/check`, quizAnswers);
   }
 }

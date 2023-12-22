@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CourseOverviewService} from "../../../services/course-overview.service";
 import {SelectableCourseOverview} from "./selectable-course-overview";
-import {CourseOverview} from "../../../models/course";
+import {CourseBasic} from "../../../models/course";
 import {CartService} from "../../../services/cart.service";
 import {Router} from "@angular/router";
 
@@ -23,7 +23,7 @@ export class ChooseCourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.courseOverviewService.getAll().subscribe((courses: CourseOverview[]) => {
+    this.courseOverviewService.getAll().subscribe((courses: CourseBasic[]) => {
       this.courses = courses.map((c) => {
         const selectable = c as SelectableCourseOverview;
         selectable.selected = false;
@@ -40,7 +40,7 @@ export class ChooseCourseComponent implements OnInit {
   }
 
   onPurchaseCourse(course: SelectableCourseOverview): void {
-    this.cartService.addCourse(course as CourseOverview);
+    this.cartService.addCourse(course as CourseBasic);
     this.router.navigate(['/start', 'pay']);
   }
 

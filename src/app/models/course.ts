@@ -1,11 +1,11 @@
-export interface CourseOverview {
+export interface CourseBasic {
   id: number;
   name: string;
   imageSmall: string;
   imageBig: string;
-  price: number;
   description: string;
-  containsCPR: boolean;
+  price: number;
+  cprTrainingIncluded: boolean;
   modules: CourseModule[];
 }
 
@@ -13,10 +13,10 @@ export interface CourseModule {
   id: number;
   moduleNumber: number;
   name: string;
-  summary: string;
+  description: string;
 }
 
-export interface CourseProgressOverview extends CourseOverview {
+export interface CourseProgressOverview extends CourseBasic {
   modulesCompleted: number;
 }
 

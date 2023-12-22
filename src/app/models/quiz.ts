@@ -5,13 +5,13 @@ export interface LinkedQuiz {
   questionsNumber: number;
 
   module: LinkedLectureModule;
-  result?: QuizResults;
+  result?: QuizResult;
 
   previousLecture?: LinkedLectureIterator;
   nextLecture?: LinkedLectureIterator;
 }
 
-export interface QuizResults {
+export interface QuizResult {
   passed: boolean;
   resultPercent: number;
   requiredPercent: number;

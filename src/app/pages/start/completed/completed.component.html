@@ -1,24 +1,29 @@
 <div class="p-5">
-  <h1 class="section-title text-center">Payment Successful</h1>
-  <h2 class="section-subtitle text-center">You've completed your payment for the course below</h2>
+  <ng-container *ngIf="!transactionCompleted">
+    <h1 class="section-title text-center">Waiting for payment confirmation..</h1>
+  </ng-container>
+  <ng-container *ngIf="transactionCompleted">
+    <h1 class="section-title text-center">Payment Successful</h1>
+    <h2 class="section-subtitle text-center">You've completed your payment for the course below</h2>
 
 
-  <div class="row mt-5">
-    <div class="col-12 col-xl-4 offset-xl-2 text-center text-xl-start">
-      <strong>Transaction Number</strong>: 123456789
+    <div class="row mt-5">
+      <div class="col-12 col-xl-4 offset-xl-2 text-center text-xl-start">
+        <strong>Transaction Number</strong>: #{{ transactionNumber }}
+      </div>
+      <div class="col-12 col-xl-4 text-center text-xl-end">
+        <strong>Amount Paid</strong>: ${{ amountPaid }}
+      </div>
     </div>
-    <div class="col-12 col-xl-4 text-center text-xl-end">
-      <strong>Amount Paid</strong>: $1245
+    <div class="row">
+      <div class="col-8 offset-2 col-xl-12 offset-xl-0">
+        <hr class="spacer">
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-8 offset-2 col-xl-12 offset-xl-0">
-      <hr class="spacer">
+    <div class="row">
+      <div class="col-12 offset-0 col-xl-6 offset-xl-3 text-center">
+        <a [routerLink]="['/profile']" class="btn btn-submit w-100">Go to Profile</a>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-12 offset-0 col-xl-6 offset-xl-3 text-center">
-      <a [routerLink]="['/profile']" class="btn btn-submit w-100">Go to Profile</a>
-    </div>
-  </div>
+  </ng-container>
 </div>

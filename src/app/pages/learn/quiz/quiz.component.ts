@@ -104,6 +104,8 @@ export class QuizComponent implements OnInit, OnDestroy {
       tap((results) => {
         if (results.passed) {
           this.learnService.setModuleIdCompleted(this.quiz.module.id);
+        } else {
+          this.learnService.setModuleIdNotCompleted(this.quiz.module.id);
         }
       })
     ).subscribe((results) => {

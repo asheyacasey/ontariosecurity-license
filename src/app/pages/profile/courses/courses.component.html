@@ -10,7 +10,7 @@
           </div>
           <div class="course-description d-flex flex-column justify-content-center p-2 flex-grow-1">
             <div class="course-title">{{ course.name }}</div>
-            <div class="course-content">{{ course.modules.length }} modules{{ course.containsCPR ? ' + CPR' : ''}}</div>
+            <div class="course-content">{{ course.modules.length }} modules{{ course.cprTrainingIncluded ? ' + CPR' : ''}}</div>
             <div class="course-progress-container align-items-center d-none d-xl-flex flex-grow-1">
               <div class="course-progress-header">Progress</div>
               <app-course-progress-bar [total]="course.modules.length"

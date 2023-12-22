@@ -9,7 +9,7 @@
           </div>
           <div class="course-description d-flex flex-column justify-content-center p-2">
             <div class="course-title">{{ course.name }}</div>
-            <div class="course-content">{{ course.modules.length }} modules{{ course.containsCPR ? ' + CPR' : ''}}</div>
+            <div class="course-content">{{ course.modules.length }} modules{{ course.cprTrainingIncluded ? ' + CPR' : ''}}</div>
           </div>
         </div>
         <div class="course-card-details d-flex justify-content-center align-items-center flex-column flex-xl-row">
@@ -66,9 +66,9 @@
           <div class="col-12 mb-4">
             <label for="address-line-1" class="form-label">Street address *</label>
             <input type="text" class="form-control mb-2 mb-xl-1" id="address-line-1"
-                   placeholder="House number and street name" formControlName="addressFirstLine">
+                   placeholder="House number and street name" formControlName="addressLine1">
             <input type="text" class="form-control" id="address-line-2"
-                   placeholder="Apartment suite, unit, etc." formControlName="addressSecondLine">
+                   placeholder="Apartment suite, unit, etc." formControlName="addressLine2">
           </div>
         </div>
         <div class="row">

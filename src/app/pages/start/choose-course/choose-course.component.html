@@ -8,7 +8,7 @@
         </div>
         <div class="course-description d-flex flex-column justify-content-center p-2">
           <div class="course-title">{{ course.name }}</div>
-          <div class="course-content">{{ course.modules.length }} modules{{ course.containsCPR ? ' + CPR' : ''}}</div>
+          <div class="course-content">{{ course.modules.length }} modules{{ course.cprTrainingIncluded ? ' + CPR' : ''}}</div>
         </div>
       </div>
     </div>
@@ -55,7 +55,7 @@
               <div class="module-details-container d-flex flex-column">
                 <div class="module-title">{{ module.name }}</div>
                 <div class="module-description">
-                  {{ module.summary }}
+                  {{ module.description }}
                 </div>
               </div>
             </div>

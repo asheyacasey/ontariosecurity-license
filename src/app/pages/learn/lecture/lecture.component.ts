@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {LearnService} from "../../../services/learn.service";
 import {LinkedLecture} from "../../../models/lecture";
-import {Subject} from "rxjs";
+import {Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-lecture',
@@ -27,7 +27,10 @@ export class LectureComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.learnService.lectureId$.subscribe((lectureId) => {
+    this.learnService.lectureId$
+      .pipe(
+        takeUntil(this.destroy$)
+      ).subscribe((lectureId) => {
       if (lectureId === null) {
         return;
       }

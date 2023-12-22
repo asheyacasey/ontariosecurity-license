@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from "rxjs";
-import {CourseProgressOverview} from "../models/course";
+import {CourseBasic, CourseProgressOverview} from "../models/course";
+import {environment} from "../../environments/environment";
+import {HttpClient} from "@angular/common/http";
 
 const COURSES: CourseProgressOverview[] = [
   {
@@ -18,19 +20,19 @@ const COURSES: CourseProgressOverview[] = [
   Quis enim lobortis scelerisque fermentum dui faucibus in. Nisi vitae suscipit tellus mauris a. Turpis massa tincidunt dui ut ornare lectus sit. Morbi tincidunt ornare massa eget egestas purus. Dui accumsan sit amet nulla facilisi morbi tempus iaculis urna. Egestas congue quisque egestas diam in arcu cursus euismod quis.<br><br>
   Duis tristique sollicitudin nibh sit amet commodo nulla facilisi.
   `,
-    containsCPR: true,
+    cprTrainingIncluded: true,
     modules: [
       {
         id: 1,
         moduleNumber: 1,
         name: 'Hello first module',
-        summary: 'Fist module desc'
+        description: 'Fist module desc'
       },
       {
         id: 2,
         moduleNumber: 2,
         name: 'Hello second module',
-        summary: 'Second module desc'
+        description: 'Second module desc'
       }
     ],
     modulesCompleted: 2
@@ -42,9 +44,11 @@ const COURSES: CourseProgressOverview[] = [
 })
 export class CourseProgressOverviewService {
 
-  constructor() { }
+  private apiUrl: string = environment.apiUrl;
+
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<CourseProgressOverview[]> {
-    return of(COURSES)
+    return this.http.get<CourseProgressOverview[]>(`${this.apiUrl}/courses/owned`);
   }
 }

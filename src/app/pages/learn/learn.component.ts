@@ -69,6 +69,17 @@ export class LearnComponent implements OnInit, OnDestroy {
 
       module.completed = true;
     });
+
+    this.learnService.moduleIdNotCompleted$.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe((moduleId) => {
+      const module = this.modules.find(m => m.id === moduleId);
+      if (!module) {
+        return;
+      }
+
+      module.completed = false;
+    });
   }
 
   markSelectedModule(module: SelectableCourseProgressModule): void {

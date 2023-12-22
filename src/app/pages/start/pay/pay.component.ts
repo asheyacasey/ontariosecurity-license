@@ -1,9 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CartService} from "../../../services/cart.service";
-import {CourseOverview} from "../../../models/course";
+import {CourseBasic} from "../../../models/course";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {debounceTime, Subscription} from "rxjs";
+import {debounceTime, Subject, Subscription, takeUntil} from "rxjs";
+import {BillingDetailsService} from "../../../services/billing-details.service";
+import {PaymentSessionService} from "../../../services/payment-session.service";
 
 @Component({
   selector: 'app-pay',
@@ -11,48 +13,57 @@ import {debounceTime, Subscription} from "rxjs";
   styleUrls: ['./pay.component.scss', '../../../shared/shared.scss', '../../../shared/course-card.scss']
 })
 export class PayComponent implements OnInit, OnDestroy {
-  subscriptions: Subscription[] = [];
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
-  course: CourseOverview;
+  course: CourseBasic;
 
   billingDetailsForm = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     phone: new FormControl('', [Validators.required]),
-    addressFirstLine: new FormControl('', [Validators.required]),
-    addressSecondLine: new FormControl('',),
+    addressLine1: new FormControl('', [Validators.required]),
+    addressLine2: new FormControl('',),
     country: new FormControl('Canada', [Validators.required]),
     province: new FormControl('Ontario', [Validators.required]),
   })
 
   constructor(
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private billingDetailsService: BillingDetailsService,
+    private paymentSessionService: PaymentSessionService
   ) {
-    this.course = this.cartService.course as CourseOverview;
+    this.course = this.cartService.course as CourseBasic;
+    this.billingDetailsForm.patchValue(this.billingDetailsService.billingDetails);
   }
 
   ngOnInit(): void {
-    this.subscriptions.push(
-      this.billingDetailsForm.valueChanges.pipe(
-        debounceTime(500)
-      ).subscribe((values) => {
-        console.log(values);
-      })
-    );
+    this.paymentSessionService.clear();
+
+    this.billingDetailsForm.valueChanges.pipe(
+      takeUntil(this.destroy$),
+      debounceTime(500)
+    ).subscribe((values) => {
+      this.billingDetailsService.update(values);
+    });
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.map(s => s.unsubscribe());
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 
-  onRemoveCourse(course: CourseOverview): void {
+  onRemoveCourse(course: CourseBasic): void {
     this.cartService.clear();
     this.router.navigate(['/start', 'course'])
   }
 
   onSubmit() {
-
+    this.cartService.initializePayment(
+      this.billingDetailsForm.value
+    ).subscribe((session) => {
+      (window as any).location.href = session.url;
+    })
   }
 }

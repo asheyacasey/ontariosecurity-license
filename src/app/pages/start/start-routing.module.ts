@@ -9,6 +9,7 @@ import {NoCourseBoughtGuard} from "./guards/no-course-bought.guard";
 import {LoggedInGuard} from "./guards/logged-in.guard";
 import {CourseSelectedGuard} from "./guards/course-selected.guard";
 import {CompletedComponent} from "./completed/completed.component";
+import {CoursePaymentStartedGuard} from "./guards/course-payment-started.guard";
 
 const routes: Routes = [
   {
@@ -33,7 +34,7 @@ const routes: Routes = [
       {
         path: 'completed',
         component: CompletedComponent,
-        canActivate: [LoggedInGuard]
+        canActivate: [LoggedInGuard, CoursePaymentStartedGuard]
       },
       {
         path: '**',

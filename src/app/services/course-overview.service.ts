@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
 import {delay, Observable, of} from "rxjs";
-import {CourseModule, CourseOverview} from "../models/course";
+import {CourseModule, CourseBasic} from "../models/course";
+import {environment} from "../../environments/environment";
+import {HttpClient} from "@angular/common/http";
 
-const COURSES: CourseOverview[] = [
+const COURSES: CourseBasic[] = [
   {
     id: 1,
     name: 'Security Guard Training + CPR',
@@ -18,19 +20,19 @@ const COURSES: CourseOverview[] = [
   Quis enim lobortis scelerisque fermentum dui faucibus in. Nisi vitae suscipit tellus mauris a. Turpis massa tincidunt dui ut ornare lectus sit. Morbi tincidunt ornare massa eget egestas purus. Dui accumsan sit amet nulla facilisi morbi tempus iaculis urna. Egestas congue quisque egestas diam in arcu cursus euismod quis.<br><br>
   Duis tristique sollicitudin nibh sit amet commodo nulla facilisi.
   `,
-    containsCPR: true,
+    cprTrainingIncluded: true,
     modules: [
       {
         id: 1,
         moduleNumber: 1,
         name: 'Hello first module',
-        summary: 'Fist module desc'
+        description: 'Fist module desc'
       },
       {
         id: 2,
         moduleNumber: 2,
         name: 'Hello second module',
-        summary: 'Second module desc'
+        description: 'Second module desc'
       }
     ]
   },
@@ -49,25 +51,25 @@ const COURSES: CourseOverview[] = [
   Quis enim lobortis scelerisque fermentum dui faucibus in. Nisi vitae suscipit tellus mauris a. Turpis massa tincidunt dui ut ornare lectus sit. Morbi tincidunt ornare massa eget egestas purus. Dui accumsan sit amet nulla facilisi morbi tempus iaculis urna. Egestas congue quisque egestas diam in arcu cursus euismod quis.<br><br>
   Duis tristique sollicitudin nibh sit amet commodo nulla facilisi.
   `,
-    containsCPR: false,
+    cprTrainingIncluded: false,
     modules: [
       {
         id: 1,
         moduleNumber: 1,
         name: 'Module 1 title',
-        summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.'
       },
       {
         id: 2,
         moduleNumber: 2,
         name: 'Module 1 title',
-        summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.'
       },
       {
         id: 3,
         moduleNumber: 3,
         name: 'Module 1 title',
-        summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.'
       }
 
     ]
@@ -79,10 +81,12 @@ const COURSES: CourseOverview[] = [
 })
 export class CourseOverviewService {
 
-  constructor() {
+  private apiUrl: string = environment.apiUrl;
+
+  constructor(private http: HttpClient) {
   }
 
-  getAll(): Observable<CourseOverview[]> {
-    return of(COURSES);
+  getAll(): Observable<CourseBasic[]> {
+    return this.http.get<CourseBasic[]>(`${this.apiUrl}/courses`)
   }
 }
