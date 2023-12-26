@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, of, ReplaySubject, Subject} from "rxjs";
+import {BehaviorSubject, Observable, of, ReplaySubject, Subject, tap} from "rxjs";
 import {CourseProgressModule, CourseTimer} from "../models/course";
 import {LinkedLecture} from "../models/lecture";
 import {LinkedQuiz, QuizAnswers, QuizProgressDetails, QuizResult} from "../models/quiz";
@@ -188,6 +188,9 @@ export class LearnService {
   titleSubject: Subject<string | null> = new BehaviorSubject<string | null>(null);
   title$ = this.titleSubject.asObservable();
 
+  lectureIdLoaded$: Subject<number> = new Subject<number>();
+  requiredCourseTimeReached$: Subject<boolean> = new BehaviorSubject<boolean>(false);
+
   private apiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) {
@@ -222,6 +225,10 @@ export class LearnService {
     }
   }
 
+  setLectureIdLoaded(lectureId: number) {
+    this.lectureIdLoaded$.next(lectureId);
+  }
+
   setQuizId(quizId: number) {
     if (this.quizId !== quizId) {
       this.quizId = quizId;
@@ -233,13 +240,23 @@ export class LearnService {
     this.titleSubject.next(title);
   }
 
+  setCourseTimeReached() {
+    this.requiredCourseTimeReached$.next(true);
+  }
+
+  setCourseTimeNotReached() {
+    this.requiredCourseTimeReached$.next(false);
+  }
+
   // todo: move to ModulesService
   getCourseModules(courseId: number): Observable<CourseProgressModule[]> {
     return this.http.get<CourseProgressModule[]>(`${this.apiUrl}/course/${courseId}/modules`);
   }
 
   getLecture(lectureId: number): Observable<LinkedLecture> {
-    return this.http.get<LinkedLecture>(`${this.apiUrl}/course/${this.courseId}/lecture/${lectureId}`);
+    return this.http.get<LinkedLecture>(`${this.apiUrl}/course/${this.courseId}/lecture/${lectureId}`).pipe(
+      tap(() => this.setLectureIdLoaded(lectureId))
+    );
   }
 
   getQuiz(quizId: number): Observable<LinkedQuiz> {

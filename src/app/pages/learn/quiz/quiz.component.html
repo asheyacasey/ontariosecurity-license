@@ -1,4 +1,4 @@
-<ng-container *ngIf="!moduleQuiz; else questions">
+<ng-container *ngIf="!moduleQuiz && quiz; else questions">
   <div class="course-content row">
     <div class="col-12">
       <p>This quiz consists of <strong>{{ quiz.questionsNumber}}</strong> questions.</p>

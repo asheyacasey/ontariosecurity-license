@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {LearnService} from "../../../services/learn.service";
-import {interval, Subject, Subscription, switchMap, takeUntil, timer} from "rxjs";
+import {interval, Subject, Subscription, switchMap, takeUntil, tap, timer} from "rxjs";
 import {CourseTimer} from "../../../models/course";
 import {CourseTimerService} from "../../../services/course-timer.service";
 
@@ -36,7 +36,14 @@ export class TimerComponent implements OnInit, OnDestroy {
 
       // todo: move to courseTimerService
       const subscription = timer(0, this.interval * 1000).pipe(
-        switchMap(() => this.courseTimerService.ping(courseId))
+        switchMap(() => this.courseTimerService.ping(courseId)),
+        tap((courseTimer) => {
+          if (courseTimer.secondsLeft === 0) {
+            this.learnService.setCourseTimeReached();
+          } else {
+            this.learnService.setCourseTimeNotReached();
+          }
+        })
       ).subscribe((courseTimer) => {
         this.courseTimer = courseTimer;
         this.updateTimerValue(this.courseTimer.secondsLeft);

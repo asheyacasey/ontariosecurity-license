@@ -1,6 +1,5 @@
 <div class="course-content row">
-  <div class="col-12">
-    {{lecture?.content}}
+  <div class="col-12" [innerHTML]="lecture?.content">
   </div>
 </div>
 <app-navigation

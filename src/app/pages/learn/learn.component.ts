@@ -2,7 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {SelectableCourseProgressModule} from "./selectable-course-progress-module";
 import {LearnService} from "../../services/learn.service";
-import {Subject, Subscription, take, takeUntil} from "rxjs";
+import {EMPTY, filter, Subject, Subscription, switchMap, take, takeUntil} from "rxjs";
+import {CourseProgressModule} from "../../models/course";
 
 @Component({
   selector: 'app-learn',
@@ -30,56 +31,73 @@ export class LearnComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.learnService.courseId$.pipe(
-      takeUntil(this.destroy$)
-    ).subscribe((courseId) => {
-      if (courseId === null) {
-        return;
-      }
+      takeUntil(this.destroy$),
+      filter((courseId) => courseId !== null),
+      switchMap((courseId) => this.learnService.getCourseModules(courseId))
+    ).subscribe((modules) => {
 
-      this.learnService.getCourseModules(courseId).subscribe((modules) => {
-        this.modules = modules.map((m) => {
-          const module = m as SelectableCourseProgressModule;
-          module.selected = false;
-          return module
-        });
+      this.initializeModules(modules);
+
+      this.learnService.moduleId$.pipe(
+        takeUntil(this.destroy$)
+      ).subscribe((moduleId) => {
+        if (moduleId === null) {
+          return;
+        }
+        const module = this.modules.find(m => m.id === moduleId);
+        if (!module) {
+          return;
+        }
+
+        this.markSelectedModule(module);
+      });
+
+      this.learnService.moduleIdCompleted$.pipe(
+        takeUntil(this.destroy$)
+      ).subscribe((moduleId) => {
+        const module = this.modules.find(m => m.id === moduleId);
+        if (!module) {
+          return;
+        }
+
+        module.completed = true;
+      });
+
+      this.learnService.moduleIdNotCompleted$.pipe(
+        takeUntil(this.destroy$)
+      ).subscribe((moduleId) => {
+        const module = this.modules.find(m => m.id === moduleId);
+        if (!module) {
+          return;
+        }
+
+        module.completed = false;
+      });
+
+      this.learnService.lectureIdLoaded$.pipe(
+        takeUntil(this.destroy$),
+        switchMap(() => this.courseId ? this.learnService.getCourseModules(this.courseId) : EMPTY)
+      ).subscribe((modules) => {
+        this.updateModules(modules);
       });
     });
+  }
 
-    this.learnService.moduleId$.pipe(
-      takeUntil(this.destroy$)
-    ).subscribe((moduleId) => {
-      if (moduleId === null) {
-        return;
-      }
-      const module = this.modules.find(m => m.id === moduleId);
-      if (!module) {
-        return;
-      }
-
-      this.markSelectedModule(module);
+  initializeModules(modules: CourseProgressModule[]): void {
+    this.modules = modules.map((m) => {
+      const module = m as SelectableCourseProgressModule;
+      module.selected = false;
+      return module
     });
+  }
 
-    this.learnService.moduleIdCompleted$.pipe(
-      takeUntil(this.destroy$)
-    ).subscribe((moduleId) => {
-      const module = this.modules.find(m => m.id === moduleId);
-      if (!module) {
-        return;
+  updateModules(modules: CourseProgressModule[]): void {
+    this.modules.forEach((module) => {
+      const m = modules.find(m => m.id === module.id);
+      if (m) {
+        module.completed = m.completed;
       }
-
-      module.completed = true;
-    });
-
-    this.learnService.moduleIdNotCompleted$.pipe(
-      takeUntil(this.destroy$)
-    ).subscribe((moduleId) => {
-      const module = this.modules.find(m => m.id === moduleId);
-      if (!module) {
-        return;
-      }
-
-      module.completed = false;
-    });
+    })
   }
 
   markSelectedModule(module: SelectableCourseProgressModule): void {
@@ -96,7 +114,7 @@ export class LearnComponent implements OnInit, OnDestroy {
     const firstLectureId = activeModule.lectureIds[0];
     this.router.navigate(['/learn', this.courseId, 'lecture', firstLectureId]);
 
-    this.learnService.moduleId$.next(module.id);
+    this.learnService.setModuleId(module.id);
   }
 
   ngOnDestroy(): void {

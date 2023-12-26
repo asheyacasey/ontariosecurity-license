@@ -3,6 +3,7 @@ import {Observable, tap} from "rxjs";
 import {CourseTimer} from "../models/course";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
+import {LearnService} from "./learn.service";
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,6 @@ export class CourseTimerService {
   }
 
   ping(courseId: number): Observable<CourseTimer> {
-    return this.http.post<CourseTimer>(`${this.apiUrl}/course/${courseId}/ping`, {}).pipe(
-      tap((courseTimer: CourseTimer) => {
-
-      })
-    )
+    return this.http.post<CourseTimer>(`${this.apiUrl}/course/${courseId}/ping`, {});
   }
 }
