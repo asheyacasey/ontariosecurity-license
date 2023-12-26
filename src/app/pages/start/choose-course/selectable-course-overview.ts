@@ -1,5 +1,5 @@
-import {CourseOverview} from "../../../models/course";
+import {CourseBasic} from "../../../models/course";
 
-export interface SelectableCourseOverview extends CourseOverview {
+export interface SelectableCourseOverview extends CourseBasic {
   selected: boolean;
 }

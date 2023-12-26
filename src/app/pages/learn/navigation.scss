@@ -13,6 +13,11 @@
   line-height: 27px;
 
   color: #31374D;
+
+  &:hover {
+    border: 1px solid #31374D;
+    color: #31374D;
+  }
 }
 
 .btn-next {
@@ -30,6 +35,7 @@
   color: #FFFFFF;
 
   &:hover {
+    background: #31374D;
     color: #FFFFFF;
   }
 }
@@ -49,6 +55,7 @@
   color: #FFFFFF;
 
   &:hover {
+    background: #36B251;
     color: #FFFFFF;
   }
 }

@@ -1,4 +1,6 @@
 <div class="course-counter d-flex flex-row flex-xl-column justify-content-center align-items-center">
-  <div class="course-counter-time"> -19:34</div>
+  <div class="course-counter-time">
+    <span *ngIf="courseTimer">-{{ timerValue }}</span>
+  </div>
   <div class="course-counter-title">Time Until You Get TCN</div>
 </div>

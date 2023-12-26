@@ -1,5 +1,10 @@
-import { Injectable } from '@angular/core';
-import {CourseOverview} from "../models/course";
+import {Injectable} from '@angular/core';
+import {CourseBasic} from "../models/course";
+import {Observable, tap} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
+import {PaymentSession} from "../models/payment";
+import {PaymentSessionService} from "./payment-session.service";
 
 @Injectable({
   providedIn: 'root'
@@ -7,10 +12,20 @@ import {CourseOverview} from "../models/course";
 export class CartService {
   key: string = 'cart-v1';
 
-  course: CourseOverview | null = null;
+  private apiUrl: string = environment.apiUrl;
 
-  constructor() {
+  course: CourseBasic | null = null;
+
+  constructor(private http: HttpClient, private paymentSessionService: PaymentSessionService) {
     this._loadState();
+  }
+
+  private _loadState(): void {
+    const course = localStorage.getItem(this.key);
+    if (course) {
+      // todo: type safety
+      this.course = JSON.parse(course);
+    }
   }
 
   private _saveState(): void {
@@ -19,18 +34,9 @@ export class CartService {
     } else {
       localStorage.removeItem(this.key);
     }
-
   }
 
-  private _loadState(): void {
-    const item = localStorage.getItem('cart-v1');
-    if (item) {
-      // todo: type safety
-      this.course = JSON.parse(item);
-    }
-  }
-
-  addCourse(course: CourseOverview): void {
+  addCourse(course: CourseBasic): void {
     this.course = course;
     this._saveState();
   }
@@ -43,4 +49,13 @@ export class CartService {
   get empty(): boolean {
     return this.course === null;
   }
+
+  initializePayment(billingDetails: any): Observable<PaymentSession> {
+    return this.http.post<PaymentSession>(`${this.apiUrl}/course/${this.course?.id}/purchase`, billingDetails).pipe(
+      tap((session) => {
+        this.paymentSessionService.setSession(session);
+      })
+    )
+  }
+
 }

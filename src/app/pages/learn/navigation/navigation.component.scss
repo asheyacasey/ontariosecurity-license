@@ -1,0 +1,57 @@
+.btn-previous {
+  padding: 17px 69px;
+
+  border: 1px solid #31374D;
+  border-radius: 4px;
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+
+  color: #31374D;
+
+  &:hover {
+    border: 1px solid #31374D;
+    color: #31374D;
+  }
+}
+
+.btn-next {
+  padding: 17px 87px;
+
+  background: #31374D;
+  border-radius: 4px;
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+
+  color: #FFFFFF;
+
+  &:hover {
+    background: #31374D;
+    color: #FFFFFF;
+  }
+}
+
+.course-navigation-page {
+  cursor: pointer;
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #31374D;
+
+  padding: 15px;
+
+  &.active {
+    font-weight: 700;
+  }
+}

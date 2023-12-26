@@ -50,5 +50,11 @@
             </svg>
 
         </a>
+        <div *ngIf="user === null" class="navbar-text">
+          <button (click)="goToLogin()" class="btn btn-secondary">Login</button>
+        </div>
+        <div *ngIf="user" class="navbar-text">
+          <button (click)="signOut()" class="btn btn-secondary">Sign out</button>
+        </div>
     </div>
 </nav>

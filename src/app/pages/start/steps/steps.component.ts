@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {RegisterStep} from "./register-step";
-import {Subscription} from "rxjs";
+import {Subject, Subscription, takeUntil} from "rxjs";
 
 
 @Component({
@@ -10,8 +10,7 @@ import {Subscription} from "rxjs";
   styleUrls: ['./steps.component.scss']
 })
 export class StepsComponent implements OnInit, OnDestroy {
-
-  subscriptions: Subscription[] = [];
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
   steps: RegisterStep[] = [
     {
@@ -38,7 +37,9 @@ export class StepsComponent implements OnInit, OnDestroy {
   ]
 
   constructor(private router: Router) {
-    this.subscriptions.push(router.events.subscribe((e) => {
+    router.events.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe((e) => {
       if (e instanceof NavigationEnd) {
         const currentUrl = e.urlAfterRedirects;
         let currentFound = false;
@@ -64,7 +65,7 @@ export class StepsComponent implements OnInit, OnDestroy {
           }
         }
       }
-    }));
+    });
   }
 
   ngOnInit(): void {
@@ -72,11 +73,12 @@ export class StepsComponent implements OnInit, OnDestroy {
   }
 
   currentUrlMatches(targetUrl: string, parts: string[]): boolean {
-    return targetUrl === parts.join('/');
+    return targetUrl.indexOf(parts.join('/')) > -1 ;
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.map(s => s.unsubscribe());
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 
 }
