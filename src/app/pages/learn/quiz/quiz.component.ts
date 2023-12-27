@@ -4,6 +4,7 @@ import {LearnService} from "../../../services/learn.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LinkedQuiz, QuizAnswers, QuizDetails, QuizQuestionAnswerChange} from "../../../models/quiz";
 import {Subject, takeUntil, tap} from "rxjs";
+import {ViewportScroller} from "@angular/common";
 
 @Component({
   selector: 'app-quiz',
@@ -23,7 +24,8 @@ export class QuizComponent implements OnInit, OnDestroy {
   constructor(
     private learnService: LearnService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private viewport: ViewportScroller
   ) {
     activatedRoute.params.pipe(
       takeUntil(this.destroy$)
@@ -99,6 +101,8 @@ export class QuizComponent implements OnInit, OnDestroy {
     if (!this.quizAnswers) {
       return;
     }
+
+    this.viewport.scrollToPosition([0, 0]);
 
     this.learnService.sendQuizAnswers(this.quiz.id, this.quizAnswers).pipe(
       tap((results) => {
