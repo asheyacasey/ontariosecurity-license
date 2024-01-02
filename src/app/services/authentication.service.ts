@@ -1,15 +1,34 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {BehaviorSubject, catchError, map, Observable, of, ReplaySubject, switchMap, tap} from "rxjs";
+import {
+  BehaviorSubject,
+  catchError,
+  firstValueFrom,
+  map,
+  Observable,
+  of,
+  ReplaySubject,
+  switchMap,
+  tap,
+  throwError
+} from "rxjs";
 import {environment} from "../../environments/environment";
 import {AccessToken, UserDetails, UserLoginRequest, UserRegisterError, UserRegisterRequest} from "../models/user";
 import {Router} from "@angular/router";
+
+/***
+ * Factory to be used in APP_INITIALIZER
+ * @param authService
+ * @constructor
+ */
+export function AuthenticationServiceFactory(authService: AuthenticationService) {
+  return () => firstValueFrom(authService.load());
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-
   key: string = 'token';
 
   user: UserDetails | null = null;
@@ -18,10 +37,28 @@ export class AuthenticationService {
   private apiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient, private router: Router) {
+  }
+
+  /***
+   * Loads the initial state of the service given a persisted token
+   */
+  load(): Observable<boolean> {
     const token = this.getToken();
     if (token) {
-      this.getUserDetails().subscribe();
+      // if token is present, try to load user details
+      return this.getUserDetails().pipe(
+        catchError((error: HttpErrorResponse) => {
+          // if error is caught, we assume it's 401 and the token has expired:
+          // deletion of the old token will be handled through the auth interceptor.
+          // notify the load is complete
+          return of(true);
+        }),
+        map(() => true),
+      );
+    } else {
+      return of(true);
     }
+
   }
 
   signUp(data: UserRegisterRequest): Observable<UserRegisterError | null> {
