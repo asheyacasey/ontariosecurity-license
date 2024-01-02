@@ -3,7 +3,7 @@ import {CartService} from "../../../services/cart.service";
 import {CourseBasic} from "../../../models/course";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {debounceTime, Subject, Subscription, takeUntil} from "rxjs";
+import {BehaviorSubject, debounceTime, finalize, Subject, Subscription, takeUntil} from "rxjs";
 import {BillingDetailsService} from "../../../services/billing-details.service";
 import {PaymentSessionService} from "../../../services/payment-session.service";
 
@@ -14,6 +14,7 @@ import {PaymentSessionService} from "../../../services/payment-session.service";
 })
 export class PayComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
+  isLoading$: Subject<boolean> = new BehaviorSubject<boolean>(false);
 
   course: CourseBasic;
 
@@ -60,8 +61,12 @@ export class PayComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.isLoading$.next(true);
+
     this.cartService.initializePayment(
       this.billingDetailsForm.value
+    ).pipe(
+      finalize(() => this.isLoading$.next(false))
     ).subscribe((session) => {
       (window as any).location.href = session.url;
     })

@@ -9,7 +9,8 @@
           </div>
           <div class="course-description d-flex flex-column justify-content-center p-2">
             <div class="course-title">{{ course.name }}</div>
-            <div class="course-content">{{ course.modules.length }} modules{{ course.cprTrainingIncluded ? ' + CPR' : ''}}</div>
+            <div class="course-content">{{ course.modules.length }}
+              modules{{ course.cprTrainingIncluded ? ' + CPR' : ''}}</div>
           </div>
         </div>
         <div class="course-card-details d-flex justify-content-center align-items-center flex-column flex-xl-row">
@@ -94,8 +95,17 @@
       <div class="col-12 col-xl-8">
         <div class="row">
           <div class="col-12">
-            <input class="btn btn-submit w-100" type="submit" value="Complete Payment"
-                   [disabled]="!billingDetailsForm.valid">
+            <button type="submit" class="btn btn-submit w-100 mb-3"
+                    [disabled]="!billingDetailsForm.valid || (isLoading$ | async) === true">
+              <ng-container *ngIf="(isLoading$ | async) === true; else submit">
+                <div class="spinner-border spinner-border-sm text-secondary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </ng-container>
+              <ng-template #submit>
+                Complete Payment
+              </ng-template>
+            </button>
           </div>
         </div>
       </div>

@@ -1,30 +1,45 @@
 <app-header></app-header>
 <div class="signin-page-container container vw-100 vh-100">
-    <div class="row pt-5">
-        <div class="card-container col-12 min-vh-100">
-            <div class="row text-center mt-5">
-                <div class="col">
-                    <h1 class="signin-header">Sign In </h1>
-                    <p class="signin-subheader">Enter your details below</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col d-flex align-items-center justify-content-center">
-                    <form class="signin-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" formControlName="username">
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" formControlName="password">
-                        </div>
-
-                        <input type="submit" class="btn btn-submit w-100" value="Sign in" [disabled]="!loginForm.valid">
-
-                    </form>
-                </div>
-            </div>
+  <div class="row pt-5">
+    <div class="card-container col-12 min-vh-100">
+      <div class="row text-center mt-5">
+        <div class="col">
+          <h1 class="signin-header">Sign In </h1>
+          <p class="signin-subheader">Enter your details below</p>
         </div>
+      </div>
+      <div class="row">
+        <div class="col d-flex align-items-center justify-content-center">
+          <form class="signin-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" formControlName="username">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+
+            <button type="submit" class="btn btn-submit w-100 mb-3"
+                    [disabled]="!loginForm.valid || (isLoading$ | async) === true">
+              <ng-container *ngIf="(isLoading$ | async) === true; else submit">
+                <div class="spinner-border spinner-border-sm text-secondary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </ng-container>
+              <ng-template #submit>
+                Sign in
+              </ng-template>
+            </button>
+            <div class="alert alert-warning d-flex align-items-center" role="alert"
+                 [class.invisible]="!showError">
+              <div>
+                The supplied credentials are incorrect.
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

@@ -13,7 +13,14 @@ import {
   throwError
 } from "rxjs";
 import {environment} from "../../environments/environment";
-import {AccessToken, UserDetails, UserLoginRequest, UserRegisterError, UserRegisterRequest} from "../models/user";
+import {
+  AccessToken,
+  UserDetails,
+  UserLoginError,
+  UserLoginRequest,
+  UserRegisterError,
+  UserRegisterRequest
+} from "../models/user";
 import {Router} from "@angular/router";
 
 /***
@@ -29,12 +36,12 @@ export function AuthenticationServiceFactory(authService: AuthenticationService)
   providedIn: 'root'
 })
 export class AuthenticationService {
+  private apiUrl: string = environment.apiUrl;
   key: string = 'token';
 
   user: UserDetails | null = null;
   user$ = new BehaviorSubject<UserDetails | null>(null);
 
-  private apiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -78,7 +85,7 @@ export class AuthenticationService {
     );
   }
 
-  signIn(data: UserLoginRequest): Observable<UserDetails> {
+  signIn(data: UserLoginRequest): Observable<UserDetails | UserLoginError> {
     const headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
     const body = `username=${data.username}&password=${data.password}`;
 
@@ -95,8 +102,6 @@ export class AuthenticationService {
   signOut(): void {
     localStorage.removeItem(this.key);
     this.user$.next(null);
-
-    this.router.navigate(['/']);
   }
 
   getToken(): string | null {
