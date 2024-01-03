@@ -6,6 +6,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {BehaviorSubject, debounceTime, finalize, Subject, Subscription, takeUntil} from "rxjs";
 import {BillingDetailsService} from "../../../services/billing-details.service";
 import {PaymentSessionService} from "../../../services/payment-session.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-pay',
@@ -30,6 +31,7 @@ export class PayComponent implements OnInit, OnDestroy {
   })
 
   constructor(
+    private titleService: Title,
     private router: Router,
     private cartService: CartService,
     private billingDetailsService: BillingDetailsService,
@@ -40,6 +42,8 @@ export class PayComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Complete payment | Ontario Security License');
+
     this.paymentSessionService.clear();
 
     this.billingDetailsForm.valueChanges.pipe(

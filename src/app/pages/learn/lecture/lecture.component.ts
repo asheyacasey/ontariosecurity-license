@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {LearnService} from "../../../services/learn.service";
 import {LinkedLecture} from "../../../models/lecture";
 import {Subject, takeUntil} from "rxjs";
+import {CourseNavigationStateService} from "../../../services/course-navigation-state.service";
 
 @Component({
   selector: 'app-lecture',
@@ -18,7 +19,8 @@ export class LectureComponent implements OnInit, OnDestroy {
   constructor(
     private learnService: LearnService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private courseNavigationStateService: CourseNavigationStateService,
   ) {
     activatedRoute.params.subscribe((params) => {
       this.lectureId = Number(params['lectureId']);
@@ -40,6 +42,12 @@ export class LectureComponent implements OnInit, OnDestroy {
 
         this.learnService.setTitle(this.lecture.name);
         this.learnService.setModuleId(this.lecture.module.id);
+
+        this.courseNavigationStateService.addState({
+          courseId: this.learnService.courseId as number,
+          itemType: 'lecture',
+          itemId: lectureId
+        });
       });
     });
   }

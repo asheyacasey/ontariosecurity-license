@@ -4,6 +4,7 @@ import {SelectableCourseOverview} from "./selectable-course-overview";
 import {CourseBasic} from "../../../models/course";
 import {CartService} from "../../../services/cart.service";
 import {Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-choose-course',
@@ -16,6 +17,7 @@ export class ChooseCourseComponent implements OnInit {
   selectedCourse: SelectableCourseOverview | null = null;
 
   constructor(
+    private titleService: Title,
     private router: Router,
     private courseOverviewService: CourseOverviewService,
     private cartService: CartService
@@ -23,6 +25,8 @@ export class ChooseCourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Choose course | Ontario Security License');
+
     this.courseOverviewService.getAll().subscribe((courses: CourseBasic[]) => {
       this.courses = courses.map((c) => {
         const selectable = c as SelectableCourseOverview;

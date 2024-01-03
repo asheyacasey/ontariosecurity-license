@@ -4,6 +4,7 @@ import {SelectableCourseProgressModule} from "./selectable-course-progress-modul
 import {LearnService} from "../../services/learn.service";
 import {EMPTY, filter, Subject, Subscription, switchMap, take, takeUntil} from "rxjs";
 import {CourseProgressModule} from "../../models/course";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-learn',
@@ -17,6 +18,7 @@ export class LearnComponent implements OnInit, OnDestroy {
   modules: SelectableCourseProgressModule[] = [];
 
   constructor(
+    private titleService: Title,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private learnService: LearnService

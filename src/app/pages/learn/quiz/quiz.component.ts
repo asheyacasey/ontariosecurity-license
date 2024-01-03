@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {LinkedQuiz, QuizAnswers, QuizDetails, QuizQuestionAnswerChange} from "../../../models/quiz";
 import {Subject, takeUntil, tap} from "rxjs";
 import {ViewportScroller} from "@angular/common";
+import {CourseNavigationStateService} from "../../../services/course-navigation-state.service";
 
 @Component({
   selector: 'app-quiz',
@@ -25,7 +26,8 @@ export class QuizComponent implements OnInit, OnDestroy {
     private learnService: LearnService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private viewport: ViewportScroller
+    private viewport: ViewportScroller,
+    private courseNavigationStateService: CourseNavigationStateService,
   ) {
     activatedRoute.params.pipe(
       takeUntil(this.destroy$)
@@ -50,6 +52,12 @@ export class QuizComponent implements OnInit, OnDestroy {
 
         this.learnService.setTitle('Quiz for module ' + this.quiz?.module.id);
         this.learnService.setModuleId(this.quiz.module.id);
+
+        this.courseNavigationStateService.addState({
+          courseId: this.learnService.courseId as number,
+          itemType: 'quiz',
+          itemId: quizId
+        });
       });
     });
   }

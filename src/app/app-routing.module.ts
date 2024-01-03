@@ -4,11 +4,13 @@ import {RouterModule, Routes} from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/landing/landing.module').then((m) => m.LandingModule)
+    loadChildren: () => import('./pages/landing/landing.module').then((m) => m.LandingModule),
+    title: 'Ontario Security License'
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then((m) => m.LoginModule)
+    loadChildren: () => import('./pages/login/login.module').then((m) => m.LoginModule),
+    title: 'Login | Ontario Security License'
   },
   {
     path: 'start',

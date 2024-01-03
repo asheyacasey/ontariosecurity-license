@@ -5,6 +5,7 @@ import {LinkedLecture} from "../models/lecture";
 import {LinkedQuiz, QuizAnswers, QuizProgressDetails, QuizResult} from "../models/quiz";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
+import {Title} from "@angular/platform-browser";
 
 const MODULES: CourseProgressModule[] = [
   {
@@ -177,10 +178,12 @@ export class LearnService {
   lectureId?: number;
   quizId?: number;
 
+
   courseId$: Subject<number> = new ReplaySubject<number>(1);
   moduleId$: Subject<number | null> = new BehaviorSubject<number | null>(null);
   lectureId$: Subject<number | null> = new BehaviorSubject<number | null>(null);
   quizId$: Subject<number | null> = new BehaviorSubject<number | null>(null);
+  courseModules$: Subject<CourseProgressModule[]> = new BehaviorSubject<CourseProgressModule[]>([]);
 
   moduleIdCompleted$: Subject<number> = new Subject<number>();
   moduleIdNotCompleted$: Subject<number> = new Subject<number>();
@@ -193,7 +196,7 @@ export class LearnService {
 
   private apiUrl: string = environment.apiUrl;
 
-  constructor(private http: HttpClient) {
+  constructor(private titleService: Title, private http: HttpClient) {
   }
 
   setCourseId(courseId: number): void {
@@ -238,6 +241,7 @@ export class LearnService {
 
   setTitle(title: string) {
     this.titleSubject.next(title);
+    this.titleService.setTitle(`${title} | Ontario Security License`);
   }
 
   setCourseTimeReached() {
@@ -250,7 +254,11 @@ export class LearnService {
 
   // todo: move to ModulesService
   getCourseModules(courseId: number): Observable<CourseProgressModule[]> {
-    return this.http.get<CourseProgressModule[]>(`${this.apiUrl}/course/${courseId}/modules`);
+    return this.http.get<CourseProgressModule[]>(`${this.apiUrl}/course/${courseId}/modules`).pipe(
+      tap((courseModules) => {
+        this.courseModules$.next(courseModules);
+      })
+    );
   }
 
   getLecture(lectureId: number): Observable<LinkedLecture> {

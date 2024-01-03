@@ -4,6 +4,7 @@ import {AuthenticationService} from "../../../services/authentication.service";
 import {UserLoginRequest, UserRegisterRequest} from "../../../models/user";
 import {BehaviorSubject, filter, finalize, Subject, switchMap, tap} from "rxjs";
 import {Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-register',
@@ -21,11 +22,15 @@ export class RegisterComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   })
 
-  constructor(private authService: AuthenticationService, private router: Router) {
+  constructor(
+    private titleService: Title,
+    private authService: AuthenticationService,
+    private router: Router
+  ) {
   }
 
   ngOnInit(): void {
-
+    this.titleService.setTitle('Register | Ontario Security License');
   }
 
   onSubmit(): void {

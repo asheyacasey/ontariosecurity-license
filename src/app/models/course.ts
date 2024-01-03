@@ -32,3 +32,12 @@ export interface CourseProgressModule {
 export interface CourseTimer {
   secondsLeft: number;
 }
+
+/**
+ * Describes the current navigation state in a given course
+ */
+export interface CourseNavigationState {
+  courseId: number;
+  itemType: 'lecture' | 'quiz';
+  itemId: number;
+}
