@@ -8,7 +8,7 @@ import {CourseNavigationStateService} from "../../../services/course-navigation-
 @Component({
   selector: 'app-lecture',
   templateUrl: './lecture.component.html',
-  styleUrls: ['./lecture.component.scss', '../learn.component.scss', '../navigation.scss']
+  styleUrls: ['./lecture.component.scss', '../learn.component.scss']
 })
 export class LectureComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();

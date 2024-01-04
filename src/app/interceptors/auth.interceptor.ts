@@ -28,11 +28,9 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
           this.authService.signOut();
-          if (token !== null) {
-            // the token was invalid, redirect to main page
-            // todo: add a notification
+          if (!error.url?.includes('/user/token')) {
+            this.router.navigate(['/'])
           }
-          this.router.navigate(['/']);
         }
         return throwError(() => error);
       })

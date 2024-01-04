@@ -10,7 +10,7 @@ import {CourseNavigationStateService} from "../../../services/course-navigation-
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.scss', '../learn.component.scss', '../navigation.scss']
+  styleUrls: ['./quiz.component.scss', '../learn.component.scss']
 })
 export class QuizComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();

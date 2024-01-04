@@ -1,5 +1,8 @@
-.landing-page, .landing-page-container {
+.landing-page-container {
   background-color: #E5E5E5;
+  min-height: calc(100vh - 70px);
+
+  overflow: hidden;
 }
 
 .hero-container {
@@ -47,15 +50,13 @@
 
 }
 
-@media (max-width: 1581px) {
-  .testimonial-container {
-    display: none;
-  }
+.testimonial-wrapper {
+  height: 100%;
 }
 
 .testimonial-container {
-  width: 826px;
-  height: 988px;
+  width: 100%;
+  min-height: calc(100vh - 70px);
   background-image: url(/assets/testimonial-1.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -67,7 +68,7 @@
   width: 390px;
   height: 200px;
   position: relative;
-  top: 650px;
+  top: calc(60vh);
 
   color: #31374D;
 }

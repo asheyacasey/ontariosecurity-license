@@ -54,7 +54,7 @@ export class TimerComponent implements OnInit, OnDestroy {
   }
 
   updateTimerValue(secondsLeft: number): void {
-    let hours = Math.floor(secondsLeft / 3600).toString().padStart(2, '0');
+    const hours = Math.floor(secondsLeft / 3600).toString().padStart(2, '0');
     const minutes = (Math.floor(secondsLeft / 60) % 60).toString().padStart(2, '0');
 
     const prefix = secondsLeft === 0 ? '' : '-';

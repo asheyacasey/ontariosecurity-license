@@ -20,7 +20,10 @@
         </div>
         <div
           class="course-card-details justify-content-center align-items-center flex-column flex-xl-row d-none d-xl-flex">
-          <a [routerLink]="['/learn', course.id]" class="btn btn-submit mx-5">Continue</a>
+          <a [routerLink]="['/learn', course.id]" class="btn btn-submit mx-5">
+            <ng-container *ngIf="course.modulesCompleted === 0">Start</ng-container>
+            <ng-container *ngIf="course.modulesCompleted > 0">Continue</ng-container>
+          </a>
         </div>
       </div>
       <div class="row mt-2 d-flex d-xl-none">

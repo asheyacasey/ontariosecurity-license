@@ -6,7 +6,7 @@ import {Subject, takeUntil} from "rxjs";
 @Component({
   selector: 'app-modules-list',
   templateUrl: './modules-list.component.html',
-  styleUrls: ['./modules-list.component.scss']
+  styleUrls: ['./modules-list.component.scss', '../../../shared/shared.scss']
 })
 export class ModulesListComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -14,6 +14,7 @@ export class ModulesListComponent implements OnInit, OnDestroy {
   @Input() modules!: SelectableCourseProgressModule[];
   @Input() openMenu$!: Subject<boolean>;
   @Output() selectedModuleChanged = new EventEmitter<SelectableCourseProgressModule>();
+  @Output() nextStepsClicked = new EventEmitter<boolean>();
 
   @ViewChild('offcanvas') offcanvas!: TemplateRef<any>;
 
@@ -47,5 +48,10 @@ export class ModulesListComponent implements OnInit, OnDestroy {
 
   closeOffcanvas(): void {
     this.offcanvasService.dismiss();
+  }
+
+  onNextStepsClick(): void {
+    this.closeOffcanvas();
+    this.nextStepsClicked.next(true);
   }
 }

@@ -58,17 +58,14 @@
 
   border-radius: 8px;
 
+  &:hover {
+    background-color: rgba(49, 55, 77, 0.9);
+    color: #F3F4FA !important;
+  }
+
 }
 
-.btn-submit:hover {
-  background-color: rgba(49, 55, 77, 0.9);
-  color: #F3F4FA !important;
-
-}
-
-
-/** headers */
-
+  /** headers */
 h1.section-title {
 
   font-family: 'Manrope', sans-serif;

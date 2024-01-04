@@ -3,6 +3,7 @@ import {environment} from "../../environments/environment";
 import {CourseBasic, CourseNavigationState} from "../models/course";
 import {HttpClient} from "@angular/common/http";
 import {PaymentSessionService} from "./payment-session.service";
+import {UserLocalStorageService} from "./user-local-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,12 @@ export class CourseNavigationStateService {
 
   state: {[id: number]: CourseNavigationState} = {};
 
-  constructor(private http: HttpClient, private paymentSessionService: PaymentSessionService) {
+  constructor(private http: HttpClient, private userLocalStorageService: UserLocalStorageService,) {
     this._loadState();
   }
 
   private _loadState(): void {
-    const course = localStorage.getItem(this.key);
+    const course = this.userLocalStorageService.getItem(this.key);
     if (course) {
       // todo: type safety
       this.state = JSON.parse(course);
@@ -26,9 +27,9 @@ export class CourseNavigationStateService {
 
   private _saveState(): void {
     if (this.state !== null) {
-      localStorage.setItem(this.key, JSON.stringify(this.state));
+      this.userLocalStorageService.setItem(this.key, JSON.stringify(this.state));
     } else {
-      localStorage.removeItem(this.key);
+      this.userLocalStorageService.removeItem(this.key);
     }
   }
 

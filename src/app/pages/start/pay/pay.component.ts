@@ -20,6 +20,8 @@ export class PayComponent implements OnInit, OnDestroy {
 
   course: CourseBasic;
 
+  updateDetails: boolean = true;
+
   billingDetailsForm = new FormGroup({
     firstName: new FormControl('', [
       Validators.required, Validators.minLength(2), Validators.maxLength(64)]
@@ -48,6 +50,43 @@ export class PayComponent implements OnInit, OnDestroy {
     private authService: AuthenticationService
   ) {
     this.course = this.cartService.course as CourseBasic;
+  }
+
+  ngOnInit(): void {
+    this.titleService.setTitle('Pay with card | Ontario Security License');
+
+    this.paymentSessionService.clear();
+
+    this.billingDetailsForm.valueChanges.pipe(
+      takeUntil(this.destroy$),
+      debounceTime(500)
+    ).subscribe((values) => {
+      if (this.updateDetails) {
+        this.billingDetailsService.update(values);
+      }
+    });
+
+    this.initializeFormData();
+    this.authService.user$.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe((user) => {
+      if (!user) {
+        this.updateDetails = false;
+        // if the user logged out, reset the form
+        this.billingDetailsForm.reset();
+      } else {
+        this.updateDetails = true;
+        this.initializeFormData();
+      }
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
+
+  initializeFormData(): void {
     if (!this.billingDetailsService.empty) {
       // if there are some details already provided, use them
       this.billingDetailsForm.patchValue(this.billingDetailsService.billingDetails);
@@ -57,24 +96,6 @@ export class PayComponent implements OnInit, OnDestroy {
         email: this.authService.user?.email
       });
     }
-  }
-
-  ngOnInit(): void {
-    this.titleService.setTitle('Complete payment | Ontario Security License');
-
-    this.paymentSessionService.clear();
-
-    this.billingDetailsForm.valueChanges.pipe(
-      takeUntil(this.destroy$),
-      debounceTime(500)
-    ).subscribe((values) => {
-      this.billingDetailsService.update(values);
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
   }
 
   onRemoveCourse(course: CourseBasic): void {

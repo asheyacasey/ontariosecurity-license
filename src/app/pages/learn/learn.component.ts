@@ -129,4 +129,8 @@ export class LearnComponent implements OnInit, OnDestroy {
   openMenu() {
     this.openMenu$.next(true);
   }
+
+  goToFormalities(): void {
+    this.router.navigate(['/formalities', this.courseId, 'documents']);
+  }
 }

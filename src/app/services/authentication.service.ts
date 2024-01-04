@@ -101,6 +101,7 @@ export class AuthenticationService {
 
   signOut(): void {
     localStorage.removeItem(this.key);
+    this.user = null;
     this.user$.next(null);
   }
 

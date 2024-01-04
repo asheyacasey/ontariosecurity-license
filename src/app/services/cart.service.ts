@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {PaymentSession} from "../models/payment";
 import {PaymentSessionService} from "./payment-session.service";
+import {UserLocalStorageService} from "./user-local-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +17,16 @@ export class CartService {
 
   course: CourseBasic | null = null;
 
-  constructor(private http: HttpClient, private paymentSessionService: PaymentSessionService) {
+  constructor(
+    private userLocalStorageService: UserLocalStorageService,
+    private paymentSessionService: PaymentSessionService,
+    private http: HttpClient
+  ) {
     this._loadState();
   }
 
   private _loadState(): void {
-    const course = localStorage.getItem(this.key);
+    const course = this.userLocalStorageService.getItem(this.key);
     if (course) {
       // todo: type safety
       this.course = JSON.parse(course);
@@ -30,9 +35,9 @@ export class CartService {
 
   private _saveState(): void {
     if (this.course !== null) {
-      localStorage.setItem(this.key, JSON.stringify(this.course));
+      this.userLocalStorageService.setItem(this.key, JSON.stringify(this.course));
     } else {
-      localStorage.removeItem(this.key);
+      this.userLocalStorageService.removeItem(this.key);
     }
   }
 

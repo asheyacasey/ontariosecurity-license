@@ -4,6 +4,7 @@ import {CourseBasic} from "../models/course";
 import {HttpClient} from "@angular/common/http";
 import {Observable, tap} from "rxjs";
 import {PaymentSession} from "../models/payment";
+import {UserLocalStorageService} from "./user-local-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +16,16 @@ export class BillingDetailsService {
 
   billingDetails = {};
 
-  constructor(private http: HttpClient) {
+  constructor(private userLocalStorageService: UserLocalStorageService) {
     this._loadState();
   }
 
   private _saveState(): void {
-    localStorage.setItem(this.key, JSON.stringify(this.billingDetails));
+    this.userLocalStorageService.setItem(this.key, JSON.stringify(this.billingDetails));
   }
 
   private _loadState(): void {
-    const item = localStorage.getItem(this.key);
+    const item = this.userLocalStorageService.getItem(this.key);
     if (item) {
       this.billingDetails = JSON.parse(item);
     }
