@@ -35,6 +35,10 @@ export class BillingDetailsService {
     this._saveState();
   }
 
+  get empty(): boolean {
+    return Object.keys(this.billingDetails).length === 0;
+  }
+
   update(billingDetails: any): void {
     this.billingDetails = billingDetails;
     this._saveState();

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {SelectableCourseProgressModule} from "./selectable-course-progress-module";
 import {LearnService} from "../../services/learn.service";
@@ -14,6 +14,8 @@ import {Title} from "@angular/platform-browser";
 export class LearnComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
+  openMenu$: Subject<boolean> = new Subject<boolean>();
+
   courseId?: number;
   modules: SelectableCourseProgressModule[] = [];
 
@@ -21,7 +23,7 @@ export class LearnComponent implements OnInit, OnDestroy {
     private titleService: Title,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private learnService: LearnService
+    private learnService: LearnService,
   ) {
     activatedRoute.params.pipe(
       takeUntil(this.destroy$)
@@ -85,6 +87,11 @@ export class LearnComponent implements OnInit, OnDestroy {
     });
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
+
   initializeModules(modules: CourseProgressModule[]): void {
     this.modules = modules.map((m) => {
       const module = m as SelectableCourseProgressModule;
@@ -119,9 +126,7 @@ export class LearnComponent implements OnInit, OnDestroy {
     this.learnService.setModuleId(module.id);
   }
 
-  ngOnDestroy(): void {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
+  openMenu() {
+    this.openMenu$.next(true);
   }
-
 }

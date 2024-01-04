@@ -7,6 +7,7 @@ import {BehaviorSubject, debounceTime, finalize, Subject, Subscription, takeUnti
 import {BillingDetailsService} from "../../../services/billing-details.service";
 import {PaymentSessionService} from "../../../services/payment-session.service";
 import {Title} from "@angular/platform-browser";
+import {AuthenticationService} from "../../../services/authentication.service";
 
 @Component({
   selector: 'app-pay',
@@ -20,14 +21,22 @@ export class PayComponent implements OnInit, OnDestroy {
   course: CourseBasic;
 
   billingDetailsForm = new FormGroup({
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('', [Validators.required]),
-    addressLine1: new FormControl('', [Validators.required]),
-    addressLine2: new FormControl('',),
-    country: new FormControl('Canada', [Validators.required]),
-    province: new FormControl('Ontario', [Validators.required]),
+    firstName: new FormControl('', [
+      Validators.required, Validators.minLength(2), Validators.maxLength(64)]
+    ),
+    lastName: new FormControl('', [
+      Validators.required, Validators.minLength(2), Validators.maxLength(64)
+    ]),
+    email: new FormControl('', [
+      Validators.required, Validators.email, Validators.maxLength(64)
+    ]),
+    phone: new FormControl('', [
+      Validators.required, Validators.minLength(6), Validators.maxLength(64)
+    ]),
+    addressLine1: new FormControl('', [Validators.required, Validators.maxLength(128)]),
+    addressLine2: new FormControl('', [Validators.maxLength(128)]),
+    country: new FormControl('Canada', [Validators.required, Validators.maxLength(128)]),
+    province: new FormControl('Ontario', [Validators.required, Validators.maxLength(128)]),
   })
 
   constructor(
@@ -35,10 +44,19 @@ export class PayComponent implements OnInit, OnDestroy {
     private router: Router,
     private cartService: CartService,
     private billingDetailsService: BillingDetailsService,
-    private paymentSessionService: PaymentSessionService
+    private paymentSessionService: PaymentSessionService,
+    private authService: AuthenticationService
   ) {
     this.course = this.cartService.course as CourseBasic;
-    this.billingDetailsForm.patchValue(this.billingDetailsService.billingDetails);
+    if (!this.billingDetailsService.empty) {
+      // if there are some details already provided, use them
+      this.billingDetailsForm.patchValue(this.billingDetailsService.billingDetails);
+    } else {
+      // otherwise, fill just the email
+      this.billingDetailsForm.patchValue({
+        email: this.authService.user?.email
+      });
+    }
   }
 
   ngOnInit(): void {

@@ -1,5 +1,5 @@
 <h2 class="course-learning-modules-header">Your progress</h2>
-<ul class="module-selector list-group" >
+<ul class="module-selector list-group">
   <ng-container *ngFor="let module of modules">
     <li class="list-group-item d-flex flex-column"
         (click)="onSelectionChange(module)"
@@ -20,3 +20,31 @@
     </li>
   </ng-container>
 </ul>
+<ng-template #offcanvas>
+  <div class="offcanvas-header">
+    <h2 class="course-learning-modules-header">Your progress</h2>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="module-selector list-group">
+      <ng-container *ngFor="let module of modules">
+        <li class="list-group-item d-flex flex-column"
+            (click)="onSelectionChange(module)"
+            [class.completed]="module.completed"
+            [class.active]="module.selected">
+          <div class="module-header d-flex justify-content-between align-items-center">
+            <div>Module {{ module.moduleNumber}}</div>
+            <div class="module-header-checkmark">
+              <svg width="18" height="13" viewBox="0 0 18 13" fill="none"
+                   xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5.6993L6.6 11.1818L17 1" stroke="#ACADBF" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+
+          </div>
+          <div class="module-title">{{ module.name }}</div>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</ng-template>

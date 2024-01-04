@@ -31,8 +31,8 @@ export class AuthInterceptor implements HttpInterceptor {
           if (token !== null) {
             // the token was invalid, redirect to main page
             // todo: add a notification
-            this.router.navigate(['/']);
           }
+          this.router.navigate(['/']);
         }
         return throwError(() => error);
       })

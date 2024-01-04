@@ -1,9 +1,13 @@
-<app-header></app-header>
+<app-header [showHamburger]="true" (hamburgerClicked)="openMenu()"></app-header>
 <div class="container-fluid min-vh-100">
   <div class="row min-vh-100">
     <!-- side menu -->
     <div class="course-learning-modules col-2 p-4 d-none d-xl-block">
-      <app-modules-list [modules]="modules" (selectedModuleChanged)="setSelectedModule($event)"></app-modules-list>
+      <app-modules-list
+        [modules]="modules"
+        [openMenu$]="openMenu$"
+        (selectedModuleChanged)="setSelectedModule($event)"
+      ></app-modules-list>
     </div>
     <!-- main content -->
     <div class="course-learning-main col-12 col-xl-10 min-vh-100">
@@ -19,5 +23,4 @@
       <router-outlet></router-outlet>
     </div>
   </div>
-
 </div>
