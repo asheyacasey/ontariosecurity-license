@@ -7,10 +7,8 @@ import {
   map,
   Observable,
   of,
-  ReplaySubject,
   switchMap,
-  tap,
-  throwError
+  tap
 } from "rxjs";
 import {environment} from "../../environments/environment";
 import {
@@ -37,11 +35,12 @@ export function AuthenticationServiceFactory(authService: AuthenticationService)
 })
 export class AuthenticationService {
   private apiUrl: string = environment.apiUrl;
-  key: string = 'token';
+  private key: string = 'token';
+
+  private _user$$ = new BehaviorSubject<UserDetails | null>(null);
+  readonly user$ = this._user$$.asObservable();
 
   user: UserDetails | null = null;
-  user$ = new BehaviorSubject<UserDetails | null>(null);
-
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -102,7 +101,7 @@ export class AuthenticationService {
   signOut(): void {
     localStorage.removeItem(this.key);
     this.user = null;
-    this.user$.next(null);
+    this._user$$.next(null);
   }
 
   getToken(): string | null {
@@ -113,7 +112,7 @@ export class AuthenticationService {
     return this.http.get<UserDetails>(`${this.apiUrl}/user`).pipe(
       tap((details) => {
         this.user = details;
-        this.user$.next(this.user);
+        this._user$$.next(this.user);
       })
     )
   }

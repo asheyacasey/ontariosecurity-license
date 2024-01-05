@@ -1,40 +1,41 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../environments/environment";
-import {CourseBasic, CourseNavigationState} from "../models/course";
+import {CourseNavigationState} from "../models/course";
 import {HttpClient} from "@angular/common/http";
-import {PaymentSessionService} from "./payment-session.service";
 import {UserLocalStorageService} from "./user-local-storage.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseNavigationStateService {
-  key: string = 'course-navigation-state-v1';
+  private key: string = 'course-navigation-state-v1';
+  private _state: {[id: number]: CourseNavigationState} = {};
 
-  state: {[id: number]: CourseNavigationState} = {};
+  constructor(private http: HttpClient, private userLocalStorageService: UserLocalStorageService) {
+  }
 
-  constructor(private http: HttpClient, private userLocalStorageService: UserLocalStorageService,) {
+  get state(): {[id: number]: CourseNavigationState} {
     this._loadState();
+    return this._state;
   }
 
   private _loadState(): void {
     const course = this.userLocalStorageService.getItem(this.key);
     if (course) {
       // todo: type safety
-      this.state = JSON.parse(course);
+      this._state = JSON.parse(course);
     }
   }
 
   private _saveState(): void {
-    if (this.state !== null) {
-      this.userLocalStorageService.setItem(this.key, JSON.stringify(this.state));
+    if (this._state !== null) {
+      this.userLocalStorageService.setItem(this.key, JSON.stringify(this._state));
     } else {
       this.userLocalStorageService.removeItem(this.key);
     }
   }
 
   addState(state: CourseNavigationState): void {
-    this.state[state.courseId] = state;
+    this._state[state.courseId] = state;
     this._saveState();
   }
 
@@ -50,7 +51,7 @@ export class CourseNavigationStateService {
   }
 
   clear(): void {
-    this.state = {}
+    this._state = {}
     this._saveState();
   }
 

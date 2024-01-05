@@ -3,7 +3,7 @@ import {LinkedLecture} from "../../../models/lecture";
 import {LearnService} from "../../../services/learn.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LinkedQuiz, QuizAnswers, QuizDetails, QuizQuestionAnswerChange} from "../../../models/quiz";
-import {Subject, takeUntil, tap} from "rxjs";
+import {filter, Subject, takeUntil, tap} from "rxjs";
 import {ViewportScroller} from "@angular/common";
 import {CourseNavigationStateService} from "../../../services/course-navigation-state.service";
 
@@ -29,25 +29,26 @@ export class QuizComponent implements OnInit, OnDestroy {
     private viewport: ViewportScroller,
     private courseNavigationStateService: CourseNavigationStateService,
   ) {
-    activatedRoute.params.pipe(
-      takeUntil(this.destroy$)
-    ).subscribe((params) => {
-      this.quizId = Number(params['quizId']);
-      learnService.setQuizId(this.quizId);
-    });
   }
 
   ngOnInit(): void {
-    this.learnService.quizId$.pipe(
+    this.activatedRoute.params.pipe(
       takeUntil(this.destroy$)
+    ).subscribe((params) => {
+      this.learnService.setQuizId(+params['quizId']);
+    });
+
+    this.learnService.quizId$.pipe(
+      takeUntil(this.destroy$),
+      filter((quizId) => quizId !== null)
     ).subscribe((quizId) => {
       if (quizId === null) {
         return;
       }
 
-      this.learnService.getQuiz(quizId).pipe(
-        takeUntil(this.destroy$)
-      ).subscribe((quiz) => {
+      this.quizId = quizId;
+
+      this.learnService.getQuiz(quizId).subscribe((quiz) => {
         this.quiz = quiz;
 
         this.learnService.setTitle('Quiz for module ' + this.quiz?.module.id);
@@ -70,9 +71,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   // todo: decouple
 
   startQuiz(): void {
-    this.learnService.getQuizQuestions(this.quizId).pipe(
-      takeUntil(this.destroy$)
-    ).subscribe((quizProgressDetails) => {
+    this.learnService.getQuizQuestions(this.quizId).subscribe((quizProgressDetails) => {
       this.moduleQuiz = quizProgressDetails.moduleQuiz
       this.quizAnswers = {
         identifier: quizProgressDetails.identifier,

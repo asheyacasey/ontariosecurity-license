@@ -2,24 +2,12 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {FormalitiesComponent} from "./formalities.component";
 import {DocumentsComponent} from "./documents/documents.component";
-import {RedirectComponent} from "./redirect/redirect.component";
 
 const routes: Routes = [
   {
-    path: ':courseId',
+    path: ':courseId/documents',
     component: FormalitiesComponent,
-    title: 'Formalities | Ontario Security License',
-    children: [
-      {
-        path: '',
-        component: RedirectComponent
-      },
-      {
-        path: 'documents',
-        component: DocumentsComponent,
-        title: 'CPR + Consent Form | Ontario Security License',
-      },
-    ]
+    title: 'Formalities | Ontario Security License'
   }
 ];
 

@@ -4,12 +4,13 @@ import {LearnComponent} from "./learn.component";
 import {LectureComponent} from "./lecture/lecture.component";
 import {QuizComponent} from "./quiz/quiz.component";
 import {RedirectComponent} from "./redirect/redirect.component";
+import {LoggedInGuard} from "./guards/logged-in.guard";
 
 const routes: Routes = [
   {
     path: ':courseId',
     component: LearnComponent,
-    // todo: add guard
+    canActivate: [LoggedInGuard],
     children: [
       {
         path: '',

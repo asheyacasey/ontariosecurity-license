@@ -3,13 +3,11 @@ import {Observable, tap} from "rxjs";
 import {CourseTimer} from "../models/course";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {LearnService} from "./learn.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseTimerService {
-
   private apiUrl: string = environment.apiUrl;
 
   constructor(

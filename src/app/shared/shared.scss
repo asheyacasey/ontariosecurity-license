@@ -6,6 +6,10 @@
     border-radius: 8px;
   }
 
+  &.full-height {
+    min-height: calc(100vh - 70px - 3rem);
+  }
+
 }
 
 /** forms */

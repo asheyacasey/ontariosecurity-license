@@ -13,12 +13,14 @@ export class ModulesListComponent implements OnInit, OnDestroy {
 
   @Input() modules!: SelectableCourseProgressModule[];
   @Input() openMenu$!: Subject<boolean>;
+  @Input() canClickNextSteps!: boolean | null;
   @Output() selectedModuleChanged = new EventEmitter<SelectableCourseProgressModule>();
   @Output() nextStepsClicked = new EventEmitter<boolean>();
 
   @ViewChild('offcanvas') offcanvas!: TemplateRef<any>;
 
-  constructor(private offcanvasService: NgbOffcanvas) { }
+  constructor(private offcanvasService: NgbOffcanvas) {
+  }
 
   ngOnInit(): void {
     this.openMenu$.pipe(
@@ -29,7 +31,7 @@ export class ModulesListComponent implements OnInit, OnDestroy {
       } else {
         this.closeOffcanvas();
       }
-    })
+    });
   }
 
   ngOnDestroy(): void {
@@ -51,7 +53,9 @@ export class ModulesListComponent implements OnInit, OnDestroy {
   }
 
   onNextStepsClick(): void {
-    this.closeOffcanvas();
-    this.nextStepsClicked.next(true);
+    if (this.canClickNextSteps) {
+      this.closeOffcanvas();
+      this.nextStepsClicked.next(true);
+    }
   }
 }

@@ -3,7 +3,7 @@ import {CartService} from "../../../services/cart.service";
 import {CourseBasic} from "../../../models/course";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {BehaviorSubject, debounceTime, finalize, Subject, Subscription, takeUntil} from "rxjs";
+import {BehaviorSubject, debounceTime, filter, finalize, Subject, Subscription, takeUntil} from "rxjs";
 import {BillingDetailsService} from "../../../services/billing-details.service";
 import {PaymentSessionService} from "../../../services/payment-session.service";
 import {Title} from "@angular/platform-browser";
@@ -19,8 +19,6 @@ export class PayComponent implements OnInit, OnDestroy {
   isLoading$: Subject<boolean> = new BehaviorSubject<boolean>(false);
 
   course: CourseBasic;
-
-  updateDetails: boolean = true;
 
   billingDetailsForm = new FormGroup({
     firstName: new FormControl('', [
@@ -59,11 +57,10 @@ export class PayComponent implements OnInit, OnDestroy {
 
     this.billingDetailsForm.valueChanges.pipe(
       takeUntil(this.destroy$),
+      filter((values) => (<any>Object).values(values).some((v: string | null) => v !== null)),
       debounceTime(500)
     ).subscribe((values) => {
-      if (this.updateDetails) {
         this.billingDetailsService.update(values);
-      }
     });
 
     this.initializeFormData();
@@ -71,11 +68,8 @@ export class PayComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)
     ).subscribe((user) => {
       if (!user) {
-        this.updateDetails = false;
-        // if the user logged out, reset the form
         this.billingDetailsForm.reset();
       } else {
-        this.updateDetails = true;
         this.initializeFormData();
       }
     })

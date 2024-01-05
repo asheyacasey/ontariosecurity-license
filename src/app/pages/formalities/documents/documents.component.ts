@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {CourseProgressOverview} from "../../../models/course";
 
 @Component({
   selector: 'app-documents',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./documents.component.scss', '../../../shared/shared.scss']
 })
 export class DocumentsComponent implements OnInit {
+
+  @Input() courseProgressOverview?: CourseProgressOverview;
 
   constructor() { }
 

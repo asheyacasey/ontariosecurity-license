@@ -21,21 +21,24 @@ export class LectureComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private courseNavigationStateService: CourseNavigationStateService,
-  ) {
-    activatedRoute.params.subscribe((params) => {
-      this.lectureId = Number(params['lectureId']);
-      learnService.setLectureId(this.lectureId);
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
+    this.activatedRoute.params.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe((params) => {
+      this.learnService.setLectureId(+params['lectureId']);
+    });
+
     this.learnService.lectureId$
       .pipe(
-        takeUntil(this.destroy$)
+        takeUntil(this.destroy$),
       ).subscribe((lectureId) => {
       if (lectureId === null) {
         return;
       }
+
+      this.lectureId = lectureId;
 
       this.learnService.getLecture(lectureId).subscribe((linkedLecture) => {
         this.lecture = linkedLecture;

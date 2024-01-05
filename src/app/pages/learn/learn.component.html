@@ -6,6 +6,7 @@
       <app-modules-list
         [modules]="modules"
         [openMenu$]="openMenu$"
+        [canClickNextSteps]="courseCompleted$ | async"
         (selectedModuleChanged)="setSelectedModule($event)"
         (nextStepsClicked)="goToFormalities()"
       ></app-modules-list>

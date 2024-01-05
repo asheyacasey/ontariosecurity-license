@@ -29,7 +29,13 @@ export class AuthInterceptor implements HttpInterceptor {
         if (error.status === 401) {
           this.authService.signOut();
           if (!error.url?.includes('/user/token')) {
-            this.router.navigate(['/'])
+            if (token !== null) {
+              // session expired
+              this.router.navigate(['/login']);
+            } else {
+              // wasn't authorized to make this call
+              this.router.navigate(['/'])
+            }
           }
         }
         return throwError(() => error);

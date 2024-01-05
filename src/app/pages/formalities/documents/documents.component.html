@@ -1,19 +1,23 @@
 <div class="content">
-  <h2>Need to Book a CPR Class?</h2>
+  <ng-container *ngIf="courseProgressOverview?.cprTrainingIncluded">
+    <h2>Need to Book a CPR Class?</h2>
 
-  <p>
-    Book a CPR Training Course by sending an email to
-    <a href="mailto:cpr@ontariosecuritylicense.ca">cpr@ontariosecuritylicense.ca</a>
-  </p>
+    <p>
+      Book a CPR Training Course by sending an email to
+      <a href="mailto:cpr@ontariosecuritylicense.ca">cpr@ontariosecuritylicense.ca</a>
+    </p>
 
-  <hr class="spacer">
+    <hr class="spacer">
+  </ng-container>
 
-  <h2>Already Have Your CPR Certificate?</h2>
-  <p>
-    Email us your CPR certificate <strong>AND</strong> your completed Consent Form (see below)
-  </p>
+  <ng-container *ngIf="!courseProgressOverview?.cprTrainingIncluded">
+    <h2>Already Have Your CPR Certificate?</h2>
+    <p>
+      Email us your CPR certificate <strong>AND</strong> your completed Consent Form (see below)
+    </p>
 
-  <hr class="spacer">
+    <hr class="spacer">
+  </ng-container>
 
   <h2>Download and Complete Consent Form</h2>
 

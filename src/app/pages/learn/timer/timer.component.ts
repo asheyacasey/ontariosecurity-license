@@ -28,11 +28,11 @@ export class TimerComponent implements OnInit, OnDestroy {
     this.learnService.courseId$.pipe(
       takeUntil(this.destroy$)
     ).subscribe((courseId) => {
+      this.subscriptions.forEach(s => s.unsubscribe());
+
       if (courseId === null) {
         return;
       }
-
-      this.subscriptions.forEach(s => s.unsubscribe());
 
       // todo: move to courseTimerService
       const subscription = timer(0, this.interval * 1000).pipe(

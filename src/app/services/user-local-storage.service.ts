@@ -14,7 +14,6 @@ export class UserLocalStorageService {
     if (!this.authService.user) {
       return null;
     }
-    console.log(this.authService.user.id);
     return localStorage.getItem(`${key}-${this.authService.user.id}`);
   }
 

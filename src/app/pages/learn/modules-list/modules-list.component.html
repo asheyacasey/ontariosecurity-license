@@ -20,7 +20,7 @@
       </li>
     </ng-container>
     <hr class="spacer">
-    <li (click)="onNextStepsClick()" class="list-group-item d-flex flex-column">
+    <li (click)="onNextStepsClick()" class="list-group-item d-flex flex-column" [class.disabled]="!canClickNextSteps">
       <div class="module-header d-flex justify-content-between align-items-center">
         <div>Next steps</div>
       </div>
