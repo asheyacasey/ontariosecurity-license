@@ -55,6 +55,18 @@ h2.course-learning-modules-header {
       color: #31374D;
     }
 
+    &.disabled {
+      background: #E8EAF6;
+
+      .module-header {
+        color: #ACADBF;
+      }
+
+      .module-title {
+        color: #ACADBF;
+      }
+    }
+
 
     &.completed {
       background: #E8EAF6;

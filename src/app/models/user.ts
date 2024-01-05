@@ -8,6 +8,10 @@ export interface UserRegisterError {
   suggestLogin: boolean;
 }
 
+export interface UserLoginError {
+  message: string;
+}
+
 export interface UserLoginRequest {
   username: string;
   password: string;
@@ -19,6 +23,6 @@ export interface AccessToken {
 
 export interface UserDetails {
   id: number;
-  email: number;
+  email: string;
   bought: boolean;
 }

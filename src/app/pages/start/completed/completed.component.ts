@@ -6,6 +6,7 @@ import {interval, merge, Subject, switchMap, takeUntil} from "rxjs";
 import {PaymentStatus} from "../../../models/payment";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../../services/authentication.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-completed',
@@ -22,6 +23,7 @@ export class CompletedComponent implements OnInit, OnDestroy {
   amountPaid?: number;
 
   constructor(
+    private titleService: Title,
     private cartService: CartService,
     private billingDetailsService: BillingDetailsService,
     private paymentSessionService: PaymentSessionService,
@@ -33,6 +35,8 @@ export class CompletedComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Waiting for payment confirmation.. | Ontario Security License');
+
     interval(3000).pipe(
       takeUntil(merge(this.statusReceived$, this.destroy$)),
       switchMap(() => this.paymentSessionService.getSessionStatus())
@@ -49,6 +53,7 @@ export class CompletedComponent implements OnInit, OnDestroy {
       }
 
       if (payment.status === 'COMPLETED') {
+        // update the `bought` flag
         this.authenticationService.getUserDetails().subscribe();
         this.transactionCompleted = true;
 
@@ -58,6 +63,9 @@ export class CompletedComponent implements OnInit, OnDestroy {
 
         this.statusReceived$.next(true);
         this.statusReceived$.unsubscribe();
+
+        this.titleService.setTitle('Payment confirmed! | Ontario Security License');
+
       }
 
       if (payment.status === 'CANCELLED') {

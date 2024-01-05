@@ -16,7 +16,7 @@ export class TimerComponent implements OnInit, OnDestroy {
   courseTimer?: CourseTimer
   timerValue: string = '-';
 
-  private interval = 15;
+  private interval = 20;
 
   constructor(
     private learnService: LearnService,
@@ -28,11 +28,11 @@ export class TimerComponent implements OnInit, OnDestroy {
     this.learnService.courseId$.pipe(
       takeUntil(this.destroy$)
     ).subscribe((courseId) => {
+      this.subscriptions.forEach(s => s.unsubscribe());
+
       if (courseId === null) {
         return;
       }
-
-      this.subscriptions.forEach(s => s.unsubscribe());
 
       // todo: move to courseTimerService
       const subscription = timer(0, this.interval * 1000).pipe(
@@ -54,10 +54,12 @@ export class TimerComponent implements OnInit, OnDestroy {
   }
 
   updateTimerValue(secondsLeft: number): void {
-    let hours = Math.floor(secondsLeft / 3600).toString().padStart(2, '0');
+    const hours = Math.floor(secondsLeft / 3600).toString().padStart(2, '0');
     const minutes = (Math.floor(secondsLeft / 60) % 60).toString().padStart(2, '0');
 
-    this.timerValue = `-${hours}:${minutes}`;
+    const prefix = secondsLeft === 0 ? '' : '-';
+
+    this.timerValue = `${prefix}${hours}:${minutes}`;
   }
 
   ngOnDestroy(): void {

@@ -16,7 +16,22 @@
         <input type="password" class="form-control" id="password" formControlName="password">
       </div>
 
-      <input type="submit" class="btn btn-submit w-100" value="Sign Up" [disabled]="!registerForm.valid">
+      <button type="submit" class="btn btn-submit w-100 mb-3"
+              [disabled]="!registerForm.valid || (isLoading$ | async) === true">
+        <ng-container *ngIf="(isLoading$ | async) === true; else submit">
+          <div class="spinner-border spinner-border-sm text-secondary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </ng-container>
+        <ng-template #submit>
+          Sign up
+        </ng-template>
+      </button>
+      <div class="alert alert-warning d-flex align-items-center" role="alert" [class.invisible]="!showLoginSuggestion">
+        <div>
+          This email has already been registered. Do you want to <a routerLink="/login">sign in</a>?
+        </div>
+      </div>
     </form>
   </div>
 </div>

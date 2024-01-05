@@ -1,27 +1,70 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {BehaviorSubject, catchError, map, Observable, of, ReplaySubject, switchMap, tap} from "rxjs";
+import {
+  BehaviorSubject,
+  catchError,
+  firstValueFrom,
+  map,
+  Observable,
+  of,
+  switchMap,
+  tap
+} from "rxjs";
 import {environment} from "../../environments/environment";
-import {AccessToken, UserDetails, UserLoginRequest, UserRegisterError, UserRegisterRequest} from "../models/user";
+import {
+  AccessToken,
+  UserDetails,
+  UserLoginError,
+  UserLoginRequest,
+  UserRegisterError,
+  UserRegisterRequest
+} from "../models/user";
 import {Router} from "@angular/router";
+
+/***
+ * Factory to be used in APP_INITIALIZER
+ * @param authService
+ * @constructor
+ */
+export function AuthenticationServiceFactory(authService: AuthenticationService) {
+  return () => firstValueFrom(authService.load());
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+  private apiUrl: string = environment.apiUrl;
+  private key: string = 'token';
 
-  key: string = 'token';
+  private _user$$ = new BehaviorSubject<UserDetails | null>(null);
+  readonly user$ = this._user$$.asObservable();
 
   user: UserDetails | null = null;
-  user$ = new BehaviorSubject<UserDetails | null>(null);
-
-  private apiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient, private router: Router) {
+  }
+
+  /***
+   * Loads the initial state of the service given a persisted token
+   */
+  load(): Observable<boolean> {
     const token = this.getToken();
     if (token) {
-      this.getUserDetails().subscribe();
+      // if token is present, try to load user details
+      return this.getUserDetails().pipe(
+        catchError((error: HttpErrorResponse) => {
+          // if error is caught, we assume it's 401 and the token has expired:
+          // deletion of the old token will be handled through the auth interceptor.
+          // notify the load is complete
+          return of(true);
+        }),
+        map(() => true),
+      );
+    } else {
+      return of(true);
     }
+
   }
 
   signUp(data: UserRegisterRequest): Observable<UserRegisterError | null> {
@@ -41,7 +84,7 @@ export class AuthenticationService {
     );
   }
 
-  signIn(data: UserLoginRequest): Observable<UserDetails> {
+  signIn(data: UserLoginRequest): Observable<UserDetails | UserLoginError> {
     const headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
     const body = `username=${data.username}&password=${data.password}`;
 
@@ -57,9 +100,8 @@ export class AuthenticationService {
 
   signOut(): void {
     localStorage.removeItem(this.key);
-    this.user$.next(null);
-
-    this.router.navigate(['/']);
+    this.user = null;
+    this._user$$.next(null);
   }
 
   getToken(): string | null {
@@ -70,7 +112,7 @@ export class AuthenticationService {
     return this.http.get<UserDetails>(`${this.apiUrl}/user`).pipe(
       tap((details) => {
         this.user = details;
-        this.user$.next(this.user);
+        this._user$$.next(this.user);
       })
     )
   }

@@ -1,42 +1,45 @@
 import {Injectable} from '@angular/core';
-import {environment} from "../../environments/environment";
-import {CourseBasic} from "../models/course";
-import {HttpClient} from "@angular/common/http";
-import {Observable, tap} from "rxjs";
-import {PaymentSession} from "../models/payment";
+import {UserLocalStorageService} from "./user-local-storage.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BillingDetailsService {
+  private key: string = 'billing-details-v1';
+  private _billingDetails = {};
 
-  key: string = 'billing-details-v1';
-  private apiUrl: string = environment.apiUrl;
+  constructor(private userLocalStorageService: UserLocalStorageService) {
+  }
 
-  billingDetails = {};
-
-  constructor(private http: HttpClient) {
+  get billingDetails() {
     this._loadState();
+    return this._billingDetails;
   }
 
   private _saveState(): void {
-    localStorage.setItem(this.key, JSON.stringify(this.billingDetails));
+    this.userLocalStorageService.setItem(this.key, JSON.stringify(this._billingDetails));
   }
 
   private _loadState(): void {
-    const item = localStorage.getItem(this.key);
+    const item = this.userLocalStorageService.getItem(this.key);
     if (item) {
-      this.billingDetails = JSON.parse(item);
+      this._billingDetails = JSON.parse(item);
+    } else {
+      this._billingDetails = {};
     }
   }
 
   clear(): void {
-    this.billingDetails = {};
+    this._billingDetails = {};
     this._saveState();
   }
 
+  get empty(): boolean {
+    return Object.keys(this.billingDetails).length === 0;
+  }
+
   update(billingDetails: any): void {
-    this.billingDetails = billingDetails;
+    this._billingDetails = billingDetails;
     this._saveState();
   }
 }

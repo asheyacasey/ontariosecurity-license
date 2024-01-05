@@ -1,0 +1,31 @@
+<div class="content">
+  <ng-container *ngIf="courseProgressOverview?.cprTrainingIncluded">
+    <h2>Need to Book a CPR Class?</h2>
+
+    <p>
+      Book a CPR Training Course by sending an email to
+      <a href="mailto:cpr@ontariosecuritylicense.ca">cpr@ontariosecuritylicense.ca</a>
+    </p>
+
+    <hr class="spacer">
+  </ng-container>
+
+  <ng-container *ngIf="!courseProgressOverview?.cprTrainingIncluded">
+    <h2>Already Have Your CPR Certificate?</h2>
+    <p>
+      Email us your CPR certificate <strong>AND</strong> your completed Consent Form (see below)
+    </p>
+
+    <hr class="spacer">
+  </ng-container>
+
+  <h2>Download and Complete Consent Form</h2>
+
+  <ol>
+    <li>Download Consent Form <a target="_blank" href="./assets/consent/Ministry-Consent-Form.pdf">here</a></li>
+    <li>Attach both your CPR certificate and signed Consent Form and email to <a
+      href="mailto:license@ontariosecuritylicense.ca">license@ontariosecuritylicense.ca</a></li>
+    <li>You will get TCN in your email within 1-2 days of submission</li>
+  </ol>
+
+</div>
