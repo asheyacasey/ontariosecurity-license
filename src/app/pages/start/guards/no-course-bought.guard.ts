@@ -22,7 +22,7 @@ export class NoCourseBoughtGuard implements CanActivate {
           return false;
         }
 
-        if (user.bought) {
+        if (user.hasCourseAccess) {
           return this.router.parseUrl('/profile')
         }
         return true;

@@ -24,5 +24,5 @@ export interface AccessToken {
 export interface UserDetails {
   id: number;
   email: string;
-  bought: boolean;
+  hasCourseAccess: boolean;
 }
