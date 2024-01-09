@@ -3,7 +3,7 @@
   <div class="row min-vh-100">
     <!-- side menu -->
     <div class="formalities-menu col-2 p-4 d-none d-xl-block">
-      <app-sections-list [courseProgressOverview]="courseProgressOverview" (modulesClick)="goToCourse()"></app-sections-list>
+      <app-sections-list [courseProgressOverview]="courseProgressOverview" [openMenu$]="openMenu$" (modulesClick)="goToCourse()"></app-sections-list>
     </div>
     <!-- main content -->
     <div class="formalities-main col-12 col-xl-10 min-vh-100">

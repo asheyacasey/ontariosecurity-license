@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {LearnService} from "../../../services/learn.service";
-import {interval, Subject, Subscription, switchMap, takeUntil, tap, timer} from "rxjs";
+import {concatMap, iif, of, Subject, Subscription, takeUntil, tap, timer} from "rxjs";
 import {CourseTimer} from "../../../models/course";
 import {CourseTimerService} from "../../../services/course-timer.service";
 
@@ -34,32 +34,58 @@ export class TimerComponent implements OnInit, OnDestroy {
         return;
       }
 
-      // todo: move to courseTimerService
-      const subscription = timer(0, this.interval * 1000).pipe(
-        switchMap(() => this.courseTimerService.ping(courseId)),
-        tap((courseTimer) => {
-          if (courseTimer.secondsLeft === 0) {
-            this.learnService.setCourseTimeReached();
-          } else {
-            this.learnService.setCourseTimeNotReached();
-          }
-        })
-      ).subscribe((courseTimer) => {
-        this.courseTimer = courseTimer;
-        this.updateTimerValue(this.courseTimer.secondsLeft);
-      });
+      // first initialize the course timer with a value from the backend
+      this.courseTimerService.ping(courseId).subscribe((courseTimer) => {
+        this.setCourseTimer(courseTimer);
 
-      this.subscriptions.push(subscription);
+        // then, every second
+        const subscription = timer(0, 1000).pipe(
+          concatMap((tick) =>
+            iif(
+              // if it's nth tick, query the backend
+              () => (tick % this.interval) === 0,
+              this.courseTimerService.ping(courseId).pipe(
+                // update the status only if it comes from the backend
+                tap((courseTimer) => {
+                  if (courseTimer.secondsLeft === 0) {
+                    this.learnService.setCourseTimeReached();
+                  } else {
+                    this.learnService.setCourseTimeNotReached();
+                  }
+                })
+              ),
+              of(this.courseTimerMinusSecond()))
+          ),
+        ).subscribe((courseTimer) => {
+          this.setCourseTimer(courseTimer);
+        });
+
+        this.subscriptions.push(subscription);
+      })
     });
+  }
+
+  setCourseTimer(courseTimer: CourseTimer): void {
+    this.courseTimer = courseTimer;
+    this.updateTimerValue(this.courseTimer.secondsLeft);
+  }
+
+  courseTimerMinusSecond(): CourseTimer {
+    const courseTimer = this.courseTimer as CourseTimer;
+    if (courseTimer.secondsLeft > 0) {
+      courseTimer.secondsLeft -= 1;
+    }
+    return courseTimer;
   }
 
   updateTimerValue(secondsLeft: number): void {
     const hours = Math.floor(secondsLeft / 3600).toString().padStart(2, '0');
     const minutes = (Math.floor(secondsLeft / 60) % 60).toString().padStart(2, '0');
+    const seconds = (secondsLeft % 60).toString().padStart(2, '0');
 
     const prefix = secondsLeft === 0 ? '' : '-';
 
-    this.timerValue = `${prefix}${hours}:${minutes}`;
+    this.timerValue = `${prefix}${hours}:${minutes}:${seconds}`;
   }
 
   ngOnDestroy(): void {

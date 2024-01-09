@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
-import {Subject} from "rxjs";
+import {Subject, takeUntil} from "rxjs";
 import {NgbOffcanvas} from "@ng-bootstrap/ng-bootstrap";
 import {CourseProgressOverview} from "../../../models/course";
 
@@ -12,6 +12,7 @@ export class SectionsListComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   @Input() courseProgressOverview?: CourseProgressOverview;
+  @Input() openMenu$!: Subject<boolean>;
 
   @Output() modulesClick: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -21,6 +22,15 @@ export class SectionsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.openMenu$.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe((open) => {
+      if (open) {
+        this.openOffcanvas();
+      } else {
+        this.closeOffcanvas();
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -37,6 +47,7 @@ export class SectionsListComponent implements OnInit, OnDestroy {
   }
 
   onModulesClick() {
+    this.closeOffcanvas();
     this.modulesClick.next(true);
   }
 
