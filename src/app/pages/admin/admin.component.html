@@ -1,0 +1,13 @@
+<app-header [showHamburger]="true" (hamburgerClicked)="openMenu()"></app-header>
+<div class="container-fluid full-height">
+  <div class="row">
+    <!-- side menu -->
+    <div class="col-2 p-4 d-none d-xl-block">
+      <app-menu-list [openMenu$]="openMenu$"></app-menu-list>
+    </div>
+    <!-- main content -->
+    <div class="admin-main col-12 col-xl-10 full-height">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

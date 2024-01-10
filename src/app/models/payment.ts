@@ -6,4 +6,5 @@ export interface PaymentSession {
 
 export interface PaymentStatus {
   status: 'STARTED' | 'COMPLETED' | 'CANCELLED' | 'CHARGEBACK' | 'ERROR';
+  paidAmount: number;
 }

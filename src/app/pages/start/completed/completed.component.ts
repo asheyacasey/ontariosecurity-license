@@ -53,6 +53,8 @@ export class CompletedComponent implements OnInit, OnDestroy {
       }
 
       if (payment.status === 'COMPLETED') {
+        this.amountPaid = payment.paidAmount;
+
         // update the `hasCourseAccess` flag
         this.authenticationService.getUserDetails().subscribe();
         this.transactionCompleted = true;

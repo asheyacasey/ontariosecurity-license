@@ -1,0 +1,53 @@
+<h2 class="mb-3">Course progress listing</h2>
+
+<div class="mb-5">
+  <form [formGroup]="searchForm">
+    <input type="text" id="search" class="form-control" placeholder="Search.." formControlName="search">
+    <div class="form-text">Using: client email, course name</div>
+  </form>
+</div>
+
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">Course</th>
+      <th scope="col">Last seen</th>
+      <th scope="col">Time spent vs required</th>
+      <th scope="col">Modules completed vs total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let progress of results?.items">
+      <tr>
+        <td>
+          <a [routerLink]="['../users']" [queryParams]="{search: progress.user.email}">{{ progress.user.email }}</a>
+        </td>
+        <td>
+          <a [routerLink]="['../courses']" [queryParams]="{search: progress.course.name}">{{ progress.course.name }}</a>
+        </td>
+        <td>{{ progress.lastSeenAgo }}</td>
+        <td>
+          {{ timeFormatterService.secondsToTime(progress.secondsSpent)}}
+          /
+          {{ timeFormatterService.secondsToTime(progress.secondsSpentRequired)}}
+        </td>
+        <td>
+          {{ progress.modulesCompleted }} / {{ progress.modulesTotal }}
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+
+  <ng-container *ngIf="results">
+    <ngb-pagination
+      (pageChange)="onPageChange($event)"
+      [(page)]="results.page"
+      [pageSize]="20"
+      [collectionSize]="results.total">
+    </ngb-pagination>
+  </ng-container>
+</div>

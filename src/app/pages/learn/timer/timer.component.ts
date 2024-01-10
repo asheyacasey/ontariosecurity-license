@@ -3,6 +3,7 @@ import {LearnService} from "../../../services/learn.service";
 import {concatMap, iif, of, Subject, Subscription, takeUntil, tap, timer} from "rxjs";
 import {CourseTimer} from "../../../models/course";
 import {CourseTimerService} from "../../../services/course-timer.service";
+import {TimeFormatterService} from "../../../services/time-formatter.service";
 
 @Component({
   selector: 'app-timer',
@@ -20,7 +21,8 @@ export class TimerComponent implements OnInit, OnDestroy {
 
   constructor(
     private learnService: LearnService,
-    private courseTimerService: CourseTimerService
+    private courseTimerService: CourseTimerService,
+    private timeFormatterService: TimeFormatterService
   ) {
   }
 
@@ -79,13 +81,10 @@ export class TimerComponent implements OnInit, OnDestroy {
   }
 
   updateTimerValue(secondsLeft: number): void {
-    const hours = Math.floor(secondsLeft / 3600).toString().padStart(2, '0');
-    const minutes = (Math.floor(secondsLeft / 60) % 60).toString().padStart(2, '0');
-    const seconds = (secondsLeft % 60).toString().padStart(2, '0');
-
+    const value = this.timeFormatterService.secondsToTime(secondsLeft);
     const prefix = secondsLeft === 0 ? '' : '-';
 
-    this.timerValue = `${prefix}${hours}:${minutes}:${seconds}`;
+    this.timerValue = `${prefix}${value}`;
   }
 
   ngOnDestroy(): void {

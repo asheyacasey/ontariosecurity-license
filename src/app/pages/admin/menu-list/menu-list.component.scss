@@ -1,0 +1,51 @@
+
+h2.menu-list-header {
+  margin-top: 40px;
+  margin-bottom: 25px;
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 30px;
+
+  color: #31374D;
+}
+
+.menu-selector {
+
+  .list-group-item {
+    padding: 12px 17px;
+
+    min-height: 48px;
+    background: #FFFFFF;
+
+    border: 0;
+    border-radius: 4px;
+
+    margin-top: 8px;
+    cursor: pointer;
+
+
+    .menu-header {
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+
+      color: #31374D;
+    }
+
+    &.active {
+      background: #354FA9;
+      margin-top: 8px;
+
+
+      .menu-header {
+        color: #FFFFFF;
+      }
+    }
+
+  }
+}

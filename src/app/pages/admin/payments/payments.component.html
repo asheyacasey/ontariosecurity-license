@@ -1,0 +1,99 @@
+<h2 class="mb-3">Payments listing</h2>
+
+<div class="mb-5">
+  <form [formGroup]="searchForm">
+    <input type="text" id="search" class="form-control" placeholder="Search.." formControlName="search">
+    <div class="form-text">Using: client email, course name, payment status</div>
+  </form>
+</div>
+
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Created at</th>
+      <th scope="col">User</th>
+      <th scope="col">Course</th>
+      <th scope="col">Status</th>
+      <th scope="col">Paid amount</th>
+      <th scope="col">Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let payment of results?.items">
+      <tr>
+        <th scope="row">{{ payment.id }}</th>
+        <td>{{ payment.createdAt | date:'medium':'UTC -2'}}</td>
+        <td>
+          <a [routerLink]="['../users']" [queryParams]="{search: payment.user.email}">{{ payment.user.email }}</a>
+        </td>
+        <td>
+          <a [routerLink]="['../courses']" [queryParams]="{search: payment.course.name}">{{ payment.course.name }}</a>
+        </td>
+        <td>{{ payment.status }}</td>
+        <td>
+          <ng-container *ngIf="payment.paidAmount; else noAmount">
+            ${{ payment.paidAmount }}
+          </ng-container>
+          <ng-template #noAmount>-</ng-template>
+        </td>
+        <td>
+          <button class="btn btn-link p-0" (click)="toggleShowDetails(payment.id)">
+            <ng-container *ngIf="detailsHidden(payment.id)">Show</ng-container>
+            <ng-container *ngIf="detailsShown(payment.id)">Hide</ng-container>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="detailsShown(payment.id)">
+        <td colspan="8" class="overflow-hidden">
+          <div class="row mb-3">
+            <div class="col-12">
+              <strong>Transaction ID:</strong> {{ payment.transactionId }}
+            </div>
+          </div>
+          <div class="row d-flex">
+            <div class="col-6">
+              <dl>
+                <dt>First name</dt>
+                <dd>{{ payment.firstName }}</dd>
+
+                <dt>Last name</dt>
+                <dd>{{ payment.lastName }}</dd>
+
+                <dt>Email</dt>
+                <dd>{{ payment.email }}</dd>
+
+                <dt>Phone</dt>
+                <dd>{{ payment.phone }}</dd>
+              </dl>
+            </div>
+            <div class="col-6">
+              <dl>
+                <dt>Address line 1</dt>
+                <dd>{{ payment.addressLine1 }}</dd>
+                <dt>Address line 2</dt>
+                <dd>{{ payment.addressLine2 }}</dd>
+                <dt>Country</dt>
+                <dd>{{ payment.country }}</dd>
+                <dt>Province</dt>
+                <dd>{{ payment.province }}</dd>
+              </dl>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+
+  <ng-container *ngIf="results">
+    <ngb-pagination
+      (pageChange)="onPageChange($event)"
+      [(page)]="results.page"
+      [pageSize]="20"
+      [collectionSize]="results.total">
+    </ngb-pagination>
+  </ng-container>
+</div>
