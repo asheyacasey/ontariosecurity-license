@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://dev.ontariosecuritylicense.ca/api/v1'
+  apiUrl: 'https://dev-a93fj10w.ontariosecuritylicense.ca/api/v1'
 };
 
 /*
