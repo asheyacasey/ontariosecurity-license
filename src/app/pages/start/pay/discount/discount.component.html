@@ -1,0 +1,38 @@
+<hr class="spacer">
+<div class="row d-flex align-items-center">
+  <div class="col-12 col-xl-6">
+    <h1 class="section-title py-5">Discount code</h1>
+  </div>
+  <div class="col-12 col-xl-6">
+    <form [formGroup]="discountCodeForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-12 col-xl-6 mb-3 mb-xl-0">
+          <div class="input-group">
+            <input type="text" class="form-control"
+                   [ngClass]="{'is-invalid': valid === false, 'is-valid': valid === true}" placeholder="Discount code"
+                   formControlName="code" [readonly]="valid === true">
+            <button *ngIf="valid" (click)="removeDiscountCode()" class="btn btn-outline-secondary" type="button">x
+            </button>
+            <div class="feedback"
+                 [ngClass]="{'invisible': valid === null, 'valid-feedback': valid === true, 'invalid-feedback': valid === false}">
+              {{ message }}
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-xl-6">
+          <button type="submit" class="btn btn-small btn-submit w-100"
+                  [disabled]="valid !== null || !discountCodeForm.valid || (isLoading$ | async) === true">
+            <ng-container *ngIf="(isLoading$ | async) === true; else apply">
+              <div class="spinner-border spinner-border-sm text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </ng-container>
+            <ng-template #apply>
+              Apply
+            </ng-template>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

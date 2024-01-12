@@ -6,6 +6,10 @@ import {UsersComponent} from "./users/users.component";
 import {CoursesComponent} from "./courses/courses.component";
 import {PaymentsComponent} from "./payments/payments.component";
 import {CourseProgressComponent} from "./course-progress/course-progress.component";
+import {DiscountCodesComponent} from "./discount-codes/discount-codes.component";
+import {DiscountCodesListComponent} from "./discount-codes/discount-codes-list/discount-codes-list.component";
+import {DiscountCodeNewComponent} from "./discount-codes/discount-code-new/discount-code-new.component";
+import {DiscountCodeEditComponent} from "./discount-codes/discount-code-edit/discount-code-edit.component";
 
 const routes: Routes = [
   {
@@ -28,6 +32,28 @@ const routes: Routes = [
       {
         path: 'course-progress',
         component: CourseProgressComponent
+      },
+      {
+        path: 'discount-codes',
+        component: DiscountCodesComponent,
+        children: [
+          {
+            path: '',
+            component: DiscountCodesListComponent
+          },
+          {
+            path: 'new',
+            component: DiscountCodeNewComponent
+          },
+          {
+            path: 'edit/:id',
+            component: DiscountCodeEditComponent
+          },
+          {
+            path: '**',
+            redirectTo: ''
+          }
+        ]
       },
       {
         path: '**',

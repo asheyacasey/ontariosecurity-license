@@ -7,6 +7,7 @@ import {PaymentStatus} from "../../../models/payment";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {Title} from "@angular/platform-browser";
+import {DiscountCodeService} from "../../../services/discount-code.service";
 
 @Component({
   selector: 'app-completed',
@@ -28,6 +29,7 @@ export class CompletedComponent implements OnInit, OnDestroy {
     private billingDetailsService: BillingDetailsService,
     private paymentSessionService: PaymentSessionService,
     private authenticationService: AuthenticationService,
+    private discountCodeService: DiscountCodeService,
     private router: Router
   ) {
     this.transactionNumber = this.paymentSessionService.session?.id;
@@ -62,6 +64,7 @@ export class CompletedComponent implements OnInit, OnDestroy {
         this.cartService.clear();
         this.paymentSessionService.clear();
         this.billingDetailsService.clear();
+        this.discountCodeService.clear();
 
         this.statusReceived$.next(true);
         this.statusReceived$.unsubscribe();

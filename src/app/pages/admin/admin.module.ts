@@ -9,7 +9,12 @@ import { CourseProgressComponent } from './course-progress/course-progress.compo
 import {PartialsModule} from "../../partials/partials.module";
 import { MenuListComponent } from './menu-list/menu-list.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {NgbPaginationModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbDatepickerModule, NgbPaginationModule} from "@ng-bootstrap/ng-bootstrap";
+import { DiscountCodesComponent } from './discount-codes/discount-codes.component';
+import { DiscountCodesListComponent } from './discount-codes/discount-codes-list/discount-codes-list.component';
+import { DiscountCodeNewComponent } from './discount-codes/discount-code-new/discount-code-new.component';
+import { DiscountCodeEditComponent } from './discount-codes/discount-code-edit/discount-code-edit.component';
+import { DiscountCodeFormComponent } from './discount-codes/discount-code-form/discount-code-form.component';
 
 
 
@@ -20,14 +25,20 @@ import {NgbPaginationModule} from "@ng-bootstrap/ng-bootstrap";
     CoursesComponent,
     PaymentsComponent,
     CourseProgressComponent,
-    MenuListComponent
+    MenuListComponent,
+    DiscountCodesComponent,
+    DiscountCodesListComponent,
+    DiscountCodeNewComponent,
+    DiscountCodeEditComponent,
+    DiscountCodeFormComponent
   ],
     imports: [
         CommonModule,
         AdminRoutingModule,
         PartialsModule,
         ReactiveFormsModule,
-        NgbPaginationModule
+        NgbPaginationModule,
+        NgbDatepickerModule
     ]
 })
 export class AdminModule { }

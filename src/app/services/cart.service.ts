@@ -6,6 +6,7 @@ import {environment} from "../../environments/environment";
 import {PaymentSession} from "../models/payment";
 import {PaymentSessionService} from "./payment-session.service";
 import {UserLocalStorageService} from "./user-local-storage.service";
+import {DiscountCodeService} from "./discount-code.service";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class CartService {
   constructor(
     private userLocalStorageService: UserLocalStorageService,
     private paymentSessionService: PaymentSessionService,
+    private discountCodeService: DiscountCodeService,
     private http: HttpClient
   ) {
   }
@@ -61,7 +63,11 @@ export class CartService {
   }
 
   initializePayment(billingDetails: any): Observable<PaymentSession> {
-    return this.http.post<PaymentSession>(`${this.apiUrl}/course/${this._course?.id}/purchase`, billingDetails).pipe(
+    let url = `${this.apiUrl}/course/${this._course?.id}/purchase`;
+    if (this.discountCodeService.discountCode) {
+      url += `?discount_code=${this.discountCodeService.discountCode.name}`;
+    }
+    return this.http.post<PaymentSession>(url, billingDetails).pipe(
       tap((session) => {
         this.paymentSessionService.setSession(session);
       })

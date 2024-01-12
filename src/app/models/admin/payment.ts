@@ -21,6 +21,8 @@ export interface AdminPayment extends AdminBillingDetails {
   transactionId: string;
   status: string;
   paidAmount: number;
+  discountCodeName?: string;
+  discountCodePercent?: number;
 }
 
 export interface PagedAdminPayments extends Pagination {

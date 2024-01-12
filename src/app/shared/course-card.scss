@@ -8,8 +8,6 @@
   border-radius: 8px;
   border: 1px solid #DBDCE7;
 
-  cursor: pointer;
-
   &.selected {
     border: 1px solid #31374D;
   }
@@ -69,6 +67,19 @@
 
       padding-right: 135px;
     }
+    .course-full-price {
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+
+      text-decoration: line-through;
+
+      color: #31374D;
+
+      padding-right: 135px;
+    }
 
     .course-action {
       font-family: 'Manrope', sans-serif;
@@ -90,6 +101,12 @@
 
       .course-price {
         padding-right: 0;
+        text-align: right;
+      }
+
+      .course-full-price {
+        padding-right: 0;
+        text-align: right;
       }
 
       .course-action {

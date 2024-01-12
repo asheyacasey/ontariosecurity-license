@@ -1,0 +1,70 @@
+<form [formGroup]="discountCodeForm" (submit)="onSubmit()">
+  <div class="row mb-3">
+    <div class="col-12 col-xl-6">
+      <label for="name" class="form-label">Code</label>
+      <input type="text" minlength="2" maxlength="32" class="form-control" id="name" formControlName="name"
+             aria-describedby="name-help" [readonly]="isEdit"
+             [ngClass]="{'is-invalid': discountCodeForm.get('name')?.errors?.['serverError']}">
+      <div
+        [ngClass]="{'invisible': !discountCodeForm.get('name')?.errors?.['serverError'], 'invalid-feedback': discountCodeForm.get('name')?.errors?.['serverError']}">
+        {{ discountCodeForm.get('name')?.errors?.['serverError'] }}
+      </div>
+      <div id="name-help" class="form-text">Has to be unique</div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-12 col-xl-6">
+      <label for="discount-percent" class="form-label">Discount</label>
+      <div class="input-group">
+        <input type="number" min="1" max="99" class="form-control" id="discount-percent"
+               formControlName="discountPercent"
+               aria-describedby="discount-percent-help">
+        <span class="input-group-text">%</span>
+      </div>
+      <div id="discount-percent-help" class="form-text">A number between 1 and 99</div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-12 col-xl-6 mb-3 mb-xl-0">
+      <label for="valid-from" class="form-label">Valid from</label>
+      <div class="input-group">
+        <input id="valid-from" class="form-control" placeholder="yyyy-mm-dd" name="validFrom" ngbDatepicker
+               #f="ngbDatepicker" formControlName="validFrom" aria-describedby="valid-from-help">
+        <button class="btn btn-outline-secondary" (click)="f.toggle()" type="button">Calendar</button>
+      </div>
+      <div id="valid-from-help" class="form-text">Can be left empty</div>
+    </div>
+    <div class="col-12 col-xl-6">
+      <label for="valid-until" class="form-label">Valid until</label>
+      <div class="input-group">
+        <input id="valid-until" class="form-control" placeholder="yyyy-mm-dd" name="validUntil" ngbDatepicker
+               #t="ngbDatepicker" formControlName="validUntil" aria-describedby="valid-until-help">
+        <button class="btn btn-outline-secondary" (click)="t.toggle()" type="button">Calendar</button>
+      </div>
+      <div id="valid-until-help" class="form-text">Can be left empty</div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="enabled" formControlName="enabled">
+        <label for="enabled" class="form-check-label">Enabled</label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <button type="submit" class="btn btn-submit float-end"
+              [disabled]="!discountCodeForm.valid || (isLoading$ | async) === true">
+        <ng-container *ngIf="(isLoading$ | async) === true; else submit">
+          <div class="spinner-border spinner-border-sm text-secondary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </ng-container>
+        <ng-template #submit>
+          Save
+        </ng-template>
+      </button>
+    </div>
+  </div>
+</form>

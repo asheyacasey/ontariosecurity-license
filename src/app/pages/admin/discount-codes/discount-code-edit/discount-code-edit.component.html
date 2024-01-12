@@ -1,0 +1,15 @@
+<div class="row mb-3">
+  <div class="col-9 align-items-center">
+    <h2>Edit discount code</h2>
+  </div>
+  <div class="col-3 d-flex justify-content-end align-items-center">
+    <button routerLink=".." class="btn btn-secondary">Go back</button>
+  </div>
+</div>
+
+<app-discount-code-form
+  [isLoading$]="isLoading$"
+  [isEdit]="true"
+  [discountCode]="discountCode$ | async"
+  (submitted)="onSubmit($event)"
+></app-discount-code-form>
