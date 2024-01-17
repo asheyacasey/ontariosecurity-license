@@ -57,7 +57,12 @@ export class OrderSummaryComponent implements OnInit, OnDestroy {
       return this.fullPrice();
     }
 
-    return this.course.price * (1.0 - (this.discountCode?.discountPercent / 100))
+    return Math.floor(
+      (this.course.price * (
+          1.0 - (this.discountCode?.discountPercent / 100)
+        )
+      ) * 100
+    ) / 100;
   }
 
 }

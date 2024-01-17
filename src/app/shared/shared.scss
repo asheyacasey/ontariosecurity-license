@@ -1,5 +1,5 @@
 .full-height {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 89px);
 }
 
 .card-container {
@@ -11,7 +11,7 @@
   }
 
   &.full-height {
-    min-height: calc(100vh - 70px - 3rem);
+    min-height: calc(100vh - 89px - 3rem);
   }
 
 }

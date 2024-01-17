@@ -76,9 +76,10 @@
       </a>
     </div>
     <div class="navbar-text">
-      <button *ngIf="user?.admin" (click)="goToAdmin()" class="btn btn-secondary me-3">Admin</button>
-      <button *ngIf="user === null" (click)="goToLogin()" class="btn btn-secondary">Login</button>
-      <button *ngIf="user !== null" (click)="signOut()" class="btn btn-secondary">Sign out</button>
+      <button *ngIf="user?.admin" (click)="goToAdmin()" class="btn btn-secondary-action me-3">Admin</button>
+      <button *ngIf="user === null" (click)="goToLogin()" class="btn btn-secondary-action me-3">Log in</button>
+      <button *ngIf="user === null" (click)="goToRegister()" class="btn btn-primary-action">Get Started</button>
+      <button *ngIf="user !== null" (click)="signOut()" class="btn btn-secondary-action">Log out</button>
     </div>
   </div>
 </nav>
