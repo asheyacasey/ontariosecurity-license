@@ -1,0 +1,61 @@
+<ng-container [ngSwitch]="(isLoading$ | async) === true">
+  <ng-container *ngSwitchCase="true">
+    <div class="d-flex align-items-center justify-content-center mt-5 mb-5">
+      <div class="spinner-border spinner-border text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchDefault>
+    <h4>
+      <ng-template [ngTemplateOutlet]="status?.cpr ? ok : bad"></ng-template>
+      CPR
+    </h4>
+    <p>
+      <ng-container *ngIf="status?.cpr?.id; else noCPR">
+        User has submitted the CPR: <button class="btn btn-link p-0" (click)="onCPRDownload(status?.cpr?.id)">download</button>
+        <br>
+        Expiry date: {{ status?.cpr?.expiresAt | date:'Y-MM-dd' }}
+      </ng-container>
+      <ng-template #noCPR>
+        User has not submitted the CPR
+      </ng-template>
+
+    </p>
+    <h4>
+      <ng-template [ngTemplateOutlet]="bad"></ng-template>
+      Consent form
+    </h4>
+    <p>
+      User has not submitted the consent form
+    </p>
+    <h4>
+      <ng-template [ngTemplateOutlet]="bad"></ng-template>
+      TCN
+    </h4>
+    <p>
+      User has no TCN operation in progress
+    </p>
+  </ng-container>
+</ng-container>
+
+
+<ng-template #ok>
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-check"
+       viewBox="0 0 16 16">
+    <path
+      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+  </svg>
+</ng-template>
+
+<ng-template #bad>
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-x"
+       viewBox="0 0 16 16">
+    <path
+      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+  </svg>
+</ng-template>
+
+<ng-template #processing>
+</ng-template>

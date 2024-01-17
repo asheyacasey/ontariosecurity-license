@@ -15,6 +15,7 @@ import { DiscountCodesListComponent } from './discount-codes/discount-codes-list
 import { DiscountCodeNewComponent } from './discount-codes/discount-code-new/discount-code-new.component';
 import { DiscountCodeEditComponent } from './discount-codes/discount-code-edit/discount-code-edit.component';
 import { DiscountCodeFormComponent } from './discount-codes/discount-code-form/discount-code-form.component';
+import { FormalitiesComponent } from './course-progress/formalities/formalities.component';
 
 
 
@@ -30,7 +31,8 @@ import { DiscountCodeFormComponent } from './discount-codes/discount-code-form/d
     DiscountCodesListComponent,
     DiscountCodeNewComponent,
     DiscountCodeEditComponent,
-    DiscountCodeFormComponent
+    DiscountCodeFormComponent,
+    FormalitiesComponent
   ],
     imports: [
         CommonModule,

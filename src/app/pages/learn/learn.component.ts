@@ -155,6 +155,6 @@ export class LearnComponent implements OnInit, OnDestroy {
   }
 
   goToFormalities(): void {
-    this.router.navigate(['/formalities', this.courseId, 'documents']);
+    this.router.navigate(['/formalities', this.courseId, 'cpr']);
   }
 }

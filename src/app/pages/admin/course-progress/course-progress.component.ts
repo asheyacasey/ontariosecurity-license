@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AbstractListingComponent} from "../abstract-listing-component";
-import {PagedAdminPayments} from "../../../models/admin/payment";
-import {AdminPaymentService} from "../../../services/admin/admin-payment.service";
 import {ActivatedRoute} from "@angular/router";
 import {ViewportScroller} from "@angular/common";
 import {AdminCourseProgressService} from "../../../services/admin/admin-course-progress.service";
@@ -25,5 +23,22 @@ export class CourseProgressComponent extends AbstractListingComponent<PagedAdmin
   ) {
     super(activatedRoute, viewport);
     this.searchService = searchService;
+  }
+
+  detailsShown(paymentId: number): boolean {
+    return this.showDetails.indexOf(paymentId) > -1;
+  }
+
+  detailsHidden(paymentId: number): boolean {
+    return !this.detailsShown(paymentId);
+  }
+
+  toggleShowDetails(paymentId: number): void {
+    const index = this.showDetails.indexOf(paymentId);
+    if (index > -1) {
+      this.showDetails.splice(index, 1);
+    } else {
+      this.showDetails.push(paymentId);
+    }
   }
 }

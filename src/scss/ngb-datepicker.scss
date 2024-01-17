@@ -1,0 +1,58 @@
+ngb-datepicker.black-white {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #31374D;
+
+  padding: 14px;
+
+  .ngb-dp-navigation-chevron {
+    color: #31374D;
+  }
+
+  .ngb-dp-header {
+    background-color: #FFF;
+    padding: 24px 0;
+  }
+
+  .ngb-dp-weekdays {
+    background-color: #FFF;
+    border-bottom: 0;
+  }
+
+  .ngb-dp-weekday {
+    color: #31374D;
+    font-style: normal;
+    margin: 5px;
+  }
+
+  .ngb-dp-day {
+    border-radius: 4px;
+    margin: 5px;
+
+
+  }
+
+  [ngbDatepickerDayView] {
+    width: auto;
+    border: 1px solid #31374D;
+
+    &.text-muted {
+      border: 1px solid #DBDCE7;
+      color: #DBDCE7;
+    }
+  }
+
+  [ngbDatepickerDayView]:hover:not(.bg-primary), [ngbDatepickerDayView].active:not(.bg-primary) {
+    background-color: #FFF;
+    outline: 0;
+  }
+
+  .bg-primary {
+    background-color: #31374D !important;
+  }
+
+}

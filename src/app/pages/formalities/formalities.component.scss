@@ -1,6 +1,12 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
 .formalities-main {
   background: #FFFFFF;
 
-  padding: 72px 92px;
+  padding: 15px 20px;
+
+  @include media-breakpoint-up(xl) {
+    padding: 72px 92px;
+  }
 
 }

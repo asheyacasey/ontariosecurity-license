@@ -17,6 +17,7 @@
       <th scope="col">Last seen</th>
       <th scope="col">Time spent vs required</th>
       <th scope="col">Modules completed vs total</th>
+      <th scope="col">Details</th>
     </tr>
     </thead>
     <tbody>
@@ -36,6 +37,21 @@
         </td>
         <td>
           {{ progress.modulesCompleted }} / {{ progress.modulesTotal }}
+        </td>
+        <td>
+          <button class="btn btn-link p-0" (click)="toggleShowDetails(progress.id)">
+            <ng-container *ngIf="detailsHidden(progress.id)">Show</ng-container>
+            <ng-container *ngIf="detailsShown(progress.id)">Hide</ng-container>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="detailsShown(progress.id)">
+        <td colspan="6" class="overflow-hidden">
+          <div class="row mb-1 mt-1">
+            <div class="col-12">
+              <app-formalities [user]="progress.user" [course]="progress.course"></app-formalities>
+            </div>
+          </div>
         </td>
       </tr>
     </ng-container>
