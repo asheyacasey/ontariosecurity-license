@@ -39,6 +39,11 @@ export class AdminFormalityService {
       observe: 'response',
       responseType: 'blob' as 'json'
     })
+  }
 
+  updateTCN(user: AdminUser, course: AdminCourse, tcn: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/admin/formalities/user/${user.id}/course/${course.id}/tcn`, {
+      tcn: tcn
+    });
   }
 }

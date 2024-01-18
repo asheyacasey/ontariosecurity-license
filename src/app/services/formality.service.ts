@@ -6,25 +6,6 @@ import {ConsentPrefillValues, ConsentUpload, CPRDocumentUpload, FormalitiesStatu
 import {Form} from "@angular/forms";
 import {CourseTimer} from "../models/course";
 
-const FORMALITIES: FormalitiesStatus = {
-  modules: {
-    total: 12,
-    completed: 12,
-    stepCompleted: true
-  },
-  cpr: {
-    cprTrainingIncluded: true,
-    stepCompleted: false
-  },
-  consent: {
-    stepCompleted: false
-  },
-  tcn: {
-    state: 'WAITING',
-    stepCompleted: false
-  }
-};
-
 @Injectable({
   providedIn: 'root'
 })

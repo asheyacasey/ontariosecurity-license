@@ -1,318 +1,336 @@
-<div class="content">
-  <h2 class="mb-3">Consent and Release of Liability Form Regarding Training</h2>
+<ng-container *ngIf="formalitiesStatus === null; else content">
+  <div class="d-flex align-items-center justify-content-center mt-5">
+    <div class="spinner-border spinner-border text-secondary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-container>
 
-  <ng-container *ngIf="!formalitiesStatus?.consent?.stepCompleted; else completed;">
-    <form class="cpr-form mb-3" [formGroup]="consentForm" (ngSubmit)="onSubmit()">
-      <div class="row mb-5">
-        <div class="col-12">
-          <strong>Important:</strong> You must provide your full legal name, as it appears on the identification
-          you are carrying with you to the test venue on the test day.
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-12">
-          <strong>Student information</strong>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-12 col-xl-4 mb-3 mb-xl-0">
-          <label for="last-name" class="form-label">Last name *</label>
-          <input type="text" class="form-control" id="last-name" formControlName="lastName"
-                 [ngClass]="{'is-invalid': consentForm.get('lastName')?.touched && consentForm.get('lastName')?.errors}">
-          <div
-            [ngClass]="{'invisible': !consentForm.get('lastName')?.errors, 'invalid-feedback': consentForm.get('lastName')?.errors}">
-            This field is required
+<ng-template #content>
+  <div class="content">
+    <h2 class="mb-3">Consent and Release of Liability Form Regarding Training</h2>
+
+    <ng-container *ngIf="!formalitiesStatus?.consent?.stepCompleted; else completed;">
+      <form class="cpr-form mb-3" [formGroup]="consentForm" (ngSubmit)="onSubmit()">
+        <div class="row mb-5">
+          <div class="col-12">
+            <strong>Important:</strong> You must provide your full legal name, as it appears on the identification
+            you are carrying with you to the test venue on the test day.
           </div>
         </div>
-        <div class="col-12 col-xl-4 mb-3 mb-xl-0">
-          <label for="last-name" class="form-label">First name *</label>
-          <input type="text" class="form-control" id="first-name" formControlName="firstName"
-                 [ngClass]="{'is-invalid': consentForm.get('firstName')?.touched && consentForm.get('firstName')?.errors}">
-          <div
-            [ngClass]="{'invisible': !consentForm.get('firstName')?.errors, 'invalid-feedback': consentForm.get('firstName')?.errors}">
-            This field is required
+        <div class="row mb-3">
+          <div class="col-12">
+            <strong>Student information</strong>
           </div>
         </div>
-        <div class="col-12 col-xl-4 mb-3 mb-xl-0">
-          <label for="middle-names" class="form-label">Middle name(s)</label>
-          <input type="text" class="form-control" id="middle-names" formControlName="middleNames">
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-12">
-          <label for="other-names" class="form-label">Other Name(s) (Maiden name, former name, etc. - please
-            specify)</label>
-          <input type="text" class="form-control" id="other-names" formControlName="otherNames">
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-12 col-xl-4 mb-3 mb-xl-0">
-          <label for="date-of-birth" class="form-label">Date of Birth *</label>
-          <div class="input-group">
-            <input
-              [ngClass]="{'is-invalid': consentForm.get('dateOfBirth')?.touched && consentForm.get('dateOfBirth')?.errors}"
-              id="date-of-birth"
-              type="text"
-              class="form-control calendar-input"
-              formControlName="dateOfBirth"
-              placeholder="yyyy-mm-dd"
-              ngbDatepicker
-              #d="ngbDatepicker"
-              [datepickerClass]="'black-white'"
-              [minDate]="minDate"
-            >
-            <button class="btn calendar-input-button" (click)="d.toggle()" type="button">
-              <svg width="24" height="27" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M8 12.15H5.33333V14.85H8V12.15ZM13.3333 12.15H10.6667V14.85H13.3333V12.15ZM18.6667 12.15H16V14.85H18.6667V12.15ZM24 2.7H20V0H17.3333V2.7H6.66667V0H4V2.7H0V27H24V2.7ZM21.3333 24.3H2.66667V9.45H21.3333V24.3Z"
-                  fill="#ACADBF"/>
-              </svg>
-            </button>
-          </div>
-          <div
-            [ngClass]="{'invisible': !(consentForm.get('dateOfBirth')?.touched && consentForm.get('dateOfBirth')?.errors), 'invalid-feedback d-block': consentForm.get('dateOfBirth')?.touched && consentForm.get('dateOfBirth')?.errors}">
-            Please input a valid value
-          </div>
-        </div>
-        <div class="col-12 col-xl-8 mb-3 mb-xl-0">
-          <label for="other-names" class="form-label">Gender *</label>
-          <div class="input-group input-group-gender">
-            <div class="form-check form-check-inline" [ngClass]="{'is-invalid': consentForm.get('gender')?.touched && consentForm.get('gender')?.errors}">
-              <input class="form-check-input" type="radio" formControlName="gender" id="gender-male" value="MALE">
-              <label class="form-check-label" for="gender-male">Male</label>
+        <div class="row mb-3">
+          <div class="col-12 col-xl-4 mb-3 mb-xl-0">
+            <label for="last-name" class="form-label">Last name *</label>
+            <input type="text" class="form-control" id="last-name" formControlName="lastName"
+                   [ngClass]="{'is-invalid': consentForm.get('lastName')?.touched && consentForm.get('lastName')?.errors}">
+            <div
+              [ngClass]="{'invisible': !consentForm.get('lastName')?.errors, 'invalid-feedback': consentForm.get('lastName')?.errors}">
+              This field is required
             </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" formControlName="gender" id="gender-female" value="FEMALE">
-              <label class="form-check-label" for="gender-female">Female</label>
+          </div>
+          <div class="col-12 col-xl-4 mb-3 mb-xl-0">
+            <label for="last-name" class="form-label">First name *</label>
+            <input type="text" class="form-control" id="first-name" formControlName="firstName"
+                   [ngClass]="{'is-invalid': consentForm.get('firstName')?.touched && consentForm.get('firstName')?.errors}">
+            <div
+              [ngClass]="{'invisible': !consentForm.get('firstName')?.errors, 'invalid-feedback': consentForm.get('firstName')?.errors}">
+              This field is required
+            </div>
+          </div>
+          <div class="col-12 col-xl-4 mb-3 mb-xl-0">
+            <label for="middle-names" class="form-label">Middle name(s)</label>
+            <input type="text" class="form-control" id="middle-names" formControlName="middleNames">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-12">
+            <label for="other-names" class="form-label">Other Name(s) (Maiden name, former name, etc. - please
+              specify)</label>
+            <input type="text" class="form-control" id="other-names" formControlName="otherNames">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-12 col-xl-4 mb-3 mb-xl-0">
+            <label for="date-of-birth" class="form-label">Date of Birth *</label>
+            <div class="input-group">
+              <input
+                [ngClass]="{'is-invalid': consentForm.get('dateOfBirth')?.touched && consentForm.get('dateOfBirth')?.errors}"
+                id="date-of-birth"
+                type="text"
+                class="form-control calendar-input"
+                formControlName="dateOfBirth"
+                placeholder="yyyy-mm-dd"
+                ngbDatepicker
+                #d="ngbDatepicker"
+                [datepickerClass]="'black-white'"
+                [minDate]="minDate"
+              >
+              <button class="btn calendar-input-button" (click)="d.toggle()" type="button">
+                <svg width="24" height="27" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M8 12.15H5.33333V14.85H8V12.15ZM13.3333 12.15H10.6667V14.85H13.3333V12.15ZM18.6667 12.15H16V14.85H18.6667V12.15ZM24 2.7H20V0H17.3333V2.7H6.66667V0H4V2.7H0V27H24V2.7ZM21.3333 24.3H2.66667V9.45H21.3333V24.3Z"
+                    fill="#ACADBF"/>
+                </svg>
+              </button>
             </div>
             <div
-              [ngClass]="{'invisible': !(consentForm.get('gender')?.touched && consentForm.get('gender')?.errors), 'invalid-feedback d-block': consentForm.get('gender')?.touched && consentForm.get('gender')?.errors}">
-              Please select one of the options
+              [ngClass]="{'invisible': !(consentForm.get('dateOfBirth')?.touched && consentForm.get('dateOfBirth')?.errors), 'invalid-feedback d-block': consentForm.get('dateOfBirth')?.touched && consentForm.get('dateOfBirth')?.errors}">
+              Please input a valid value
             </div>
           </div>
-        </div>
-      </div>
-      <div class="row mb-5">
-        <div class="col-12 col-xl-4 mb-3 mb-xl-0">
-          <label for="phone" class="form-label">Phone *</label>
-          <input type="text" class="form-control" id="phone" formControlName="phone"
-                 [ngClass]="{'is-invalid': consentForm.get('phone')?.touched && consentForm.get('phone')?.errors}">
-          <div
-            [ngClass]="{'invisible': !consentForm.get('phone')?.errors, 'invalid-feedback': consentForm.get('phone')?.errors}">
-            This field is required
-          </div>
-        </div>
-        <div class="col-12 col-xl-4 mb-3 mb-xl-0">
-          <label for="email" class="form-label">Email *</label>
-          <input type="text" class="form-control" id="email" formControlName="email"
-                 [ngClass]="{'is-invalid': consentForm.get('email')?.touched && consentForm.get('email')?.errors}">
-          <div
-            [ngClass]="{'invisible': !consentForm.get('email')?.errors, 'invalid-feedback': consentForm.get('email')?.errors}">
-            This field is required
-          </div>
-        </div>
-      </div>
-      <!-- address -->
-      <div class="row mb-3">
-        <div class="col-12">
-          <strong>Address</strong>
-        </div>
-      </div>
-      <div formGroupName="address">
-        <div class="row mb-3">
-          <div class="col-12 col-xl-2">
-            <label for="unit-no" class="form-label">Unit No.</label>
-            <input type="text" class="form-control" id="unit-no" formControlName="unitNo">
-          </div>
-          <div class="col-12 col-xl-2">
-            <label for="street-no" class="form-label">Street No. *</label>
-            <input type="text" class="form-control" id="street-no" formControlName="streetNo"
-            [ngClass]="{'is-invalid': consentForm.get('address.streetNo')?.touched && consentForm.get('address.streetNo')?.errors}">
-          </div>
-          <div class="col-12 col-xl-6">
-            <label for="street-name" class="form-label">Street Name *</label>
-            <input type="text" class="form-control" id="street-name" formControlName="streetName"
-            [ngClass]="{'is-invalid': consentForm.get('address.streetName')?.touched && consentForm.get('address.streetName')?.errors}">
-          </div>
-          <div class="col-12 col-xl-2">
-            <label for="po-box" class="form-label">PO Box *</label>
-            <input type="text" class="form-control" id="po-box" formControlName="poBox"
-            [ngClass]="{'is-invalid': consentForm.get('address.poBox')?.touched && consentForm.get('address.poBox')?.errors}">
+          <div class="col-12 col-xl-8 mb-3 mb-xl-0">
+            <label for="other-names" class="form-label">Gender *</label>
+            <div class="input-group input-group-gender">
+              <div class="form-check form-check-inline"
+                   [ngClass]="{'is-invalid': consentForm.get('gender')?.touched && consentForm.get('gender')?.errors}">
+                <input class="form-check-input" type="radio" formControlName="gender" id="gender-male" value="MALE">
+                <label class="form-check-label" for="gender-male">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="gender" id="gender-female" value="FEMALE">
+                <label class="form-check-label" for="gender-female">Female</label>
+              </div>
+              <div
+                [ngClass]="{'invisible': !(consentForm.get('gender')?.touched && consentForm.get('gender')?.errors), 'invalid-feedback d-block': consentForm.get('gender')?.touched && consentForm.get('gender')?.errors}">
+                Please select one of the options
+              </div>
+            </div>
           </div>
         </div>
         <div class="row mb-5">
-          <div class="col-12 col-xl-8">
-            <label for="city" class="form-label">City/Town *</label>
-            <input type="text" class="form-control" id="city" formControlName="city"
-            [ngClass]="{'is-invalid': consentForm.get('address.city')?.touched && consentForm.get('address.city')?.errors}">
-          </div>
-          <div class="col-12 col-xl-2">
-            <label for="province" class="form-label">Province *</label>
-            <input type="text" class="form-control" id="province" formControlName="province"
-            [ngClass]="{'is-invalid': consentForm.get('address.province')?.touched && consentForm.get('address.province')?.errors}">
-          </div>
-          <div class="col-12 col-xl-2">
-            <label for="postal-code" class="form-label">Postal Code *</label>
-            <input type="text" class="form-control" id="postal-code" formControlName="postalCode"
-            [ngClass]="{'is-invalid': consentForm.get('address.postalCode')?.touched && consentForm.get('address.postalCode')?.errors}">
-          </div>
-        </div>
-      </div>
-      <!-- mailing address -->
-      <div class="row mb-3">
-        <div class="col-12">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" formControlName="differentMailingAddress"
-                   id="different-mailing-address">
-            <label class="form-check-label" for="different-mailing-address">
-              <strong>Mailing address is different</strong>
-            </label>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="consentForm.get('differentMailingAddress')?.value === true" formGroupName="mailingAddress">
-        <div class="row mb-3">
-          <div class="col-12 col-xl-2">
-            <label for="mailing-unit-no" class="form-label">Unit No.</label>
-            <input type="text" class="form-control" id="mailing-unit-no" formControlName="unitNo">
-          </div>
-          <div class="col-12 col-xl-2">
-            <label for="mailing-street-no" class="form-label">Street No. *</label>
-            <input type="text" class="form-control" id="mailing-street-no" formControlName="streetNo">
-          </div>
-          <div class="col-12 col-xl-6">
-            <label for="mailing-street-name" class="form-label">Street Name *</label>
-            <input type="text" class="form-control" id="mailing-street-name" formControlName="streetName">
-          </div>
-          <div class="col-12 col-xl-2">
-            <label for="mailing-po-box" class="form-label">PO Box *</label>
-            <input type="text" class="form-control" id="mailing-po-box" formControlName="poBox">
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-12 col-xl-8">
-            <label for="mailing-city" class="form-label">City/Town *</label>
-            <input type="text" class="form-control" id="mailing-city" formControlName="city">
-          </div>
-          <div class="col-12 col-xl-2">
-            <label for="mailing-province" class="form-label">Province *</label>
-            <input type="text" class="form-control" id="mailing-province" formControlName="province">
-          </div>
-          <div class="col-12 col-xl-2">
-            <label for="mailing-postal-code" class="form-label">Postal Code *</label>
-            <input type="text" class="form-control" id="mailing-postal-code" formControlName="postalCode">
-          </div>
-        </div>
-      </div>
-
-
-      <div class="row mb-3">
-        <div class="col-12">
-          <p>
-            I consent and authorize the Training Entity
-          </p>
-          <ul>
-            <li>to collect personal information from or about me for the purpose of providing training in accordance
-              with
-              the Training and Testing Regulation made under the Private Security and Investigative Services Act, 2005
-              ("PSISA");
-            </li>
-            <li>
-              to disclose personal information collected from or about me, including whether or not I have successfully
-              completed the required training under the Training and Testing Regulation, to the Private Security and
-              Investigative Services Branch of the Ministry of Community Safety and Correctional Services for the
-              purpose of determining whether I am eligible to be licensed as a security
-              guard or private investigator, and for the purpose of administering the licensing system authorized under
-              the PSISA; and
-            </li>
-          </ul>
-
-          <p>
-            I also consent to and authorize the Private Security and Investigative Services Branch of the Ministry of
-            Community Safety and Correctional Services to disclose personal information collected about me, for the
-            purpose of advising the Ministry’s Test Delivery Vendor as to whether or
-            not I have completed the training required under the Training and Testing Regulation; and
-          </p>
-
-          <p>
-            I hereby release and discharge Her Majesty the Queen in Right of Ontario, the
-            Training Entity and their respective directors, employees, subcontractors, volunteers, servants and agents,
-            including their successors and assigns, from any and all actions, claims and demands for damages, loss or
-            injury, howsoever arising, except as a result of negligence or wilful misconduct which may hereafter be
-            sustained by myself as a result of the collection, use and disclosure of personal information as authorized
-            by
-            this form.
-          </p>
-
-          <p>
-            This Release of Liability shall be binding upon and shall ensure to the benefit of my respective heirs, and
-            administrators.
-          </p>
-
-          <hr class="spacer">
-          <p>
-            I certify that I have read the information in this form thoroughly, that I fully understand it, and that by
-            signing below, I have the capacity to provide consent, and that I am providing consent freely and
-            voluntarily.
-          </p>
-          <p>
-
-
-            The information provided is collected under the authority of Section 11 of the Private Security and
-            Investigative Services Act, 2005 for the
-            purpose of issuing a license under the Act. If you have any questions, call a ServiceOntario Customer
-            Service Representative toll-free at 1-866-767-7454 (Canada). TTY users call us toll-free at 1-800-268-7095
-            (TTY
-            Canada). Or mail, Private Security and Investigative Services Branch, 25 Grosvenor Street, 12th Floor,
-            Toronto
-            ON M7A 1Y6
-          </p>
-        </div>
-      </div>
-      <div class="row mb-3 justify-content-end">
-        <div class="col-signature">
-          <div class="signature-wrapper">
-            <div class="d-flex justify-content-between align-items-center">
-              <label for="signature" class="form-label d-block">Signature *</label>
-              <button type="button" class="btn btn-sm btn-link signature-clear" (click)="clearSignature()">Clear
-              </button>
+          <div class="col-12 col-xl-4 mb-3 mb-xl-0">
+            <label for="phone" class="form-label">Phone *</label>
+            <input type="text" class="form-control" id="phone" formControlName="phone"
+                   [ngClass]="{'is-invalid': consentForm.get('phone')?.touched && consentForm.get('phone')?.errors}">
+            <div
+              [ngClass]="{'invisible': !consentForm.get('phone')?.errors, 'invalid-feedback': consentForm.get('phone')?.errors}">
+              This field is required
             </div>
-            <ngx-signature-pad
-              id="signature"
-              #signature
-              [options]="signatureOptions">
-            </ngx-signature-pad>
-            <span class="d-block">Please draw your signature in the box above</span>
+          </div>
+          <div class="col-12 col-xl-4 mb-3 mb-xl-0">
+            <label for="email" class="form-label">Email *</label>
+            <input type="text" class="form-control" id="email" formControlName="email"
+                   [ngClass]="{'is-invalid': consentForm.get('email')?.touched && consentForm.get('email')?.errors}">
+            <div
+              [ngClass]="{'invisible': !consentForm.get('email')?.errors, 'invalid-feedback': consentForm.get('email')?.errors}">
+              This field is required
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-12 col-xl-12 text-end">
-          <button type="submit" class="btn btn-submit float-end"
-                  [disabled]="(signature.isEmpty() || !consentForm.valid || (isLoading$ | async) === true)">
-            <ng-container *ngIf="(isLoading$ | async) === true; else submit">
-              <div class="spinner-border spinner-border-sm text-secondary" role="status">
-                <span class="visually-hidden">Loading...</span>
+        <!-- address -->
+        <div class="row mb-3">
+          <div class="col-12">
+            <strong>Address</strong>
+          </div>
+        </div>
+        <div formGroupName="address">
+          <div class="row mb-3">
+            <div class="col-12 col-xl-2">
+              <label for="unit-no" class="form-label">Unit No.</label>
+              <input type="text" class="form-control" id="unit-no" formControlName="unitNo">
+            </div>
+            <div class="col-12 col-xl-2">
+              <label for="street-no" class="form-label">Street No. *</label>
+              <input type="text" class="form-control" id="street-no" formControlName="streetNo"
+                     [ngClass]="{'is-invalid': consentForm.get('address.streetNo')?.touched && consentForm.get('address.streetNo')?.errors}">
+            </div>
+            <div class="col-12 col-xl-6">
+              <label for="street-name" class="form-label">Street Name *</label>
+              <input type="text" class="form-control" id="street-name" formControlName="streetName"
+                     [ngClass]="{'is-invalid': consentForm.get('address.streetName')?.touched && consentForm.get('address.streetName')?.errors}">
+            </div>
+            <div class="col-12 col-xl-2">
+              <label for="po-box" class="form-label">PO Box *</label>
+              <input type="text" class="form-control" id="po-box" formControlName="poBox"
+                     [ngClass]="{'is-invalid': consentForm.get('address.poBox')?.touched && consentForm.get('address.poBox')?.errors}">
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-12 col-xl-8">
+              <label for="city" class="form-label">City/Town *</label>
+              <input type="text" class="form-control" id="city" formControlName="city"
+                     [ngClass]="{'is-invalid': consentForm.get('address.city')?.touched && consentForm.get('address.city')?.errors}">
+            </div>
+            <div class="col-12 col-xl-2">
+              <label for="province" class="form-label">Province *</label>
+              <input type="text" class="form-control" id="province" formControlName="province"
+                     [ngClass]="{'is-invalid': consentForm.get('address.province')?.touched && consentForm.get('address.province')?.errors}">
+            </div>
+            <div class="col-12 col-xl-2">
+              <label for="postal-code" class="form-label">Postal Code *</label>
+              <input type="text" class="form-control" id="postal-code" formControlName="postalCode"
+                     [ngClass]="{'is-invalid': consentForm.get('address.postalCode')?.touched && consentForm.get('address.postalCode')?.errors}">
+            </div>
+          </div>
+        </div>
+        <!-- mailing address -->
+        <div class="row mb-3">
+          <div class="col-12">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" formControlName="differentMailingAddress"
+                     id="different-mailing-address">
+              <label class="form-check-label" for="different-mailing-address">
+                <strong>Mailing address is different</strong>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="consentForm.get('differentMailingAddress')?.value === true" formGroupName="mailingAddress">
+          <div class="row mb-3">
+            <div class="col-12 col-xl-2">
+              <label for="mailing-unit-no" class="form-label">Unit No.</label>
+              <input type="text" class="form-control" id="mailing-unit-no" formControlName="unitNo">
+            </div>
+            <div class="col-12 col-xl-2">
+              <label for="mailing-street-no" class="form-label">Street No. *</label>
+              <input type="text" class="form-control" id="mailing-street-no" formControlName="streetNo">
+            </div>
+            <div class="col-12 col-xl-6">
+              <label for="mailing-street-name" class="form-label">Street Name *</label>
+              <input type="text" class="form-control" id="mailing-street-name" formControlName="streetName">
+            </div>
+            <div class="col-12 col-xl-2">
+              <label for="mailing-po-box" class="form-label">PO Box *</label>
+              <input type="text" class="form-control" id="mailing-po-box" formControlName="poBox">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-12 col-xl-8">
+              <label for="mailing-city" class="form-label">City/Town *</label>
+              <input type="text" class="form-control" id="mailing-city" formControlName="city">
+            </div>
+            <div class="col-12 col-xl-2">
+              <label for="mailing-province" class="form-label">Province *</label>
+              <input type="text" class="form-control" id="mailing-province" formControlName="province">
+            </div>
+            <div class="col-12 col-xl-2">
+              <label for="mailing-postal-code" class="form-label">Postal Code *</label>
+              <input type="text" class="form-control" id="mailing-postal-code" formControlName="postalCode">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row mb-3">
+          <div class="col-12">
+            <p>
+              I consent and authorize the Training Entity
+            </p>
+            <ul>
+              <li>to collect personal information from or about me for the purpose of providing training in accordance
+                with
+                the Training and Testing Regulation made under the Private Security and Investigative Services Act, 2005
+                ("PSISA");
+              </li>
+              <li>
+                to disclose personal information collected from or about me, including whether or not I have
+                successfully
+                completed the required training under the Training and Testing Regulation, to the Private Security and
+                Investigative Services Branch of the Ministry of Community Safety and Correctional Services for the
+                purpose of determining whether I am eligible to be licensed as a security
+                guard or private investigator, and for the purpose of administering the licensing system authorized
+                under
+                the PSISA; and
+              </li>
+            </ul>
+
+            <p>
+              I also consent to and authorize the Private Security and Investigative Services Branch of the Ministry of
+              Community Safety and Correctional Services to disclose personal information collected about me, for the
+              purpose of advising the Ministry’s Test Delivery Vendor as to whether or
+              not I have completed the training required under the Training and Testing Regulation; and
+            </p>
+
+            <p>
+              I hereby release and discharge Her Majesty the Queen in Right of Ontario, the
+              Training Entity and their respective directors, employees, subcontractors, volunteers, servants and
+              agents,
+              including their successors and assigns, from any and all actions, claims and demands for damages, loss or
+              injury, howsoever arising, except as a result of negligence or wilful misconduct which may hereafter be
+              sustained by myself as a result of the collection, use and disclosure of personal information as
+              authorized
+              by
+              this form.
+            </p>
+
+            <p>
+              This Release of Liability shall be binding upon and shall ensure to the benefit of my respective heirs,
+              and
+              administrators.
+            </p>
+
+            <hr class="spacer">
+            <p>
+              I certify that I have read the information in this form thoroughly, that I fully understand it, and that
+              by
+              signing below, I have the capacity to provide consent, and that I am providing consent freely and
+              voluntarily.
+            </p>
+            <p>
+
+
+              The information provided is collected under the authority of Section 11 of the Private Security and
+              Investigative Services Act, 2005 for the
+              purpose of issuing a license under the Act. If you have any questions, call a ServiceOntario Customer
+              Service Representative toll-free at 1-866-767-7454 (Canada). TTY users call us toll-free at 1-800-268-7095
+              (TTY
+              Canada). Or mail, Private Security and Investigative Services Branch, 25 Grosvenor Street, 12th Floor,
+              Toronto
+              ON M7A 1Y6
+            </p>
+          </div>
+        </div>
+        <div class="row mb-3 justify-content-end">
+          <div class="col-signature">
+            <div class="signature-wrapper">
+              <div class="d-flex justify-content-between align-items-center">
+                <label for="signature" class="form-label d-block">Signature *</label>
+                <button type="button" class="btn btn-sm btn-link signature-clear" (click)="clearSignature()">Clear
+                </button>
               </div>
-            </ng-container>
-            <ng-template #submit>
-              Submit
-            </ng-template>
-          </button>
+              <ngx-signature-pad
+                id="signature"
+                #signature
+                [options]="signatureOptions">
+              </ngx-signature-pad>
+              <span class="d-block">Please draw your signature in the box above</span>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-12 col-xl-12 text-end">
+            <button type="submit" class="btn btn-submit float-end"
+                    [disabled]="(signature.isEmpty() || !consentForm.valid || (isLoading$ | async) === true)">
+              <ng-container *ngIf="(isLoading$ | async) === true; else submit">
+                <div class="spinner-border spinner-border-sm text-secondary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </ng-container>
+              <ng-template #submit>
+                Submit
+              </ng-template>
+            </button>
+          </div>
+        </div>
+      </form>
+
+    </ng-container>
+    <ng-template #completed>
+      <div class="alert alert-success d-flex align-items-center" role="alert">
+        <div>
+          You've successfully submitted your consent form!
         </div>
       </div>
-    </form>
+    </ng-template>
+  </div>
 
-  </ng-container>
-  <ng-template #completed>
-    <div class="alert alert-success d-flex align-items-center" role="alert">
-      <div>
-        You've successfully submitted your consent form!
-      </div>
-    </div>
+  <ng-template #signatureTooltip>
+
   </ng-template>
-</div>
-
-<ng-template #signatureTooltip>
 
 </ng-template>
