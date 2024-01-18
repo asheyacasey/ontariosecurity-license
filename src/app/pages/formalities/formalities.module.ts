@@ -10,6 +10,7 @@ import { ConsentComponent } from './consent/consent.component';
 import { TcnComponent } from './tcn/tcn.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {NgbDatepickerModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgxSignaturePadModule} from "@eve-sama/ngx-signature-pad";
 
 
 
@@ -30,7 +31,8 @@ import {NgbDatepickerModule} from "@ng-bootstrap/ng-bootstrap";
         FormalitiesRoutingModule,
         PartialsModule,
         ReactiveFormsModule,
-        NgbDatepickerModule
+        NgbDatepickerModule,
+        NgxSignaturePadModule
     ]
 })
 export class FormalitiesModule { }

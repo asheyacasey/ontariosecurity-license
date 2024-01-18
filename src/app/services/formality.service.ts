@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable, of, Subject, tap} from "rxjs";
-import {CPRDocumentUpload, FormalitiesStatus} from "../models/formality";
+import {ConsentPrefillValues, ConsentUpload, CPRDocumentUpload, FormalitiesStatus} from "../models/formality";
 import {Form} from "@angular/forms";
 import {CourseTimer} from "../models/course";
 
@@ -40,7 +40,8 @@ export class FormalityService {
   formalitiesStatus: FormalitiesStatus | null = null;
   courseId: number | null = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
 
   setCourseId(courseId: number): void {
@@ -58,11 +59,10 @@ export class FormalityService {
   }
 
   uploadCPR(courseId: number, data: CPRDocumentUpload): Observable<any> {
-
     const formData = new FormData();
     formData.append('file', data.file);
     formData.append('expires_at', data.expiresAt);
 
-    return this.http.post<CourseTimer>(`${this.apiUrl}/course/${courseId}/formalities/cpr/upload`, formData);
+    return this.http.post(`${this.apiUrl}/course/${courseId}/formalities/cpr/upload`, formData);
   }
 }
