@@ -23,6 +23,7 @@ export interface AccessToken {
 
 export interface UserDetails {
   id: number;
+  admin: boolean;
   email: string;
-  bought: boolean;
+  hasCourseAccess: boolean;
 }

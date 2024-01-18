@@ -1,0 +1,85 @@
+<div class="content">
+  <h2 class="mb-3">Upload CPR Document</h2>
+
+  <ng-container *ngIf="!formalitiesStatus?.cpr?.stepCompleted; else completed;">
+    <form class="cpr-form mb-3" [formGroup]="cprForm" (ngSubmit)="onSubmit()">
+      <div class="row mb-5">
+        <div class="col-12 col-xl-8">
+          <label for="file" class="form-label">Upload certificate *</label>
+          <div class="file-upload-container">
+            <input #fileInput id="file" type="file" class="d-none" formControlName="file" [ngClass]="{'is-invalid': cprForm.get('file')?.errors?.['serverError']}">
+            <div class="file-upload-inner d-flex flex-column flex-md-row align-items-center">
+              <button type="button" class="btn-submit btn-small mb-3 mb-md-0" (click)="fileInput.click()">Choose File
+              </button>
+              <span class="file-upload-filename">{{ file?.name || 'Please choose file' }}</span>
+            </div>
+          </div>
+          <div
+            [ngClass]="{'invisible': !cprForm.get('file')?.errors?.['serverError'], 'invalid-feedback': cprForm.get('file')?.errors?.['serverError']}">
+            {{ cprForm.get('file')?.errors?.['serverError'] }}
+          </div>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-12 col-xl-4">
+          <label for="expires-at" class="form-label">Expiry date *</label>
+          <div class="input-group">
+            <input
+              id="expires-at"
+              type="text"
+              class="form-control calendar-input"
+              formControlName="expiresAt"
+              placeholder="yyyy-mm-dd"
+              ngbDatepicker
+              #d="ngbDatepicker"
+              [datepickerClass]="'black-white'"
+              [minDate]="today"
+            >
+            <button class="btn calendar-input-button" (click)="d.toggle()" type="button">
+              <svg width="24" height="27" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M8 12.15H5.33333V14.85H8V12.15ZM13.3333 12.15H10.6667V14.85H13.3333V12.15ZM18.6667 12.15H16V14.85H18.6667V12.15ZM24 2.7H20V0H17.3333V2.7H6.66667V0H4V2.7H0V27H24V2.7ZM21.3333 24.3H2.66667V9.45H21.3333V24.3Z"
+                  fill="#ACADBF"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12 col-xl-8 text-end">
+          <button type="submit" class="btn btn-submit float-end"
+                  [disabled]="!cprForm.valid || (isLoading$ | async) === true">
+            <ng-container *ngIf="(isLoading$ | async) === true; else submit">
+              <div class="spinner-border spinner-border-sm text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </ng-container>
+            <ng-template #submit>
+              Submit
+            </ng-template>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <hr class="spacer">
+
+    <ng-container *ngIf="formalitiesStatus?.cpr?.cprTrainingIncluded">
+      <h2 class="mb-5">Don't have a CPR Certificate?</h2>
+
+      <p>
+        Book a CPR Training Course by sending an email to
+        <a href="mailto:tcn@ontariosecuritylicense.ca">tcn@ontariosecuritylicense.ca</a>
+      </p>
+
+    </ng-container>
+
+  </ng-container>
+  <ng-template #completed>
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+      <div>
+        You've successfully submitted your CPR certificate!
+      </div>
+    </div>
+  </ng-template>
+</div>

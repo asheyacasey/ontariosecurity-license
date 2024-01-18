@@ -1,0 +1,38 @@
+.form-control {
+  &.is-invalid {
+    border-color: #dc3545;
+  }
+
+  &.is-valid {
+    border-color: #198754;
+  }
+}
+
+.feedback {
+  font-family: "Manrope", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+  min-height: 24px;
+
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+
+  &::before {
+    content: "";
+    min-height: 24px;
+  }
+}
+
+.form-control:not(.is-valid) {
+  border-top-right-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+}
+
+.input-group button {
+  border-top-right-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+}

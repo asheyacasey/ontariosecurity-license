@@ -1,0 +1,75 @@
+<div class="row mb-3">
+  <div class="col-9 align-items-center">
+    <h2>Discount codes listing</h2>
+  </div>
+  <div class="col-3 d-flex justify-content-end align-items-center">
+    <button routerLink="new" class="btn btn-secondary">Create new</button>
+  </div>
+</div>
+
+<div class="mb-5">
+  <form [formGroup]="searchForm">
+    <input type="text" id="search" class="form-control" placeholder="Search.." formControlName="search">
+    <div class="form-text">Using: discount code</div>
+  </form>
+</div>
+
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Enabled</th>
+      <th scope="col">Valid from</th>
+      <th scope="col">Valid until</th>
+      <th scope="col">Discount percent</th>
+      <th scope="col">Uses</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let discountCode of results?.items">
+      <tr>
+        <th scope="row">{{ discountCode.id }}</th>
+        <td>{{ discountCode.name }}</td>
+        <td>
+          <input type="checkbox" [checked]="discountCode.enabled" disabled>
+        </td>
+        <td>
+          <ng-container *ngIf="discountCode.validFrom; else emptyDate">
+            {{ discountCode.validFrom | date }}
+          </ng-container>
+        </td>
+        <td>
+          <ng-container *ngIf="discountCode.validUntil; else emptyDate">
+            {{ discountCode.validUntil | date }}
+          </ng-container>
+        </td>
+        <td>
+          -{{ discountCode.discountPercent}}%
+        </td>
+        <td>
+          {{ discountCode.uses }}
+          <a [routerLink]="['../payments']" [queryParams]="{search: discountCode.name}">Show</a>
+        </td>
+        <td>
+          <a [routerLink]="['edit', discountCode.id]">Edit</a>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+
+  <ng-container *ngIf="results">
+    <ngb-pagination
+      (pageChange)="onPageChange($event)"
+      [(page)]="results.page"
+      [pageSize]="20"
+      [collectionSize]="results.total">
+    </ngb-pagination>
+  </ng-container>
+</div>
+
+<ng-template #emptyDate>-</ng-template>

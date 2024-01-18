@@ -1,3 +1,5 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
 nav.navbar-light {
   background-color: #FFFFFF !important;
 }
@@ -11,3 +13,44 @@ nav.navbar-light {
 .navbar-toggler {
   margin-right: 10px;
 }
+
+.btn-primary-action {
+  background: #354FA9;
+  border-radius: 4px;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  padding: 18px 63px;
+
+  color: #FFFFFF;
+
+  @include media-breakpoint-down(md) {
+    padding: 18px 23px;
+  }
+}
+
+.btn-primary-action:hover {
+  background-color: rgba(53, 79, 169, 0.9);
+  color: #F3F4FA !important;
+}
+
+.btn-secondary-action {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  padding: 18px 63px;
+  /* identical to box height */
+  text-transform: uppercase;
+
+  color: #5E6169;
+
+  @include media-breakpoint-down(md) {
+    padding: 18px 23px;
+  }
+}
+

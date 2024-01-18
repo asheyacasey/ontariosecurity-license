@@ -4,6 +4,9 @@ import {Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CourseProgressOverviewService} from "../../services/course-progress-overview.service";
 import {CourseProgressOverview} from "../../models/course";
+import {Form} from "@angular/forms";
+import {FormalityService} from "../../services/formality.service";
+import {FormalitiesStatus} from "../../models/formality";
 
 @Component({
   selector: 'app-formalities',
@@ -14,7 +17,7 @@ export class FormalitiesComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   openMenu$: Subject<boolean> = new Subject<boolean>();
-  courseProgressOverview?: CourseProgressOverview;
+  formalitiesStatus?: FormalitiesStatus;
 
   courseId?: number;
 
@@ -22,7 +25,8 @@ export class FormalitiesComponent implements OnInit, OnDestroy {
     private titleService: Title,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private courseProgressOverviewService: CourseProgressOverviewService
+    private courseProgressOverviewService: CourseProgressOverviewService,
+    private formalityService: FormalityService
   ) {
   }
 
@@ -32,11 +36,16 @@ export class FormalitiesComponent implements OnInit, OnDestroy {
     ).subscribe((params) => {
       this.courseId = Number(params['courseId']);
 
-      this.courseProgressOverviewService.getById(this.courseId).subscribe((progress) => {
-        if (progress) {
-          this.courseProgressOverview = progress;
+      this.formalityService.setCourseId(this.courseId);
+      this.formalityService.getStatus(this.courseId).subscribe({
+        next: formalities => {
+          this.formalitiesStatus = formalities;
+        },
+        error: err => {
+
         }
       });
+
     });
   }
 

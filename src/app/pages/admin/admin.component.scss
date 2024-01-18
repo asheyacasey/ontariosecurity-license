@@ -1,0 +1,10 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
+.admin-main {
+  background: #FFFFFF;
+
+  padding: 15px 20px;
+  @include media-breakpoint-up(xl) {
+    padding: 72px 92px;
+  }
+}

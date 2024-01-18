@@ -1,33 +1,6 @@
 <div class="p-5">
-  <h1 class="section-title">Order Summary</h1>
-  <div class="course-summary row g-5">
-    <div class="col-12">
-      <div class="course-card d-flex justify-content-between p-0">
-        <div class="course-card-info d-flex">
-          <div class="course-image">
-            <img class="img-fluid" alt="Course 1" src="{{ course.imageSmall }}"/>
-          </div>
-          <div class="course-description d-flex flex-column justify-content-center p-2">
-            <div class="course-title">{{ course.name }}</div>
-            <div class="course-content">{{ course.modules.length }}
-              modules{{ course.cprTrainingIncluded ? ' + CPR' : ''}}</div>
-          </div>
-        </div>
-        <div class="course-card-details d-flex justify-content-center align-items-center flex-column flex-xl-row">
-          <div class="course-price">${{ course.price }}</div>
-          <div (click)="onRemoveCourse(course)" class="course-action">Remove</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    class="course-summary-total-container d-flex justify-content-end align-items-end align-items-xl-start flex-column flex-xl-row">
-    <div class="course-summary-total-text">Total</div>
-    <div class="course-summary-total-values d-flex flex-column">
-      <div class="course-summary-total-amount">${{ course.price }}</div>
-      <div class="course-summary-total-subtext">Tax included</div>
-    </div>
-  </div>
+  <app-order-summary></app-order-summary>
+  <app-discount></app-discount>
   <hr class="spacer">
   <h1 class="section-title py-5">Billing Details</h1>
   <form class="billing-details-form" [formGroup]="billingDetailsForm" (ngSubmit)="onSubmit()">

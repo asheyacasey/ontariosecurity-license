@@ -120,4 +120,8 @@ export class AuthenticationService {
   isLoggedIn(): boolean {
     return this.getToken() !== null;
   }
+
+  isAdmin(): boolean {
+    return this.isLoggedIn() && (this.user?.admin || false);
+  }
 }

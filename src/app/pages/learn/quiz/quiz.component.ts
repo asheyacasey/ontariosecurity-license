@@ -3,9 +3,10 @@ import {LinkedLecture} from "../../../models/lecture";
 import {LearnService} from "../../../services/learn.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LinkedQuiz, QuizAnswers, QuizDetails, QuizQuestionAnswerChange} from "../../../models/quiz";
-import {filter, Subject, takeUntil, tap} from "rxjs";
+import {catchError, filter, Subject, takeUntil, tap, throwError} from "rxjs";
 import {ViewportScroller} from "@angular/common";
 import {CourseNavigationStateService} from "../../../services/course-navigation-state.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-quiz',
@@ -48,7 +49,14 @@ export class QuizComponent implements OnInit, OnDestroy {
 
       this.quizId = quizId;
 
-      this.learnService.getQuiz(quizId).subscribe((quiz) => {
+      this.learnService.getQuiz(quizId).pipe(
+        catchError((err: HttpErrorResponse) => {
+          if (err.status === 404) {
+            this.router.navigate(['/learn', this.learnService.courseId]);
+          }
+          return throwError(() => err);
+        })
+      ).subscribe((quiz) => {
         this.quiz = quiz;
 
         this.learnService.setTitle('Quiz for module ' + this.quiz?.module.id);

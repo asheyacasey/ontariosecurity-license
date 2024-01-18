@@ -1,0 +1,46 @@
+<h2 class="mb-3">Users listing</h2>
+
+<div class="mb-5">
+  <form [formGroup]="searchForm">
+    <input type="text" id="search" class="form-control" placeholder="Search.." formControlName="search">
+    <div class="form-text">Using: client email</div>
+  </form>
+</div>
+
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Email</th>
+      <th scope="col">Registered at</th>
+      <th scope="col">Admin</th>
+      <th scope="col">Purchases</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of results?.items">
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.email }}</td>
+      <td>{{ user.registeredAt | date:'medium':'UTC -2'}}</td>
+      <td>
+        <input type="checkbox" [checked]="user.admin" disabled>
+      </td>
+      <td>
+        {{ user.paymentsCount }}
+        <a *ngIf="user.paymentsCount" [routerLink]="['../payments']" [queryParams]="{search: user.email}">Show</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ng-container *ngIf="results">
+    <ngb-pagination
+      (pageChange)="onPageChange($event)"
+      [(page)]="results.page"
+      [pageSize]="20"
+      [collectionSize]="results.total">
+    </ngb-pagination>
+  </ng-container>
+</div>

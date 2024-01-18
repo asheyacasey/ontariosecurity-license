@@ -1,0 +1,41 @@
+<ng-template #menu>
+  <ul class="menu-selector list-group">
+    <li class="list-group-item d-flex flex-column" routerLink="/admin/users" routerLinkActive="active" (click)="closeOffcanvas()">
+      <div class="menu-header d-flex justify-content-between align-items-center">
+        <div>Users</div>
+      </div>
+    </li>
+    <li class="list-group-item d-flex flex-column" routerLink="/admin/courses" routerLinkActive="active" (click)="closeOffcanvas()">
+      <div class="menu-header d-flex justify-content-between align-items-center">
+        <div>Courses</div>
+      </div>
+    </li>
+    <li class="list-group-item d-flex flex-column" routerLink="/admin/payments" routerLinkActive="active" (click)="closeOffcanvas()">
+      <div class="menu-header d-flex justify-content-between align-items-center">
+        <div>Payments</div>
+      </div>
+    </li>
+    <li class="list-group-item d-flex flex-column" routerLink="/admin/course-progress" routerLinkActive="active" (click)="closeOffcanvas()">
+      <div class="menu-header d-flex justify-content-between align-items-center">
+        <div>Course progress</div>
+      </div>
+    </li>
+    <li class="list-group-item d-flex flex-column" routerLink="/admin/discount-codes" routerLinkActive="active" (click)="closeOffcanvas()">
+      <div class="menu-header d-flex justify-content-between align-items-center">
+        <div>Discount codes</div>
+      </div>
+    </li>
+  </ul>
+</ng-template>
+
+<h2 class="menu-list-header">Admin panel</h2>
+<ng-template [ngTemplateOutlet]="menu"></ng-template>
+
+<ng-template #offcanvas>
+  <div class="offcanvas-header">
+    <h2 class="menu-list-header">Admin panel</h2>
+  </div>
+  <div class="offcanvas-body">
+    <ng-template [ngTemplateOutlet]="menu"></ng-template>
+  </div>
+</ng-template>

@@ -1,7 +1,9 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
-import {Subject} from "rxjs";
+import {Subject, takeUntil} from "rxjs";
 import {NgbOffcanvas} from "@ng-bootstrap/ng-bootstrap";
 import {CourseProgressOverview} from "../../../models/course";
+import {FormalityService} from "../../../services/formality.service";
+import {FormalitiesStatus} from "../../../models/formality";
 
 @Component({
   selector: 'app-sections-list',
@@ -11,16 +13,34 @@ import {CourseProgressOverview} from "../../../models/course";
 export class SectionsListComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
-  @Input() courseProgressOverview?: CourseProgressOverview;
+  @Input() formalitiesStatus?: FormalitiesStatus;
+  @Input() openMenu$!: Subject<boolean>;
 
   @Output() modulesClick: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @ViewChild('offcanvas') offcanvas!: TemplateRef<any>;
 
-  constructor(private offcanvasService: NgbOffcanvas) {
+  status: FormalitiesStatus | null = null;
+
+  constructor(private offcanvasService: NgbOffcanvas, private formalityService: FormalityService) {
   }
 
   ngOnInit(): void {
+    this.openMenu$.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe((open) => {
+      if (open) {
+        this.openOffcanvas();
+      } else {
+        this.closeOffcanvas();
+      }
+    });
+
+    this.formalityService.formalitiesStatus$.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(status => {
+      this.status = status;
+    })
   }
 
   ngOnDestroy(): void {
@@ -37,10 +57,7 @@ export class SectionsListComponent implements OnInit, OnDestroy {
   }
 
   onModulesClick() {
+    this.closeOffcanvas();
     this.modulesClick.next(true);
-  }
-
-  modulesCompleted(): boolean {
-    return this.courseProgressOverview?.modulesCompleted === this.courseProgressOverview?.modules?.length;
   }
 }

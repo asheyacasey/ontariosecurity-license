@@ -1,0 +1,29 @@
+.input-group-gender {
+  margin-top: 15px;
+}
+
+.col-signature {
+  width: 400px;
+}
+
+.signature-clear {
+  margin-bottom: 0.5rem;
+}
+
+// can be extracted to a separate component later
+
+.calendar-input {
+  border-right: 0 !important;
+}
+
+.calendar-input-button {
+  border: 1px solid #DBDCE7;
+  border-left: 0 !important;
+
+  &:hover {
+    // override default bootstrap hover styling
+
+    border: 1px solid #DBDCE7 !important;
+    border-left: 0 !important;
+  }
+}

@@ -2,8 +2,9 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {LearnService} from "../../../services/learn.service";
 import {LinkedLecture} from "../../../models/lecture";
-import {Subject, takeUntil} from "rxjs";
+import {catchError, Subject, takeUntil, throwError} from "rxjs";
 import {CourseNavigationStateService} from "../../../services/course-navigation-state.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-lecture',
@@ -21,7 +22,8 @@ export class LectureComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private courseNavigationStateService: CourseNavigationStateService,
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.activatedRoute.params.pipe(
@@ -40,7 +42,14 @@ export class LectureComponent implements OnInit, OnDestroy {
 
       this.lectureId = lectureId;
 
-      this.learnService.getLecture(lectureId).subscribe((linkedLecture) => {
+      this.learnService.getLecture(lectureId).pipe(
+        catchError((err: HttpErrorResponse) => {
+          if (err.status === 404) {
+            this.router.navigate(['/learn', this.learnService.courseId]);
+          }
+          return throwError(() => err);
+        })
+      ).subscribe((linkedLecture) => {
         this.lecture = linkedLecture;
 
         this.learnService.setTitle(this.lecture.name);

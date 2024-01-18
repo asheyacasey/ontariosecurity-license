@@ -10,6 +10,9 @@ import { StepsComponent } from './steps/steps.component';
 import {PartialsModule} from "../../partials/partials.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import { CompletedComponent } from './completed/completed.component';
+import { DiscountComponent } from './pay/discount/discount.component';
+import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
+import { OrderSummaryComponent } from './pay/order-summary/order-summary.component';
 
 
 @NgModule({
@@ -19,14 +22,17 @@ import { CompletedComponent } from './completed/completed.component';
     PayComponent,
     StartComponent,
     StepsComponent,
-    CompletedComponent
+    CompletedComponent,
+    DiscountComponent,
+    OrderSummaryComponent
   ],
     imports: [
         CommonModule,
         StartRoutingModule,
         RouterOutlet,
         PartialsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgbTooltipModule
     ]
 })
 export class StartModule {

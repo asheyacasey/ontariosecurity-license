@@ -1,0 +1,49 @@
+<h2 class="mb-3">Courses listing</h2>
+
+<div class="mb-5">
+  <form [formGroup]="searchForm">
+    <input type="text" id="search" class="form-control" placeholder="Search.." formControlName="search">
+    <div class="form-text">Using: course name</div>
+  </form>
+</div>
+
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Enabled</th>
+      <th scope="col">Time spent required</th>
+      <th scope="col">Contains CPR</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let course of results?.items">
+      <th scope="row">{{ course.id }}</th>
+      <td>{{ course.name }}</td>
+      <td>${{course.price}}</td>
+      <td>
+        <input type="checkbox" [checked]="course.enabled" disabled>
+      </td>
+      <td>
+        {{ timeFormatterService.secondsToTime(course.secondsSpentRequired) }}
+      </td>
+      <td>
+        <input type="checkbox" [checked]="course.cprTrainingIncluded" disabled>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ng-container *ngIf="results">
+    <ngb-pagination
+      (pageChange)="onPageChange($event)"
+      [(page)]="results.page"
+      [pageSize]="20"
+      [collectionSize]="results.total">
+    </ngb-pagination>
+  </ng-container>
+</div>

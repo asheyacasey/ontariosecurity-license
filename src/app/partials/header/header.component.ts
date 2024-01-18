@@ -46,7 +46,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate(['/']);
   }
 
-  goToLogin() {
+  goToLogin(): void {
     this.router.navigate(['/login']);
+  }
+
+  goToAdmin(): void {
+    this.router.navigate(['/admin'])
+  }
+
+  goToRegister(): void {
+    this.router.navigate(['/start/register'])
   }
 }

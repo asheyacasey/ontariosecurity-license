@@ -18,8 +18,6 @@ export class PayComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
   isLoading$: Subject<boolean> = new BehaviorSubject<boolean>(false);
 
-  course: CourseBasic;
-
   billingDetailsForm = new FormGroup({
     firstName: new FormControl('', [
       Validators.required, Validators.minLength(2), Validators.maxLength(64)]
@@ -41,13 +39,12 @@ export class PayComponent implements OnInit, OnDestroy {
 
   constructor(
     private titleService: Title,
-    private router: Router,
-    private cartService: CartService,
     private billingDetailsService: BillingDetailsService,
     private paymentSessionService: PaymentSessionService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private cartService: CartService
   ) {
-    this.course = this.cartService.course as CourseBasic;
+
   }
 
   ngOnInit(): void {
@@ -90,11 +87,6 @@ export class PayComponent implements OnInit, OnDestroy {
         email: this.authService.user?.email
       });
     }
-  }
-
-  onRemoveCourse(course: CourseBasic): void {
-    this.cartService.clear();
-    this.router.navigate(['/start', 'course'])
   }
 
   onSubmit() {

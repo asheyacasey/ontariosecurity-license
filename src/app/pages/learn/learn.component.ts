@@ -3,18 +3,20 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {SelectableCourseProgressModule} from "./selectable-course-progress-module";
 import {LearnService} from "../../services/learn.service";
 import {
+  catchError,
   combineLatest,
   EMPTY,
   filter,
   merge,
-  Observable,
+  Observable, of,
   Subject,
   switchMap,
   takeUntil,
-  tap
+  tap, throwError
 } from "rxjs";
 import {CourseProgressModule} from "../../models/course";
 import {Title} from "@angular/platform-browser";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-learn',
@@ -53,7 +55,13 @@ export class LearnComponent implements OnInit, OnDestroy {
       tap((courseId) => {
         this.courseId = courseId;
       }),
-      switchMap((courseId) => this.learnService.getCourseModules(courseId))
+      switchMap((courseId) => this.learnService.getCourseModules(courseId)),
+      catchError((err: HttpErrorResponse) => {
+        if (err.status === 404) {
+          this.router.navigate(['/profile']);
+        }
+        return throwError(() => err);
+      })
     ).subscribe((modules) => {
 
       this.initializeModules(modules);
@@ -147,6 +155,6 @@ export class LearnComponent implements OnInit, OnDestroy {
   }
 
   goToFormalities(): void {
-    this.router.navigate(['/formalities', this.courseId, 'documents']);
+    this.router.navigate(['/formalities', this.courseId, 'cpr']);
   }
 }
