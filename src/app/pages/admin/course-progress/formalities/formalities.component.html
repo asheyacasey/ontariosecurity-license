@@ -24,11 +24,16 @@
 
     </p>
     <h4>
-      <ng-template [ngTemplateOutlet]="bad"></ng-template>
+      <ng-template [ngTemplateOutlet]="status?.consent ? ok: bad"></ng-template>
       Consent form
     </h4>
     <p>
-      User has not submitted the consent form
+      <ng-container *ngIf="status?.consent?.id; else noConsent">
+        User has submitted the consent form: <button class="btn btn-link p-0" (click)="onConsentDownload(status?.consent?.id)">download</button>
+      </ng-container>
+      <ng-template #noConsent>
+        User has not submitted the consent form
+      </ng-template>
     </p>
     <h4>
       <ng-template [ngTemplateOutlet]="bad"></ng-template>

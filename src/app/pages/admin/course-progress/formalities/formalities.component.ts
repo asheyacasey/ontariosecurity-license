@@ -47,4 +47,13 @@ export class FormalitiesComponent implements OnInit, OnDestroy {
     })
   }
 
+  onConsentDownload(userCourseConsentDataId: number | undefined): void {
+    if (userCourseConsentDataId === undefined) {
+      return;
+    }
+
+    this.adminFormalityService.downloadConsentFormPDF(userCourseConsentDataId).subscribe(response => {
+      blobDownload(response, 'consent');
+    })
+  }
 }

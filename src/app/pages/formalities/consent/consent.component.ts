@@ -145,7 +145,8 @@ export class ConsentComponent implements OnInit {
 
     this.isLoading$.next(true);
 
-    const signature = this.signature.toDataURL("image/jpeg");
+    // @ts-ignore
+    const signature = this.signature.toDataURL("image/png");
     const data = this.consentForm.value as ConsentUpload;
     data.signature = signature;
 

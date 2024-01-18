@@ -28,6 +28,17 @@ export class AdminFormalityService {
   }
 
   downloadCPRDocument(userCourseCprDocumentId: number): Observable<HttpResponse<Blob>> {
-    return this.http.get<Blob>(`${this.apiUrl}/admin/formalities/cpr/${userCourseCprDocumentId}/download`, {observe: 'response', responseType: 'blob' as 'json'});
+    return this.http.get<Blob>(`${this.apiUrl}/admin/formalities/cpr/${userCourseCprDocumentId}/download`, {
+      observe: 'response',
+      responseType: 'blob' as 'json'
+    });
+  }
+
+  downloadConsentFormPDF(userCourseConsentDataId: number): Observable<HttpResponse<Blob>> {
+    return this.http.get<Blob>(`${this.apiUrl}/admin/formalities/consent/${userCourseConsentDataId}/download`, {
+      observe: 'response',
+      responseType: 'blob' as 'json'
+    })
+
   }
 }

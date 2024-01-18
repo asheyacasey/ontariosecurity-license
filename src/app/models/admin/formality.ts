@@ -3,8 +3,12 @@ export interface AdminFormalityCPRStatus {
   expiresAt: string;
 }
 
+export interface AdminFormalityConsentStatus {
+  id: number;
+}
+
 export interface AdminFormalitiesStatus {
   cpr?: AdminFormalityCPRStatus;
-  // consent: boolean;
+  consent?: AdminFormalityConsentStatus;
   // tcn: boolean;
 }
