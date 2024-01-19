@@ -11,6 +11,7 @@ import {NavigationComponent} from './navigation/navigation.component';
 import {TitleComponent} from './title/title.component';
 import {QuizQuestionComponent} from './quiz/quiz-question/quiz-question.component';
 import { RedirectComponent } from './redirect/redirect.component';
+import { LanguageSelectComponent } from './language-select/language-select.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { RedirectComponent } from './redirect/redirect.component';
     NavigationComponent,
     TitleComponent,
     QuizQuestionComponent,
-    RedirectComponent
+    RedirectComponent,
+    LanguageSelectComponent
   ],
   imports: [
     CommonModule,

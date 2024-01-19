@@ -14,10 +14,13 @@
     <!-- main content -->
     <div class="course-learning-main col-12 col-xl-10 min-vh-100">
       <div class="row d-flex justify-content-between align-items-center">
-        <div class="col-12 col-xl-9">
+        <div class="col-12 col-xl-6 mb-3 mb-xl-0">
           <app-title></app-title>
         </div>
-        <div class="col-12 col-xl-3">
+        <div class="col-12 col-xl-3 mb-3 mb-xl-0">
+          <app-language-select *ngIf="showLanguageSelect"></app-language-select>
+        </div>
+        <div class="col-12 col-xl-3 mb-3 mb-xl-0">
           <app-timer></app-timer>
         </div>
       </div>

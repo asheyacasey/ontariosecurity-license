@@ -4,8 +4,10 @@ import {CourseProgressModule} from "../models/course";
 import {LinkedLecture} from "../models/lecture";
 import {LinkedQuiz, QuizAnswers, QuizProgressDetails, QuizResult} from "../models/quiz";
 import {environment} from "../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Title} from "@angular/platform-browser";
+import {Language} from "../models/language";
+import {LearnLanguageService} from "./learn-language.service";
 
 @Injectable({
   providedIn: 'root'
@@ -59,7 +61,11 @@ export class LearnService {
   // current quiz ID
   quizId?: number;
 
-  constructor(private titleService: Title, private http: HttpClient) {
+  constructor(
+    private titleService: Title,
+    private http: HttpClient,
+    private learnLanguageService: LearnLanguageService
+  ) {
   }
 
   setCourseId(courseId: number): void {
@@ -133,7 +139,12 @@ export class LearnService {
   }
 
   getLecture(lectureId: number): Observable<LinkedLecture> {
-    return this.http.get<LinkedLecture>(`${this.apiUrl}/course/${this.courseId}/lecture/${lectureId}`).pipe(
+    const params = new HttpParams()
+      .set('language', this.learnLanguageService.getLanguage(this.courseId as number).code);
+
+    return this.http.get<LinkedLecture>(
+      `${this.apiUrl}/course/${this.courseId}/lecture/${lectureId}`, {params}
+    ).pipe(
       tap(() => this.setLectureIdLoaded(lectureId))
     );
   }
@@ -143,10 +154,15 @@ export class LearnService {
   }
 
   getQuizQuestions(quizId: number): Observable<QuizProgressDetails> {
-    return this.http.post<QuizProgressDetails>(`${this.apiUrl}/course/${this.courseId}/quiz/${quizId}/start`, {});
+    return this.http.post<QuizProgressDetails>(
+      `${this.apiUrl}/course/${this.courseId}/quiz/${quizId}/start`, {});
   }
 
   sendQuizAnswers(quizId: number, quizAnswers: QuizAnswers): Observable<QuizResult> {
     return this.http.post<QuizResult>(`${this.apiUrl}/course/${this.courseId}/quiz/${quizId}/check`, quizAnswers);
+  }
+
+  getCourseLanguages(courseId: number): Observable<Language[]> {
+    return this.http.get<Language[]>(`${this.apiUrl}/course/${courseId}/languages`);
   }
 }

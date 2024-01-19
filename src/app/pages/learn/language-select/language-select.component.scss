@@ -1,0 +1,48 @@
+.language-select-container {
+  border: 1px solid #31374D;
+  border-radius: 4px;
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+
+  color: #31374D;
+  padding: 17px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.language-select-options {
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  background: white;
+
+  border: 1px solid #31374D;
+  border-radius: 4px;
+
+  margin-top: -1px;
+}
+
+.language-select-option {
+  display: block;
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+
+  padding: 17px;
+  cursor: pointer;
+  user-select: none;
+
+  color: #31374D;
+
+  &:hover {
+    background-color: #E8EAF6;
+  }
+
+}

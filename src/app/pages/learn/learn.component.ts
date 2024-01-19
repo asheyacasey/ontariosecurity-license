@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {SelectableCourseProgressModule} from "./selectable-course-progress-module";
 import {LearnService} from "../../services/learn.service";
 import {
@@ -25,10 +25,10 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class LearnComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
-
   courseCompleted$: Observable<boolean>;
-
   openMenu$: Subject<boolean> = new Subject<boolean>();
+
+  showLanguageSelect: boolean = true;
 
   courseId?: number;
   modules: SelectableCourseProgressModule[] = [];
@@ -43,6 +43,16 @@ export class LearnComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+
+    this.router.events.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // show the language selection only on the lecture pages
+        this.showLanguageSelect = event.urlAfterRedirects.indexOf('lecture') > -1;
+      }
+    });
+
     this.activatedRoute.params.pipe(
       takeUntil(this.destroy$)
     ).subscribe((params) => {
