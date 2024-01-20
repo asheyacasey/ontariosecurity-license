@@ -7,7 +7,7 @@ import {environment} from "../../environments/environment";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Title} from "@angular/platform-browser";
 import {Language} from "../models/language";
-import {LearnLanguageService} from "./learn-language.service";
+import {LanguageService} from "./language.service";
 
 @Injectable({
   providedIn: 'root'
@@ -64,7 +64,7 @@ export class LearnService {
   constructor(
     private titleService: Title,
     private http: HttpClient,
-    private learnLanguageService: LearnLanguageService
+    private languageService: LanguageService
   ) {
   }
 
@@ -140,7 +140,7 @@ export class LearnService {
 
   getLecture(lectureId: number): Observable<LinkedLecture> {
     const params = new HttpParams()
-      .set('language', this.learnLanguageService.getLanguage(this.courseId as number).code);
+      .set('language', this.languageService.getLanguage().code);
 
     return this.http.get<LinkedLecture>(
       `${this.apiUrl}/course/${this.courseId}/lecture/${lectureId}`, {params}
@@ -160,9 +160,5 @@ export class LearnService {
 
   sendQuizAnswers(quizId: number, quizAnswers: QuizAnswers): Observable<QuizResult> {
     return this.http.post<QuizResult>(`${this.apiUrl}/course/${this.courseId}/quiz/${quizId}/check`, quizAnswers);
-  }
-
-  getCourseLanguages(courseId: number): Observable<Language[]> {
-    return this.http.get<Language[]>(`${this.apiUrl}/course/${courseId}/languages`);
   }
 }

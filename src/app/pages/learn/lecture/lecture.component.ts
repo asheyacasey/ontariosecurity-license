@@ -5,7 +5,7 @@ import {LinkedLecture} from "../../../models/lecture";
 import {catchError, Subject, takeUntil, throwError} from "rxjs";
 import {CourseNavigationStateService} from "../../../services/course-navigation-state.service";
 import {HttpErrorResponse} from "@angular/common/http";
-import {LearnLanguageService} from "../../../services/learn-language.service";
+import {LanguageService} from "../../../services/language.service";
 
 @Component({
   selector: 'app-lecture',
@@ -23,7 +23,7 @@ export class LectureComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private courseNavigationStateService: CourseNavigationStateService,
-    private learnLanguageService: LearnLanguageService
+    private languageService: LanguageService
   ) {
   }
 
@@ -34,7 +34,7 @@ export class LectureComponent implements OnInit, OnDestroy {
       this.learnService.setLectureId(+params['lectureId']);
     });
 
-    this.learnLanguageService.language$.pipe(
+    this.languageService.language$.pipe(
       takeUntil(this.destroy$)
     ).subscribe(language => {
       this.initializeLecture();

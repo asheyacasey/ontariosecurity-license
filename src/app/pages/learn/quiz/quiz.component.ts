@@ -6,7 +6,7 @@ import {catchError, filter, Subject, takeUntil, tap, throwError} from "rxjs";
 import {ViewportScroller} from "@angular/common";
 import {CourseNavigationStateService} from "../../../services/course-navigation-state.service";
 import {HttpErrorResponse} from "@angular/common/http";
-import {LearnLanguageService} from "../../../services/learn-language.service";
+import {LanguageService} from "../../../services/language.service";
 
 @Component({
   selector: 'app-quiz',

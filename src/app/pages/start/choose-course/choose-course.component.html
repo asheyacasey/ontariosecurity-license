@@ -15,13 +15,17 @@
   </div>
   <ng-container *ngIf="selectedCourse !== null">
     <div class="course-details-header row align-items-center">
-      <div class="col-12 col-xl-6">
+      <div class="col-12 col-xl-4">
         <div class="d-flex flex-column justify-content-center">
           <div class="course-content">{{ selectedCourse.modules.length }} modules</div>
           <div class="course-title">{{ selectedCourse.name }}</div>
         </div>
       </div>
-      <div class="col-12 col-xl-6 py-3 py-xl-0">
+      <div class="col-12 col-xl-3 py-3 py-xl-0">
+        <app-language-select
+        [languages]="selectedCourseLanguages" [currentLanguage]="language" (languageChanged)="onLanguageChanged($event)"></app-language-select>
+      </div>
+      <div class="col-12 col-xl-5 py-3 py-xl-0">
         <div class="d-flex justify-content-xl-end justify-content-between">
           <div
             class="course-price-container d-flex flex-column justify-content-around justify-content-xl-center align-items-start align-items-xl-end">
@@ -35,7 +39,7 @@
     <hr class="spacer">
     <div class="course-details-content row">
       <div class="col-12 col-xl-6">
-        <div class="course-details-description" [innerHTML]="selectedCourse.description">
+        <div class="course-details-description" dir="auto" [innerHTML]="selectedCourse.description">
         </div>
       </div>
       <div class="col-12 col-xl-6">
@@ -52,7 +56,7 @@
                   {{ module.moduleNumber | number:'2.0' }}
                 </div>
               </div>
-              <div class="module-details-container d-flex flex-column">
+              <div dir="auto" class="module-details-container d-flex flex-column">
                 <div class="module-title">{{ module.name }}</div>
                 <div class="module-description">
                   {{ module.description }}

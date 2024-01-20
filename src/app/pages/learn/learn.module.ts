@@ -11,7 +11,7 @@ import {NavigationComponent} from './navigation/navigation.component';
 import {TitleComponent} from './title/title.component';
 import {QuizQuestionComponent} from './quiz/quiz-question/quiz-question.component';
 import { RedirectComponent } from './redirect/redirect.component';
-import { LanguageSelectComponent } from './language-select/language-select.component';
+import { LanguageSelectComponent } from '../../partials/language-select/language-select.component';
 
 
 @NgModule({
@@ -25,6 +25,9 @@ import { LanguageSelectComponent } from './language-select/language-select.compo
     TitleComponent,
     QuizQuestionComponent,
     RedirectComponent,
+    LanguageSelectComponent
+  ],
+  exports: [
     LanguageSelectComponent
   ],
   imports: [
