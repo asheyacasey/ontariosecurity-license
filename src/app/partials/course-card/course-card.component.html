@@ -1,0 +1,8 @@
+<div (click)="clicked()" class="course-card d-flex p-0" [class.selected]="course.selected">
+  <div class="course-image" [style.background-image]="'url(' + course.imageSmall + ')'">
+  </div>
+  <div class="course-description d-flex flex-column justify-content-center p-2">
+    <div class="course-title">{{ course.name }}</div>
+    <div class="course-content">Available in {{ formatCourseLanguages(course) }}</div>
+  </div>
+</div>

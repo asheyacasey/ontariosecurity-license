@@ -3,16 +3,20 @@ import {CommonModule} from '@angular/common';
 import {LandingComponent} from './landing.component';
 import {PartialsModule} from "../../partials/partials.module";
 import {LandingRoutingModule} from "./landing-routing.module";
+import { CoursesListComponent } from './courses-list/courses-list.component';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
   declarations: [
-    LandingComponent
+    LandingComponent,
+    CoursesListComponent,
+    MainComponent
   ],
   imports: [
     CommonModule,
     PartialsModule,
-    LandingRoutingModule
+    LandingRoutingModule,
   ]
 })
 export class LandingModule {

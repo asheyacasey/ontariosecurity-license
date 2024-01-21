@@ -16,13 +16,9 @@
   .course-image {
     margin-right: 20px;
     min-width: 146px;
+    min-height: 126px;
 
-    & > img {
-      width: 146px;
-      height: 126px;
-
-    }
-
+    background-size: cover;
   }
 
   .course-description {

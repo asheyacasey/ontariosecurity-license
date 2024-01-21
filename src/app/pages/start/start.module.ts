@@ -13,7 +13,6 @@ import {CompletedComponent} from './completed/completed.component';
 import {DiscountComponent} from './pay/discount/discount.component';
 import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
 import {OrderSummaryComponent} from './pay/order-summary/order-summary.component';
-import {LearnModule} from "../learn/learn.module";
 
 
 @NgModule({
@@ -25,7 +24,7 @@ import {LearnModule} from "../learn/learn.module";
     StepsComponent,
     CompletedComponent,
     DiscountComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
   ],
   imports: [
     CommonModule,
@@ -34,7 +33,6 @@ import {LearnModule} from "../learn/learn.module";
     PartialsModule,
     ReactiveFormsModule,
     NgbTooltipModule,
-    LearnModule
   ]
 })
 export class StartModule {

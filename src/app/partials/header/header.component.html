@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <div class="d-flex">
+    <div class="d-flex align-items-center">
       <ng-container *ngIf="showHamburger">
         <button (click)="onHamburgerClicked()" class="navbar-toggler d-block d-xl-none" type="button">
           <span class="navbar-toggler-icon"></span>
@@ -74,10 +74,16 @@
             fill="#354FA9"/>
         </svg>
       </a>
+      <ul class="navbar-nav d-none d-xl-block" *ngIf="user === null">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/courses">Courses</a>
+        </li>
+      </ul>
+
     </div>
     <div class="navbar-text">
       <button *ngIf="user?.admin" (click)="goToAdmin()" class="btn btn-secondary-action me-3">Admin</button>
-      <button *ngIf="user === null" (click)="goToLogin()" class="btn btn-secondary-action me-3">Log in</button>
+      <button *ngIf="user === null" (click)="goToLogin()" class="btn btn-secondary-action me-3 d-none d-md-inline-flex">Log in</button>
       <button *ngIf="user === null" (click)="goToRegister()" class="btn btn-primary-action">Get Started</button>
       <button *ngIf="user !== null" (click)="signOut()" class="btn btn-secondary-action">Log out</button>
     </div>

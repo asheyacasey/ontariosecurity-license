@@ -2,15 +2,7 @@
   <h1 class="section-title">Choose a Course</h1>
   <div class="course-selection row g-5">
     <div *ngFor="let course of courses" class="col-12 col-xl-6">
-      <div (click)="onCourseSelected(course)" class="course-card d-flex p-0" [class.selected]="course.selected">
-        <div class="course-image">
-          <img alt="{{ course.name }}" src="{{ course.imageSmall}} "/>
-        </div>
-        <div class="course-description d-flex flex-column justify-content-center p-2">
-          <div class="course-title">{{ course.name }}</div>
-          <div class="course-content">{{ course.modules.length }} modules{{ course.cprTrainingIncluded ? ' + CPR' : ''}}</div>
-        </div>
-      </div>
+      <app-course-card [course]="course" (courseClicked)="onCourseSelected($event)"></app-course-card>
     </div>
   </div>
   <ng-container *ngIf="selectedCourse !== null">
@@ -32,7 +24,7 @@
             <div class="course-price">${{ selectedCourse.price}}</div>
             <div class="course-price-description">Course price</div>
           </div>
-          <a (click)="onPurchaseCourse(selectedCourse)" class="btn btn-purchase">Purchase Course</a>
+          <a (click)="onCourseAction(selectedCourse)" class="btn btn-purchase">Purchase Course</a>
         </div>
       </div>
     </div>
@@ -46,25 +38,7 @@
         <div class="course-details-image py-3 py-xl-0">
           <img alt="Course image" class="img-fluid" src="{{ selectedCourse.imageBig }}">
         </div>
-
-        <h2 class="modules-listing-header">Modules</h2>
-        <div class="modules-listing">
-          <ng-container *ngFor="let module of selectedCourse.modules">
-            <div class="modules-listing-item d-flex align-items-center">
-              <div class="module-number d-flex justify-content-center align-items-center flex-shrink-0">
-                <div class="module-number-text">
-                  {{ module.moduleNumber | number:'2.0' }}
-                </div>
-              </div>
-              <div dir="auto" class="module-details-container d-flex flex-column">
-                <div class="module-title">{{ module.name }}</div>
-                <div class="module-description">
-                  {{ module.description }}
-                </div>
-              </div>
-            </div>
-          </ng-container>
-        </div>
+        <app-modules-listing [course]="selectedCourse"></app-modules-listing>
       </div>
     </div>
   </ng-container>

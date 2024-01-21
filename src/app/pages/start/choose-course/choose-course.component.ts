@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CourseOverviewService} from "../../../services/course-overview.service";
-import {SelectableCourseOverview} from "./selectable-course-overview";
+import {SelectableCourseOverview} from "../../../models/selectable-course-overview";
 import {CourseBasic} from "../../../models/course";
 import {CartService} from "../../../services/cart.service";
 import {Router} from "@angular/router";
@@ -25,11 +25,11 @@ export class ChooseCourseComponent implements OnInit, OnDestroy {
   language: Language | null = null;
 
   constructor(
-    private titleService: Title,
-    private router: Router,
-    private courseOverviewService: CourseOverviewService,
-    private cartService: CartService,
-    private languageService: LanguageService
+    protected titleService: Title,
+    protected router: Router,
+    protected courseOverviewService: CourseOverviewService,
+    protected cartService: CartService,
+    protected languageService: LanguageService
   ) {
   }
 
@@ -81,7 +81,7 @@ export class ChooseCourseComponent implements OnInit, OnDestroy {
     this.languageService.setLanguage(language);
   }
 
-  onPurchaseCourse(course: SelectableCourseOverview): void {
+  onCourseAction(course: SelectableCourseOverview): void {
     this.cartService.addCourse(course as CourseBasic);
     this.router.navigate(['/start', 'pay']);
   }

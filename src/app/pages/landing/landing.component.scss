@@ -1,111 +1,51 @@
-.landing-page-container {
-  background-color: #E5E5E5;
-  min-height: calc(100vh - 89px);
 
-  overflow: hidden;
-}
+h2.menu-list-header {
+  margin-top: 40px;
+  margin-bottom: 25px;
 
-.hero-container {
-  max-width: 660px;
-  width: 100%;
-  height: 100%;
-}
-
-.hero {
   font-family: 'Manrope', sans-serif;
-}
-
-.headline {
-  display: inline-block;
-  background-color: #FFF;
-  color: #354FA9;
-  font-family: 'Roboto', sans-serif;
-  padding: 15px 10px;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: 0 5px 12px #31374D;
-  margin-bottom: 22px;
-}
-
-.hero h1 {
-  font-size: 72px;
-  color: #31374D;
-}
-
-.red {
-  color: #D03D1C;
-}
-
-.btn-action {
-  background-color: #354FA9;
-  color: #F3F4FA;
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
-  padding: 24px 76px;
-}
-
-.btn-action:hover {
-  background-color: rgba(53, 79, 169, 0.9);
-  color: #F3F4FA !important;
-}
-
-.testimonial-wrapper {
-  height: 100%;
-}
-
-.testimonial-container {
-  width: 100%;
-  min-height: calc(100vh - 89px);
-  background-image: url(/assets/testimonial-2.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: left;
-}
-
-.testimonial-panel {
-  border-radius: 0 10px 10px 0;
-  width: 410px;
-  height: 205px;
-  position: relative;
-  top: calc(65vh);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 30px;
 
   color: #31374D;
 }
 
-.testimonial-bg {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background: rgba(243, 244, 250, 0.4);
-  backdrop-filter: blur(30px);
-  border-radius: 0 10px 10px 0;
-}
+.menu-selector {
 
-.testimonial-header {
-  font-family: 'Manrope', sans-serif;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 800;
+  .list-group-item {
+    padding: 12px 17px;
 
-  padding: 34px 25px;
-}
+    min-height: 48px;
+    background: #FFFFFF;
 
-.testimonial-footer {
-  padding-left: 25px;
-  padding-right: 25px;
-}
+    border: 0;
+    border-radius: 4px;
 
-.testimonial-footer-signature {
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
+    margin-top: 8px;
+    cursor: pointer;
 
-}
 
-.testimonial-footer-location {
-  font-family: 'Roboto', sans-serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 16px;
+    .menu-header {
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+
+      color: #31374D;
+    }
+
+    &.active {
+      background: #354FA9;
+      margin-top: 8px;
+
+
+      .menu-header {
+        color: #FFFFFF;
+      }
+    }
+
+  }
 }

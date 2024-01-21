@@ -10,8 +10,7 @@ import {TimerComponent} from './timer/timer.component';
 import {NavigationComponent} from './navigation/navigation.component';
 import {TitleComponent} from './title/title.component';
 import {QuizQuestionComponent} from './quiz/quiz-question/quiz-question.component';
-import { RedirectComponent } from './redirect/redirect.component';
-import { LanguageSelectComponent } from '../../partials/language-select/language-select.component';
+import {RedirectComponent} from './redirect/redirect.component';
 
 
 @NgModule({
@@ -25,10 +24,9 @@ import { LanguageSelectComponent } from '../../partials/language-select/language
     TitleComponent,
     QuizQuestionComponent,
     RedirectComponent,
-    LanguageSelectComponent
   ],
   exports: [
-    LanguageSelectComponent
+    ModulesListComponent
   ],
   imports: [
     CommonModule,
