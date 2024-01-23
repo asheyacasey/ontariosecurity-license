@@ -6,8 +6,14 @@ export interface AdminUser {
   registeredAt: string;
   admin: boolean;
   paymentsCount: number;
+  courseAccessesCount: number;
 }
 
 export interface PagedAdminUsers extends Pagination {
   items: AdminUser[];
+}
+
+export interface AdminUserBulkCreate {
+  emails: string[];
+  courseId: number;
 }

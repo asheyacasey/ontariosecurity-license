@@ -1,5 +1,18 @@
 .course-card {
   cursor: pointer;
+
+  .price-badge {
+    background-color: #354FA9;
+    color: white;
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 18px;
+
+    transform: translate(15%, -50%);
+  }
 }
 
 .course-details-header {

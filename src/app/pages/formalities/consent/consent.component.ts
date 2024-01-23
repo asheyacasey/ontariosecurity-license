@@ -61,9 +61,14 @@ export class ConsentComponent implements OnInit {
       this.formReset();
 
       if (this.courseId !== null) {
-        this.consentFormService.getPrefill(this.courseId).subscribe(values => {
-          this.consentForm.patchValue(values);
-          this.consentForm.get('address')?.patchValue(values);
+        this.consentFormService.getPrefill(this.courseId).subscribe({
+          next: values => {
+            this.consentForm.patchValue(values);
+            this.consentForm.get('address')?.patchValue(values);
+          },
+          error: () => {
+            // possible when e.g. the users were bulk created
+          }
         });
       }
     });
