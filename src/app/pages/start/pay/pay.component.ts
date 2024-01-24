@@ -23,7 +23,7 @@ export class PayComponent implements OnInit, OnDestroy {
       Validators.required, Validators.minLength(2), Validators.maxLength(64)]
     ),
     lastName: new FormControl('', [
-      Validators.required, Validators.minLength(2), Validators.maxLength(64)
+      Validators.maxLength(64)
     ]),
     email: new FormControl('', [
       Validators.required, Validators.email, Validators.maxLength(64)
