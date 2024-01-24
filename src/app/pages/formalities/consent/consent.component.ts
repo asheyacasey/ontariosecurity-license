@@ -88,6 +88,22 @@ export class ConsentComponent implements OnInit {
         this.addMailingAddress();
       }
     });
+
+    this.consentForm.get('noLastName')?.valueChanges.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(value => {
+      if (value) {
+        this.consentForm.get('lastName')?.disable();
+        this.consentForm.patchValue({
+          lastName: 'No Last Name'
+        })
+      } else {
+        this.consentForm.get('lastName')?.enable();
+        this.consentForm.patchValue({
+          lastName: ''
+        })
+      }
+    });
   }
 
   formGroupAddressInit(): FormGroup {
@@ -95,7 +111,7 @@ export class ConsentComponent implements OnInit {
       unitNo: new FormControl(''),
       streetNo: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(16)]),
       streetName: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(64)]),
-      poBox: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(16)]),
+      poBox: new FormControl('', [Validators.maxLength(16)]),
       city: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(32)]),
       province: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(32)]),
       postalCode: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(16)])
@@ -104,6 +120,7 @@ export class ConsentComponent implements OnInit {
 
   formInit(): FormGroup {
     return new FormGroup({
+      noLastName: new FormControl(false),
       lastName: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(64)]),
       firstName: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(64)]),
       middleNames: new FormControl('', [Validators.maxLength(128)]),
@@ -147,12 +164,11 @@ export class ConsentComponent implements OnInit {
     }
 
     this.consentForm.markAllAsTouched();
-
     this.isLoading$.next(true);
 
     // @ts-ignore
     const signature = this.signature.toDataURL("image/png");
-    const data = this.consentForm.value as ConsentUpload;
+    const data = this.consentForm.getRawValue() as ConsentUpload;
     data.signature = signature;
 
     this.consentFormService.save(this.courseId, data)

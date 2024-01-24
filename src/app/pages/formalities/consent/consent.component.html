@@ -12,10 +12,21 @@
 
     <ng-container *ngIf="!formalitiesStatus?.consent?.stepCompleted; else completed;">
       <form class="cpr-form mb-3" [formGroup]="consentForm" (ngSubmit)="onSubmit()">
-        <div class="row mb-5">
+        <div class="row mb-3">
           <div class="col-12">
             <strong>Important:</strong> You must provide your full legal name, as it appears on the identification
             you are carrying with you to the test venue on the test day.
+          </div>
+        </div>
+        <div class="row mb-5">
+          <div class="col-12">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" formControlName="noLastName"
+                     id="no-last-name">
+              <label class="form-check-label" for="no-last-name">
+                If you <strong>DO NOT HAVE A LAST NAME</strong> that appears on your passport or ID (the same one you will bring with you to the test venue), then please check this box
+              </label>
+            </div>
           </div>
         </div>
         <div class="row mb-3">
@@ -25,8 +36,8 @@
         </div>
         <div class="row mb-3">
           <div class="col-12 col-xl-4 mb-3 mb-xl-0">
-            <label for="last-name" class="form-label">Last name *</label>
-            <input type="text" class="form-control" id="last-name" formControlName="lastName"
+            <label for="last-name" class="form-label">Last name</label>
+            <input type="text" class="form-control" id="last-name" formControlName="lastName" [disabled]="consentForm.get('noLastName')?.value"
                    [ngClass]="{'is-invalid': consentForm.get('lastName')?.touched && consentForm.get('lastName')?.errors}">
             <div
               [ngClass]="{'invisible': !consentForm.get('lastName')?.errors, 'invalid-feedback': consentForm.get('lastName')?.errors}">
@@ -145,9 +156,8 @@
                      [ngClass]="{'is-invalid': consentForm.get('address.streetName')?.touched && consentForm.get('address.streetName')?.errors}">
             </div>
             <div class="col-12 col-xl-2">
-              <label for="po-box" class="form-label">PO Box *</label>
-              <input type="text" class="form-control" id="po-box" formControlName="poBox"
-                     [ngClass]="{'is-invalid': consentForm.get('address.poBox')?.touched && consentForm.get('address.poBox')?.errors}">
+              <label for="po-box" class="form-label">PO Box</label>
+              <input type="text" class="form-control" id="po-box" formControlName="poBox">
             </div>
           </div>
           <div class="row mb-5">
@@ -195,7 +205,7 @@
               <input type="text" class="form-control" id="mailing-street-name" formControlName="streetName">
             </div>
             <div class="col-12 col-xl-2">
-              <label for="mailing-po-box" class="form-label">PO Box *</label>
+              <label for="mailing-po-box" class="form-label">PO Box</label>
               <input type="text" class="form-control" id="mailing-po-box" formControlName="poBox">
             </div>
           </div>

@@ -37,7 +37,9 @@
   line-height: 32px;
 
   color: #31374D;
-  background-color: #FFFFFF;
+  &:not([disabled]) {
+    background-color: #FFFFFF;
+  }
 
   border: 1px solid #DBDCE7;
   border-radius: 8px;
