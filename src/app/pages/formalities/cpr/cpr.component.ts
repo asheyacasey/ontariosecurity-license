@@ -1,5 +1,5 @@
 import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
 import {TimeConverterService} from "../../../services/admin/time-converter.service";
 import {BehaviorSubject, distinctUntilChanged, finalize, Subject, takeUntil} from "rxjs";
@@ -7,6 +7,14 @@ import {CPRDocumentUpload, FormalitiesStatus} from "../../../models/formality";
 import {FormalityService} from "../../../services/formality.service";
 import {DefaultNgbDateAdapter} from "../../../formatters/ngb-date-adapter";
 import {DefaultDateParserFormatter} from "../../../formatters/ngb-date-parser-formatter";
+
+
+export function validCPRProviderValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const other = control.value;
+    return other === 'OTHER' ? {invalidCPRProvider: {value: control.value}} : null;
+  }
+}
 
 @Component({
   selector: 'app-cpr',
@@ -23,7 +31,8 @@ export class CprComponent implements OnInit, OnDestroy {
 
   cprForm = new FormGroup({
     file: new FormControl(null, Validators.required),
-    expiresAt: new FormControl('', Validators.required)
+    expiresAt: new FormControl('', Validators.required),
+    cprProvider: new FormControl('', [Validators.required, validCPRProviderValidator()])
   })
 
   courseId: number | null = null;
@@ -81,7 +90,8 @@ export class CprComponent implements OnInit, OnDestroy {
     const raw = this.cprForm.getRawValue();
     const data: CPRDocumentUpload = {
       file: this.file as File,
-      expiresAt: raw.expiresAt as string
+      expiresAt: raw.expiresAt as string,
+      cprProvider: raw.cprProvider as string
     };
 
     this.formalityService.uploadCPR(this.courseId, data).pipe(

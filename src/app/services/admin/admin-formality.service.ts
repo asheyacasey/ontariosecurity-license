@@ -10,7 +10,8 @@ import {AdminDiscountCode} from "../../models/admin/discount-code";
 const STATUS: AdminFormalitiesStatus = {
   cpr: {
     id: 12,
-    expiresAt: '2021'
+    expiresAt: '2021',
+    cprProvider: 'Random'
   }
 }
 

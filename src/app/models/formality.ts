@@ -30,6 +30,7 @@ export interface FormalitiesStatus {
 export interface CPRDocumentUpload {
   file: File,
   expiresAt: string;
+  cprProvider: string;
 }
 
 export interface ConsentPrefillValues {

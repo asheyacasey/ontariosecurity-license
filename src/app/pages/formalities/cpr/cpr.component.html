@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="row mb-5">
-          <div class="col-12 col-xl-4">
+          <div class="col-12 col-xl-4 pb-3 pb-xl-0">
             <label for="expires-at" class="form-label">Expiry date *</label>
             <div class="input-group">
               <input
@@ -52,6 +52,63 @@
                     fill="#ACADBF"/>
                 </svg>
               </button>
+            </div>
+          </div>
+          <div class="col-12 col-xl-4">
+            <label for="cpr-provider" class="form-label">CPR Provider *</label>
+            <select id="cpr-provider" class="form-select form-select-lg" formControlName="cprProvider">
+              <option value="Action First Aid Inc.">Action First Aid Inc.</option>
+              <option value="ADET - Aquatic Development Emergency Training">ADET - Aquatic Development Emergency Training</option>
+              <option value="Archer First Aid/ CPR Training">Archer First Aid/ CPR Training</option>
+              <option value="Assured Response CPR & First Aid Training">Assured Response CPR & First Aid Training</option>
+              <option value="Canada Guard Security Inc.">Canada Guard Security Inc.</option>
+              <option value="Canadian Business Health Management Inc. (CBHM)">Canadian Business Health Management Inc. (CBHM)</option>
+              <option value="Canadian Group Emergency Training Inc.">Canadian Group Emergency Training Inc.</option>
+              <option value="The Canadian Red Cross Society">The Canadian Red Cross Society</option>
+              <option value="Canadian Ski Patrol System">Canadian Ski Patrol System</option>
+              <option value="Casualty Care First Aid Company">Casualty Care First Aid Company</option>
+              <option value="Central East Prehospital Care Program, Lakeridge Health">Central East Prehospital Care Program, Lakeridge Health</option>
+              <option value="Certified Emergency Response Training (C.E.R.T.)">Certified Emergency Response Training (C.E.R.T.)</option>
+              <option value="Code Eight division Emergmart Response Systems, Inc.">Code Eight division Emergmart Response Systems, Inc.</option>
+              <option value="Emergency Care Instruction Services (E.C.I.S.)">Emergency Care Instruction Services (E.C.I.S.)</option>
+              <option value="Emergency Medical Training Canada">Emergency Medical Training Canada</option>
+              <option value="EMP Canada">EMP Canada</option>
+              <option value="F.A.S.T. Rescue Inc.">F.A.S.T. Rescue Inc.</option>
+              <option value="First Link First Aid & CPR">First Link First Aid & CPR</option>
+              <option value="Heart and Stroke Foundation of Canada">Heart and Stroke Foundation of Canada</option>
+              <option value="HeartSafe Emergency Medical Solutions (EMS)">HeartSafe Emergency Medical Solutions (EMS)</option>
+              <option value="Heart Start Training Services">Heart Start Training Services</option>
+              <option value="HeartZap Services Inc.">HeartZap Services Inc.</option>
+              <option value="Heaven Can Wait Emergency First Aid Inc.">Heaven Can Wait Emergency First Aid Inc.</option>
+              <option value="Holmes Medical Training">Holmes Medical Training</option>
+              <option value="Island Aid">Island Aid</option>
+              <option value="Life’s Emergency Training">Life’s Emergency Training</option>
+              <option value="Lifesaver 101 First Aid & CPR Training Inc.">Lifesaver 101 First Aid & CPR Training Inc.</option>
+              <option value="Lifesaving Society">Lifesaving Society</option>
+              <option value="Lifetech Canada">Lifetech Canada</option>
+              <option value="Link to Life Seminars Inc.">Link to Life Seminars Inc.</option>
+              <option value="Orillia First Aid">Orillia First Aid</option>
+              <option value="Ottawa Paramedic Service">Ottawa Paramedic Service</option>
+              <option value="Ounce of Prevention Safety Services">Ounce of Prevention Safety Services</option>
+              <option value="Perri-Med First Aid/CPR Training">Perri-Med First Aid/CPR Training</option>
+              <option value="Premergency Inc.">Premergency Inc.</option>
+              <option value="Pulse Start Inc.">Pulse Start Inc.</option>
+              <option value="Rescue 7 Emergency Training Services Inc.">Rescue 7 Emergency Training Services Inc.</option>
+              <option value="SAJE Vital Signs">SAJE Vital Signs</option>
+              <option value="Second Chance CPR">Second Chance CPR</option>
+              <option value="SP Safety Solutions Inc.">SP Safety Solutions Inc.</option>
+              <option value="St. John Ambulance">St. John Ambulance</option>
+              <option value="STS Group (STS Training Services)">STS Group (STS Training Services)</option>
+              <option value="Superior Emergency Services (Superior EMS)">Superior Emergency Services (Superior EMS)</option>
+              <option value="Toronto Paramedic Services, Safe City Program">Toronto Paramedic Services, Safe City Program</option>
+              <option value="Vital Link Training Services Inc.">Vital Link Training Services Inc.</option>
+              <option value="Vital Response">Vital Response</option>
+              <option value="Workplace Law Consulting Inc.">Workplace Law Consulting Inc.</option>
+              <option value="Workplace Medical Corp. First Aid Training">Workplace Medical Corp. First Aid Training</option>
+              <option value="OTHER">OTHER</option>
+            </select>
+            <div [ngClass]="{'invisible': !cprForm.get('cprProvider')?.errors?.['invalidCPRProvider'], 'invalid-feedback': cprForm.get('cprProvider')?.errors?.['invalidCPRProvider']}">
+              Only WSIB approved providers can provide training and a certificate that the Ministry will accept. Please book First Aid and CPR training, with a WSIB approved entity, by emailing us at <a href="mailto:tcn@ontariosecuritylicense.ca">tcn@ontariosecuritylicense.ca</a>
             </div>
           </div>
         </div>

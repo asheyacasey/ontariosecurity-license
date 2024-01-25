@@ -18,6 +18,8 @@
         <button class="btn btn-link p-0" (click)="onCPRDownload(status?.cpr?.id)">download</button>
         <br>
         Expiry date: {{ status?.cpr?.expiresAt | date:'Y-MM-dd' }}
+        <br>
+        CPR provider: {{ status?.cpr?.cprProvider }}
       </ng-container>
       <ng-template #noCPR>
         User has not submitted the CPR

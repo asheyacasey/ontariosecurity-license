@@ -1,6 +1,7 @@
 export interface AdminFormalityCPRStatus {
   id: number;
   expiresAt: string;
+  cprProvider: string;
 }
 
 export interface AdminFormalityConsentStatus {
