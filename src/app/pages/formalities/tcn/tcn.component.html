@@ -1,1 +1,57 @@
-<p>tcn works!</p>
+<ng-container *ngIf="formalitiesStatus === null; else content">
+  <div class="d-flex align-items-center justify-content-center mt-5">
+    <div class="spinner-border spinner-border text-secondary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #content>
+  <div class="content">
+    <h2 class="mb-3">TCN</h2>
+    <ng-container *ngIf="!formalitiesStatus?.cpr?.stepCompleted">
+      <div class="alert alert-info d-flex align-items-center" role="alert">
+        <div>
+          Please <a routerLink="../cpr">upload the CPR certificate</a> before proceeding.
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!formalitiesStatus?.consent?.stepCompleted">
+      <div class="alert alert-info d-flex align-items-center" role="alert">
+        <div>
+          Please <a routerLink="../consent">fill the consent form</a> before proceeding.
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="formalitiesStatus?.cpr?.stepCompleted && formalitiesStatus?.consent?.stepCompleted">
+      <ng-container *ngIf="formalitiesStatus?.tcn?.stepCompleted; else waiting">
+        <div class="row mb-4 mt-4">
+          <div class="col-12">
+            <span class="tcn-number">{{ formalitiesStatus?.tcn?.tcn }}</span>
+            <div class="d-flex">
+              <span class="tcn-number-action" ngxClipboard [cbContent]="getTCNNumber()">Copy</span>
+              <span class="tcn-number-action" (click)="printTCN()">Print</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p><strong>Next steps:</strong></p>
+            <ol>
+              <li>Go to <a href="https://ontariosecuritytesting.com/book-a-test.html" target="_blank">https://ontariosecuritytesting.com/book-a-test.html</a>
+              </li>
+              <li>Book a test using your TCN number</li>
+              <li>Remember to review the course content before the test</li>
+            </ol>
+            <p><strong>Good luck!</strong></p>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #waiting>
+        <p class="mt-3">We're in the process of assigning you a TCN number. Please come back in a few hours.</p>
+      </ng-template>
+    </ng-container>
+
+  </div>
+
+</ng-template>

@@ -3,8 +3,7 @@
   <div class="col-12">
     <div class="course-card d-flex justify-content-between p-0">
       <div class="course-card-info d-flex">
-        <div class="course-image">
-          <img class="img-fluid" alt="Course 1" src="{{ course.imageSmall }}"/>
+        <div class="course-image" [style.background-image]="'url(' + course.imageSmall + ')'">
         </div>
         <div class="course-description d-flex flex-column justify-content-center p-2">
           <div class="course-title">{{ course.name }}</div>

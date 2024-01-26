@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {delay, Observable, of} from "rxjs";
-import {PagedAdminUsers} from "../../models/admin/user";
+import {AdminUserBulkCreate, PagedAdminUsers} from "../../models/admin/user";
 import {environment} from "../../../environments/environment";
 import {SearchService} from "../../models/admin/search-service";
 
@@ -12,9 +12,14 @@ import {SearchService} from "../../models/admin/search-service";
 export class AdminUserService implements SearchService<PagedAdminUsers> {
   private apiUrl: string = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   search(search: string | null, page: number): Observable<PagedAdminUsers> {
     return this.http.get<PagedAdminUsers>(`${this.apiUrl}/admin/users?search=${search}&page=${page}`)
+  }
+
+  bulkCreate(data: AdminUserBulkCreate): Observable<any> {
+    return this.http.post<AdminUserBulkCreate>(`${this.apiUrl}/admin/users/bulk`, data);
   }
 }

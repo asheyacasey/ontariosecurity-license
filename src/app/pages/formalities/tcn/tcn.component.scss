@@ -1,0 +1,26 @@
+
+.tcn-number {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 64px;
+  color: #31374D;
+}
+
+.tcn-number-action {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
+  /* identical to box height, or 188% */
+  text-decoration-line: underline;
+
+  color: #31374D;
+  cursor: pointer;
+
+  &:not(:first-child) {
+    margin-left: 13px;
+  }
+}

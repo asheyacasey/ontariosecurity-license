@@ -37,7 +37,10 @@
   line-height: 32px;
 
   color: #31374D;
-  background-color: #FFFFFF;
+
+  &:not([disabled]) {
+    background-color: #FFFFFF;
+  }
 
   border: 1px solid #DBDCE7;
   border-radius: 8px;
@@ -54,6 +57,23 @@
     color: #ACADBF;
   }
 
+}
+
+.form-select {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+
+  border: 1px solid #DBDCE7;
+  border-radius: 8px;
+
+  height: 56px;
+
+  &:not([disabled]) {
+    background-color: #FFFFFF;
+  }
 }
 
 .btn-submit {
@@ -79,7 +99,7 @@
 
 }
 
-  /** headers */
+/** headers */
 h1.section-title {
 
   font-family: 'Manrope', sans-serif;

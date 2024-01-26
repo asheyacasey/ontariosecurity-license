@@ -14,9 +14,12 @@
     </h4>
     <p>
       <ng-container *ngIf="status?.cpr?.id; else noCPR">
-        User has submitted the CPR: <button class="btn btn-link p-0" (click)="onCPRDownload(status?.cpr?.id)">download</button>
+        User has submitted the CPR:
+        <button class="btn btn-link p-0" (click)="onCPRDownload(status?.cpr?.id)">download</button>
         <br>
         Expiry date: {{ status?.cpr?.expiresAt | date:'Y-MM-dd' }}
+        <br>
+        CPR provider: {{ status?.cpr?.cprProvider }}
       </ng-container>
       <ng-template #noCPR>
         User has not submitted the CPR
@@ -29,19 +32,38 @@
     </h4>
     <p>
       <ng-container *ngIf="status?.consent?.id; else noConsent">
-        User has submitted the consent form: <button class="btn btn-link p-0" (click)="onConsentDownload(status?.consent?.id)">download</button>
+        User has submitted the consent form:
+        <button class="btn btn-link p-0" (click)="onConsentDownload(status?.consent?.id)">download</button>
       </ng-container>
       <ng-template #noConsent>
         User has not submitted the consent form
       </ng-template>
     </p>
     <h4>
-      <ng-template [ngTemplateOutlet]="bad"></ng-template>
+      <ng-template [ngTemplateOutlet]="status?.tcn?.id ? ok: bad"></ng-template>
       TCN
     </h4>
     <p>
-      User has no TCN operation in progress
+      <ng-container *ngIf="status?.tcn === null">
+        User has no TCN operation in progress
+      </ng-container>
+      <ng-container *ngIf="status?.tcn !== null && status?.tcn?.state === 'COMPLETED'">
+        User has an assigned TCN: <strong>{{ status?.tcn?.tcn }}</strong>
+      </ng-container>
+      <ng-container *ngIf="status?.tcn !== null && status?.tcn?.state !== 'COMPLETED'">
+        The TCN procedure has started, state: {{ status?.tcn?.state }}
+      </ng-container>
     </p>
+    <form [formGroup]="tcnForm" (submit)="updateTCN()">
+      <div class="row">
+        <div class="col-12 col-xl-3">
+          <input class="form-control" type="text" placeholder="Insert TCN" formControlName="tcn">
+        </div>
+        <div class="col-12 col-xl-1">
+          <button type="submit" class="btn btn-primary" [disabled]="!tcnForm.valid">Save</button>
+        </div>
+      </div>
+    </form>
   </ng-container>
 </ng-container>
 

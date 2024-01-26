@@ -10,7 +10,7 @@ import {TimerComponent} from './timer/timer.component';
 import {NavigationComponent} from './navigation/navigation.component';
 import {TitleComponent} from './title/title.component';
 import {QuizQuestionComponent} from './quiz/quiz-question/quiz-question.component';
-import { RedirectComponent } from './redirect/redirect.component';
+import {RedirectComponent} from './redirect/redirect.component';
 
 
 @NgModule({
@@ -23,7 +23,10 @@ import { RedirectComponent } from './redirect/redirect.component';
     NavigationComponent,
     TitleComponent,
     QuizQuestionComponent,
-    RedirectComponent
+    RedirectComponent,
+  ],
+  exports: [
+    ModulesListComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,74 @@
+.course-card {
+  cursor: pointer;
+
+  .price-badge {
+    background-color: #354FA9;
+    color: white;
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 18px;
+
+    transform: translate(15%, -50%);
+  }
+}
+
+.course-details-header {
+  margin-top: 80px;
+
+  .course-title {
+    padding-top: 5px;
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 30px;
+
+
+    color: #31374D;
+
+  }
+
+  .course-content {
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 32px;
+
+    color: #5E6169;
+
+  }
+
+  .course-price-container {
+
+    .course-price {
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 24px;
+      line-height: 30px;
+
+      color: #31374D;
+    }
+
+    .course-price-description {
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 32px;
+
+      text-align: right;
+
+      color: #5E6169;
+
+
+    }
+  }
+}

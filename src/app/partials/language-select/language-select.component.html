@@ -1,0 +1,16 @@
+<div class="language-select-container" (click)="toggleMenu()">
+  <div class="d-flex justify-content-between">
+    Language
+    <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="15.5" cy="15.5" r="14.5" stroke="#31374D"/>
+      <path d="M21 13L15 19L9 13" stroke="#31374D" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</div>
+<div #dropdown class="language-select-options" [ngClass]="{'d-block': showMenu, 'd-none': !showMenu}">
+  <ng-container *ngFor="let language of languages">
+    <a (click)="onLanguageChanged(language)" class="language-select-option">
+      {{ language.name }}
+    </a>
+  </ng-container>
+</div>

@@ -1,0 +1,58 @@
+<div class="row mb-3">
+  <div class="col-9 align-items-center">
+    <h2>Bulk create users</h2>
+  </div>
+  <div class="col-3 d-flex justify-content-end align-items-center">
+    <button routerLink="../.." class="btn btn-secondary">Go back</button>
+  </div>
+</div>
+
+<div class="mb-5">
+  <p>Create users and assign them an access to a course.</p>
+  <p>The users will be emailed with an information about their password (randomly generated).</p>
+</div>
+
+<form [formGroup]="bulkUserCreateForm" (submit)="onSubmit()">
+  <div class="row mb-5">
+    <div class="col-12 col-xl-6">
+      <label class="form-label">Course</label>
+      <ng-container *ngFor="let course of availableCourses">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" id="c{{course.id}}" formControlName="courseId"
+                 [value]="course.id">
+          <label class="form-check-label" for="c{{course.id}}"><strong>{{ course.name }}</strong> - ${{ course.price }}
+          </label>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-12 col-xl-6">
+      <label for="emails" class="form-label">Emails (one per line)</label>
+      <textarea class="form-control h-100" id="emails" formControlName="emails" rows="5"
+                [ngClass]="{'is-invalid': bulkUserCreateForm.get('emails')?.errors?.['serverError']}"></textarea>
+      <div
+        [ngClass]="{'invisible': !bulkUserCreateForm.get('emails')?.errors?.['serverError'], 'invalid-feedback': bulkUserCreateForm.get('emails')?.errors?.['serverError']}">
+        {{ bulkUserCreateForm.get('emails')?.errors?.['serverError'] }}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <button type="submit" class="btn btn-submit float-end"
+              [disabled]="!bulkUserCreateForm.valid || (isLoading$ | async) === true">
+        <ng-container *ngIf="(isLoading$ | async) === true; else submit">
+          <div class="spinner-border spinner-border-sm text-secondary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </ng-container>
+        <ng-template #submit>
+          Save
+        </ng-template>
+      </button>
+    </div>
+  </div>
+
+</form>

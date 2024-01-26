@@ -1,3 +1,5 @@
+import {Language} from "./language";
+
 export interface CourseBasic {
   id: number;
   name: string;
@@ -7,6 +9,7 @@ export interface CourseBasic {
   price: number;
   cprTrainingIncluded: boolean;
   modules: CourseModule[];
+  availableInLanguages: Language[];
 }
 
 export interface CourseModule {

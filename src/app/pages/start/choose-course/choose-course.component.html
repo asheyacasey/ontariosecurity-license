@@ -2,65 +2,43 @@
   <h1 class="section-title">Choose a Course</h1>
   <div class="course-selection row g-5">
     <div *ngFor="let course of courses" class="col-12 col-xl-6">
-      <div (click)="onCourseSelected(course)" class="course-card d-flex p-0" [class.selected]="course.selected">
-        <div class="course-image">
-          <img alt="{{ course.name }}" src="{{ course.imageSmall}} "/>
-        </div>
-        <div class="course-description d-flex flex-column justify-content-center p-2">
-          <div class="course-title">{{ course.name }}</div>
-          <div class="course-content">{{ course.modules.length }} modules{{ course.cprTrainingIncluded ? ' + CPR' : ''}}</div>
-        </div>
-      </div>
+      <app-course-card [course]="course" (courseClicked)="onCourseSelected($event)"></app-course-card>
     </div>
   </div>
   <ng-container *ngIf="selectedCourse !== null">
     <div class="course-details-header row align-items-center">
-      <div class="col-12 col-xl-6">
+      <div class="col-12 col-xl-4">
         <div class="d-flex flex-column justify-content-center">
           <div class="course-content">{{ selectedCourse.modules.length }} modules</div>
           <div class="course-title">{{ selectedCourse.name }}</div>
         </div>
       </div>
-      <div class="col-12 col-xl-6 py-3 py-xl-0">
+      <div class="col-12 col-xl-3 py-3 py-xl-0">
+        <app-language-select
+        [languages]="selectedCourseLanguages" [currentLanguage]="language" (languageChanged)="onLanguageChanged($event)"></app-language-select>
+      </div>
+      <div class="col-12 col-xl-5 py-3 py-xl-0">
         <div class="d-flex justify-content-xl-end justify-content-between">
           <div
             class="course-price-container d-flex flex-column justify-content-around justify-content-xl-center align-items-start align-items-xl-end">
             <div class="course-price">${{ selectedCourse.price}}</div>
             <div class="course-price-description">Course price</div>
           </div>
-          <a (click)="onPurchaseCourse(selectedCourse)" class="btn btn-purchase">Purchase Course</a>
+          <a (click)="onCourseAction(selectedCourse)" class="btn btn-purchase">Purchase Course</a>
         </div>
       </div>
     </div>
     <hr class="spacer">
     <div class="course-details-content row">
       <div class="col-12 col-xl-6">
-        <div class="course-details-description" [innerHTML]="selectedCourse.description">
+        <div class="course-details-description" dir="auto" [innerHTML]="selectedCourse.description">
         </div>
       </div>
       <div class="col-12 col-xl-6">
         <div class="course-details-image py-3 py-xl-0">
           <img alt="Course image" class="img-fluid" src="{{ selectedCourse.imageBig }}">
         </div>
-
-        <h2 class="modules-listing-header">Modules</h2>
-        <div class="modules-listing">
-          <ng-container *ngFor="let module of selectedCourse.modules">
-            <div class="modules-listing-item d-flex align-items-center">
-              <div class="module-number d-flex justify-content-center align-items-center flex-shrink-0">
-                <div class="module-number-text">
-                  {{ module.moduleNumber | number:'2.0' }}
-                </div>
-              </div>
-              <div class="module-details-container d-flex flex-column">
-                <div class="module-title">{{ module.name }}</div>
-                <div class="module-description">
-                  {{ module.description }}
-                </div>
-              </div>
-            </div>
-          </ng-container>
-        </div>
+        <app-modules-listing [course]="selectedCourse"></app-modules-listing>
       </div>
     </div>
   </ng-container>

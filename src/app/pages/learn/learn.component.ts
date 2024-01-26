@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {SelectableCourseProgressModule} from "./selectable-course-progress-module";
 import {LearnService} from "../../services/learn.service";
 import {
@@ -17,6 +17,9 @@ import {
 import {CourseProgressModule} from "../../models/course";
 import {Title} from "@angular/platform-browser";
 import {HttpErrorResponse} from "@angular/common/http";
+import {LanguageService} from "../../services/language.service";
+import {Language} from "../../models/language";
+import {CourseOverviewService} from "../../services/course-overview.service";
 
 @Component({
   selector: 'app-learn',
@@ -25,24 +28,39 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class LearnComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
-
   courseCompleted$: Observable<boolean>;
-
   openMenu$: Subject<boolean> = new Subject<boolean>();
+
+  showLanguageSelect: boolean = true;
 
   courseId?: number;
   modules: SelectableCourseProgressModule[] = [];
+
+  currentLanguage: Language | null = null;
+  languages: Language[] = [];
 
   constructor(
     private titleService: Title,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private learnService: LearnService,
+    private languageService: LanguageService,
+    private courseOverviewService: CourseOverviewService,
   ) {
     this.courseCompleted$ = learnService.courseCompleted$;
   }
 
   ngOnInit(): void {
+
+    this.router.events.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // show the language selection only on the lecture pages
+        this.showLanguageSelect = event.urlAfterRedirects.indexOf('lecture') > -1;
+      }
+    });
+
     this.activatedRoute.params.pipe(
       takeUntil(this.destroy$)
     ).subscribe((params) => {
@@ -54,6 +72,10 @@ export class LearnComponent implements OnInit, OnDestroy {
       filter((courseId) => courseId !== null),
       tap((courseId) => {
         this.courseId = courseId;
+        this.currentLanguage = this.languageService.getLanguage();
+        this.courseOverviewService.getLanguages(this.courseId).subscribe(languages => {
+          this.languages = languages;
+        })
       }),
       switchMap((courseId) => this.learnService.getCourseModules(courseId)),
       catchError((err: HttpErrorResponse) => {
@@ -106,7 +128,14 @@ export class LearnComponent implements OnInit, OnDestroy {
             this.learnService.setCourseNotCompleted();
           }
         }
-      )
+      );
+
+      this.languageService.language$.pipe(
+        takeUntil(this.destroy$)
+      ).subscribe(language => {
+        this.currentLanguage = language;
+      });
+
     });
   }
 
@@ -156,5 +185,10 @@ export class LearnComponent implements OnInit, OnDestroy {
 
   goToFormalities(): void {
     this.router.navigate(['/formalities', this.courseId, 'cpr']);
+  }
+
+  onLanguageChanged(language: Language): void {
+    this.currentLanguage = language;
+    this.languageService.setLanguage(language);
   }
 }

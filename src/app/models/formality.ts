@@ -14,8 +14,9 @@ export interface FormalityConsentStatus {
 }
 
 export interface FormalityTCNStatus {
-  state: 'WAITING' | 'PROCESSING' | 'COMPLETED';
+  state: 'WAITING_START' | 'PROCESSING' | 'WAITING_TCN' | 'COMPLETED' | 'ERROR' | null;
   stepCompleted: boolean;
+  tcn?: number;
 }
 
 export interface FormalitiesStatus {
@@ -29,6 +30,7 @@ export interface FormalitiesStatus {
 export interface CPRDocumentUpload {
   file: File,
   expiresAt: string;
+  cprProvider: string;
 }
 
 export interface ConsentPrefillValues {

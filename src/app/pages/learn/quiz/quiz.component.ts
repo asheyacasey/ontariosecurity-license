@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {LinkedLecture} from "../../../models/lecture";
 import {LearnService} from "../../../services/learn.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LinkedQuiz, QuizAnswers, QuizDetails, QuizQuestionAnswerChange} from "../../../models/quiz";
@@ -7,6 +6,7 @@ import {catchError, filter, Subject, takeUntil, tap, throwError} from "rxjs";
 import {ViewportScroller} from "@angular/common";
 import {CourseNavigationStateService} from "../../../services/course-navigation-state.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {LanguageService} from "../../../services/language.service";
 
 @Component({
   selector: 'app-quiz',

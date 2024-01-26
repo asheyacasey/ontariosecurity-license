@@ -1,0 +1,18 @@
+<h2 class="modules-listing-header">Modules</h2>
+<div class="modules-listing">
+  <ng-container *ngFor="let module of course.modules">
+    <div class="modules-listing-item d-flex align-items-center">
+      <div class="module-number d-flex justify-content-center align-items-center flex-shrink-0">
+        <div class="module-number-text">
+          {{ module.moduleNumber | number:'2.0' }}
+        </div>
+      </div>
+      <div dir="auto" class="module-details-container d-flex flex-column">
+        <div class="module-title">{{ module.name }}</div>
+        <div class="module-description">
+          {{ module.description }}
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

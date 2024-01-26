@@ -10,6 +10,8 @@ import {DiscountCodesComponent} from "./discount-codes/discount-codes.component"
 import {DiscountCodesListComponent} from "./discount-codes/discount-codes-list/discount-codes-list.component";
 import {DiscountCodeNewComponent} from "./discount-codes/discount-code-new/discount-code-new.component";
 import {DiscountCodeEditComponent} from "./discount-codes/discount-code-edit/discount-code-edit.component";
+import {UsersListComponent} from "./users/users-list/users-list.component";
+import {UserNewBulkComponent} from "./users/user-new-bulk/user-new-bulk.component";
 
 const routes: Routes = [
   {
@@ -19,7 +21,21 @@ const routes: Routes = [
     children: [
       {
         path: 'users',
-        component: UsersComponent
+        component: UsersComponent,
+        children: [
+          {
+            path: '',
+            component: UsersListComponent
+          },
+          {
+            path: 'new/bulk',
+            component: UserNewBulkComponent
+          },
+          {
+            path: '**',
+            redirectTo: ''
+          }
+        ]
       },
       {
         path: 'courses',

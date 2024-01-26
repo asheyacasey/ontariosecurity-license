@@ -11,6 +11,7 @@ import { TcnComponent } from './tcn/tcn.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {NgbDatepickerModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgxSignaturePadModule} from "@eve-sama/ngx-signature-pad";
+import {ClipboardModule} from "ngx-clipboard";
 
 
 
@@ -32,7 +33,8 @@ import {NgxSignaturePadModule} from "@eve-sama/ngx-signature-pad";
         PartialsModule,
         ReactiveFormsModule,
         NgbDatepickerModule,
-        NgxSignaturePadModule
+        NgxSignaturePadModule,
+        ClipboardModule
     ]
 })
 export class FormalitiesModule { }

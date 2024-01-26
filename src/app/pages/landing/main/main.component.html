@@ -1,0 +1,63 @@
+<div class="landing-page-container container-fluid">
+  <div class="row clearfix">
+    <div class="col-7 d-flex p-5 justify-content-center flex-grow-1">
+      <div class="hero-container d-flex align-items-center">
+        <div class="hero d-flex flex-column">
+          <div class="d-flex d-lg-block">
+            <div class="headline flex-grow-1 flex-lg-grow-0 text-center text-lg-start">
+              Get Your Ontario Security License & Start Working Now
+            </div>
+          </div>
+          <h1>
+            <span class="red">Ministry approved</span>
+            <br/>
+            Security Guard & CPR Training
+          </h1>
+          <div class="d-flex d-lg-block">
+            <a routerLink="start" class="btn btn-action mt-5 flex-grow-1 flex-lg-grow-0">Get Started</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-5 d-none d-md-flex p-0 testimonial-wrapper">
+      <div class="testimonial-container">
+        <div class="testimonial-panel">
+          <div class="testimonial-bg d-flex flex-column">
+            <div class="testimonial-header">
+              "They got me licensed and got me a job!"
+            </div>
+            <div class="testimonial-footer d-flex justify-content-between">
+              <div class="testimonial-footer-signature">
+                Ajay, 34
+              </div>
+              <div class="testimonial-footer-location">
+                Toronto, Ontario
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row clearfix faq-header">
+    <div class="col-1 faq-header-content"></div>
+    <div class="col-12 col-lg-10 offset-0 offset-lg-1 p-5 faq-header-content">
+      <h3>FAQ</h3>
+      <h2>Got any Questions?</h2>
+      <div class="row clearfix">
+        <div class="col-12 col-md-4">
+          <app-language-select
+            [languages]="faqLanguages"
+            [currentLanguage]="faqLanguage"
+            (languageChanged)="onFAQLanguageChanged($event)"
+          ></app-language-select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-faq></app-faq>
+</div>
+<app-footer></app-footer>
