@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Language} from "../models/language";
 import {BehaviorSubject, Subject} from "rxjs";
 import {UserLocalStorageService} from "./user-local-storage.service";
+import {LocalStorageService} from "./local-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,9 @@ export class LanguageService {
 
 
   constructor(
-    private userLocalStorageService: UserLocalStorageService
+    private localStorageService: LocalStorageService
   ) {
+    this.setLanguage(this._state);
   }
 
   get state(): Language {
@@ -31,14 +33,14 @@ export class LanguageService {
   }
 
   private _loadState(): void {
-    const language = this.userLocalStorageService.getItem(this.key);
+    const language = this.localStorageService.getItem(this.key);
     if (language) {
       this._state = JSON.parse(language);
     }
   }
 
   private _saveState(): void {
-    this.userLocalStorageService.setItem(this.key, JSON.stringify(this._state));
+    this.localStorageService.setItem(this.key, JSON.stringify(this._state));
   }
 
   setLanguage(language: Language) {
