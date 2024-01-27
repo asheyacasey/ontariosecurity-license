@@ -1,3 +1,6 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
+
 .course-selection, .course-summary {
   margin-top: 40px;
 }
@@ -15,10 +18,17 @@
 
   .course-image {
     margin-right: 20px;
-    min-width: 146px;
+
+    min-width: 70px;
     min-height: 126px;
 
+    @include media-breakpoint-up(md) {
+      min-width: 146px;
+      min-height: 126px;
+    }
+
     background-size: cover;
+    background-position: center;
   }
 
   .course-description {
@@ -63,6 +73,7 @@
 
       padding-right: 135px;
     }
+
     .course-full-price {
       font-family: 'Manrope', sans-serif;
       font-style: normal;

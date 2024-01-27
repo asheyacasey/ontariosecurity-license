@@ -1,8 +1,9 @@
-<div class="container p-5">
+<div class="container p-3 p-sm-5">
   <div class="row">
     <div class="card-container full-height col-12">
-      <div class="p-5">
-        <h1 class="section-title">List of available courses</h1>
+
+      <h1 class="section-title px-5 pt-5">List of available courses</h1>
+      <div class="p-3 p-sm-5">
         <div class="course-selection row g-5">
           <div *ngFor="let course of courses" class="col-12 col-xl-6">
             <app-course-card [course]="course" (courseClicked)="onCourseSelected($event)"></app-course-card>
@@ -22,9 +23,9 @@
                 (languageChanged)="onLanguageChanged($event)"></app-language-select>
             </div>
             <div class="col-12 col-xl-5 py-3 py-xl-0">
-              <div class="d-flex justify-content-xl-end justify-content-between">
+              <div class="d-flex justify-content-xl-end justify-content-sm-between justify-content-center flex-column flex-sm-row">
                 <div
-                  class="course-price-container d-flex flex-column justify-content-around justify-content-xl-center align-items-start align-items-xl-end">
+                  class="course-price-container d-flex flex-column justify-content-around justify-content-xl-center align-items-center align-items-sm-start align-items-xl-end">
                   <div class="course-price">${{ selectedCourse.price}}</div>
                   <div class="course-price-description">Course price</div>
                 </div>
@@ -48,5 +49,6 @@
         </ng-container>
       </div>
     </div>
+
   </div>
 </div>

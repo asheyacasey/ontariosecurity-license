@@ -1,3 +1,5 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
 .modules-listing-header {
   margin-top: 26px;
   margin-bottom: 22px;
@@ -39,7 +41,9 @@
   }
 
   .module-details-container {
-    padding-left: 25px;
+    @include media-breakpoint-up(sm) {
+      padding-left: 25px;
+    }
 
     .module-title {
 
