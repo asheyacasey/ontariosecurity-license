@@ -68,7 +68,7 @@
 
 .testimonial-container {
   width: 100%;
-  min-height: calc(100vh - 89px);
+  min-height: max(calc(100vh - 89px), 900px);
   background-image: url(/assets/testimonial-2.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -81,7 +81,7 @@
   width: 410px;
   height: 205px;
   position: relative;
-  top: calc(65vh);
+  top: max(65vh, 600px);
 
   color: #31374D;
 }
