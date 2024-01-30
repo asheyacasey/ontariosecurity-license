@@ -26,7 +26,7 @@
     </div>
   </div>
   <div class="row sign-up">
-    <div class="col-12 d-flex justify-content-end">
+    <div class="col-12 d-flex justify-content-center justify-content-md-end">
       <button type="submit" class="btn btn-action flex-grow-1 flex-lg-grow-0"
               [disabled]="(isLoading$ | async) === true">
         <ng-container *ngIf="(isLoading$ | async) === true; else submit">
