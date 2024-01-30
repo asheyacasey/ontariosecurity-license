@@ -88,10 +88,6 @@ export class FaqService {
         question: 'How can I ask more questions?',
         answer: 'Email us: <a href="mailto:tcn@lionguardsecurity.ca">tcn@lionguardsecurity.ca</a>',
         open: false
-      }, {
-        question: 'I want to request a language, how can I do it?',
-        answer: 'Email us: <a href="mailto:tcn@lionguardsecurity.ca">tcn@lionguardsecurity.ca</a>',
-        open: false
       }
     ]], [
       this.languages[1].name, [
@@ -169,10 +165,6 @@ export class FaqService {
           question: 'ਮੈਂ ਹੋਰ ਸਵਾਲ ਕਿਵੇਂ ਪੁੱਛ ਸਕਦਾ ਹਾਂ?',
           answer: 'ਸਾਨੂੰ ਈਮੇਲ ਕਰੋ: tcn@lionguardsecurity.ca',
           open: false
-        }, {
-          question: 'ਮੈਂ ਇੱਕ ਭਾਸ਼ਾ ਲਈ ਬੇਨਤੀ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ, ਇਹ ਮੈਂ ਕਿਵੇਂ ਕਰ ਸਕਦਾ ਹਾਂ?',
-          answer: 'ਸਾਨੂੰ ਈਮੇਲ ਕਰੋ: tcn@lionguardsecurity.ca',
-          open: false
         }
       ]
     ], [
@@ -248,10 +240,6 @@ export class FaqService {
           open: false
         }, {
           question: 'چگونه می توانم سوالات بیشتری بپرسم؟',
-          answer: 'به ما ایمیل بزنید: tcn@lionguardsecurity.ca',
-          open: false
-        }, {
-          question: 'من می خواهم درخواست یک زبان خاص را داشته باشم ، چگونه می توانم این کار را انجام دهم؟',
           answer: 'به ما ایمیل بزنید: tcn@lionguardsecurity.ca',
           open: false
         }
@@ -332,10 +320,6 @@ export class FaqService {
           open: false
         }, {
           question: 'मैं और प्रश्न कैसे पूछ सकता हूँ?',
-          answer: 'हमें ईमेल करें: tcn@lionguardsecurity.ca',
-          open: false
-        }, {
-          question: 'मैं एक भाषा का अनुरोध करना चाहता हूं, मैं यह कैसे कर सकता हूं?',
           answer: 'हमें ईमेल करें: tcn@lionguardsecurity.ca',
           open: false
         }

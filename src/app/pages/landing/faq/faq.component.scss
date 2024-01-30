@@ -1,0 +1,42 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
+.faq-container {
+  padding-top: 60px;
+}
+
+.faq-item {
+  border-radius: 20px;
+
+  padding: 31px 43px;
+  margin-bottom: 16px;
+
+  .faq-item-header {
+    cursor: pointer;
+
+    .faq-question {
+      user-select: none;
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 27px;
+
+      color: #31374D;
+
+    }
+  }
+
+  .faq-answer {
+    margin-top: 20px;
+    white-space: pre-wrap;
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 36px;
+
+    color: #31374D;
+  }
+}

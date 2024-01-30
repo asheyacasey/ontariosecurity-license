@@ -1,6 +1,6 @@
 <div class="language-select-container" (click)="toggleMenu()">
   <div class="d-flex justify-content-between">
-    Language
+    {{ currentLanguage?.name || 'Language' }}
     <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="15.5" cy="15.5" r="14.5" stroke="#31374D"/>
       <path d="M21 13L15 19L9 13" stroke="#31374D" stroke-linecap="round" stroke-linejoin="round"/>

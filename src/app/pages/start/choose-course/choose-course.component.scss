@@ -1,3 +1,5 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
 .course-details-header {
   margin-top: 80px;
 
@@ -69,8 +71,9 @@
 
     color: #FFFFFF;
 
-    margin-left: 36px;
-
+    @include media-breakpoint-up(sm) {
+     margin-left: 36px;
+    }
   }
 
 }
