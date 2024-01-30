@@ -1,0 +1,43 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-12">
+      <span class="subheader">Get Started Now</span>
+      <h2 class="header">Sign Up Today!</h2>
+    </div>
+  </div>
+  <div class="row sign-up">
+    <div class="col-12 col-md-6 mt-3 mt-md-0">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter your email" formControlName="email">
+    </div>
+    <div class="col-12 col-md-6 mt-3 mt-md-0">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Enter your password"
+             formControlName="password">
+    </div>
+  </div>
+  <div class="row mt-3" [ngClass]="{'d-none': !showLoginSuggestion}">
+    <div class="col-12">
+      <div class="alert alert-warning d-flex align-items-center" role="alert" [class.invisible]="!showLoginSuggestion">
+        <div>
+          This email has already been registered. Do you want to <a routerLink="/login">sign in</a>?
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row sign-up">
+    <div class="col-12 d-flex justify-content-center justify-content-md-end">
+      <button type="submit" class="btn btn-action flex-grow-1 flex-lg-grow-0"
+              [disabled]="(isLoading$ | async) === true">
+        <ng-container *ngIf="(isLoading$ | async) === true; else submit">
+          <div class="spinner-border spinner-border-sm text-secondary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </ng-container>
+        <ng-template #submit>
+          Sign Up Now
+        </ng-template>
+      </button>
+    </div>
+  </div>
+</form>

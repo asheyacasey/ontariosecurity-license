@@ -1,8 +1,8 @@
-<div class="faq-container">
+<div class="faq-container" [style.background-color]="backgroundColor">
   <div class="row clearfix">
-    <div class="col-12 col-lg-10 offset-0 offset-lg-1 p-5">
+    <div class="col-12 col-lg-10 offset-0 offset-lg-1">
       <ng-container *ngFor="let item of questions">
-        <div class="row faq-item">
+        <div class="row faq-item" [style.background-color]="itemBackgroundColor">
           <div class="col-12 d-flex justify-content-between align-items-center faq-item-header"
                [ngClass]="{'flex-row-reverse': language.rtl}"
                (click)="toggleItem(item)">
@@ -10,7 +10,7 @@
             <div class="flex-shrink-0 d-none d-sm-block">
               <ng-container *ngIf="!item.open">
                 <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="22" cy="22" r="22" fill="#F3F4FA"/>
+                  <circle cx="22" cy="22" r="22" fill="#E6E8F1"/>
                   <path d="M22 13V31" stroke="#31374D" stroke-width="4"/>
                   <path d="M31 22L13 22" stroke="#31374D" stroke-width="4"/>
                 </svg>
