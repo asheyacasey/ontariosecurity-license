@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {FAQItem} from "../../../models/faq";
 import {LanguageService} from "../../../services/language.service";
 import {Subject, takeUntil} from "rxjs";
@@ -14,6 +14,9 @@ export class FaqComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
   questions: FAQItem[] = [];
   language: Language = this.languageService.getLanguage();
+
+  @Input() backgroundColor: string = '#F3F4FA';
+  @Input() itemBackgroundColor: string = '#FFF';
 
   constructor(
     private languageService: LanguageService,

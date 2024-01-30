@@ -1,0 +1,50 @@
+.sign-up {
+  margin-top: 56px;
+}
+
+label {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #31374D;
+  text-transform: uppercase;
+
+  margin-left: 10px;
+}
+
+::placeholder {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 32px;
+  /* identical to box height, or 200% */
+
+  color: #ABAEBB;
+}
+
+input {
+  height: 56px;
+
+  background: #FFFFFF;
+  border-radius: 8px;
+
+  &:focus {
+    background: #FFFFFF;
+  }
+}
+
+.btn-action {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #FFFFFF;
+
+  padding: 21px 62px;
+}

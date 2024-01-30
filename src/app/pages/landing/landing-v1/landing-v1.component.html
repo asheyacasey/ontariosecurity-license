@@ -1,0 +1,34 @@
+<app-header [showHamburger]="true" (hamburgerClicked)="onHamburgerClicked()"></app-header>
+<ng-template #menu>
+  <ul class="menu-selector list-group">
+    <li class="list-group-item d-flex flex-column" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+        (click)="closeOffcanvas()">
+      <div class="menu-header d-flex justify-content-between align-items-center">
+        <div>Home</div>
+      </div>
+    </li>
+    <li class="list-group-item d-flex flex-column" routerLink="/courses" routerLinkActive="active"
+        (click)="closeOffcanvas()">
+      <div class="menu-header d-flex justify-content-between align-items-center">
+        <div>Courses</div>
+      </div>
+    </li>
+    <li class="list-group-item d-flex flex-column" routerLink="/start/login" routerLinkActive="active"
+        (click)="closeOffcanvas()">
+      <div class="menu-header d-flex justify-content-between align-items-center">
+        <div>Log in</div>
+      </div>
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #offcanvas>
+  <div class="offcanvas-header">
+    <h2 class="menu-list-header">Navigation</h2>
+  </div>
+  <div class="offcanvas-body">
+    <ng-template [ngTemplateOutlet]="menu"></ng-template>
+  </div>
+</ng-template>
+
+<router-outlet></router-outlet>
