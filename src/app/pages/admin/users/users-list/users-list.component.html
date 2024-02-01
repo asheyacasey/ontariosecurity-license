@@ -31,7 +31,7 @@
     <tr *ngFor="let user of results?.items">
       <th scope="row">{{ user.id }}</th>
       <td>{{ user.email }}</td>
-      <td>{{ user.registeredAt | date:'medium':'UTC -2'}}</td>
+      <td>{{ user.registeredAt | date:'medium':'UTC -5'}}</td>
       <td>
         <input type="checkbox" [checked]="user.admin" disabled>
       </td>
