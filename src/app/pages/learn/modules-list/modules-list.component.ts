@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, 
 import {SelectableCourseProgressModule} from "../selectable-course-progress-module";
 import {NgbOffcanvas} from "@ng-bootstrap/ng-bootstrap";
 import {Subject, takeUntil} from "rxjs";
+import {TimeFormatterService} from "../../../services/time-formatter.service";
 
 @Component({
   selector: 'app-modules-list',
@@ -19,7 +20,10 @@ export class ModulesListComponent implements OnInit, OnDestroy {
 
   @ViewChild('offcanvas') offcanvas!: TemplateRef<any>;
 
-  constructor(private offcanvasService: NgbOffcanvas) {
+  constructor(
+    private offcanvasService: NgbOffcanvas,
+    public timeFormatterService: TimeFormatterService
+  ) {
   }
 
   ngOnInit(): void {
@@ -41,7 +45,9 @@ export class ModulesListComponent implements OnInit, OnDestroy {
 
   onSelectionChange(module: SelectableCourseProgressModule): void {
     this.closeOffcanvas();
-    this.selectedModuleChanged.next(module);
+    if (!module.locked) {
+      this.selectedModuleChanged.next(module);
+    }
   }
 
   openOffcanvas(): void {

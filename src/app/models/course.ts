@@ -27,13 +27,19 @@ export interface CourseProgressModule {
   id: number;
   moduleNumber: number;
   name: string;
-  completed: boolean;
   lectureIds: number[];
+  secondsLeft: number;
+  locked: boolean;
+  completed: boolean;
 }
 
 
 export interface CourseTimer {
   secondsLeft: number;
+}
+
+export interface ModuleTimer extends CourseTimer {
+
 }
 
 /**

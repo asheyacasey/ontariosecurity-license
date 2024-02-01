@@ -25,6 +25,7 @@
     "@eve-sama/ngx-signature-pad": "^14.0.0",
     "@ng-bootstrap/ng-bootstrap": "^13.0.0",
     "@popperjs/core": "^2.10.2",
+    "angular-google-tag-manager": "^1.6.1",
     "bootstrap": "^5.2.0",
     "ngx-clipboard": "^15.1.0",
     "rxjs": "~7.5.0",

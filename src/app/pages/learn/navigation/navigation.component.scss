@@ -32,7 +32,20 @@
 
   color: #FFFFFF;
 
-  &:hover {
+  svg {
+    display: none;
+  }
+
+  &.locked {
+    background: #a1a1a1 !important;
+    color: #FFFFFF !important;
+
+    svg {
+      display: inherit;
+    }
+  }
+
+  &:hover:not(.locked) {
     background: #31374D;
     color: #FFFFFF;
   }

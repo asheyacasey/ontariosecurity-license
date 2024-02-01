@@ -8,6 +8,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {AuthenticationService, AuthenticationServiceFactory} from "./services/authentication.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {GoogleTagManagerModule} from "angular-google-tag-manager";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    GoogleTagManagerModule.forRoot({
+      id: environment.googleTag
+    })
   ],
   providers: [
     {

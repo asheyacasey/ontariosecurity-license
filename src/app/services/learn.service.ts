@@ -27,15 +27,11 @@ export class LearnService {
   private _quizId$$: Subject<number | null> = new BehaviorSubject<number | null>(null);
   readonly quizId$ = this._quizId$$.asObservable();
 
+  private _quizIdCompleted$$: Subject<number> = new Subject<number>();
+  readonly quizIdCompleted$ = this._quizIdCompleted$$.asObservable();
+
   private _courseModules$$: Subject<CourseProgressModule[]> = new BehaviorSubject<CourseProgressModule[]>([]);
   readonly courseModules$ = this._courseModules$$.asObservable();
-
-  // todo: refactor into tuple [number, boolean]
-  private _moduleIdCompleted$$: Subject<number> = new Subject<number>();
-  readonly moduleIdCompleted$ = this._moduleIdCompleted$$.asObservable();
-
-  private _moduleIdNotCompleted$$: Subject<number> = new Subject<number>();
-  readonly moduleIdNotCompleted$ = this._moduleIdNotCompleted$$.asObservable();
 
   private _courseCompleted$$: Subject<boolean> = new BehaviorSubject<boolean>(false);
   readonly courseCompleted$ = this._courseCompleted$$.asObservable();
@@ -46,8 +42,8 @@ export class LearnService {
   private _lectureIdLoaded$$: Subject<number> = new Subject<number>();
   readonly lectureIdLoaded$ = this._lectureIdLoaded$$.asObservable();
 
-  private _requiredCourseTimeReached$$: Subject<boolean> = new BehaviorSubject<boolean>(false);
-  readonly requiredCourseTimeReached$ = this._requiredCourseTimeReached$$.asObservable();
+  private _requiredModuleTimeReached$$: Subject<number> = new Subject<number>();
+  readonly requiredModuleTimeReached$ = this._requiredModuleTimeReached$$.asObservable();
 
   // current course ID
   courseId?: number;
@@ -82,12 +78,8 @@ export class LearnService {
     }
   }
 
-  setModuleIdCompleted(moduleId: number): void {
-    this._moduleIdCompleted$$.next(moduleId);
-  }
-
-  setModuleIdNotCompleted(moduleId: number): void {
-    this._moduleIdNotCompleted$$.next(moduleId);
+  setQuizIdCompleted(quizId: number): void {
+    this._quizIdCompleted$$.next(quizId);
   }
 
   setLectureId(lectureId: number) {
@@ -113,20 +105,12 @@ export class LearnService {
     this.titleService.setTitle(`${title} | Ontario Security License`);
   }
 
-  setCourseTimeReached() {
-    this._requiredCourseTimeReached$$.next(true);
+  setCourseCompleted(completed: boolean) {
+    this._courseCompleted$$.next(completed);
   }
 
-  setCourseTimeNotReached() {
-    this._requiredCourseTimeReached$$.next(false);
-  }
-
-  setCourseCompleted() {
-    this._courseCompleted$$.next(true);
-  }
-
-  setCourseNotCompleted() {
-    this._courseCompleted$$.next(false);
+  setRequiredModuleTimeReached(moduleId: number) {
+    this._requiredModuleTimeReached$$.next(moduleId);
   }
 
   // todo: move to ModulesService

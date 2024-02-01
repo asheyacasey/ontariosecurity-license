@@ -103,9 +103,9 @@ export class LearnComponent implements OnInit, OnDestroy {
       });
 
       merge(
-        this.learnService.moduleIdCompleted$,
-        this.learnService.moduleIdNotCompleted$,
-        this.learnService.lectureIdLoaded$
+        this.learnService.quizIdCompleted$,
+        this.learnService.lectureIdLoaded$,
+        this.learnService.requiredModuleTimeReached$
       ).pipe(
         takeUntil(this.destroy$),
         switchMap(() => this.courseId ? this.learnService.getCourseModules(this.courseId) : EMPTY)
@@ -115,18 +115,11 @@ export class LearnComponent implements OnInit, OnDestroy {
 
       // if required time has been reached and all course modules are completed,
       // the course is considered to be completed
-      combineLatest([
-        this.learnService.requiredCourseTimeReached$,
-        this.learnService.courseModules$
-      ]).pipe(
+      this.learnService.courseModules$.pipe(
         takeUntil(this.destroy$)
       ).subscribe(
-        ([timeReached, courseModules]) => {
-          if (timeReached && courseModules.every(m => m.completed)) {
-            this.learnService.setCourseCompleted();
-          } else {
-            this.learnService.setCourseNotCompleted();
-          }
+        (courseModules) => {
+          this.learnService.setCourseCompleted(courseModules.every(m => m.completed));
         }
       );
 
@@ -157,6 +150,8 @@ export class LearnComponent implements OnInit, OnDestroy {
       const m = modules.find(m => m.id === module.id);
       if (m) {
         module.completed = m.completed;
+        module.locked = m.locked;
+        module.secondsLeft = m.secondsLeft;
       }
       return module;
     })
