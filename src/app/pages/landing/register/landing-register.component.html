@@ -6,13 +6,21 @@
     </div>
   </div>
   <div class="row sign-up">
-    <div class="col-12 col-md-6 mt-3 mt-md-0">
+    <div class="col-12 col-md-4 mt-3 mt-md-0">
       <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" required="required" placeholder="Enter your email" formControlName="email">
+      <input type="email" class="form-control" id="email" required="required" placeholder="john.doe@gmail.com"
+             formControlName="email">
     </div>
-    <div class="col-12 col-md-6 mt-3 mt-md-0">
+    <div class="col-12 col-md-4 mt-3 mt-md-0">
+      <label for="password" class="form-label">Phone number</label>
+      <input type="tel" class="form-control" id="phone" required="required" minlength="6" maxlength="32"
+             placeholder="+1-613-555-0145"
+             formControlName="phone">
+    </div>
+    <div class="col-12 col-md-4 mt-3 mt-md-0">
       <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password" required="required" minlength="6" placeholder="Enter your password"
+      <input type="password" class="form-control" id="password" required="required" minlength="6"
+             placeholder="Enter your password"
              formControlName="password">
     </div>
   </div>

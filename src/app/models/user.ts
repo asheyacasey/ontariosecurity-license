@@ -1,6 +1,7 @@
 export interface UserRegisterRequest {
   username: string
   password: string
+  phone: string
 }
 
 export interface UserRegisterError {
