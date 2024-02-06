@@ -7,6 +7,7 @@ export interface AdminUser {
   admin: boolean;
   paymentsCount: number;
   courseAccessesCount: number;
+  phone: string;
 }
 
 export interface PagedAdminUsers extends Pagination {

@@ -25,22 +25,40 @@
       <th scope="col">Admin</th>
       <th scope="col">Purchases</th>
       <th scope="col">Courses</th>
+      <th scope="col">Details</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of results?.items">
-      <th scope="row">{{ user.id }}</th>
-      <td>{{ user.email }}</td>
-      <td>{{ user.registeredAt | date:'medium':'UTC -5'}}</td>
-      <td>
-        <input type="checkbox" [checked]="user.admin" disabled>
-      </td>
-      <td>
-        {{ user.paymentsCount }}
-        <a *ngIf="user.paymentsCount" [routerLink]="['../payments']" [queryParams]="{search: user.email}">Show</a>
-      </td>
-      <td>{{ user.courseAccessesCount }}</td>
-    </tr>
+    <ng-container *ngFor="let user of results?.items">
+      <tr>
+        <th scope="row">{{ user.id }}</th>
+        <td>{{ user.email }}</td>
+        <td>{{ user.registeredAt | date:'medium':'UTC -5'}}</td>
+        <td>
+          <input type="checkbox" [checked]="user.admin" disabled>
+        </td>
+        <td>
+          {{ user.paymentsCount }}
+          <a *ngIf="user.paymentsCount" [routerLink]="['../payments']" [queryParams]="{search: user.email}">Show</a>
+        </td>
+        <td>{{ user.courseAccessesCount }}</td>
+        <td>
+          <button class="btn btn-link p-0" (click)="toggleShowDetails(user.id)">
+            <ng-container *ngIf="detailsHidden(user.id)">Show</ng-container>
+            <ng-container *ngIf="detailsShown(user.id)">Hide</ng-container>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="detailsShown(user.id)">
+        <td colspan="6" class="overflow-hidden">
+          <div class="row mb-3">
+            <div class="col-12">
+              <strong>Phone number:</strong> {{ user.phone || 'empty' }}
+            </div>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
     </tbody>
   </table>
 
