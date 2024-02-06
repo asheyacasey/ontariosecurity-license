@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from "@angular/common/http";
 import {
   BehaviorSubject,
   catchError,
@@ -86,7 +86,9 @@ export class AuthenticationService {
 
   signIn(data: UserLoginRequest): Observable<UserDetails | UserLoginError> {
     const headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
-    const body = `username=${data.username}&password=${data.password}`;
+    const body = new HttpParams()
+      .set('username', data.username)
+      .set('password', data.password);
 
     return this.http.post<AccessToken>(`${this.apiUrl}/user/token`, body, {headers: headers}).pipe(
       tap((token: AccessToken) => {
