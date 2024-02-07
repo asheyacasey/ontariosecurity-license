@@ -10,6 +10,7 @@ import {AuthenticationService, AuthenticationServiceFactory} from "./services/au
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {GoogleTagManagerModule} from "angular-google-tag-manager";
 import {environment} from "../environments/environment";
+import {CountUpModule} from "ngx-countup";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {environment} from "../environments/environment";
     HttpClientModule,
     GoogleTagManagerModule.forRoot({
       id: environment.googleTag
-    })
+    }),
+    CountUpModule
   ],
   providers: [
     {

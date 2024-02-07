@@ -1,0 +1,624 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
+// spacers added because the body background color is set to gray in global styling
+// easier to add spacers for now, but if more pages require it, the global background
+// styling will have to be refactored
+
+.space-top {
+  background: #FFFFFF;
+  height: 1px;
+  width: 100%;
+  @include media-breakpoint-up(sm) {
+    height: 32px;
+  }
+}
+
+.space-bottom {
+  background: #FFFFFF;
+  height: 50px;
+  width: 100%;
+  @include media-breakpoint-up(sm) {
+    height: 100px;
+  }
+}
+
+.white-bg {
+  background: #FFF;
+}
+
+.gray-bg-container {
+  background: #F3F4FA;
+  border-radius: 24px;
+
+  margin-top: 1.5rem;
+
+  @include media-breakpoint-up(sm) {
+    margin: 0 32px 32px 32px;
+  }
+}
+
+.btn-action {
+  background-color: #354FA9;
+  color: #F3F4FA;
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 22px 48px;
+
+  max-width: 280px;
+
+  &:hover {
+    background-color: rgba(53, 79, 169, 0.9);
+    color: #F3F4FA !important;
+  }
+
+}
+
+span.gray-highlight {
+  background: #E6E8F1;
+  border-radius: 15px;
+  font-weight: 500;
+  padding: 4px 5px;
+  margin: -4px 0 -4px -5px;
+}
+
+.offcanvas-body {
+  .navbar-nav {
+    .nav-item {
+      cursor: pointer;
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
+
+      color: #787D8E;
+
+      margin-bottom: 32px;
+    }
+  }
+}
+
+nav {
+
+  padding: 14px 14px 48px 14px;
+
+  @include media-breakpoint-up(md) {
+    padding: 42px 48px 94px 48px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    padding: 42px 64px 114px 64px;
+  }
+
+  .navbar-nav {
+    margin-left: 84px;
+
+    .nav-item {
+      cursor: pointer;
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+
+      color: #787D8E;
+
+      margin-right: 32px;
+    }
+  }
+
+  .navbar-text {
+    .btn-secondary-action {
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+
+      color: #787D8E;
+    }
+
+    .btn-primary-action {
+      padding: 14px 42px;
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+
+      color: #354FA9;
+
+      border: 2px solid #354FA9;
+      border-radius: 8px;
+
+      &:hover {
+        background-color: #354FA9;
+        color: #F3F4FA;
+      }
+    }
+  }
+}
+
+.hero {
+  max-width: 700px;
+
+  @include media-breakpoint-up(md) {
+    position: relative;
+    top: calc(max(-10vw, -50px));
+  }
+
+  .hero-pill {
+    background: #E6E8F1;
+    border-radius: 21.5px;
+
+    max-width: 510px;
+    padding: 10px 20px;
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+
+    color: #31374D;
+
+    strong {
+      font-weight: 600;
+    }
+
+  }
+
+  h1 {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 72px;
+
+    margin-top: 14px;
+    margin-bottom: 46px;
+
+    color: #31374D;
+
+    .hero-red {
+      color: #D03D1C;
+    }
+  }
+}
+
+.hero-phone {
+  img {
+    max-height: 582px;
+  }
+}
+
+.arrow-down {
+  width: 16px;
+  height: 14px;
+
+  margin-top: 71px;
+  margin-bottom: 53px;
+
+  background-image: url("data:image/svg+xml, %3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.29904 12.75C8.72169 13.75 7.27831 13.75 6.70096 12.75L0.638784 2.25C0.0614331 1.25 0.783121 -1.50515e-06 1.93782 -1.4042e-06L14.0622 -3.44255e-07C15.2169 -2.43308e-07 15.9386 1.25 15.3612 2.25L9.29904 12.75Z' fill='%23CBCEE0'/%3E%3C/svg%3E");
+
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes floating {
+  from {
+    transform: translate(0, 0px);
+  }
+  65% {
+    transform: translate(0, 15px);
+  }
+  to {
+    transform: translate(0, -0px);
+  }
+}
+
+.courses-header {
+  margin-bottom: 21px;
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #31374D;
+}
+
+.course-presentation {
+  padding: 9px;
+  border: 1px solid #9CA4C7;
+  border-radius: 8px;
+
+  &-content {
+    position: relative;
+  }
+
+  &-image {
+    width: 98px;
+    height: 98px;
+    background: #FFFFFF;
+    border-radius: 6px;
+  }
+
+  &-header {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 28px;
+    color: #31374D;
+
+    &-name {
+      padding-top: 15px;
+      font-weight: 700;
+    }
+
+    &-modules {
+      font-weight: 400;
+    }
+
+    &-price {
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 28px;
+      color: #31374D;
+
+      @include media-breakpoint-down(lg) {
+        position: absolute;
+        top: -40px;
+        right: -15px;
+      }
+
+      &-pill {
+        margin-top: 10px;
+        padding: 7px 18px;
+        background: #DEE0E9;
+        border-radius: 21.5px;
+      }
+
+    }
+  }
+
+  &-description {
+    margin: 20px 20px 20px 0;
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+
+    color: #595E71;
+  }
+}
+
+span.subheader {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #354FA9;
+}
+
+h2.header {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 49px;
+
+  margin-top: 7px;
+
+  color: #31374D;
+}
+
+p.description {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+
+  margin-top: 26px;
+
+  color: #31374D;
+}
+
+.get-hired-quickly {
+  margin-top: 117px;
+
+  .pros-list {
+    margin-top: 31px;
+
+    &-item {
+      margin-bottom: 21px;
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 30px;
+
+      color: #31374D;
+
+      &-icon {
+
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: #E6E8F1;
+
+        margin-right: 25px;
+      }
+    }
+  }
+
+  .btn-action {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+
+    padding: 21px 62px;
+    max-width: 230px;
+
+    margin-top: 49px;
+  }
+
+  .process {
+    background: #D03D1C;
+    border-radius: 24px;
+
+    width: 100%;
+    max-width: 480px;
+    height: min(70vw, 370px);
+
+    img {
+      margin: auto 25px 0 25px;
+      width: 90%;
+      height: auto;
+    }
+
+    &-description {
+      height: 73px;
+      background: #31374D;
+      border-radius: 0 0 24px 24px;
+
+      &-steps {
+        font-family: 'Manrope', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+
+        color: #FFFFFF;
+
+        margin: 5px 5px 0 10px;
+        @include media-breakpoint-up(sm) {
+          margin: 15px 15px 0 25px;
+        }
+
+        span.completed {
+          font-weight: 700;
+        }
+      }
+
+      &-dots {
+        margin: 5px 47px 18px 47px;
+
+        .dot {
+          width: 10px;
+          height: 10px;
+
+          border-radius: 50%;
+          border: 1px solid #FFF;
+
+          &.completed {
+            background: #FFFFFF;
+          }
+
+          &.big {
+            width: 16px;
+            height: 16px;
+          }
+
+          &.big.completed {
+            background-image: url("data:image/svg+xml,%3Csvg width='9' height='7' viewBox='0 0 9 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3.68333L2.91667 5.6L7.51667 1' stroke='%2331374D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+        }
+      }
+
+    }
+  }
+
+}
+
+.course-facts {
+  margin-top: 100px;
+
+  @include media-breakpoint-up(md) {
+    margin-top: 190px;
+
+    .offset-1-5 {
+      margin-left: 12.5%;
+    }
+  }
+
+  .course-fact {
+    &-image {
+      height: 100px;
+    }
+
+    &-number {
+      margin-top: 30px;
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 87px;
+
+      color: #31374D;
+    }
+
+    &-description {
+      margin-top: 13px;
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 26px;
+
+      color: #31374D;
+    }
+  }
+
+  .action {
+    margin-top: 64px;
+
+    &-col {
+      border-top: 2px solid #E6E8F1;
+      padding: 13px;
+
+      a {
+        font-family: 'Manrope', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        text-decoration: none;
+
+        color: #354FA9;
+
+        svg {
+          margin-left: 12px;
+        }
+      }
+    }
+  }
+}
+
+.testimonials {
+  margin-top: 100px;
+
+  @include media-breakpoint-up(md) {
+    margin-top: 165px;
+  }
+}
+
+.international-student-support {
+  margin-top: 100px;
+
+  @include media-breakpoint-up(md) {
+    margin-top: 186px;
+  }
+
+  .support-description {
+    margin-top: 82px;
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    color: #31374D;
+
+  }
+
+  .support-header {
+    margin-top: 30px;
+    padding-bottom: 18px;
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+
+    color: #31374D;
+
+    border-bottom: 2px solid #E6E8F1;
+
+  }
+
+  .language-list {
+    margin-top: 53px;
+
+    .language {
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 30px;
+
+      color: #31374D;
+
+      &-symbol {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+
+        margin-bottom: 16px;
+
+
+        &.pink {
+          background-color: #FFE3DD;
+        }
+
+        &.yellow {
+          background-color: #FFF4CE;
+        }
+
+        &.green {
+          background-color: #DEFFCE;
+        }
+
+        &.gray {
+          background-color: #E6E8F1;
+        }
+      }
+    }
+  }
+
+  .support-person {
+    margin-top: 43px;
+    padding-left: 55px;
+  }
+}
+
+.faq {
+  margin-top: 100px;
+  @include media-breakpoint-up(md) {
+    margin-top: 166px;
+  }
+}
+
+.sign-up-today {
+  margin-top: 100px;
+
+  padding: 40px 45px;
+
+  @include media-breakpoint-up(md) {
+    margin-top: 165px;
+    padding: 90px 125px;
+  }
+}
