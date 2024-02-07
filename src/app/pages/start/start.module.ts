@@ -16,24 +16,27 @@ import {OrderSummaryComponent} from './pay/order-summary/order-summary.component
 
 
 @NgModule({
-  declarations: [
-    RegisterComponent,
-    ChooseCourseComponent,
-    PayComponent,
-    StartComponent,
-    StepsComponent,
-    CompletedComponent,
-    DiscountComponent,
-    OrderSummaryComponent,
-  ],
-  imports: [
-    CommonModule,
-    StartRoutingModule,
-    RouterOutlet,
-    PartialsModule,
-    ReactiveFormsModule,
-    NgbTooltipModule,
-  ]
+    declarations: [
+        RegisterComponent,
+        ChooseCourseComponent,
+        PayComponent,
+        StartComponent,
+        StepsComponent,
+        CompletedComponent,
+        DiscountComponent,
+        OrderSummaryComponent,
+    ],
+    exports: [
+        RegisterComponent
+    ],
+    imports: [
+        CommonModule,
+        StartRoutingModule,
+        RouterOutlet,
+        PartialsModule,
+        ReactiveFormsModule,
+        NgbTooltipModule,
+    ]
 })
 export class StartModule {
 }

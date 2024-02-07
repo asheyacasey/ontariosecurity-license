@@ -1,0 +1,141 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
+
+.testimonial-tabs-container {
+  margin-top: 60px;
+}
+
+.testimonial-tab {
+  cursor: pointer;
+
+  padding: 20px;
+  box-sizing: border-box;
+
+  background: #FFFFFF;
+  border: 2px solid #F3F4FA;
+  border-radius: 10px;
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+
+  color: #31374D;
+
+  &:not(:first-of-type) {
+    margin-left: 5px;
+  }
+
+  &:not(:last-of-type) {
+    margin-right: 5px;
+  }
+
+  &.active {
+    background: #F3F4FA;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+
+}
+
+.testimonial {
+  margin-top: 20px;
+  position: relative;
+
+  padding: 58px 20px 43px 20px;
+  background: #F3F4FA;
+  border-radius: 10px;
+
+  &-quote {
+    display: block;
+    width: 38px;
+    height: 34px;
+    position: absolute;
+
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+
+    &-start {
+      background-image: url("data:image/svg+xml,%3Csvg width='38' height='34' viewBox='0 0 38 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36.352 6.94211L37.248 0.286112C26.752 -1.44189 21.44 4.76612 21.44 15.9661V33.0541H37.248V16.6061H29.056C28.352 10.7821 30.464 6.49411 36.352 6.94211ZM0 33.0541H15.808V16.6061H7.616C6.912 10.7821 9.024 6.49411 14.912 6.94211L15.808 0.286112C5.312 -1.44189 0 4.76612 0 15.9661L0 33.0541Z' fill='%23D2D6E9'/%3E%3C/svg%3E");
+      top: 40px;
+      left: 40px;
+    }
+
+    &-end {
+      background-image: url("data:image/svg+xml,%3Csvg width='38' height='34' viewBox='0 0 38 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.896046 26.1121L4.58014e-05 32.7681C10.496 34.4961 15.808 28.2881 15.808 17.0881L15.808 8.58637e-05L4.8666e-05 8.44817e-05L4.72281e-05 16.4481L8.19205 16.4481C8.89605 22.2721 6.78405 26.5601 0.896046 26.1121ZM37.248 8.7738e-05L21.4401 8.63561e-05L21.44 16.4481L29.632 16.4481C30.336 22.2721 28.224 26.5601 22.336 26.1121L21.44 32.7681C31.936 34.4961 37.248 28.2881 37.248 17.0881L37.248 8.7738e-05Z' fill='%23D2D6E9'/%3E%3C/svg%3E");
+      bottom: 40px;
+      right: 40px;
+    }
+  }
+
+
+  &-title {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 40px;
+
+    text-align: center;
+
+    color: #31374D;
+  }
+
+  &-content {
+    padding: 30px 40px;
+
+    max-width: 700px;
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+
+    text-align: center;
+
+    color: #31374D;
+  }
+
+  .testimonial-signature {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+
+    max-width: 306px;
+    margin: 0 25px;
+    color: #31374D;
+
+    &-container {
+      background: #FFFFFF;
+      border-radius: 37.5px;
+      padding: 14px;
+    }
+
+    &-photo {
+      img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+      }
+    }
+
+    &-name {
+      font-weight: 700;
+    }
+
+    &-role {
+      font-weight: 400;
+    }
+  }
+}
+
+

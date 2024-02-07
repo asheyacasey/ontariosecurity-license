@@ -24,7 +24,7 @@ h2.course-learning-modules-header {
     border: 0;
     border-radius: 4px;
 
-    margin-top: 8px;
+    margin-top: 20px;
     cursor: pointer;
 
     .module-header-checkmark {
@@ -33,6 +33,11 @@ h2.course-learning-modules-header {
       }
     }
 
+    .module-header-lock {
+      svg {
+        visibility: hidden;
+      }
+    }
 
     .module-header {
       font-family: 'Manrope', sans-serif;
@@ -68,7 +73,8 @@ h2.course-learning-modules-header {
     }
 
 
-    &.completed {
+    &.locked {
+      cursor: default;
       background: #E8EAF6;
 
       .module-header {
@@ -79,6 +85,24 @@ h2.course-learning-modules-header {
         color: #ACADBF;
       }
 
+      .module-header-lock {
+        position: relative;
+        top: -26px;
+        right: -98px;
+
+        &.close {
+          top: -22px;
+          right: -26px;
+        }
+
+        svg {
+          visibility: inherit;
+        }
+      }
+
+    }
+
+    &.completed {
       .module-header-checkmark {
         svg {
           visibility: inherit;
@@ -89,8 +113,6 @@ h2.course-learning-modules-header {
 
     &.active {
       background: #354FA9;
-      margin-top: 8px;
-
 
       .module-header {
         color: #FFFFFF;
@@ -100,7 +122,6 @@ h2.course-learning-modules-header {
         color: #FFFFFF;
       }
     }
-
   }
 }
 

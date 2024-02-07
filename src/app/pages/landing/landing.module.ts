@@ -7,9 +7,13 @@ import {CoursesListComponent} from './courses-list/courses-list.component';
 import {MainComponent} from './main/main.component';
 import {FaqComponent} from './faq/faq.component';
 import {FooterComponent} from './footer/footer.component';
-import {LandingV2Component} from './landing-v2/landing-v2.component';
+import {LandingV3Component} from './landing-v3/landing-v3.component';
 import {LandingRegisterComponent} from './register/landing-register.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {CountUpModule} from "ngx-countup";
+import { TestimonialsComponent } from './testimonials/testimonials.component';
+import { SecurityKnowledgeTestComponent } from './security-knowledge-test/security-knowledge-test.component';
+import { LandingRegisterModalComponent } from './register-modal/landing-register-modal.component';
 
 
 @NgModule({
@@ -19,15 +23,19 @@ import {ReactiveFormsModule} from "@angular/forms";
     MainComponent,
     FaqComponent,
     FooterComponent,
-    LandingV2Component,
+    LandingV3Component,
     LandingRegisterComponent,
+    TestimonialsComponent,
+    SecurityKnowledgeTestComponent,
+    LandingRegisterModalComponent,
   ],
-  imports: [
-    CommonModule,
-    PartialsModule,
-    LandingRoutingModule,
-    ReactiveFormsModule,
-  ]
+    imports: [
+        CommonModule,
+        PartialsModule,
+        LandingRoutingModule,
+        ReactiveFormsModule,
+        CountUpModule,
+    ]
 })
 export class LandingModule {
 }

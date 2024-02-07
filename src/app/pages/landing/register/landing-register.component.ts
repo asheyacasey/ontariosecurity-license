@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {Router} from "@angular/router";
 import {UserRegisterRequest} from "../../../models/user";
+import {GoogleTagManagerService} from "angular-google-tag-manager";
 
 @Component({
   selector: 'app-landing-register',
@@ -18,12 +19,16 @@ export class LandingRegisterComponent implements OnInit {
 
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    phone: new FormControl('', [
+      Validators.required, Validators.minLength(6), Validators.maxLength(32)
+    ])
   })
 
   constructor(
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private gtmService: GoogleTagManagerService
   ) {
   }
 
@@ -49,7 +54,11 @@ export class LandingRegisterComponent implements OnInit {
       }),
       finalize(() => this.isLoading$.next(false))
     ).subscribe((user) => {
-      this.router.navigate(['/start/course'])
+      this.gtmService.pushTag({
+        event: 'email_submitted',
+      }).finally(() => {
+        this.router.navigate(['/start/course']);
+      });
     })
   }
 }

@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {LinkedLecture, LinkedLectureIterator, LinkedQuizIterator} from "../../../models/lecture";
 import {Router} from "@angular/router";
 import {LearnService} from "../../../services/learn.service";
+import {Subject, takeUntil} from "rxjs";
+import {CourseProgressModule} from "../../../models/course";
 
 @Component({
   selector: 'app-navigation',
@@ -9,6 +11,7 @@ import {LearnService} from "../../../services/learn.service";
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
   @Input() previousLecture: LinkedLectureIterator | null = null;
   @Input() previousQuiz: LinkedQuizIterator | null = null;
@@ -17,6 +20,8 @@ export class NavigationComponent implements OnInit {
   @Input() lectureIds: number[] = [];
   @Input() currentLectureId: number | null = null;
 
+  modules: CourseProgressModule[] = [];
+
   constructor(
     private learnService: LearnService,
     private router: Router
@@ -24,6 +29,11 @@ export class NavigationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.learnService.courseModules$.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe((modules) => {
+      this.modules = modules;
+    })
   }
 
   hasPrevious(): boolean {
@@ -46,6 +56,10 @@ export class NavigationComponent implements OnInit {
   }
 
   next(): void {
+    if (this.nextIsLocked()) {
+      return;
+    }
+
     const nextLectureId = this.nextLecture?.id;
     if (nextLectureId) {
       this.goToLectureId(nextLectureId);
@@ -57,6 +71,19 @@ export class NavigationComponent implements OnInit {
 
   }
 
+  nextIsLocked(): boolean {
+    if(!this.nextLecture) {
+      return false;
+    }
+
+    const nextModule = this.modules.find(m => m.lectureIds.includes(this.nextLecture?.id as number));
+    if (!nextModule) {
+      return false;
+    }
+
+    return nextModule.locked;
+  }
+
   goToLectureId(lectureId: number): void {
     this.router.navigate(['/learn', this.learnService.courseId, 'lecture', lectureId]);
   }
@@ -64,5 +91,4 @@ export class NavigationComponent implements OnInit {
   goToQuizId(quizId: number): void {
     this.router.navigate(['/learn', this.learnService.courseId, 'quiz', quizId]);
   }
-
 }

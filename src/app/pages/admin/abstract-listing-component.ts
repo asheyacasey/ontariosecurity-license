@@ -16,7 +16,7 @@ import {SearchService} from "../../models/admin/search-service";
 import {Pagination} from "../../models/admin/pagination";
 
 @Component({template: ''})
-export abstract class AbstractListingComponent<T extends Pagination> implements OnInit, OnDestroy{
+export abstract class AbstractListingComponent<T extends Pagination> implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
   isLoading$: Subject<boolean> = new BehaviorSubject<boolean>(false);
 
@@ -31,6 +31,8 @@ export abstract class AbstractListingComponent<T extends Pagination> implements 
   results: T | null = null;
 
   searchService!: SearchService<T>;
+
+  showDetails: number[] = [];
 
   constructor(
     protected activatedRoute: ActivatedRoute,
@@ -61,7 +63,7 @@ export abstract class AbstractListingComponent<T extends Pagination> implements 
     this.loadResults().subscribe((results) => this.results = results);
   }
 
-    ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.complete();
   }
@@ -95,5 +97,21 @@ export abstract class AbstractListingComponent<T extends Pagination> implements 
     }
   }
 
+  detailsShown(userId: number): boolean {
+    return this.showDetails.indexOf(userId) > -1;
+  }
+
+  detailsHidden(userId: number): boolean {
+    return !this.detailsShown(userId);
+  }
+
+  toggleShowDetails(userId: number): void {
+    const index = this.showDetails.indexOf(userId);
+    if (index > -1) {
+      this.showDetails.splice(index, 1);
+    } else {
+      this.showDetails.push(userId);
+    }
+  }
 
 }

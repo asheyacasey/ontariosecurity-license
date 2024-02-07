@@ -1,0 +1,29 @@
+<div class="row test-container">
+  <div class="col-12 d-flex flex-column align-items-center">
+    <div class="test-title">Are you eligible to become a Security Guard In Ontario?</div>
+    <div *ngIf="!completed" class="test-content d-flex align-items-center">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-10 col-md-6">
+          <div class="test-question">{{ currentQuestion.question}} </div>
+        </div>
+        <div class="col-10 col-md-6 mt-5 mt-md-0">
+          <div class="test-answers">
+            <ng-container *ngFor="let answer of currentQuestion.answers">
+              <div class="test-answer d-flex align-items-center" (click)="nextQuestion()">
+                <div class="test-answer-letter d-flex align-items-center justify-content-center flex-shrink-0">{{ answer.letter }}</div>
+                <div class="test-answer-text">{{ answer.answer }}</div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="completed" class="test-content d-flex align-items-center flex-column">
+      <h2 class="test-completed-header">Good job!</h2>
+      <p class="test-completed-text">Sign up to learn your score!</p>
+    </div>
+    <div class="test-progress-container">
+      <div class="test-progress-bar" [ngStyle]="{'width.%': completedPercent}"></div>
+    </div>
+  </div>
+</div>

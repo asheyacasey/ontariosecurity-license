@@ -65,7 +65,7 @@ export class LectureComponent implements OnInit, OnDestroy {
 
     this.learnService.getLecture(this.lectureId).pipe(
       catchError((err: HttpErrorResponse) => {
-        if (err.status === 404) {
+        if (err.status === 403 || err.status === 404) {
           this.router.navigate(['/learn', this.learnService.courseId]);
         }
         return throwError(() => err);

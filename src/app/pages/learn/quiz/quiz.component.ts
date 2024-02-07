@@ -51,7 +51,7 @@ export class QuizComponent implements OnInit, OnDestroy {
 
       this.learnService.getQuiz(quizId).pipe(
         catchError((err: HttpErrorResponse) => {
-          if (err.status === 404) {
+          if (err.status === 403 || err.status === 404) {
             this.router.navigate(['/learn', this.learnService.courseId]);
           }
           return throwError(() => err);
@@ -121,11 +121,7 @@ export class QuizComponent implements OnInit, OnDestroy {
 
     this.learnService.sendQuizAnswers(this.quiz.id, this.quizAnswers).pipe(
       tap((results) => {
-        if (results.passed) {
-          this.learnService.setModuleIdCompleted(this.quiz.module.id);
-        } else {
-          this.learnService.setModuleIdNotCompleted(this.quiz.module.id);
-        }
+        this.learnService.setQuizIdCompleted(this.quiz.id);
       })
     ).subscribe((results) => {
       this.quiz.result = results;
