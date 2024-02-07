@@ -295,6 +295,10 @@ nav {
   &-description {
     margin: 20px 20px 20px 0;
 
+    @include media-breakpoint-down(lg) {
+      margin-left: 20px;
+    }
+
     font-family: 'Manrope', sans-serif;
     font-style: normal;
     font-weight: 400;
