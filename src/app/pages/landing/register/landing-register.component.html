@@ -1,62 +1,64 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" ngNativeValidate autocomplete="off">
-  <div class="row">
-    <div class="col-12">
-      <span class="subheader">Get Started Now</span>
-      <h2 class="header">Sign Up Today!</h2>
-    </div>
-  </div>
-  <div class="row sign-up">
-    <div class="d-none d-md-flex col-6 align-items-center justify-content-center">
-      <img alt="3D Certificate" class="img-fluid" src="/assets/v3/3d-certificate.png" />
-    </div>
-    <div class="col-12 col-md-6">
-      <div class="row">
-        <div class="col-12 mt-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" required="required" placeholder="john.doe@gmail.com"
-                 formControlName="email">
-        </div>
-        <div class="col-12 mt-3">
-          <label for="password" class="form-label">Phone number</label>
-          <input type="tel" class="form-control" id="phone" required="required" minlength="6" maxlength="32"
-                 placeholder="+1-613-555-0145"
-                 formControlName="phone">
-        </div>
-        <div class="col-12 mt-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" required="required" minlength="6"
-                 placeholder="Enter your password"
-                 formControlName="password">
-        </div>
+<div class="modal-body">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" ngNativeValidate autocomplete="off">
+    <div class="row">
+      <div class="col-12">
+        <span class="subheader">Get Started Now</span>
+        <h2 class="header">Sign Up Today!</h2>
       </div>
-      <div class="row mt-3" [ngClass]="{'d-none': !showLoginSuggestion}">
-        <div class="col-12">
-          <div class="alert alert-warning d-flex align-items-center" role="alert"
-               [class.invisible]="!showLoginSuggestion">
-            <div>
-              This email has already been registered. Do you want to <a routerLink="/login">sign in</a>?
+    </div>
+    <div class="row sign-up">
+      <div class="d-none d-md-flex col-6 align-items-center justify-content-center">
+        <img alt="3D Certificate" class="img-fluid" src="/assets/v3/3d-certificate.png"/>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="row">
+          <div class="col-12 mt-3">
+            <label for="email" class="form-label">Email</label>
+            <input ngbAutofocus type="email" class="form-control" id="email" required="required" placeholder="john.doe@gmail.com"
+                   formControlName="email">
+          </div>
+          <div class="col-12 mt-3">
+            <label for="password" class="form-label">Phone number</label>
+            <input type="tel" class="form-control" id="phone" required="required" minlength="6" maxlength="32"
+                   placeholder="+1-613-555-0145"
+                   formControlName="phone">
+          </div>
+          <div class="col-12 mt-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" required="required" minlength="6"
+                   placeholder="Enter your password"
+                   formControlName="password">
+          </div>
+        </div>
+        <div class="row mt-3" [ngClass]="{'d-none': !showLoginSuggestion}">
+          <div class="col-12">
+            <div class="alert alert-warning d-flex align-items-center" role="alert"
+                 [class.invisible]="!showLoginSuggestion">
+              <div>
+                This email has already been registered. Do you want to <a routerLink="/login">sign in</a>?
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row sign-up">
-        <div class="col-12 d-flex justify-content-center justify-content-md-end">
-          <button type="submit" class="btn btn-action flex-grow-1 flex-lg-grow-0"
-                  [disabled]="(isLoading$ | async) === true">
-            <ng-container *ngIf="(isLoading$ | async) === true; else submit">
-              <div class="spinner-border spinner-border-sm text-secondary" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-            </ng-container>
-            <ng-template #submit>
-              Sign Up Now
-            </ng-template>
-          </button>
+        <div class="row sign-up">
+          <div class="col-12 d-flex justify-content-center justify-content-md-end">
+            <button type="submit" class="btn btn-action flex-grow-1 flex-lg-grow-0"
+                    [disabled]="(isLoading$ | async) === true">
+              <ng-container *ngIf="(isLoading$ | async) === true; else submit">
+                <div class="spinner-border spinner-border-sm text-secondary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </ng-container>
+              <ng-template #submit>
+                Sign Up Now
+              </ng-template>
+            </button>
+          </div>
         </div>
+
       </div>
 
     </div>
 
-  </div>
-
-</form>
+  </form>
+</div>

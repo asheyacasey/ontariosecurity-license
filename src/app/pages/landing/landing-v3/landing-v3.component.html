@@ -1,244 +1,420 @@
 <div class="container-fluid white-bg">
   <div class="space-top"></div>
   <div class="gray-bg-container">
-    <nav class="navbar navbar-light">
-      <div class="d-flex align-items-center">
-        <button (click)="onMenuClicked()" class="navbar-toggler d-block d-xl-none me-3" type="button">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="container-xxl">
+      <nav class="navbar navbar-light">
+        <div class="d-flex align-items-center">
+          <button (click)="onMenuClicked()" class="navbar-toggler d-block d-xl-none me-3" type="button">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-        <a class="navbar-brand" routerLink="/">
-          <svg class="d-none d-md-block" width="195" height="42" viewBox="0 0 195 42" fill="none"
-               xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M40.7344 10.6596C40.7344 6.42307 43.2496 3.56738 47.3348 3.56738C51.4199 3.56738 53.9351 6.42307 53.9351 10.6596C53.9351 14.896 51.4199 17.7517 47.3348 17.7517C43.2496 17.7517 40.7344 14.896 40.7344 10.6596ZM47.3348 15.3311C49.9256 15.3689 51.2119 13.4963 51.2119 10.6596C51.2119 7.82278 49.9256 6.02585 47.3348 5.98852C44.7439 5.95069 43.4577 7.82328 43.4577 10.6596C43.4577 13.4958 44.7439 15.2933 47.3348 15.3311Z"
-              fill="#354FA9"/>
-            <path
-              d="M60.5936 9.37278C59.7046 9.37278 58.4184 9.75109 58.4184 12.2852V17.4675H55.8086V7.25479H58.0968V8.30458C58.8345 7.48177 59.941 6.95215 61.4065 6.95215C65.3971 6.95215 65.3971 10.886 65.3971 11.7372V17.4675H62.7873V12.6451C62.7873 11.7183 62.7873 9.37328 60.5936 9.37328V9.37278Z"
-              fill="#354FA9"/>
-            <path
-              d="M68.8809 16.2016C68.3702 15.2747 68.4648 14.3668 68.4648 13.1378V9.2418H66.7246V7.25571H68.4648V4.41895H71.0368V7.25571H73.987V9.2418H71.0368V12.986C71.0368 13.7804 70.9989 14.4425 71.2448 14.8208C71.6988 15.5395 72.7769 15.5017 73.987 15.3315V17.4684C71.869 17.8656 69.7127 17.6954 68.8809 16.2016Z"
-              fill="#354FA9"/>
-            <path
-              d="M75.6895 14.6507C75.6895 13.2321 76.2758 12.1733 77.9209 11.568C78.9045 11.2086 80.3699 10.9911 82.2898 10.7074C82.1858 9.75268 81.6278 9.31763 80.4177 9.31763C79.6611 9.31763 78.6965 9.63919 78.3749 10.5655L76.0488 9.82834C76.5595 8.1449 77.9588 6.97266 80.4177 6.97266C82.2142 6.97266 83.6895 7.46445 84.4083 8.82634C84.8055 9.58294 84.8244 10.3012 84.8244 11.2281V17.469H82.5741V16.2206C81.6661 17.2988 80.6641 17.7528 79.0942 17.7528C76.9 17.7528 75.6899 16.3531 75.6899 14.6512L75.6895 14.6507ZM79.6422 15.7289C81.0608 15.7289 81.7985 14.802 82.0066 14.3675C82.2241 13.923 82.262 13.2798 82.2714 12.7881C80.5501 13.0812 79.8508 13.2231 79.2644 13.4406C78.5078 13.7433 78.2057 14.1027 78.2057 14.6129C78.2057 15.3127 78.7542 15.7289 79.6427 15.7289H79.6422Z"
-              fill="#354FA9"/>
-            <path
-              d="M87.2832 7.25487H89.5525V8.90048C89.8173 8.4276 90.1767 8.02093 90.6496 7.74666C91.3873 7.2927 92.352 7.14137 93.2783 7.25487V9.65659C92.7108 9.48635 91.8786 9.5431 91.2738 9.82682C90.3659 10.243 89.8741 11.0747 89.8741 12.2475V17.467H87.2832V7.25487Z"
-              fill="#354FA9"/>
-            <path d="M95.2676 3.56738H97.8395V5.8367H95.2676V3.56738ZM95.2676 7.25533H97.8395V17.468H95.2676V7.25533Z"
-                  fill="#354FA9"/>
-            <path
-              d="M100.107 12.361C100.107 9.16486 102.244 6.9707 105.271 6.9707C108.353 6.9707 110.453 9.20219 110.453 12.361C110.453 15.5383 108.335 17.7508 105.271 17.7508C102.188 17.7508 100.107 15.5193 100.107 12.361ZM105.271 15.3491C106.916 15.3491 107.729 14.1196 107.729 12.361C107.729 10.5457 106.897 9.37292 105.271 9.37292C103.588 9.37292 102.831 10.5835 102.831 12.361C102.831 14.1953 103.663 15.3491 105.271 15.3491Z"
-              fill="#354FA9"/>
-            <path
-              d="M40.9238 29.7338L43.6093 29.3366C43.9876 30.906 45.2922 31.7761 46.8054 31.7761C48.0727 31.7761 49.3968 31.1708 49.3968 30.0359C49.3968 29.4874 49.132 28.9961 48.0727 28.6745L44.5361 27.6342C43.4769 27.3316 41.4535 26.6695 41.4535 24.0787C41.4535 21.3365 43.7422 19.9935 46.5411 20.0129C49.359 20.0507 51.3256 21.45 51.9877 24.0035L49.2077 24.4764C48.905 23.1528 47.7328 22.453 46.5033 22.4151C45.2927 22.3773 44.1583 22.9826 44.1583 23.9472C44.1583 24.8363 45.1041 25.1762 45.9737 25.4032L48.3381 26.0463C49.7378 26.4246 52.1017 27.1051 52.1017 29.8473C52.1017 32.7791 49.4157 34.1783 46.6362 34.1783C43.6103 34.1783 41.3405 32.4949 40.9248 29.7338H40.9238Z"
-              fill="#354FA9"/>
-            <path
-              d="M53.6138 28.9197C53.6138 25.5722 55.7507 23.3975 58.7766 23.3975C61.9917 23.3975 63.8643 25.7992 63.5522 29.506H56.3843C56.5735 30.9625 57.3868 31.7759 58.7766 31.7759C59.7791 31.7759 60.5168 31.3219 60.8946 30.4896L63.4666 31.2268C62.691 33.0994 60.8946 34.1776 58.9274 34.1776C55.788 34.1776 53.6133 31.9839 53.6133 28.9202L53.6138 28.9197ZM60.9518 27.5956C60.7722 26.2153 60.129 25.6289 58.8901 25.6289C57.5098 25.6289 56.7154 26.3004 56.4505 27.5956H60.9518Z"
-              fill="#354FA9"/>
-            <path
-              d="M65.1162 28.7878C65.1162 25.6862 67.1023 23.3975 70.2228 23.3975C72.6245 23.3975 74.3647 24.7026 74.8182 26.8017L72.2462 27.4826C71.9436 26.4234 71.1302 25.7992 70.1845 25.7992C68.5578 25.7992 67.8395 27.0849 67.8395 28.7873C67.8395 30.5648 68.6339 31.7754 70.1845 31.7754C71.3383 31.7754 71.8863 31.2263 72.189 30.2432L74.8177 30.7923C74.2313 32.967 72.5484 34.1776 70.184 34.1776C67.0067 34.1776 65.1152 31.851 65.1152 28.7878H65.1162Z"
-              fill="#354FA9"/>
-            <path
-              d="M76.522 29.4124V23.6821H79.1318V28.5045C79.1318 29.4308 79.1318 31.7763 81.3254 31.7763C82.2144 31.7763 83.5007 31.398 83.5007 28.8639V23.6816H86.0915V33.8943H83.8217V32.845C83.0845 33.6673 81.978 34.1974 80.5121 34.1974C76.5215 34.1974 76.5215 30.2636 76.5215 29.4124H76.522Z"
-              fill="#354FA9"/>
-            <path
-              d="M88.7402 23.6816H91.0096V25.3272C91.2744 24.8544 91.6337 24.4477 92.1066 24.1734C92.8443 23.7195 93.809 23.5681 94.7353 23.6816V26.0833C94.1679 25.9131 93.3356 25.9699 92.7308 26.2536C91.8229 26.6697 91.3311 27.5015 91.3311 28.6742V33.8938H88.7402V23.6811V23.6816Z"
-              fill="#354FA9"/>
-            <path
-              d="M96.7246 19.9941H99.2966V22.2635H96.7246V19.9941ZM96.7246 23.6821H99.2966V33.8948H96.7246V23.6821Z"
-              fill="#354FA9"/>
-            <path
-              d="M103.152 32.6273C102.642 31.7005 102.736 30.7926 102.736 29.5636V25.6676H100.996V23.6815H102.736V20.8447H105.308V23.6815H108.258V25.6676H105.308V29.4118C105.308 30.2067 105.27 30.8682 105.516 31.2465C105.97 31.9653 107.048 31.9275 108.258 31.7573V33.8942C106.141 34.2914 103.985 34.1211 103.152 32.6273Z"
-              fill="#354FA9"/>
-            <path
-              d="M113.236 33.8092L109.113 23.6816H111.78L114.465 30.6319L117.132 23.6816H119.704L113.936 38.4334H111.553L113.236 33.8092H113.236Z"
-              fill="#354FA9"/>
-            <path d="M125.002 20.2783H127.574V31.493H133.437V33.8947H125.002V20.2783Z" fill="#354FA9"/>
-            <path
-              d="M135.234 19.9941H137.806V22.2635H135.234V19.9941ZM135.234 23.6821H137.806V33.8948H135.234V23.6821Z"
-              fill="#354FA9"/>
-            <path
-              d="M140.077 28.7878C140.077 25.6862 142.063 23.3975 145.184 23.3975C147.585 23.3975 149.326 24.7026 149.779 26.8017L147.207 27.4826C146.905 26.4234 146.092 25.7992 145.145 25.7992C143.519 25.7992 142.8 27.0849 142.8 28.7873C142.8 30.5648 143.595 31.7754 145.145 31.7754C146.299 31.7754 146.848 31.2263 147.15 30.2432L149.779 30.7923C149.192 32.967 147.509 34.1776 145.145 34.1776C141.968 34.1776 140.076 31.851 140.076 28.7878H140.077Z"
-              fill="#354FA9"/>
-            <path
-              d="M150.82 28.9197C150.82 25.5722 152.958 23.3975 155.984 23.3975C159.199 23.3975 161.071 25.7992 160.759 29.506H153.591C153.781 30.9625 154.594 31.7759 155.984 31.7759C156.987 31.7759 157.724 31.3219 158.102 30.4896L160.675 31.2268C159.899 33.0994 158.102 34.1776 156.135 34.1776C152.996 34.1776 150.821 31.9839 150.821 28.9202L150.82 28.9197ZM158.158 27.5956C157.979 26.2153 157.336 25.6289 156.097 25.6289C154.716 25.6289 153.922 26.3004 153.657 27.5956H158.158Z"
-              fill="#354FA9"/>
-            <path
-              d="M167.37 25.8C166.481 25.8 165.196 26.1783 165.196 28.7125V33.8942H162.586V23.6815H164.874V24.7313C165.612 23.9085 166.718 23.3789 168.184 23.3789C172.174 23.3789 172.174 27.3128 172.174 28.1639V33.8942H169.565V29.0719C169.565 28.145 169.565 25.8 167.371 25.8H167.37Z"
-              fill="#354FA9"/>
-            <path
-              d="M174.066 30.8301L176.695 30.4329C176.903 31.3976 177.679 31.965 178.814 31.965C179.74 31.965 180.27 31.5867 180.27 30.9436C180.27 30.3383 180.024 30.2064 177.812 29.6195C175.315 28.9769 174.407 28.1825 174.407 26.6125C174.407 24.6459 175.996 23.3975 178.474 23.3975C180.875 23.3975 182.539 24.5697 182.804 26.4234L180.175 26.8963C180.081 26.1397 179.495 25.6857 178.53 25.6105C177.585 25.5538 176.96 25.8943 176.96 26.4806C176.96 27.0102 177.301 27.1805 179.684 27.7858C182.01 28.391 182.899 29.2228 182.899 30.8117C182.899 32.9108 181.292 34.1781 178.625 34.1781C176.053 34.1781 174.407 32.9675 174.067 30.8301H174.066Z"
-              fill="#354FA9"/>
-            <path
-              d="M184.414 28.9197C184.414 25.5722 186.551 23.3975 189.577 23.3975C192.792 23.3975 194.665 25.7992 194.353 29.506H187.185C187.374 30.9625 188.188 31.7759 189.578 31.7759C190.58 31.7759 191.318 31.3219 191.696 30.4896L194.268 31.2268C193.492 33.0994 191.696 34.1776 189.729 34.1776C186.59 34.1776 184.415 31.9839 184.415 28.9202L184.414 28.9197ZM191.752 27.5956C191.573 26.2153 190.93 25.6289 189.69 25.6289C188.31 25.6289 187.516 26.3004 187.251 27.5956H191.752Z"
-              fill="#354FA9"/>
-            <path
-              d="M15.2321 0L0 8.60637V26.7549L15.2451 42L30.4643 26.7808V8.60637L15.2321 0ZM15.2321 3.22104L27.6599 10.243V16.1192C25.5473 11.3501 20.7777 8.01353 15.2431 8.00557C15.2386 8.00507 15.2341 8.00557 15.2291 8.00557C15.2272 8.00557 15.2247 8.00557 15.2227 8.00557C9.69598 8.00557 4.92938 11.3247 2.80441 16.0768V10.2435L15.2321 3.22104ZM4.42862 21.623C4.42862 18.4611 5.79001 15.6124 7.95629 13.6333C7.80049 14.2346 7.71687 14.8653 7.71687 15.5144C7.71687 18.8136 9.83486 21.6931 12.9867 22.6807C13.7144 22.9087 14.4735 23.0242 15.2426 23.0242C15.702 23.0242 16.155 23.0894 16.5895 23.2183C18.5761 23.8062 19.9639 25.6613 19.9639 27.7295C19.9639 30.3239 17.8459 32.4349 15.2426 32.4349V32.4364C15.2356 32.4364 15.2291 32.4364 15.2222 32.4364C9.27039 32.4364 4.42813 27.5857 4.42813 21.623H4.42862ZM26.0167 21.623C26.0167 24.7589 24.6767 27.5872 22.5408 29.5643C22.6892 28.9769 22.7688 28.3627 22.7688 27.7295C22.7688 24.4279 20.5552 21.4672 17.386 20.5289C16.6931 20.3238 15.9718 20.2198 15.2431 20.2198C14.7588 20.2198 14.2819 20.1471 13.8254 20.0042C11.8493 19.3855 10.5218 17.5806 10.5218 15.5144C10.5218 12.9245 12.6323 10.817 15.2296 10.8095C21.1784 10.813 26.0172 15.6627 26.0172 21.623H26.0167ZM12.0848 34.8745C13.0922 35.1139 14.143 35.2408 15.2227 35.2408C16.3232 35.2408 17.3939 35.1084 18.4193 34.86L15.2451 38.0343L12.0853 34.8745H12.0848Z"
-              fill="#354FA9"/>
-          </svg>
-          <svg class="d-block d-md-none" width="31" height="42" viewBox="0 0 31 42" fill="none"
-               xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M15.2321 0L0 8.60637V26.7549L15.2451 42L30.4643 26.7808V8.60637L15.2321 0ZM15.2321 3.22104L27.6599 10.243V16.1192C25.5473 11.3501 20.7777 8.01353 15.2431 8.00557C15.2386 8.00507 15.2341 8.00557 15.2291 8.00557C15.2272 8.00557 15.2247 8.00557 15.2227 8.00557C9.69598 8.00557 4.92938 11.3247 2.80441 16.0768V10.2435L15.2321 3.22104ZM4.42862 21.623C4.42862 18.4611 5.79001 15.6124 7.95629 13.6333C7.80049 14.2346 7.71687 14.8653 7.71687 15.5144C7.71687 18.8136 9.83486 21.6931 12.9867 22.6807C13.7144 22.9087 14.4735 23.0242 15.2426 23.0242C15.702 23.0242 16.155 23.0894 16.5895 23.2183C18.5761 23.8062 19.9639 25.6613 19.9639 27.7295C19.9639 30.3239 17.8459 32.4349 15.2426 32.4349V32.4364C15.2356 32.4364 15.2291 32.4364 15.2222 32.4364C9.27039 32.4364 4.42813 27.5857 4.42813 21.623H4.42862ZM26.0167 21.623C26.0167 24.7589 24.6767 27.5872 22.5408 29.5643C22.6892 28.9769 22.7688 28.3627 22.7688 27.7295C22.7688 24.4279 20.5552 21.4672 17.386 20.5289C16.6931 20.3238 15.9718 20.2198 15.2431 20.2198C14.7588 20.2198 14.2819 20.1471 13.8254 20.0042C11.8493 19.3855 10.5218 17.5806 10.5218 15.5144C10.5218 12.9245 12.6323 10.817 15.2296 10.8095C21.1784 10.813 26.0172 15.6627 26.0172 21.623H26.0167ZM12.0848 34.8745C13.0922 35.1139 14.143 35.2408 15.2227 35.2408C16.3232 35.2408 17.3939 35.1084 18.4193 34.86L15.2451 38.0343L12.0853 34.8745H12.0848Z"
-              fill="#354FA9"/>
-          </svg>
-        </a>
+          <a class="navbar-brand" routerLink="/">
+            <svg class="d-none d-md-block" width="195" height="42" viewBox="0 0 195 42" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M40.7344 10.6596C40.7344 6.42307 43.2496 3.56738 47.3348 3.56738C51.4199 3.56738 53.9351 6.42307 53.9351 10.6596C53.9351 14.896 51.4199 17.7517 47.3348 17.7517C43.2496 17.7517 40.7344 14.896 40.7344 10.6596ZM47.3348 15.3311C49.9256 15.3689 51.2119 13.4963 51.2119 10.6596C51.2119 7.82278 49.9256 6.02585 47.3348 5.98852C44.7439 5.95069 43.4577 7.82328 43.4577 10.6596C43.4577 13.4958 44.7439 15.2933 47.3348 15.3311Z"
+                fill="#354FA9"/>
+              <path
+                d="M60.5936 9.37278C59.7046 9.37278 58.4184 9.75109 58.4184 12.2852V17.4675H55.8086V7.25479H58.0968V8.30458C58.8345 7.48177 59.941 6.95215 61.4065 6.95215C65.3971 6.95215 65.3971 10.886 65.3971 11.7372V17.4675H62.7873V12.6451C62.7873 11.7183 62.7873 9.37328 60.5936 9.37328V9.37278Z"
+                fill="#354FA9"/>
+              <path
+                d="M68.8809 16.2016C68.3702 15.2747 68.4648 14.3668 68.4648 13.1378V9.2418H66.7246V7.25571H68.4648V4.41895H71.0368V7.25571H73.987V9.2418H71.0368V12.986C71.0368 13.7804 70.9989 14.4425 71.2448 14.8208C71.6988 15.5395 72.7769 15.5017 73.987 15.3315V17.4684C71.869 17.8656 69.7127 17.6954 68.8809 16.2016Z"
+                fill="#354FA9"/>
+              <path
+                d="M75.6895 14.6507C75.6895 13.2321 76.2758 12.1733 77.9209 11.568C78.9045 11.2086 80.3699 10.9911 82.2898 10.7074C82.1858 9.75268 81.6278 9.31763 80.4177 9.31763C79.6611 9.31763 78.6965 9.63919 78.3749 10.5655L76.0488 9.82834C76.5595 8.1449 77.9588 6.97266 80.4177 6.97266C82.2142 6.97266 83.6895 7.46445 84.4083 8.82634C84.8055 9.58294 84.8244 10.3012 84.8244 11.2281V17.469H82.5741V16.2206C81.6661 17.2988 80.6641 17.7528 79.0942 17.7528C76.9 17.7528 75.6899 16.3531 75.6899 14.6512L75.6895 14.6507ZM79.6422 15.7289C81.0608 15.7289 81.7985 14.802 82.0066 14.3675C82.2241 13.923 82.262 13.2798 82.2714 12.7881C80.5501 13.0812 79.8508 13.2231 79.2644 13.4406C78.5078 13.7433 78.2057 14.1027 78.2057 14.6129C78.2057 15.3127 78.7542 15.7289 79.6427 15.7289H79.6422Z"
+                fill="#354FA9"/>
+              <path
+                d="M87.2832 7.25487H89.5525V8.90048C89.8173 8.4276 90.1767 8.02093 90.6496 7.74666C91.3873 7.2927 92.352 7.14137 93.2783 7.25487V9.65659C92.7108 9.48635 91.8786 9.5431 91.2738 9.82682C90.3659 10.243 89.8741 11.0747 89.8741 12.2475V17.467H87.2832V7.25487Z"
+                fill="#354FA9"/>
+              <path d="M95.2676 3.56738H97.8395V5.8367H95.2676V3.56738ZM95.2676 7.25533H97.8395V17.468H95.2676V7.25533Z"
+                    fill="#354FA9"/>
+              <path
+                d="M100.107 12.361C100.107 9.16486 102.244 6.9707 105.271 6.9707C108.353 6.9707 110.453 9.20219 110.453 12.361C110.453 15.5383 108.335 17.7508 105.271 17.7508C102.188 17.7508 100.107 15.5193 100.107 12.361ZM105.271 15.3491C106.916 15.3491 107.729 14.1196 107.729 12.361C107.729 10.5457 106.897 9.37292 105.271 9.37292C103.588 9.37292 102.831 10.5835 102.831 12.361C102.831 14.1953 103.663 15.3491 105.271 15.3491Z"
+                fill="#354FA9"/>
+              <path
+                d="M40.9238 29.7338L43.6093 29.3366C43.9876 30.906 45.2922 31.7761 46.8054 31.7761C48.0727 31.7761 49.3968 31.1708 49.3968 30.0359C49.3968 29.4874 49.132 28.9961 48.0727 28.6745L44.5361 27.6342C43.4769 27.3316 41.4535 26.6695 41.4535 24.0787C41.4535 21.3365 43.7422 19.9935 46.5411 20.0129C49.359 20.0507 51.3256 21.45 51.9877 24.0035L49.2077 24.4764C48.905 23.1528 47.7328 22.453 46.5033 22.4151C45.2927 22.3773 44.1583 22.9826 44.1583 23.9472C44.1583 24.8363 45.1041 25.1762 45.9737 25.4032L48.3381 26.0463C49.7378 26.4246 52.1017 27.1051 52.1017 29.8473C52.1017 32.7791 49.4157 34.1783 46.6362 34.1783C43.6103 34.1783 41.3405 32.4949 40.9248 29.7338H40.9238Z"
+                fill="#354FA9"/>
+              <path
+                d="M53.6138 28.9197C53.6138 25.5722 55.7507 23.3975 58.7766 23.3975C61.9917 23.3975 63.8643 25.7992 63.5522 29.506H56.3843C56.5735 30.9625 57.3868 31.7759 58.7766 31.7759C59.7791 31.7759 60.5168 31.3219 60.8946 30.4896L63.4666 31.2268C62.691 33.0994 60.8946 34.1776 58.9274 34.1776C55.788 34.1776 53.6133 31.9839 53.6133 28.9202L53.6138 28.9197ZM60.9518 27.5956C60.7722 26.2153 60.129 25.6289 58.8901 25.6289C57.5098 25.6289 56.7154 26.3004 56.4505 27.5956H60.9518Z"
+                fill="#354FA9"/>
+              <path
+                d="M65.1162 28.7878C65.1162 25.6862 67.1023 23.3975 70.2228 23.3975C72.6245 23.3975 74.3647 24.7026 74.8182 26.8017L72.2462 27.4826C71.9436 26.4234 71.1302 25.7992 70.1845 25.7992C68.5578 25.7992 67.8395 27.0849 67.8395 28.7873C67.8395 30.5648 68.6339 31.7754 70.1845 31.7754C71.3383 31.7754 71.8863 31.2263 72.189 30.2432L74.8177 30.7923C74.2313 32.967 72.5484 34.1776 70.184 34.1776C67.0067 34.1776 65.1152 31.851 65.1152 28.7878H65.1162Z"
+                fill="#354FA9"/>
+              <path
+                d="M76.522 29.4124V23.6821H79.1318V28.5045C79.1318 29.4308 79.1318 31.7763 81.3254 31.7763C82.2144 31.7763 83.5007 31.398 83.5007 28.8639V23.6816H86.0915V33.8943H83.8217V32.845C83.0845 33.6673 81.978 34.1974 80.5121 34.1974C76.5215 34.1974 76.5215 30.2636 76.5215 29.4124H76.522Z"
+                fill="#354FA9"/>
+              <path
+                d="M88.7402 23.6816H91.0096V25.3272C91.2744 24.8544 91.6337 24.4477 92.1066 24.1734C92.8443 23.7195 93.809 23.5681 94.7353 23.6816V26.0833C94.1679 25.9131 93.3356 25.9699 92.7308 26.2536C91.8229 26.6697 91.3311 27.5015 91.3311 28.6742V33.8938H88.7402V23.6811V23.6816Z"
+                fill="#354FA9"/>
+              <path
+                d="M96.7246 19.9941H99.2966V22.2635H96.7246V19.9941ZM96.7246 23.6821H99.2966V33.8948H96.7246V23.6821Z"
+                fill="#354FA9"/>
+              <path
+                d="M103.152 32.6273C102.642 31.7005 102.736 30.7926 102.736 29.5636V25.6676H100.996V23.6815H102.736V20.8447H105.308V23.6815H108.258V25.6676H105.308V29.4118C105.308 30.2067 105.27 30.8682 105.516 31.2465C105.97 31.9653 107.048 31.9275 108.258 31.7573V33.8942C106.141 34.2914 103.985 34.1211 103.152 32.6273Z"
+                fill="#354FA9"/>
+              <path
+                d="M113.236 33.8092L109.113 23.6816H111.78L114.465 30.6319L117.132 23.6816H119.704L113.936 38.4334H111.553L113.236 33.8092H113.236Z"
+                fill="#354FA9"/>
+              <path d="M125.002 20.2783H127.574V31.493H133.437V33.8947H125.002V20.2783Z" fill="#354FA9"/>
+              <path
+                d="M135.234 19.9941H137.806V22.2635H135.234V19.9941ZM135.234 23.6821H137.806V33.8948H135.234V23.6821Z"
+                fill="#354FA9"/>
+              <path
+                d="M140.077 28.7878C140.077 25.6862 142.063 23.3975 145.184 23.3975C147.585 23.3975 149.326 24.7026 149.779 26.8017L147.207 27.4826C146.905 26.4234 146.092 25.7992 145.145 25.7992C143.519 25.7992 142.8 27.0849 142.8 28.7873C142.8 30.5648 143.595 31.7754 145.145 31.7754C146.299 31.7754 146.848 31.2263 147.15 30.2432L149.779 30.7923C149.192 32.967 147.509 34.1776 145.145 34.1776C141.968 34.1776 140.076 31.851 140.076 28.7878H140.077Z"
+                fill="#354FA9"/>
+              <path
+                d="M150.82 28.9197C150.82 25.5722 152.958 23.3975 155.984 23.3975C159.199 23.3975 161.071 25.7992 160.759 29.506H153.591C153.781 30.9625 154.594 31.7759 155.984 31.7759C156.987 31.7759 157.724 31.3219 158.102 30.4896L160.675 31.2268C159.899 33.0994 158.102 34.1776 156.135 34.1776C152.996 34.1776 150.821 31.9839 150.821 28.9202L150.82 28.9197ZM158.158 27.5956C157.979 26.2153 157.336 25.6289 156.097 25.6289C154.716 25.6289 153.922 26.3004 153.657 27.5956H158.158Z"
+                fill="#354FA9"/>
+              <path
+                d="M167.37 25.8C166.481 25.8 165.196 26.1783 165.196 28.7125V33.8942H162.586V23.6815H164.874V24.7313C165.612 23.9085 166.718 23.3789 168.184 23.3789C172.174 23.3789 172.174 27.3128 172.174 28.1639V33.8942H169.565V29.0719C169.565 28.145 169.565 25.8 167.371 25.8H167.37Z"
+                fill="#354FA9"/>
+              <path
+                d="M174.066 30.8301L176.695 30.4329C176.903 31.3976 177.679 31.965 178.814 31.965C179.74 31.965 180.27 31.5867 180.27 30.9436C180.27 30.3383 180.024 30.2064 177.812 29.6195C175.315 28.9769 174.407 28.1825 174.407 26.6125C174.407 24.6459 175.996 23.3975 178.474 23.3975C180.875 23.3975 182.539 24.5697 182.804 26.4234L180.175 26.8963C180.081 26.1397 179.495 25.6857 178.53 25.6105C177.585 25.5538 176.96 25.8943 176.96 26.4806C176.96 27.0102 177.301 27.1805 179.684 27.7858C182.01 28.391 182.899 29.2228 182.899 30.8117C182.899 32.9108 181.292 34.1781 178.625 34.1781C176.053 34.1781 174.407 32.9675 174.067 30.8301H174.066Z"
+                fill="#354FA9"/>
+              <path
+                d="M184.414 28.9197C184.414 25.5722 186.551 23.3975 189.577 23.3975C192.792 23.3975 194.665 25.7992 194.353 29.506H187.185C187.374 30.9625 188.188 31.7759 189.578 31.7759C190.58 31.7759 191.318 31.3219 191.696 30.4896L194.268 31.2268C193.492 33.0994 191.696 34.1776 189.729 34.1776C186.59 34.1776 184.415 31.9839 184.415 28.9202L184.414 28.9197ZM191.752 27.5956C191.573 26.2153 190.93 25.6289 189.69 25.6289C188.31 25.6289 187.516 26.3004 187.251 27.5956H191.752Z"
+                fill="#354FA9"/>
+              <path
+                d="M15.2321 0L0 8.60637V26.7549L15.2451 42L30.4643 26.7808V8.60637L15.2321 0ZM15.2321 3.22104L27.6599 10.243V16.1192C25.5473 11.3501 20.7777 8.01353 15.2431 8.00557C15.2386 8.00507 15.2341 8.00557 15.2291 8.00557C15.2272 8.00557 15.2247 8.00557 15.2227 8.00557C9.69598 8.00557 4.92938 11.3247 2.80441 16.0768V10.2435L15.2321 3.22104ZM4.42862 21.623C4.42862 18.4611 5.79001 15.6124 7.95629 13.6333C7.80049 14.2346 7.71687 14.8653 7.71687 15.5144C7.71687 18.8136 9.83486 21.6931 12.9867 22.6807C13.7144 22.9087 14.4735 23.0242 15.2426 23.0242C15.702 23.0242 16.155 23.0894 16.5895 23.2183C18.5761 23.8062 19.9639 25.6613 19.9639 27.7295C19.9639 30.3239 17.8459 32.4349 15.2426 32.4349V32.4364C15.2356 32.4364 15.2291 32.4364 15.2222 32.4364C9.27039 32.4364 4.42813 27.5857 4.42813 21.623H4.42862ZM26.0167 21.623C26.0167 24.7589 24.6767 27.5872 22.5408 29.5643C22.6892 28.9769 22.7688 28.3627 22.7688 27.7295C22.7688 24.4279 20.5552 21.4672 17.386 20.5289C16.6931 20.3238 15.9718 20.2198 15.2431 20.2198C14.7588 20.2198 14.2819 20.1471 13.8254 20.0042C11.8493 19.3855 10.5218 17.5806 10.5218 15.5144C10.5218 12.9245 12.6323 10.817 15.2296 10.8095C21.1784 10.813 26.0172 15.6627 26.0172 21.623H26.0167ZM12.0848 34.8745C13.0922 35.1139 14.143 35.2408 15.2227 35.2408C16.3232 35.2408 17.3939 35.1084 18.4193 34.86L15.2451 38.0343L12.0853 34.8745H12.0848Z"
+                fill="#354FA9"/>
+            </svg>
+            <svg class="d-block d-md-none" width="31" height="42" viewBox="0 0 31 42" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M15.2321 0L0 8.60637V26.7549L15.2451 42L30.4643 26.7808V8.60637L15.2321 0ZM15.2321 3.22104L27.6599 10.243V16.1192C25.5473 11.3501 20.7777 8.01353 15.2431 8.00557C15.2386 8.00507 15.2341 8.00557 15.2291 8.00557C15.2272 8.00557 15.2247 8.00557 15.2227 8.00557C9.69598 8.00557 4.92938 11.3247 2.80441 16.0768V10.2435L15.2321 3.22104ZM4.42862 21.623C4.42862 18.4611 5.79001 15.6124 7.95629 13.6333C7.80049 14.2346 7.71687 14.8653 7.71687 15.5144C7.71687 18.8136 9.83486 21.6931 12.9867 22.6807C13.7144 22.9087 14.4735 23.0242 15.2426 23.0242C15.702 23.0242 16.155 23.0894 16.5895 23.2183C18.5761 23.8062 19.9639 25.6613 19.9639 27.7295C19.9639 30.3239 17.8459 32.4349 15.2426 32.4349V32.4364C15.2356 32.4364 15.2291 32.4364 15.2222 32.4364C9.27039 32.4364 4.42813 27.5857 4.42813 21.623H4.42862ZM26.0167 21.623C26.0167 24.7589 24.6767 27.5872 22.5408 29.5643C22.6892 28.9769 22.7688 28.3627 22.7688 27.7295C22.7688 24.4279 20.5552 21.4672 17.386 20.5289C16.6931 20.3238 15.9718 20.2198 15.2431 20.2198C14.7588 20.2198 14.2819 20.1471 13.8254 20.0042C11.8493 19.3855 10.5218 17.5806 10.5218 15.5144C10.5218 12.9245 12.6323 10.817 15.2296 10.8095C21.1784 10.813 26.0172 15.6627 26.0172 21.623H26.0167ZM12.0848 34.8745C13.0922 35.1139 14.143 35.2408 15.2227 35.2408C16.3232 35.2408 17.3939 35.1084 18.4193 34.86L15.2451 38.0343L12.0853 34.8745H12.0848Z"
+                fill="#354FA9"/>
+            </svg>
+          </a>
 
-        <ng-template #offcanvas let-offcanvas>
-          <div class="offcanvas-header">
-            <h2 class="menu-list-header">Menu</h2>
-            <button type="button" class="btn-close" aria-label="Close"
-                    (click)="offcanvas.dismiss('Cross click')"></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav text-center">
-              <li class="nav-item" (click)="goToCourses()">
-                <a class="nav-link">Courses</a>
-              </li>
-              <li class="nav-item" (click)="goToFAQ()">
-                <a class="nav-link">FAQ</a>
-              </li>
-              <li class="nav-item" (click)="goToSignUp()">
-                <a class="nav-link">Sign Up</a>
-              </li>
-              <li class="nav-item" (click)="goToLogin()">
-                <a class="nav-link">Log In</a>
-              </li>
-            </ul>
-          </div>
-        </ng-template>
-
-        <ul class="navbar-nav d-none d-xl-flex flex-row">
-          <li class="nav-item" (click)="goToCourses()">
-            <a class="nav-link">Courses</a>
-          </li>
-          <li class="nav-item" (click)="goToFAQ()">
-            <a class="nav-link">FAQ</a>
-          </li>
-          <li class="nav-item" (click)="goToSignUp()">
-            <a class="nav-link">Sign Up</a>
-          </li>
-        </ul>
-
-      </div>
-      <div class="navbar-text">
-        <button class="btn btn-secondary-action me-3 d-none d-md-inline-flex" (click)="goToLogin()">Log in</button>
-        <button class="btn btn-primary-action" (click)="scrollTo(signUp)">Get Started</button>
-      </div>
-    </nav>
-
-    <div class="row">
-      <div
-        class="hero col-10 offset-1 col-md-5 offset-md-1 d-flex flex-column text-center text-md-start align-items-center align-items-md-start justify-content-center">
-        <div class="hero-pill">Get your <strong>Ontario Security License (TCN)</strong> & start working today!</div>
-        <h1>
-          <span class="hero-red">Ministry Approved</span>
-          Security Guard & CPR Training
-        </h1>
-
-        <a class="btn btn-action flex-grow-1 flex-lg-grow-0" (click)="scrollTo(signUp)">Get Started Now</a>
-      </div>
-      <div class="hero-phone d-none d-md-flex col-md-5 align-items-center justify-content-end">
-        <img alt="Certificate of Completion" class="img-fluid" src="/assets/v3/phone-certificate.png">
-      </div>
-    </div>
-    <div class="row mt-5 mt-md-0">
-      <div class="col-10 offset-1 courses-header">
-        Available courses
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-10 offset-1 col-md-5 offset-md-1">
-        <div class="course-presentation d-flex position-relative">
-          <div class="course-presentation-container d-flex flex-column">
-            <div class="d-flex">
-              <div
-                class="course-presentation-image d-flex flex-row align-items-center justify-content-center flex-shrink-0">
-                <img alt="Course info" class="img-fluid" src="/assets/course-1-icon-alt.png"/>
-              </div>
-              <div class="course-presentation-content d-flex flex-column flex-fill ps-4">
-                <div class="course-presentation-header-container d-flex">
-                  <div class="course-presentation-header d-flex flex-column justify-content-center flex-fill">
-                    <div class="course-presentation-header-name">Guard Training + CPR</div>
-                    <div class="course-presentation-header-modules">12 Modules</div>
-                  </div>
-                  <div class="course-presentation-header-price d-flex align-items-start justify-content-end">
-                    <span class="course-presentation-header-price-pill">$199.99</span>
-                  </div>
-                </div>
-                <div class="course-presentation-description d-none d-lg-flex">
-                  To become a great security guard that excels at their job, start with a solid foundation. Other
-                  security
-                  guard courses will teach you the bare minimum but our training course will prepare you for your first
-                  job
-                  and give you confidence.
-                </div>
-              </div>
+          <ng-template #offcanvas let-offcanvas>
+            <div class="offcanvas-header">
+              <h2 class="menu-list-header">Menu</h2>
+              <button type="button" class="btn-close" aria-label="Close"
+                      (click)="offcanvas.dismiss('Cross click')"></button>
             </div>
-            <div class="course-presentation-description d-flex d-lg-none">
-              To become a great security guard that excels at their job, start with a solid foundation. Other
-              security
-              guard courses will teach you the bare minimum but our training course will prepare you for your first
-              job
-              and give you confidence.
+            <div class="offcanvas-body">
+              <ul class="navbar-nav text-center">
+                <li class="nav-item" (click)="goToTestimonials()">
+                  <a class="nav-link">Testimonials</a>
+                </li>
+                <li class="nav-item" (click)="goToCourses()">
+                  <a class="nav-link">Courses</a>
+                </li>
+                <!--
+                <li class="nav-item" (click)="goToLicenseRequirements()">
+                  <a class="nav-link">License Requirements</a>
+                </li>
+                -->
+                <li class="nav-item" (click)="goToWhyUs()">
+                  <a class="nav-link">Why Us</a>
+                </li>
+                <li class="nav-item" (click)="goToInternationalStudents()">
+                  <a class="nav-link">Intl. Students</a>
+                </li>
+                <li class="nav-item" (click)="goToFAQ()">
+                  <a class="nav-link">FAQ</a>
+                </li>
+                <li class="nav-item" (click)="goToLogin()">
+                  <a class="nav-link">Log In</a>
+                </li>
+                <li class="nav-item" (click)="goToSignUp()">
+                  <a class="nav-link">Sign Up</a>
+                </li>
+              </ul>
             </div>
-          </div>
+          </ng-template>
+
+          <ul class="navbar-nav d-none d-xl-flex flex-row">
+            <li class="nav-item" (click)="goToTestimonials()">
+              <a class="nav-link">Testimonials</a>
+            </li>
+            <li class="nav-item" (click)="goToCourses()">
+              <a class="nav-link">Courses</a>
+            </li>
+            <!--
+            <li class="nav-item" (click)="goToLicenseRequirements()">
+              <a class="nav-link">License Requirements</a>
+            </li>
+            -->
+            <li class="nav-item" (click)="goToWhyUs()">
+              <a class="nav-link">Why Us</a>
+            </li>
+            <li class="nav-item" (click)="goToInternationalStudents()">
+              <a class="nav-link">Intl. Students</a>
+            </li>
+            <li class="nav-item" (click)="goToFAQ()">
+              <a class="nav-link">FAQ</a>
+            </li>
+          </ul>
+
         </div>
-      </div>
-      <div class="col-10 offset-1 col-md-5 offset-md-0 mt-4 mt-md-0">
-        <div class="course-presentation d-flex position-relative">
-          <div class="course-presentation-container d-flex flex-column">
-            <div class="d-flex">
-              <div
-                class="course-presentation-image d-flex flex-row align-items-center justify-content-center flex-shrink-0">
-                <img alt="Course info" class="img-fluid" src="/assets/course-2-icon-alt.png"/>
-              </div>
-              <div class="course-presentation-content d-flex flex-column flex-fill ps-4">
-                <div class="course-presentation-header-container d-flex">
-                  <div class="course-presentation-header d-flex flex-column justify-content-center flex-fill">
-                    <div class="course-presentation-header-name">Guard Training</div>
-                    <div class="course-presentation-header-modules">12 Modules</div>
-                  </div>
-                  <div class="course-presentation-header-price d-flex align-items-start justify-content-end">
-                    <span class="course-presentation-header-price-pill">$99.99</span>
-                  </div>
-                </div>
-                <div class="course-presentation-description d-none d-lg-flex">
-                  This course is perfect for those who already have a valid CPR certificate and just need to be trained
-                  in the Security Guard Course and get Training Completion Number (TCN) so they can write and pass the
-                  Ministry Exam.
-                </div>
-              </div>
-            </div>
-            <div class="course-presentation-description d-flex d-lg-none">
-              This course is perfect for those who already have a valid CPR certificate and just need to be trained in
-              the Security Guard Course and get Training Completion Number (TCN) so they can write and pass the Ministry
-              Exam.
-            </div>
-          </div>
+        <div class="navbar-text">
+          <button class="btn btn-secondary-action me-3 d-none d-md-inline-flex" (click)="goToLogin()">Log in</button>
+          <button class="btn btn-primary-action" (click)="goToSignUp()">Get Started</button>
         </div>
-      </div>
+      </nav>
     </div>
-    <div class="row">
-      <div class="col-12 d-flex align-items-center justify-content-center">
-        <i class="arrow-down"></i>
+    <div class="container-fluid container-exact mt-3">
+      <div class="row">
+        <div
+          class="hero col-10 offset-1 col-md-5 offset-md-1 d-flex flex-column text-center text-md-start align-items-center align-items-md-start justify-content-center mb-5">
+          <div class="headline">We Train <span class="strong">You</span></div>
+          <div class="headline">We Help <span class="strong">You</span> Pass The Test</div>
+          <div class="headline">We Find <span class="strong">You</span> a $19+/hr Security Job</div>
+
+          <p class="description">
+            Join the thousands who completed our $199 online Security Guard Training & landed a high paying security
+            guard job. We’ll guide you step by step.
+          </p>
+
+          <a class="btn btn-action flex-grow-1 flex-lg-grow-0" (click)="goToSignUp()">Get Started Now</a>
+
+          <!--<img class="google-customer-reviews" alt="Customer reviews" src="/assets/v3/google-customer-reviews.png"/>-->
+        </div>
+        <div class="hero-phone d-none d-md-flex align-items-end justify-content-start">
+          <div class="person"></div>
+          <img alt="Proof of Certification" class="phone" src="/assets/v3/phone-certificate.png"/>
+        </div>
       </div>
     </div>
   </div>
-  <section class="get-hired-quickly">
+  <section class="partners container-xxl mt-5 mt-md-0">
+    <div class="row">
+      <div
+        class="col-10 offset-1 col-md-5 offset-md-1 d-flex justify-content-between align-items-center flex-column flex-md-row">
+        <h4 class="header">Our Hiring Partners</h4>
+        <div
+          class="partner-logos-container d-flex flex-row flex-md-column flex-wrap justify-content-center align-items-center">
+          <div class="partner-logos d-flex justify-content-between">
+            <div class="partner-logo">
+              <img alt="Paragon Security" class="img-fluid" src="/assets/v3/partner-logos/paragon-security.png"/>
+            </div>
+            <div class="partner-logo">
+              <img alt="Commander Security" class="img-fluid" src="/assets/v3/partner-logos/commander-security.png"/>
+            </div>
+            <div class="partner-logo">
+              <img alt="Ultimate Security" class="img-fluid" src="/assets/v3/partner-logos/ultimate-security.png"/>
+            </div>
+          </div>
+          <div class="partner-logos d-flex justify-content-between">
+            <div class="partner-logo">
+              <img alt="Irongate Protection" class="img-fluid"
+                   src="/assets/v3/partner-logos/irongate-protection.png"/>
+            </div>
+            <div class="partner-logo">
+              <img alt="Cantec Security Services" class="img-fluid"
+                   src="/assets/v3/partner-logos/cantec-security-services.png"/>
+            </div>
+            <div class="partner-logo">
+              <img alt="Safety First Security Services" class="img-fluid"
+                   src="/assets/v3/partner-logos/safety-first-security-services.png"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="testimonials container-xxl" #testimonials>
+    <div class="row">
+      <div
+        class="col-10 offset-1">
+        <div class="d-flex flex-column">
+          <span class="subheader">Testimonials</span>
+          <h2 class="header">Read About the Experiences of Former Students</h2>
+        </div>
+      </div>
+    </div>
+    <app-testimonials></app-testimonials>
+  </section>
+  <section class="course-selection container-xxl" #courses>
+    <div class="row">
+      <div
+        class="col-10 offset-1">
+        <div class="d-flex flex-column">
+          <span class="subheader red">Ministry & WSIB Approved</span>
+          <h2 class="header">Security Guard & CPR Training Course</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-10 offset-1">
+        <div class="row align-items-center">
+          <div class="col-12 col-lg-3">
+            <div class="pros-list">
+              <div class="pros-list-item d-flex justify-content-start align-items-center">
+                <div class="pros-list-item-icon flex-shrink-0 d-flex align-items-center justify-content-center">
+                  <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M18 10.5625V16.125C18 18.0106 18 18.9534 17.4142 19.5392C16.8284 20.125 15.8856 20.125 14 20.125H3.65625C2.18924 20.125 1 18.9358 1 17.4688V17.4688C1 16.0017 2.18924 14.8125 3.65625 14.8125H14C15.8856 14.8125 16.8284 14.8125 17.4142 14.2267C18 13.6409 18 12.6981 18 10.8125V5C18 3.11438 18 2.17157 17.4142 1.58579C16.8284 1 15.8856 1 14 1H5C3.11438 1 2.17157 1 1.58579 1.58579C1 2.17157 1 3.11438 1 5V17.4688"
+                      stroke="#31374D" stroke-width="2"/>
+                    <path
+                      d="M6.3125 8.4375L7.73039 9.85539C8.12092 10.2459 8.75408 10.2459 9.14461 9.85539L12.6875 6.3125"
+                      stroke="#31374D" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                Easy to follow 12 Online Modules (33.5 hours)
+              </div>
+              <div class="pros-list-item d-flex justify-content-start align-items-center">
+                <div class="pros-list-item-icon flex-shrink-0 d-flex align-items-center justify-content-center">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M14.2111 9.10557L7.73666 5.86833C6.93878 5.46939 6 6.04958 6 6.94164V13.0584C6 13.9504 6.93878 14.5306 7.73666 14.1317L14.2111 10.8944C14.9482 10.5259 14.9482 9.4741 14.2111 9.10557Z"
+                      stroke="#31374D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="10" cy="10" r="9" stroke="#31374D" stroke-width="2"/>
+                  </svg>
+                </div>
+                Interactive Videos
+              </div>
+              <div class="pros-list-item d-flex justify-content-start align-items-center">
+                <div class="pros-list-item-icon flex-shrink-0 d-flex align-items-center justify-content-center">
+                  <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M1.32698 2.63803L2.21799 3.09202L1.32698 2.63803ZM1.7682 19.1987L2.4753 19.9058H2.4753L1.7682 19.1987ZM5.7415 15.2254V14.2254C5.47629 14.2254 5.22193 14.3307 5.0344 14.5183L5.7415 15.2254ZM18.3292 14.8984L17.8752 14.0074L18.3292 14.8984ZM19.6402 13.5874L20.5312 14.0413L19.6402 13.5874ZM19.6402 2.63803L20.5312 2.18404V2.18404L19.6402 2.63803ZM18.3292 1.32698L17.8752 2.21799L17.8752 2.21799L18.3292 1.32698ZM2.63803 1.32698L3.09202 2.21799L2.63803 1.32698ZM2 5.8C2 4.94342 2.00078 4.36113 2.03755 3.91104C2.07337 3.47262 2.1383 3.24842 2.21799 3.09202L0.435974 2.18404C0.188683 2.66937 0.0901188 3.18608 0.0441936 3.74818C-0.000777721 4.2986 0 4.97643 0 5.8H2ZM2 9.29785V5.8H0V9.29785H2ZM0 9.29785V15.2251H2V9.29785H0ZM0 15.2251V15.2254H2V15.2251H0ZM0 15.2254V18.8805H2V15.2254H0ZM0 18.8805C0 20.1723 1.56185 20.8193 2.4753 19.9058L1.06109 18.4916C1.40757 18.1451 2 18.3905 2 18.8805H0ZM2.4753 19.9058L6.44861 15.9325L5.0344 14.5183L1.06109 18.4916L2.4753 19.9058ZM15.1672 14.2254H5.7415V16.2254H15.1672V14.2254ZM17.8752 14.0074C17.7188 14.0871 17.4946 14.152 17.0561 14.1878C16.6061 14.2246 16.0238 14.2254 15.1672 14.2254V16.2254C15.9908 16.2254 16.6686 16.2262 17.219 16.1812C17.7811 16.1353 18.2978 16.0367 18.7831 15.7894L17.8752 14.0074ZM18.7492 13.1334C18.5574 13.5097 18.2515 13.8157 17.8752 14.0074L18.7831 15.7894C19.5358 15.4059 20.1477 14.794 20.5312 14.0413L18.7492 13.1334ZM18.9672 10.4254C18.9672 11.282 18.9664 11.8643 18.9296 12.3143C18.8938 12.7528 18.8289 12.977 18.7492 13.1334L20.5312 14.0413C20.7785 13.556 20.8771 13.0393 20.923 12.4772C20.968 11.9268 20.9672 11.249 20.9672 10.4254H18.9672ZM18.9672 5.8V10.4254H20.9672V5.8H18.9672ZM18.7492 3.09202C18.8289 3.24842 18.8938 3.47262 18.9296 3.91104C18.9664 4.36113 18.9672 4.94342 18.9672 5.8H20.9672C20.9672 4.97642 20.968 4.2986 20.923 3.74817C20.8771 3.18608 20.7785 2.66937 20.5312 2.18404L18.7492 3.09202ZM17.8752 2.21799C18.2515 2.40973 18.5574 2.71569 18.7492 3.09202L20.5312 2.18404C20.1477 1.43139 19.5358 0.819467 18.7831 0.435974L17.8752 2.21799ZM15.1672 2C16.0238 2 16.6061 2.00078 17.0561 2.03755C17.4946 2.07337 17.7188 2.1383 17.8752 2.21799L18.7831 0.435974C18.2978 0.188683 17.7811 0.0901188 17.219 0.0441936C16.6686 -0.000777721 15.9908 0 15.1672 0V2ZM5.8 2H15.1672V0H5.8V2ZM3.09202 2.21799C3.24842 2.1383 3.47262 2.07337 3.91104 2.03755C4.36113 2.00078 4.94342 2 5.8 2V0C4.97642 0 4.2986 -0.000777721 3.74817 0.0441936C3.18608 0.0901188 2.66937 0.188683 2.18404 0.435974L3.09202 2.21799ZM2.21799 3.09202C2.40973 2.71569 2.71569 2.40973 3.09202 2.21799L2.18404 0.435974C1.43139 0.819467 0.819467 1.43139 0.435974 2.18404L2.21799 3.09202Z"
+                      fill="#31374D"/>
+                    <path d="M5.7417 5.74219L15.2253 5.74219" stroke="#31374D" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M5.74182 10.4834H11.6691" stroke="#31374D" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                Available In Multiple Languages
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3 offset-lg-1">
+            <div class="pros-list">
+              <div class="pros-list-item d-flex justify-content-start align-items-center">
+                <div class="pros-list-item-icon flex-shrink-0 d-flex align-items-center justify-content-center">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M11.8935 2.41421L2.62248 11.6852C2.42783 11.8799 2.33051 11.9772 2.26353 12.0955C2.19656 12.2138 2.16318 12.3473 2.09641 12.6144L1.20211 16.1915C1.11186 16.5526 1.06673 16.7331 1.16682 16.8332C1.2669 16.9333 1.44742 16.8881 1.80845 16.7979L5.38565 15.9036C5.65271 15.8368 5.78624 15.8034 5.90453 15.7365C6.02282 15.6695 6.12014 15.5722 6.31479 15.3775L15.5858 6.10652C16.2525 5.43985 16.5858 5.10652 16.5858 4.69231C16.5858 4.27809 16.2525 3.94476 15.5858 3.27809L14.7219 2.41421C14.0552 1.74755 13.7219 1.41421 13.3077 1.41421C12.8935 1.41421 12.5601 1.74755 11.8935 2.41421Z"
+                      stroke="#31374D" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M10.2307 2.8457L15.1538 7.76878" stroke="#31374D" stroke-width="2"
+                          stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                Mock Quizzes
+              </div>
+              <div class="pros-list-item d-flex justify-content-start align-items-center">
+                <div class="pros-list-item-icon flex-shrink-0 d-flex align-items-center justify-content-center">
+                  <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="15" height="18.2143" rx="2" stroke="#31374D" stroke-width="2"/>
+                    <path d="M5.28577 6.35742H11.7143" stroke="#31374D" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M5.28577 10.6426H11.7143" stroke="#31374D" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M5.28577 14.9287H9.57148" stroke="#31374D" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                Cheat Sheet
+              </div>
+              <div class="pros-list-item d-flex justify-content-start align-items-center">
+                <div class="pros-list-item-icon flex-shrink-0 d-flex align-items-center justify-content-center">
+                  <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.398 16.804L10.8585 17.6917L10.8585 17.6917L10.398 16.804ZM9.60196 16.804L9.14153 17.6917L9.14153 17.6917L9.60196 16.804ZM16 8C16 10.1458 14.9079 11.9159 13.545 13.2906C12.183 14.6644 10.6342 15.555 9.9376 15.9163L10.8585 17.6917C11.6448 17.2838 13.397 16.2805 14.9653 14.6987C16.5326 13.1178 18 10.8706 18 8H16ZM10 2C13.3137 2 16 4.68629 16 8H18C18 3.58172 14.4183 0 10 0V2ZM4 8C4 4.68629 6.68629 2 10 2V0C5.58172 0 2 3.58172 2 8H4ZM10.0624 15.9163C9.3658 15.555 7.81702 14.6644 6.45503 13.2906C5.09211 11.9159 4 10.1458 4 8H2C2 10.8706 3.46741 13.1178 5.03474 14.6987C6.60299 16.2805 8.35519 17.2838 9.14153 17.6917L10.0624 15.9163ZM9.9376 15.9163C9.95139 15.9091 9.97326 15.9023 10 15.9023C10.0267 15.9023 10.0486 15.9091 10.0624 15.9163L9.14153 17.6917C9.68309 17.9726 10.3169 17.9726 10.8585 17.6917L9.9376 15.9163ZM12 8C12 9.10457 11.1046 10 10 10V12C12.2091 12 14 10.2091 14 8H12ZM10 6C11.1046 6 12 6.89543 12 8H14C14 5.79086 12.2091 4 10 4V6ZM8 8C8 6.89543 8.89543 6 10 6V4C7.79086 4 6 5.79086 6 8H8ZM10 10C8.89543 10 8 9.10457 8 8H6C6 10.2091 7.79086 12 10 12V10Z"
+                      fill="#31374D"/>
+                    <path
+                      d="M17.7942 16.5C18.5841 16.9561 19 17.4734 19 18C19 18.5266 18.5841 19.0439 17.7942 19.5C17.0043 19.9561 15.8682 20.3348 14.5 20.5981C13.1318 20.8614 11.5798 21 10 21C8.42017 21 6.86817 20.8614 5.5 20.5981C4.13183 20.3348 2.99569 19.9561 2.20577 19.5C1.41586 19.0439 1 18.5266 1 18C1 17.4734 1.41586 16.9561 2.20577 16.5"
+                      stroke="#31374D" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+
+                </div>
+                1 Day CPR In Person Training Near You
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4 offset-lg-1 mt-3 mg-lg-0">
+            <div class="course-selection-container d-flex flex-column">
+              <div class="course-selection-image">
+                <img alt="Course icon" src="{{ currentCourse.icon}}"/>
+              </div>
+              <div class="course-selection-title">
+                {{ currentCourse.title }}
+              </div>
+              <div class="course-selection-price-container d-flex">
+                <span class="course-selection-price">${{ currentCourse.price }}</span>
+              </div>
+              <div class="course-selection-checkbox d-flex justify-content-start align-items-center">
+                <div class="form-check">
+                  <label class="form-check-label" for="flexCheckChecked">
+                    I already have a valid CPR certificate
+                  </label>
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="changeCourseType($event)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3 mg-lg-0">
+          <div class="col-12 d-flex justify-content-center justify-content-lg-start">
+            <a class="btn btn-action d-flex flex-grow-1 flex-lg-grow-0 align-self-center align-self-md-start"
+               (click)="goToSignUp()">Purchase Course</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="money-back-guarantee container-fluid">
+    <div class="gray-bg-container">
+      <div class="container-xxl">
+        <div class="row">
+          <div class="col-10 offset-1 col-md-4 offset-md-1 d-flex align-items-center justify-content-center">
+            <img class="img-fluid" alt="Money Back Guarantee" src="/assets/v3/money-back-guarantee.png"/>
+          </div>
+          <div class="col-10 offset-1 col-md-5 mt-3 mt-md-0">
+            <div class="d-flex flex-column">
+              <span class="subheader black">Our Promise</span>
+              <h2 class="header">100% Money Back Guarantee</h2>
+              <p class="description">
+                We are so confident in the caliber of our training and relations with companies, that if you do not get
+                a job after getting licensed, we will <span class="red-highlight">refund you your money.</span>
+              </p>
+              <a class="btn btn-action d-flex flex-grow-1 flex-lg-grow-0 align-self-center align-self-md-start mt-3"
+                 (click)="goToSignUp()">Get Started Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="in-person container-xxl">
+    <div class="row d-flex align-items-center">
+      <div class="col-10 offset-1 col-md-5 offset-md-1">
+        <div class="d-flex flex-column">
+          <span class="subheader red">In Person Experience</span>
+          <h2 class="header">CPR Classes Across Ontario</h2>
+        </div>
+      </div>
+      <div class="col-10 offset-1 col-md-5 mt-3 mt-md-0 d-flex justify-content-center align-items-center">
+        <img class="img-fluid" alt="CPR locations map" src="/assets/v3/cpr-locations-map.png"/>
+      </div>
+    </div>
+  </section>
+  <!--
+  <section class="security-knowledge-test" #requirements>
+    <div class="row">
+      <div class="col-12">
+        <app-security-knowledge-test></app-security-knowledge-test>
+      </div>
+    </div>
+  </section>
+  -->
+  <section class="get-hired-quickly container-xxl" #whyUs>
     <div class="row d-flex flex-column-reverse flex-md-row">
       <div class="col-10 offset-1 col-md-5 offset-md-1 d-flex flex-column mt-5 mt-md-0">
         <span class="subheader">Why Choose Us</span>
         <h2 class="header">Get Hired Quickly</h2>
         <p class="description">
-          <span class="gray-highlight">We help you find a high paying job:</span> we work with all major Ontario guard
-          companies and quickly match you with the right
-          position and company. We also provide resume/CV and interview tips and tricks.
+          <span class="red-highlight">We help you find a high paying job:</span> we work with all major Ontario guard
+          companies.
+        </p>
+        <p class="description">
+          Since your our student, you will be <span
+          class="red-highlight">prioritized ahead of all other applicants</span> fighting for the same high paying job
+          at top companies.
         </p>
         <div class="pros-list">
           <div class="pros-list-item d-flex justify-content-start align-items-center">
-            <div class="pros-list-item-icon d-flex align-items-center justify-content-center">
+            <div class="pros-list-item-icon flex-shrink-0 d-flex align-items-center justify-content-center">
               <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M18 19V13M15 16H21M11 13H7C5.13623 13 4.20435 13 3.46927 13.3045C2.48915 13.7105 1.71046 14.4892 1.30448 15.4693C1 16.2044 1 17.1362 1 19M14.5 1.29076C15.9659 1.88415 17 3.32131 17 5C17 6.67869 15.9659 8.11585 14.5 8.70924M12.5 5C12.5 7.20914 10.7091 9 8.5 9C6.29086 9 4.5 7.20914 4.5 5C4.5 2.79086 6.29086 1 8.5 1C10.7091 1 12.5 2.79086 12.5 5Z"
@@ -248,7 +424,7 @@
             Get well-connected after certification
           </div>
           <div class="pros-list-item d-flex justify-content-start align-items-center">
-            <div class="pros-list-item-icon d-flex align-items-center justify-content-center">
+            <div class="pros-list-item-icon flex-shrink-0 d-flex align-items-center justify-content-center">
               <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M11 10H5M7 14H5M13 6H5M17 9.5V5.8C17 4.11984 17 3.27976 16.673 2.63803C16.3854 2.07354 15.9265 1.6146 15.362 1.32698C14.7202 1 13.8802 1 12.2 1H5.8C4.11984 1 3.27976 1 2.63803 1.32698C2.07354 1.6146 1.6146 2.07354 1.32698 2.63803C1 3.27976 1 4.11984 1 5.8V16.2C1 17.8802 1 18.7202 1.32698 19.362C1.6146 19.9265 2.07354 20.3854 2.63803 20.673C3.27976 21 4.11984 21 5.8 21H8.5M19 21L17.5 19.5M18.5 17C18.5 18.933 16.933 20.5 15 20.5C13.067 20.5 11.5 18.933 11.5 17C11.5 15.067 13.067 13.5 15 13.5C16.933 13.5 18.5 15.067 18.5 17Z"
@@ -257,34 +433,49 @@
             </div>
             Guidance for guaranteed job-seeking success
           </div>
+          <div class="pros-list-item d-flex justify-content-start align-items-center">
+            <div class="pros-list-item-icon flex-shrink-0 d-flex align-items-center justify-content-center">
+              <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 13.833H10.3333" stroke="#31374D" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                <path d="M1 8H8" stroke="#31374D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M1 2.16699H5.66667" stroke="#31374D" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                <path d="M17.3334 1L20.8334 4.5M17.3334 1L13.8334 4.5M17.3334 1L17.3334 15" stroke="#31374D"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            Your resume moved to the top of the pile
+          </div>
         </div>
 
         <a class="btn btn-action d-flex flex-grow-1 flex-lg-grow-0 align-self-center align-self-md-start"
-           (click)="scrollTo(signUp)">Sign Up Now</a>
+           (click)="goToSignUp()">Sign Up Now</a>
       </div>
 
       <div class="col-12 col-md-5 d-flex justify-content-center align-items-center">
         <div class="process d-flex flex-column justify-content-end">
-          <img class="img-fluid" alt="Person" src="/assets/v3/person-1.png"/>
+          <img class="img-fluid" alt="Person" src="/assets/v3/person-3.png"/>
           <div class="process-description d-flex flex-column">
             <div class="process-description-steps d-flex justify-content-between">
-              <span class="completed">Learning</span>
-              <span class="completed">Certification</span>
-              <span>Employment</span>
+              <span class="completed">Sign Up</span>
+              <span class="completed">Buy Course</span>
+              <span>Pass Test</span>
+              <span>Get Hired</span>
             </div>
             <div class="process-description-dots d-flex justify-content-between align-items-center">
               <div class="dot completed big"></div>
-              <div class="dot completed d-none d-sm-block"></div>
-              <div class="dot completed d-none d-sm-block"></div>
-              <div class="dot completed d-none d-sm-block"></div>
               <div class="dot completed"></div>
               <div class="dot completed"></div>
+              <div class="dot completed d-none d-sm-block"></div>
               <div class="dot completed big"></div>
               <div class="dot completed"></div>
-              <div class="dot d-none d-sm-block"></div>
-              <div class="dot d-none d-sm-block"></div>
-              <div class="dot d-none d-sm-block"></div>
+              <div class="dot completed"></div>
+              <div class="dot completed d-none d-sm-block"></div>
+              <div class="dot completed big"></div>
               <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot d-none d-sm-block"></div>
               <div class="dot big"></div>
             </div>
           </div>
@@ -292,7 +483,7 @@
       </div>
     </div>
   </section>
-  <section class="course-facts">
+  <section class="course-facts container-xxl">
     <div class="row">
       <div class="col-12 col-md-3 offset-1-5">
         <div class="course-fact d-flex flex-column align-items-center justify-content-center">
@@ -494,14 +685,14 @@
             94.5%
           </div>
           <div class="course-fact-description text-center">
-            Of our students got a full time job paying <span class="gray-highlight ms-0">$18+/hour</span>
+            Of our students got a full time job paying <span class="red-highlight ms-0">$19+/hour</span>
           </div>
         </div>
       </div>
     </div>
     <div class="row action">
       <div class="col-10 offset-1 action-col text-center">
-        <a (click)="scrollTo(signUp)">Get Started Now
+        <a (click)="goToSignUp()">Get Started Now
           <svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1 7.5H20M20 7.5L13.8043 1M20 7.5L13.8043 14" stroke="#354FA9" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round"/>
@@ -510,7 +701,7 @@
       </div>
     </div>
   </section>
-  <section class="international-student-support">
+  <section class="international-student-support container-xxl" #internationalStudents>
     <div class="row">
       <div
         class="col-10 offset-1">
@@ -602,7 +793,7 @@
             </div>
           </div>
           <a class="btn btn-action d-flex flex-grow-1 flex-lg-grow-0 align-self-center align-self-md-start mt-5"
-             (click)="scrollTo(signUp)">Sign Up Now</a>
+             (click)="goToSignUp()">Sign Up Now</a>
         </div>
       </div>
       <div class="col-12 col-md-5 support-person d-none d-md-flex justify-content-center align-items-center">
@@ -611,19 +802,7 @@
     </div>
 
   </section>
-  <section class="testimonials">
-    <div class="row">
-      <div
-        class="col-10 offset-1">
-        <div class="d-flex flex-column">
-          <span class="subheader">Testimonials</span>
-          <h2 class="header">Read About the Experiences of Former Students</h2>
-        </div>
-      </div>
-    </div>
-    <app-testimonials></app-testimonials>
-  </section>
-  <section class="faq" #faq>
+  <section class="faq container-xxl" #faq>
     <!-- FAQ -->
     <div class="row">
       <div class="col-10 offset-1 col-md-5 offset-md-1 d-flex flex-column">
@@ -646,7 +825,6 @@
       </div>
     </div>
   </section>
-
   <section class="sign-up-today gray-bg-container" #signUp>
     <!-- sign up today! -->
     <app-landing-register></app-landing-register>

@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://dev-a93fj10w.ontariosecuritylicense.ca/api/v1',
-  googleTag: 'G-75W2FX7LD0'
+  googleTag: 'GTM-MJTCLK9'
 };
 
 /*

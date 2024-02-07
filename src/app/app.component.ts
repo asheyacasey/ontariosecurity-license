@@ -10,9 +10,10 @@ import {GoogleTagManagerService} from "angular-google-tag-manager";
 export class AppComponent implements OnInit{
   title = 'guard-training-frontend';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private gtmService: GoogleTagManagerService) {
   }
 
   ngOnInit(): void {
+    this.gtmService.addGtmToDom();
   }
 }

@@ -5,6 +5,7 @@ import {UserLoginRequest, UserRegisterRequest} from "../../../models/user";
 import {BehaviorSubject, filter, finalize, Subject, switchMap, tap} from "rxjs";
 import {Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
+import {GoogleTagManagerService} from "angular-google-tag-manager";
 
 @Component({
   selector: 'app-register',
@@ -28,7 +29,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private titleService: Title,
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private gtmService: GoogleTagManagerService
   ) {
   }
 
@@ -55,7 +57,11 @@ export class RegisterComponent implements OnInit {
       }),
       finalize(() => this.isLoading$.next(false))
     ).subscribe((user) => {
-      this.router.navigate(['/start/course'])
+      this.gtmService.pushTag({
+        event: 'email_submitted',
+      }).finally(() => {
+        this.router.navigate(['/start/course']);
+      });
     })
   }
 }

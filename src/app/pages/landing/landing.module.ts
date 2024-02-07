@@ -12,6 +12,8 @@ import {LandingRegisterComponent} from './register/landing-register.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {CountUpModule} from "ngx-countup";
 import { TestimonialsComponent } from './testimonials/testimonials.component';
+import { SecurityKnowledgeTestComponent } from './security-knowledge-test/security-knowledge-test.component';
+import { LandingRegisterModalComponent } from './register-modal/landing-register-modal.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { TestimonialsComponent } from './testimonials/testimonials.component';
     LandingV3Component,
     LandingRegisterComponent,
     TestimonialsComponent,
+    SecurityKnowledgeTestComponent,
+    LandingRegisterModalComponent,
   ],
     imports: [
         CommonModule,

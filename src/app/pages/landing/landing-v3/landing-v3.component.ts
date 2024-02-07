@@ -1,10 +1,30 @@
 import {Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {Observable, Subject, take, takeUntil} from "rxjs";
-import {NgbOffcanvas, NgbOffcanvasRef} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModal, NgbOffcanvas, NgbOffcanvasRef} from "@ng-bootstrap/ng-bootstrap";
 import {Language} from "../../../models/language";
 import {LanguageService} from "../../../services/language.service";
 import {FaqService} from "../../../services/faq.service";
+import {LandingRegisterModalComponent} from "../register-modal/landing-register-modal.component";
+
+export interface Course {
+  icon: string;
+  title: string;
+  price: string
+}
+
+const COURSES: {[key: string]: Course} = {
+  'false': {
+    icon: '/assets/course-1-icon.png',
+    title: 'Security Guard & CPR Training Course',
+    price: '199.99'
+  },
+  'true': {
+    icon: '/assets/course-2-icon.png',
+    title: 'Security Guard Training Course',
+    price: '99.99'
+  }
+}
 
 @Component({
   selector: 'app-landing-v3',
@@ -16,10 +36,17 @@ export class LandingV3Component implements OnInit, OnDestroy {
 
   @ViewChild('offcanvas') offcanvas!: TemplateRef<any>;
 
+  @ViewChild('testimonials') testimonials!: ElementRef<HTMLElement>;
+  @ViewChild('courses') courses!: ElementRef<HTMLElement>;
+  // @ViewChild('requirements') requirements!: ElementRef<HTMLElement>;
+  @ViewChild('whyUs') whyUs!: ElementRef<HTMLElement>;
+  @ViewChild('internationalStudents') internationalStudents!: ElementRef<HTMLElement>;
   @ViewChild('faq') faq!: ElementRef<HTMLElement>;
   @ViewChild('signUp') signUp!: ElementRef<HTMLElement>;
 
   offcanvasRef: NgbOffcanvasRef | null = null;
+
+  currentCourse: Course = COURSES['false'];
 
   faqLanguages: Language[] = [];
   faqLanguage: Language | null = null;
@@ -27,6 +54,7 @@ export class LandingV3Component implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private offcanvasService: NgbOffcanvas,
+    private modalService: NgbModal,
     private languageService: LanguageService,
     private faqService: FaqService
   ) {
@@ -74,9 +102,39 @@ export class LandingV3Component implements OnInit, OnDestroy {
     }
   }
 
+  goToTestimonials() {
+    this.closeOffcanvasCallback(() => {
+      this.scrollTo(this.testimonials.nativeElement);
+    })
+  }
+
   goToCourses() {
     this.closeOffcanvasCallback(() => {
-      this.router.navigate(['/courses'])
+      this.scrollTo(this.courses.nativeElement);
+    })
+  }
+
+  // goToLicenseRequirements() {
+  //   this.closeOffcanvasCallback(() => {
+  //     this.scrollTo(this.requirements.nativeElement);
+  //   })
+  // }
+
+  goToWhyUs() {
+    this.closeOffcanvasCallback(() => {
+      this.scrollTo(this.whyUs.nativeElement);
+    })
+  }
+
+  goToInternationalStudents() {
+    this.closeOffcanvasCallback(() => {
+      this.scrollTo(this.internationalStudents.nativeElement);
+    })
+  }
+
+  goToFAQ(): void {
+    this.closeOffcanvasCallback(() => {
+      this.scrollTo(this.faq.nativeElement);
     });
   }
 
@@ -86,15 +144,9 @@ export class LandingV3Component implements OnInit, OnDestroy {
     });
   }
 
-  goToFAQ(): void {
-    this.closeOffcanvasCallback(() => {
-      this.scrollTo(this.faq.nativeElement);
-    });
-  }
-
   goToSignUp(): void {
     this.closeOffcanvasCallback(() => {
-      this.scrollTo(this.signUp.nativeElement);
+      this.modalService.open(LandingRegisterModalComponent, {size: 'lg'});
     });
   }
 
@@ -104,5 +156,9 @@ export class LandingV3Component implements OnInit, OnDestroy {
 
   onFAQLanguageChanged(language: Language) {
     this.languageService.setLanguage(language);
+  }
+
+  changeCourseType($event: Event) {
+    this.currentCourse = COURSES[(($event.target as HTMLInputElement).checked.toString())]
   }
 }
