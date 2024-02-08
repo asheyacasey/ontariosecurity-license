@@ -1,11 +1,12 @@
-import {Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {Router} from "@angular/router";
-import {Observable, Subject, take, takeUntil} from "rxjs";
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
+import {first, Observable, Subject, take, takeUntil} from "rxjs";
 import {NgbModal, NgbOffcanvas, NgbOffcanvasRef} from "@ng-bootstrap/ng-bootstrap";
 import {Language} from "../../../models/language";
 import {LanguageService} from "../../../services/language.service";
 import {FaqService} from "../../../services/faq.service";
 import {LandingRegisterModalComponent} from "../register-modal/landing-register-modal.component";
+import {ViewportScroller} from "@angular/common";
 
 export interface Course {
   icon: string;
@@ -13,7 +14,7 @@ export interface Course {
   price: string
 }
 
-const COURSES: {[key: string]: Course} = {
+const COURSES: { [key: string]: Course } = {
   'false': {
     icon: '/assets/course-1-icon.png',
     title: 'Security Guard & CPR Training Course',
@@ -31,7 +32,7 @@ const COURSES: {[key: string]: Course} = {
   templateUrl: './landing-v3.component.html',
   styleUrls: ['./landing-v3.component.scss']
 })
-export class LandingV3Component implements OnInit, OnDestroy {
+export class LandingV3Component implements OnInit, OnDestroy, AfterViewInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   @ViewChild('offcanvas') offcanvas!: TemplateRef<any>;
@@ -53,6 +54,8 @@ export class LandingV3Component implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private viewportScroller: ViewportScroller,
     private offcanvasService: NgbOffcanvas,
     private modalService: NgbModal,
     private languageService: LanguageService,
@@ -68,6 +71,19 @@ export class LandingV3Component implements OnInit, OnDestroy {
     })
     this.faqLanguage = this.languageService.getLanguage();
     this.faqLanguages = this.faqService.languages;
+  }
+
+  ngAfterViewInit(): void {
+    this.activatedRoute.fragment.pipe(
+      first()
+    ).subscribe((fragment) => {
+      if (fragment !== null) {
+        // had to use the timeout for correct positioning
+        setTimeout(() => {
+          this.viewportScroller.scrollToAnchor(fragment);
+        }, 100);
+      }
+    })
   }
 
   ngOnDestroy(): void {

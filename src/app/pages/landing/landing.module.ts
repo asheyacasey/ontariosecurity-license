@@ -14,6 +14,7 @@ import {CountUpModule} from "ngx-countup";
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { SecurityKnowledgeTestComponent } from './security-knowledge-test/security-knowledge-test.component';
 import { LandingRegisterModalComponent } from './register-modal/landing-register-modal.component';
+import { LandingRedirectComponent } from './landing-redirect/landing-redirect.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { LandingRegisterModalComponent } from './register-modal/landing-register
     TestimonialsComponent,
     SecurityKnowledgeTestComponent,
     LandingRegisterModalComponent,
+    LandingRedirectComponent,
   ],
     imports: [
         CommonModule,
