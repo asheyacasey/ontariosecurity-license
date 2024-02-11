@@ -157,6 +157,8 @@ nav {
   max-width: 700px;
 
   .headline {
+    margin-bottom: 8px;
+
     font-family: 'Manrope', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -167,6 +169,11 @@ nav {
 
     .strong {
       font-weight: 800;
+    }
+
+    @include media-breakpoint-down(sm) {
+      font-size: 24px;
+      line-height: 32px;
     }
 
   }
@@ -255,6 +262,11 @@ h2.header {
   margin-top: 7px;
 
   color: #31374D;
+
+  @include media-breakpoint-down(sm) {
+    font-size: 24px;
+    line-height: 32px;
+  }
 }
 
 p.description {
@@ -545,6 +557,11 @@ p.description {
       line-height: 87px;
 
       color: #31374D;
+
+      @include media-breakpoint-down(sm) {
+        font-size: 48px;
+        line-height: 60px;
+      }
     }
 
     &-description {

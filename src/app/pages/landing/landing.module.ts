@@ -11,10 +11,10 @@ import {LandingV3Component} from './landing-v3/landing-v3.component';
 import {LandingRegisterComponent} from './register/landing-register.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {CountUpModule} from "ngx-countup";
-import { TestimonialsComponent } from './testimonials/testimonials.component';
-import { SecurityKnowledgeTestComponent } from './security-knowledge-test/security-knowledge-test.component';
-import { LandingRegisterModalComponent } from './register-modal/landing-register-modal.component';
-import { LandingRedirectComponent } from './landing-redirect/landing-redirect.component';
+import {TestimonialsComponent} from './testimonials/testimonials.component';
+import {EligibilityTestComponent} from './eligibility-test/eligibility-test.component';
+import {LandingRegisterModalComponent} from './register-modal/landing-register-modal.component';
+import {LandingRedirectComponent} from './landing-redirect/landing-redirect.component';
 
 
 @NgModule({
@@ -27,17 +27,17 @@ import { LandingRedirectComponent } from './landing-redirect/landing-redirect.co
     LandingV3Component,
     LandingRegisterComponent,
     TestimonialsComponent,
-    SecurityKnowledgeTestComponent,
+    EligibilityTestComponent,
     LandingRegisterModalComponent,
     LandingRedirectComponent,
   ],
-    imports: [
-        CommonModule,
-        PartialsModule,
-        LandingRoutingModule,
-        ReactiveFormsModule,
-        CountUpModule,
-    ]
+  imports: [
+    CommonModule,
+    PartialsModule,
+    LandingRoutingModule,
+    ReactiveFormsModule,
+    CountUpModule,
+  ]
 })
 export class LandingModule {
 }

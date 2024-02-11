@@ -5,6 +5,7 @@ import {NotLoggedInGuard} from "./guards/not-logged-in.guard";
 import {CoursesListComponent} from "./courses-list/courses-list.component";
 import {LandingV3Component} from "./landing-v3/landing-v3.component";
 import {LandingRedirectComponent} from "./landing-redirect/landing-redirect.component";
+import {EligibilityTestComponent} from "./eligibility-test/eligibility-test.component";
 
 const routes: Routes = [
   {

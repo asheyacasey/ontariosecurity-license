@@ -1,7 +1,7 @@
 <div class="row testimonial-tabs-container">
-  <div class="col-10 offset-1 d-flex justify-content-between">
+  <div class="col-10 offset-1 d-flex flex-wrap justify-content-between">
     <ng-container *ngFor="let testimonial of testimonials; let i = index">
-      <div (click)="selectTestimonial(testimonial)" class="testimonial-tab flex-fill"
+      <div (click)="selectTestimonial(testimonial)" class="testimonial-tab flex-fill m-1"
            [ngClass]="{'active': currentTestimonial === testimonial}">
         <strong>{{ testimonial.name }}</strong>, {{ testimonial.role }}
       </div>
