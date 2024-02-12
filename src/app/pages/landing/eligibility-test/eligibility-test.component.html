@@ -1,20 +1,25 @@
 <div class="row test-container">
-  <div class="col-12 d-flex flex-column align-items-center justify-content-between">
-    <div class="test-title text-center">Are you eligible to become a Security Guard In Ontario?</div>
-    <div *ngIf="!testCompleted" class="test-content d-flex align-items-center align-self-center">
-      <div class="row justify-content-center align-items-start">
+  <div class="col-12 d-flex flex-column align-items-center justify-content-center">
+    <div *ngIf="!testCompleted" class="test-content container-xxl d-flex align-items-center align-self-center">
+      <div class="row justify-content-center align-items-center">
         <div class="col-10 col-md-6">
-          <div class="test-question">{{ currentQuestion.question }} </div>
+          <div class="test-title text-start">Are you eligible to become a Security Guard In Ontario?</div>
+          <div class="test-subtitle text-start">Take the quiz and find out!</div>
         </div>
         <div class="col-10 col-md-6 mt-5 mt-md-0">
+          <div class="test-question">{{ currentQuestion.question }}</div>
           <div class="test-answers">
-            <ng-container *ngFor="let answer of currentQuestion.answers">
-              <div class="test-answer d-flex align-items-center" (click)="nextQuestion(answer)">
-                <div
-                  class="test-answer-letter d-flex align-items-center justify-content-center flex-shrink-0">{{ answer.letter }}</div>
-                <div class="test-answer-text">{{ answer.answer }}</div>
-              </div>
-            </ng-container>
+            <div class="row">
+              <ng-container *ngFor="let answer of currentQuestion.answers">
+                <div class="col-12 col-xl-6 mt-3">
+                  <div class="test-answer d-flex align-items-center" (click)="nextQuestion(answer)">
+                    <div
+                      class="test-answer-letter d-flex align-items-center justify-content-center flex-shrink-0">{{ answer.letter }}</div>
+                    <div class="test-answer-text">{{ answer.answer }}</div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
           </div>
         </div>
       </div>

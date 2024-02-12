@@ -44,13 +44,13 @@ const QUESTIONS: EligibilityTestQuestion[] = [
         answer: 'Canadian Passport'
       }, {
         letter: 'B',
-        answer: 'Permanent Resident Card (PR)'
+        answer: 'PR Card'
       }, {
         letter: 'C',
         answer: 'Study or Work Permit',
       }, {
         letter: 'D',
-        answer: 'Canadian Birth Certificate'
+        answer: 'Birth Certificate'
       }, {
         letter: 'E',
         answer: 'None of above'
