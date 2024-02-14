@@ -19,10 +19,7 @@ export class LandingRegisterComponent implements OnInit {
 
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    phone: new FormControl('', [
-      Validators.required, Validators.minLength(6), Validators.maxLength(32)
-    ])
+    password: new FormControl('', [Validators.required, Validators.minLength(6)])
   })
 
   constructor(
