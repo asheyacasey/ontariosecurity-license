@@ -8,6 +8,7 @@ import {FaqService} from "../../../services/faq.service";
 import {LandingRegisterModalComponent} from "../register-modal/landing-register-modal.component";
 import {ViewportScroller} from "@angular/common";
 
+// todo: move elsewhere
 export interface Course {
   icon: string;
   title: string;
@@ -35,28 +36,14 @@ const COURSES: { [key: string]: Course } = {
 export class LandingV3Component implements OnInit, OnDestroy, AfterViewInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
-  @ViewChild('offcanvas') offcanvas!: TemplateRef<any>;
-
-  @ViewChild('testimonials') testimonials!: ElementRef<HTMLElement>;
-  @ViewChild('courses') courses!: ElementRef<HTMLElement>;
-  // @ViewChild('requirements') requirements!: ElementRef<HTMLElement>;
-  @ViewChild('whyUs') whyUs!: ElementRef<HTMLElement>;
-  @ViewChild('internationalStudents') internationalStudents!: ElementRef<HTMLElement>;
-  @ViewChild('faq') faq!: ElementRef<HTMLElement>;
-  @ViewChild('signUp') signUp!: ElementRef<HTMLElement>;
-
-  offcanvasRef: NgbOffcanvasRef | null = null;
-
   currentCourse: Course = COURSES['false'];
 
   faqLanguages: Language[] = [];
   faqLanguage: Language | null = null;
 
   constructor(
-    private router: Router,
     private activatedRoute: ActivatedRoute,
     private viewportScroller: ViewportScroller,
-    private offcanvasService: NgbOffcanvas,
     private modalService: NgbModal,
     private languageService: LanguageService,
     private faqService: FaqService
@@ -91,83 +78,8 @@ export class LandingV3Component implements OnInit, OnDestroy, AfterViewInit {
     this.destroy$.unsubscribe();
   }
 
-  onMenuClicked(): void {
-    this.offcanvasRef = this.offcanvasService.open(this.offcanvas);
-  }
-
-  closeOffcanvas(): Observable<void> | null {
-    if (this.offcanvasRef) {
-      const observable = this.offcanvasRef.hidden;
-      this.offcanvasRef.close();
-      this.offcanvasRef = null;
-      return observable;
-    }
-    return null;
-  }
-
-  closeOffcanvasCallback(callback: CallableFunction): void {
-    const hiddenObservable = this.closeOffcanvas();
-    if (hiddenObservable) {
-      hiddenObservable.pipe(
-        take(1)
-      ).subscribe(() => {
-        callback();
-      })
-    } else {
-      callback();
-    }
-  }
-
-  goToTestimonials() {
-    this.closeOffcanvasCallback(() => {
-      this.scrollTo(this.testimonials.nativeElement);
-    })
-  }
-
-  goToCourses() {
-    this.closeOffcanvasCallback(() => {
-      this.scrollTo(this.courses.nativeElement);
-    })
-  }
-
-  // goToLicenseRequirements() {
-  //   this.closeOffcanvasCallback(() => {
-  //     this.scrollTo(this.requirements.nativeElement);
-  //   })
-  // }
-
-  goToWhyUs() {
-    this.closeOffcanvasCallback(() => {
-      this.scrollTo(this.whyUs.nativeElement);
-    })
-  }
-
-  goToInternationalStudents() {
-    this.closeOffcanvasCallback(() => {
-      this.scrollTo(this.internationalStudents.nativeElement);
-    })
-  }
-
-  goToFAQ(): void {
-    this.closeOffcanvasCallback(() => {
-      this.scrollTo(this.faq.nativeElement);
-    });
-  }
-
-  goToLogin(): void {
-    this.closeOffcanvasCallback(() => {
-      this.router.navigate(['/login']);
-    });
-  }
-
   goToSignUp(): void {
-    this.closeOffcanvasCallback(() => {
       this.modalService.open(LandingRegisterModalComponent, {size: 'lg'});
-    });
-  }
-
-  scrollTo(element: HTMLElement): void {
-    element.scrollIntoView({behavior: 'smooth'});
   }
 
   onFAQLanguageChanged(language: Language) {

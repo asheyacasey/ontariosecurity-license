@@ -6,6 +6,10 @@ import {CoursesListComponent} from "./courses-list/courses-list.component";
 import {LandingV3Component} from "./landing-v3/landing-v3.component";
 import {LandingRedirectComponent} from "./landing-redirect/landing-redirect.component";
 import {EligibilityTestComponent} from "./eligibility-test/eligibility-test.component";
+import {TermsOfServiceComponent} from "./terms-of-service/terms-of-service.component";
+import {PrivacyPolicyComponent} from "./privacy-policy/privacy-policy.component";
+import {StartComponent} from "../start/start.component";
+import {StaticComponent} from "./static/static.component";
 
 const routes: Routes = [
   {
@@ -22,6 +26,21 @@ const routes: Routes = [
         path: '',
         component: CoursesListComponent
       }
+    ]
+  },
+
+  {
+    path: 's',
+    component: StaticComponent,
+    children: [
+      {
+        path: 'terms-of-service',
+        component: TermsOfServiceComponent
+      },
+      {
+        path: 'privacy-policy',
+        component: PrivacyPolicyComponent
+      },
     ]
   },
   // redirects to fragments

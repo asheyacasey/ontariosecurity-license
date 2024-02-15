@@ -1,6 +1,14 @@
+<ng-template #menu>
+  <a class="btn btn-link pe-0 link" href="/s/terms-of-service">Terms of Service</a>
+  <a class="btn btn-link pe-0 link" href="/s/privacy-policy">Privacy Policy</a>
+  <span class="copyright d-none d-sm-flex">(c) 2023 Ontario Security License</span>
+</ng-template>
+
 <footer class="row">
-  <div class="container-xxl d-flex justify-content-between align-items-center col-12 col-lg-10 offset-0 offset-lg-1 p-5">
-    <svg width="188" height="41" viewBox="0 0 188 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <div
+    class="container-xxl d-flex justify-content-center justify-content-sm-between align-items-center col-12 col-lg-10 offset-0 offset-lg-1 p-5">
+    <svg class="flex-shrink-0" width="188" height="41" viewBox="0 0 188 41" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
       <path
         d="M39.3477 10.296C39.3477 6.20378 41.7772 3.44531 45.7233 3.44531C49.6694 3.44531 52.099 6.20378 52.099 10.296C52.099 14.3883 49.6694 17.1468 45.7233 17.1468C41.7772 17.1468 39.3477 14.3883 39.3477 10.296ZM45.7233 14.8086C48.226 14.8451 49.4685 13.0362 49.4685 10.296C49.4685 7.55585 48.226 5.82009 45.7233 5.78403C43.2207 5.74748 41.9782 7.55633 41.9782 10.296C41.9782 13.0358 43.2207 14.772 45.7233 14.8086Z"
         fill="white"/>
@@ -66,6 +74,13 @@
         d="M14.7136 0L0 8.31339V25.8441L14.7261 40.5702L29.4272 25.8691V8.31339L14.7136 0ZM14.7136 3.11139L26.7183 9.89433V15.5704C24.6777 10.9637 20.0704 7.74074 14.7242 7.73304C14.7199 7.73256 14.7155 7.73304 14.7107 7.73304C14.7088 7.73304 14.7064 7.73304 14.7045 7.73304C9.36591 7.73304 4.76157 10.9392 2.70895 15.5296V9.89481L14.7136 3.11139ZM4.27786 20.8869C4.27786 17.8327 5.59291 15.0809 7.68544 13.1692C7.53495 13.75 7.45417 14.3592 7.45417 14.9862C7.45417 18.1731 9.50006 20.9547 12.5446 21.9086C13.2476 22.1288 13.9808 22.2404 14.7237 22.2404C15.1675 22.2404 15.605 22.3034 16.0248 22.4279C17.9438 22.9957 19.2843 24.7878 19.2843 26.7856C19.2843 29.2916 17.2384 31.3308 14.7237 31.3308V31.3322C14.717 31.3322 14.7107 31.3322 14.704 31.3322C8.95481 31.3322 4.27738 26.6466 4.27738 20.8869H4.27786ZM25.1311 20.8869C25.1311 23.916 23.8367 26.6481 21.7735 28.5579C21.9168 27.9905 21.9937 27.3972 21.9937 26.7856C21.9937 23.5963 19.8555 20.7364 16.7941 19.83C16.1248 19.6319 15.4281 19.5314 14.7242 19.5314C14.2563 19.5314 13.7957 19.4612 13.3548 19.3232C11.4459 18.7256 10.1636 16.9821 10.1636 14.9862C10.1636 12.4845 12.2023 10.4487 14.7112 10.4415C20.4575 10.4449 25.1315 15.1295 25.1315 20.8869H25.1311ZM11.6734 33.6873C12.6466 33.9186 13.6616 34.0412 14.7045 34.0412C15.7676 34.0412 16.8018 33.9133 17.7923 33.6733L14.7261 36.7395L11.6739 33.6873H11.6734Z"
         fill="white"/>
     </svg>
-    <span class="copyright d-none d-sm-flex">(c) 2022 Ontario Security License</span>
+    <div class="d-none d-sm-flex flex-column align-items-end">
+      <ng-template [ngTemplateOutlet]="menu"></ng-template>
+    </div>
+  </div>
+  <div class="container-xxl d-flex d-sm-none justify-content-center">
+    <div class="d-flex flex-column align-items-center justify-content-center">
+      <ng-template [ngTemplateOutlet]="menu"></ng-template>
+    </div>
   </div>
 </footer>
