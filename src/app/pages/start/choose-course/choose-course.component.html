@@ -5,6 +5,7 @@
       <app-course-card [course]="course" (courseClicked)="onCourseSelected($event)"></app-course-card>
     </div>
   </div>
+  <div #course></div>
   <ng-container *ngIf="selectedCourse !== null">
     <div class="course-details-header row align-items-center">
       <div class="col-12 col-xl-4">
@@ -15,16 +16,17 @@
       </div>
       <div class="col-12 col-xl-3 py-3 py-xl-0">
         <app-language-select
-        [languages]="selectedCourseLanguages" [currentLanguage]="language" (languageChanged)="onLanguageChanged($event)"></app-language-select>
+          [languages]="selectedCourseLanguages" [currentLanguage]="language"
+          (languageChanged)="onLanguageChanged($event)"></app-language-select>
       </div>
-      <div class="col-12 col-xl-5 py-3 py-xl-0">
+      <div class="col-12 col-xl-5 py-3 py-xl-0 d-none d-xl-flex">
         <div class="d-flex justify-content-xl-end justify-content-between">
           <div
             class="course-price-container d-flex flex-column justify-content-around justify-content-xl-center align-items-start align-items-xl-end">
             <div class="course-price">${{ selectedCourse.price}}</div>
             <div class="course-price-description">Course price</div>
           </div>
-          <a (click)="onCourseAction(selectedCourse)" class="btn btn-purchase">Purchase Course</a>
+          <a (click)="onCourseAction(selectedCourse)" class="btn btn-purchase">Buy</a>
         </div>
       </div>
     </div>
@@ -39,6 +41,16 @@
           <img alt="Course image" class="img-fluid" src="{{ selectedCourse.imageBig }}">
         </div>
         <app-modules-listing [course]="selectedCourse"></app-modules-listing>
+      </div>
+    </div>
+    <div class="col-12 col-xl-5 py-3 py-xl-0 d-inline-block d-xl-none price-button-sticky">
+      <div class="d-flex justify-content-xl-end justify-content-between">
+        <div
+          class="course-price-container d-flex flex-column justify-content-around justify-content-xl-center align-items-start align-items-xl-end">
+          <div class="course-price">${{ selectedCourse.price}}</div>
+          <div class="course-price-description">Course price</div>
+        </div>
+        <a (click)="onCourseAction(selectedCourse)" class="btn btn-purchase">Buy</a>
       </div>
     </div>
   </ng-container>

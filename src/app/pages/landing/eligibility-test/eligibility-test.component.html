@@ -1,0 +1,66 @@
+<div class="row test-container">
+  <div class="col-12 d-flex flex-column align-items-center justify-content-center">
+    <div *ngIf="!testCompleted" class="test-content container-xxl d-flex align-items-center align-self-center">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-10 col-md-6">
+          <div class="test-title text-start">Are you eligible to become a Security Guard In Ontario?</div>
+          <div class="test-subtitle text-start">Take the quiz and find out!</div>
+        </div>
+        <div class="col-10 col-md-6 mt-5 mt-md-0">
+          <div class="test-question">{{ currentQuestion.question }}</div>
+          <div class="test-answers">
+            <div class="row">
+              <ng-container *ngFor="let answer of currentQuestion.answers">
+                <div class="col-12 col-xl-6 mt-3">
+                  <div class="test-answer d-flex align-items-center" (click)="nextQuestion(answer)">
+                    <div
+                      class="test-answer-letter d-flex align-items-center justify-content-center flex-shrink-0">{{ answer.letter }}</div>
+                    <div class="test-answer-text">{{ answer.answer }}</div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="testCompleted && !testSubmitted" class="test-content d-flex align-items-center flex-column">
+      <h2 class="test-completed-header">Good job!</h2>
+      <p class="test-completed-text">Enter you email and we will send you the results.</p>
+
+      <form [formGroup]="testAnswersForm" (ngSubmit)="onSubmit()" ngNativeValidate autocomplete="off" class="mt-5">
+        <div class="row">
+          <div class="col-12">
+            <label for="email" class="form-label">Email</label>
+            <input ngbAutofocus type="email" class="form-control" id="email" required="required"
+                   placeholder="john.doe@gmail.com" formControlName="email">
+          </div>
+        </div>
+        <div class="row sign-up">
+          <div class="col-12 d-flex justify-content-center">
+            <button type="submit" class="btn btn-action flex-grow-1 flex-lg-grow-0"
+                    [disabled]="(isLoading$ | async) === true">
+              <ng-container *ngIf="(isLoading$ | async) === true; else submit">
+                <div class="spinner-border spinner-border-sm text-secondary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </ng-container>
+              <ng-template #submit>
+                Check answers
+              </ng-template>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="testCompleted && testSubmitted" class="test-content d-flex align-items-center flex-column">
+      <h2 class="test-completed-header">Good job!</h2>
+      <p class="test-completed-text">Check your email to see the results!</p>
+    </div>
+    <div class="container-xxl d-flex justify-content-center">
+      <div class="test-progress-container">
+        <div class="test-progress-bar" [ngStyle]="{'width.%': completedPercent}"></div>
+      </div>
+    </div>
+  </div>
+</div>

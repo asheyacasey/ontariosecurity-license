@@ -1,7 +1,28 @@
 @import "node_modules/bootstrap/scss/bootstrap-utilities";
 
+
+@include media-breakpoint-down(xl) {
+  .price-button-sticky {
+    background-color: #FFFFFF;
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+  }
+}
+
 .course-details-header {
   margin-top: 80px;
+
+  background: #FFFFFF;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  @include media-breakpoint-up(xl) {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
 
   .course-title {
     padding-top: 5px;
@@ -29,53 +50,57 @@
 
   }
 
-  .course-price-container {
+}
 
-    .course-price {
+.course-price-container {
 
-      font-family: 'Manrope', sans-serif;
-      font-style: normal;
-      font-weight: 800;
-      font-size: 24px;
-      line-height: 30px;
+  .course-price {
 
-      color: #31374D;
-    }
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 30px;
 
-    .course-price-description {
-      font-family: 'Roboto', sans-serif;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 32px;
-
-      text-align: right;
-
-      color: #5E6169;
-
-
-    }
+    color: #31374D;
   }
 
-  .btn-purchase {
-    padding: 18px 42px;
-
-    background: #31374D;
-    border-radius: 4px;
-
+  .course-price-description {
     font-family: 'Roboto', sans-serif;
     font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 19px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 32px;
 
-    color: #FFFFFF;
+    text-align: right;
 
-    @include media-breakpoint-up(sm) {
-     margin-left: 36px;
-    }
+    color: #5E6169;
+  }
+}
+
+.btn-purchase {
+  padding: 18px 32px;
+
+  background: #31374D;
+  border-radius: 4px;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #FFFFFF;
+
+  &:hover {
+    border: 1px solid #31374D;
   }
 
+  @include media-breakpoint-up(sm) {
+    margin-left: 36px;
+    padding: 18px 42px;
+
+  }
 }
 
 .course-details-content {

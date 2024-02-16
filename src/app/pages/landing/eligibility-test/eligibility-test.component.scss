@@ -1,0 +1,211 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
+.test-container {
+  margin: 0 32px;
+  min-height: 60vh;
+  background: #31374D url("data:image/svg+xml,%3Csvg width='398' height='544' viewBox='0 0 398 544' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M199.014 0L0.791504 111.473V346.54L199.182 544L397.236 346.875V111.473L199.014 0ZM199.014 41.7202L360.741 132.672V208.781C333.25 147.01 271.181 103.794 199.156 103.691C199.098 103.685 199.04 103.691 198.975 103.691C198.949 103.691 198.916 103.691 198.891 103.691C126.969 103.691 64.9395 146.681 37.2865 208.233V132.678L199.014 41.7202ZM58.423 280.069C58.423 239.116 76.1394 202.218 104.33 176.584C102.303 184.372 101.214 192.541 101.214 200.948C101.214 243.68 128.777 280.978 169.793 293.769C179.263 296.722 189.142 298.218 199.15 298.218C205.129 298.218 211.023 299.062 216.678 300.732C242.53 308.346 260.59 332.375 260.59 359.164C260.59 392.767 233.028 420.11 199.15 420.11V420.129C199.059 420.129 198.975 420.129 198.884 420.129C121.431 420.129 58.4165 357.3 58.4165 280.069H58.423ZM339.358 280.069C339.358 320.686 321.92 357.32 294.125 382.928C296.055 375.32 297.091 367.365 297.091 359.164C297.091 316.399 268.285 278.051 227.042 265.898C218.025 263.241 208.639 261.894 199.156 261.894C192.853 261.894 186.648 260.953 180.708 259.102C154.992 251.088 137.716 227.711 137.716 200.948C137.716 167.403 165.181 140.105 198.981 140.009C276.395 140.054 339.365 202.869 339.365 280.069H339.358ZM158.056 451.708C171.166 454.809 184.841 456.453 198.891 456.453C213.213 456.453 227.146 454.738 240.49 451.521L199.182 492.635L158.062 451.708H158.056Z' fill='%232C3248'/%3E%3C/svg%3E") no-repeat center;
+  background-position-y: 80px;
+  border-radius: 16px;
+}
+
+.test-title {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 49px;
+
+  @include media-breakpoint-down(md) {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  color: #FFFFFF;
+}
+
+.test-subtitle {
+  margin-top: 60px;
+
+  @include media-breakpoint-down(md) {
+    margin-top: 20px;
+  }
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 33px;
+
+  @include media-breakpoint-down(md) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  color: #FFFFFF;
+}
+
+.test-content {
+  padding: 200px 50px;
+
+  @include media-breakpoint-down(md) {
+    padding: 50px 0;
+  }
+
+  .test-question {
+    margin-bottom: 46px;
+
+    @include media-breakpoint-down(md) {
+      margin-bottom: 25px;
+    }
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+
+    color: #FFFFFF;
+  }
+
+  .test-answers {
+    min-height: 230px;
+
+    .test-answer {
+      padding: 11px 15px;
+
+      border: 1px solid #D2D6E9;
+      border-radius: 10px;
+
+      cursor: pointer;
+
+      .test-answer-letter {
+        width: 34px;
+        height: 34px;
+
+        font-family: 'Manrope', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 22px;
+
+        color: #D2D6E9;
+
+        border: 1px solid #D2D6E9;
+        border-radius: 50%;
+
+      }
+
+      .test-answer-text {
+        margin-left: 15px;
+
+        font-family: 'Manrope', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 30px;
+
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  .test-completed-header {
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 49px;
+    text-align: center;
+
+    color: #FFFFFF;
+  }
+
+  .test-completed-text {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+
+    color: #FFFFFF;
+  }
+}
+
+.test-progress-container {
+  margin-top: auto;
+  margin-bottom: 60px;
+
+  width: 60%;
+  height: 0;
+
+  border: 4px solid #2C3248;
+  border-radius: 6px;
+
+  .test-progress-bar {
+    height: 0;
+
+    border: 4px solid #FFFFFF;
+    border-radius: 6px;
+  }
+}
+
+
+.sign-up {
+  margin-top: 56px;
+}
+
+label {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #31374D;
+  text-transform: uppercase;
+
+  margin-left: 10px;
+}
+
+::placeholder {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 32px;
+  /* identical to box height, or 200% */
+
+  color: #ABAEBB;
+}
+
+input {
+  height: 56px;
+
+  background: #FFFFFF;
+  border-radius: 8px;
+
+  &:focus {
+    background: #FFFFFF;
+  }
+}
+
+.btn-action {
+  border: 1px solid #FFF;
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #FFFFFF;
+
+  padding: 21px 62px;
+
+  &:hover {
+    border: 1px solid #FFF;
+    color: #FFFFFF;
+  }
+}

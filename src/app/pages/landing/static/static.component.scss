@@ -1,0 +1,38 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
+// spacers added because the body background color is set to gray in global styling
+// easier to add spacers for now, but if more pages require it, the global background
+// styling will have to be refactored
+
+.space-top {
+  background: #FFFFFF;
+  height: 1px;
+  width: 100%;
+  @include media-breakpoint-up(sm) {
+    height: 32px;
+  }
+}
+
+.space-bottom {
+  background: #FFFFFF;
+  height: 50px;
+  width: 100%;
+  @include media-breakpoint-up(sm) {
+    height: 100px;
+  }
+}
+
+.white-bg {
+  background: #FFF;
+}
+
+.gray-bg-container {
+  background: #F3F4FA;
+  border-radius: 24px;
+
+  margin-top: 1.5rem;
+
+  @include media-breakpoint-up(sm) {
+    margin: 0 32px 32px 32px;
+  }
+}

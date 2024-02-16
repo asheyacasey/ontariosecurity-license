@@ -1,19 +1,21 @@
-import {Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {Router} from "@angular/router";
-import {Observable, Subject, take, takeUntil} from "rxjs";
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
+import {first, Observable, Subject, take, takeUntil} from "rxjs";
 import {NgbModal, NgbOffcanvas, NgbOffcanvasRef} from "@ng-bootstrap/ng-bootstrap";
 import {Language} from "../../../models/language";
 import {LanguageService} from "../../../services/language.service";
 import {FaqService} from "../../../services/faq.service";
 import {LandingRegisterModalComponent} from "../register-modal/landing-register-modal.component";
+import {ViewportScroller} from "@angular/common";
 
+// todo: move elsewhere
 export interface Course {
   icon: string;
   title: string;
   price: string
 }
 
-const COURSES: {[key: string]: Course} = {
+const COURSES: { [key: string]: Course } = {
   'false': {
     icon: '/assets/course-1-icon.png',
     title: 'Security Guard & CPR Training Course',
@@ -31,20 +33,8 @@ const COURSES: {[key: string]: Course} = {
   templateUrl: './landing-v3.component.html',
   styleUrls: ['./landing-v3.component.scss']
 })
-export class LandingV3Component implements OnInit, OnDestroy {
+export class LandingV3Component implements OnInit, OnDestroy, AfterViewInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
-
-  @ViewChild('offcanvas') offcanvas!: TemplateRef<any>;
-
-  @ViewChild('testimonials') testimonials!: ElementRef<HTMLElement>;
-  @ViewChild('courses') courses!: ElementRef<HTMLElement>;
-  // @ViewChild('requirements') requirements!: ElementRef<HTMLElement>;
-  @ViewChild('whyUs') whyUs!: ElementRef<HTMLElement>;
-  @ViewChild('internationalStudents') internationalStudents!: ElementRef<HTMLElement>;
-  @ViewChild('faq') faq!: ElementRef<HTMLElement>;
-  @ViewChild('signUp') signUp!: ElementRef<HTMLElement>;
-
-  offcanvasRef: NgbOffcanvasRef | null = null;
 
   currentCourse: Course = COURSES['false'];
 
@@ -52,8 +42,8 @@ export class LandingV3Component implements OnInit, OnDestroy {
   faqLanguage: Language | null = null;
 
   constructor(
-    private router: Router,
-    private offcanvasService: NgbOffcanvas,
+    private activatedRoute: ActivatedRoute,
+    private viewportScroller: ViewportScroller,
     private modalService: NgbModal,
     private languageService: LanguageService,
     private faqService: FaqService
@@ -70,88 +60,26 @@ export class LandingV3Component implements OnInit, OnDestroy {
     this.faqLanguages = this.faqService.languages;
   }
 
+  ngAfterViewInit(): void {
+    this.activatedRoute.fragment.pipe(
+      first()
+    ).subscribe((fragment) => {
+      if (fragment !== null) {
+        // had to use the timeout for correct positioning
+        setTimeout(() => {
+          this.viewportScroller.scrollToAnchor(fragment);
+        }, 100);
+      }
+    })
+  }
+
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
 
-  onMenuClicked(): void {
-    this.offcanvasRef = this.offcanvasService.open(this.offcanvas);
-  }
-
-  closeOffcanvas(): Observable<void> | null {
-    if (this.offcanvasRef) {
-      const observable = this.offcanvasRef.hidden;
-      this.offcanvasRef.close();
-      this.offcanvasRef = null;
-      return observable;
-    }
-    return null;
-  }
-
-  closeOffcanvasCallback(callback: CallableFunction): void {
-    const hiddenObservable = this.closeOffcanvas();
-    if (hiddenObservable) {
-      hiddenObservable.pipe(
-        take(1)
-      ).subscribe(() => {
-        callback();
-      })
-    } else {
-      callback();
-    }
-  }
-
-  goToTestimonials() {
-    this.closeOffcanvasCallback(() => {
-      this.scrollTo(this.testimonials.nativeElement);
-    })
-  }
-
-  goToCourses() {
-    this.closeOffcanvasCallback(() => {
-      this.scrollTo(this.courses.nativeElement);
-    })
-  }
-
-  // goToLicenseRequirements() {
-  //   this.closeOffcanvasCallback(() => {
-  //     this.scrollTo(this.requirements.nativeElement);
-  //   })
-  // }
-
-  goToWhyUs() {
-    this.closeOffcanvasCallback(() => {
-      this.scrollTo(this.whyUs.nativeElement);
-    })
-  }
-
-  goToInternationalStudents() {
-    this.closeOffcanvasCallback(() => {
-      this.scrollTo(this.internationalStudents.nativeElement);
-    })
-  }
-
-  goToFAQ(): void {
-    this.closeOffcanvasCallback(() => {
-      this.scrollTo(this.faq.nativeElement);
-    });
-  }
-
-  goToLogin(): void {
-    this.closeOffcanvasCallback(() => {
-      this.router.navigate(['/login']);
-    });
-  }
-
   goToSignUp(): void {
-    this.closeOffcanvasCallback(() => {
       this.modalService.open(LandingRegisterModalComponent, {size: 'lg'});
-    });
-  }
-
-  scrollTo(element: HTMLElement): void {
-    element.scrollIntoView({behavior: 'smooth'});
   }
 
   onFAQLanguageChanged(language: Language) {
