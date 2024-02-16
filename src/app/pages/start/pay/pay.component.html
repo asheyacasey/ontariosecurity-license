@@ -2,68 +2,65 @@
   <app-order-summary></app-order-summary>
   <app-discount></app-discount>
   <hr class="spacer">
-  <h1 class="section-title py-5">Billing Details</h1>
+<!--  <h1 class="section-title py-5">Billing Details</h1>-->
   <form class="billing-details-form" [formGroup]="billingDetailsForm" (ngSubmit)="onSubmit()">
+<!--    <div class="row mb-5">-->
+<!--      <div class="form-section-header col-12 col-xl-4 mb-3">-->
+<!--        Contact information-->
+<!--      </div>-->
+<!--      <div class="col-12 col-xl-8">-->
+<!--        <div class="row">-->
+<!--          <div class="col-12 col-xl-6 mb-4">-->
+<!--            <label for="first-name" class="form-label">First name *</label>-->
+<!--            <input type="text" class="form-control" id="first-name" formControlName="firstName">-->
+<!--          </div>-->
+<!--          <div class="col-12 col-xl-6 mb-4">-->
+<!--            <label for="last-name" class="form-label">Last name</label>-->
+<!--            <input type="text" class="form-control" id="last-name" formControlName="lastName">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--          <div class="col-12 col-xl-6 mb-3">-->
+<!--            <label for="email" class="form-label">Email *</label>-->
+<!--            <input type="email" class="form-control" id="email" formControlName="email">-->
+<!--          </div>-->
+<!--          <div class="col-12 col-xl-6 mb-3">-->
+<!--            <label for="phone" class="form-label">Phone *</label>-->
+<!--            <input type="text" class="form-control" id="phone" formControlName="phone">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="row mb-5">-->
+<!--      <div class="form-section-header col-12 col-xl-4 mb-3">-->
+<!--        Address-->
+<!--      </div>-->
+<!--      <div class="col-12 col-xl-8">-->
+<!--        <div class="row">-->
+<!--          <div class="col-12 mb-4">-->
+<!--            <label for="address-line-1" class="form-label">Street address *</label>-->
+<!--            <input type="text" class="form-control mb-2 mb-xl-1" id="address-line-1"-->
+<!--                   placeholder="House number and street name" formControlName="addressLine1">-->
+<!--            <input type="text" class="form-control" id="address-line-2"-->
+<!--                   placeholder="Apartment suite, unit, etc." formControlName="addressLine2">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--          <div class="col-12 col-xl-6 mb-3">-->
+<!--            <label for="country" class="form-label">Country *</label>-->
+<!--            <input type="text" class="form-control" id="country" formControlName="country">-->
+<!--          </div>-->
+<!--          <div class="col-12 col-xl-6 mb-3">-->
+<!--            <label for="province" class="form-label">Province *</label>-->
+<!--            <input type="text" class="form-control" id="province" formControlName="province">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
     <div class="row mb-5">
-      <div class="form-section-header col-12 col-xl-4 mb-3">
-        Contact information
-      </div>
-      <div class="col-12 col-xl-8">
+      <div class="col-12">
         <div class="row">
-          <div class="col-12 col-xl-6 mb-4">
-            <label for="first-name" class="form-label">First name *</label>
-            <input type="text" class="form-control" id="first-name" formControlName="firstName">
-          </div>
-          <div class="col-12 col-xl-6 mb-4">
-            <label for="last-name" class="form-label">Last name</label>
-            <input type="text" class="form-control" id="last-name" formControlName="lastName">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-xl-6 mb-3">
-            <label for="email" class="form-label">Email *</label>
-            <input type="email" class="form-control" id="email" formControlName="email">
-          </div>
-          <div class="col-12 col-xl-6 mb-3">
-            <label for="phone" class="form-label">Phone *</label>
-            <input type="text" class="form-control" id="phone" formControlName="phone">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row mb-5">
-      <div class="form-section-header col-12 col-xl-4 mb-3">
-        Address
-      </div>
-      <div class="col-12 col-xl-8">
-        <div class="row">
-          <div class="col-12 mb-4">
-            <label for="address-line-1" class="form-label">Street address *</label>
-            <input type="text" class="form-control mb-2 mb-xl-1" id="address-line-1"
-                   placeholder="House number and street name" formControlName="addressLine1">
-            <input type="text" class="form-control" id="address-line-2"
-                   placeholder="Apartment suite, unit, etc." formControlName="addressLine2">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-xl-6 mb-3">
-            <label for="country" class="form-label">Country *</label>
-            <input type="text" class="form-control" id="country" formControlName="country">
-          </div>
-          <div class="col-12 col-xl-6 mb-3">
-            <label for="province" class="form-label">Province *</label>
-            <input type="text" class="form-control" id="province" formControlName="province">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row mb-5">
-      <div class="form-section-header col-12 col-xl-4 mb-3">
-        Payment
-      </div>
-      <div class="col-12 col-xl-8">
-        <div class="row">
-          <div class="col-12">
+          <div class="col-12 col-md-6 offset-md-3">
             <button type="submit" class="btn btn-submit w-100 mb-3"
                     [disabled]="!billingDetailsForm.valid || (isLoading$ | async) === true">
               <ng-container *ngIf="(isLoading$ | async) === true; else submit">

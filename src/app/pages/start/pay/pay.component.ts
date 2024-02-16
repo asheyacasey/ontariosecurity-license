@@ -19,22 +19,22 @@ export class PayComponent implements OnInit, OnDestroy {
   isLoading$: Subject<boolean> = new BehaviorSubject<boolean>(false);
 
   billingDetailsForm = new FormGroup({
-    firstName: new FormControl('', [
-      Validators.required, Validators.minLength(2), Validators.maxLength(64)]
-    ),
-    lastName: new FormControl('', [
-      Validators.maxLength(64)
-    ]),
+    // firstName: new FormControl('', [
+    //   Validators.required, Validators.minLength(2), Validators.maxLength(64)]
+    // ),
+    // lastName: new FormControl('', [
+    //   Validators.maxLength(64)
+    // ]),
     email: new FormControl('', [
       Validators.required, Validators.email, Validators.maxLength(64)
     ]),
-    phone: new FormControl('', [
-      Validators.required, Validators.minLength(6), Validators.maxLength(64)
-    ]),
-    addressLine1: new FormControl('', [Validators.required, Validators.maxLength(128)]),
-    addressLine2: new FormControl('', [Validators.maxLength(128)]),
-    country: new FormControl('Canada', [Validators.required, Validators.maxLength(128)]),
-    province: new FormControl('Ontario', [Validators.required, Validators.maxLength(128)]),
+    // phone: new FormControl('', [
+    //   Validators.required, Validators.minLength(6), Validators.maxLength(64)
+    // ]),
+    // addressLine1: new FormControl('', [Validators.required, Validators.maxLength(128)]),
+    // addressLine2: new FormControl('', [Validators.maxLength(128)]),
+    // country: new FormControl('Canada', [Validators.required, Validators.maxLength(128)]),
+    // province: new FormControl('Ontario', [Validators.required, Validators.maxLength(128)]),
   })
 
   constructor(

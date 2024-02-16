@@ -34,12 +34,12 @@ export interface CPRDocumentUpload {
 }
 
 export interface ConsentPrefillValues {
-  firstName: string;
-  lastName: string;
+  firstName: string | null;
+  lastName: string | null
   email: string;
-  phone: string;
-  country: string;
-  province: string;
+  phone: string | null;
+  country: string | null;
+  province: string | null;
 }
 
 export interface ConsentAddress {
