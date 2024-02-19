@@ -19,7 +19,7 @@ import {
   UserRegisterError,
   UserRegisterRequest
 } from "../models/user";
-import {Router} from "@angular/router";
+import {SocialAuthService} from "@abacritt/angularx-social-login";
 
 /***
  * Factory to be used in APP_INITIALIZER
@@ -42,7 +42,7 @@ export class AuthenticationService {
 
   user: UserDetails | null = null;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private socialAuthService: SocialAuthService) {
   }
 
   /***
@@ -75,11 +75,12 @@ export class AuthenticationService {
       catchError((err: HttpErrorResponse) => {
         if (err.status === 409) {
           return of({
+            status: err.status,
             message: 'This user has already been registered',
             suggestLogin: true
           })
         }
-        return of({message: 'Unknown error occurred', suggestLogin: false})
+        return of({status: err.status, message: 'Unknown error occurred', suggestLogin: false})
       })
     );
   }
@@ -90,7 +91,7 @@ export class AuthenticationService {
       .set('username', data.username)
       .set('password', data.password);
 
-    return this.http.post<AccessToken>(`${this.apiUrl}/user/token`, body, {headers: headers}).pipe(
+    return this.http.post<AccessToken>(`${this.apiUrl}/user/token?provider=${data.provider}`, body, {headers: headers}).pipe(
       tap((token: AccessToken) => {
         localStorage.setItem(this.key, token.access_token);
       }),
@@ -102,6 +103,11 @@ export class AuthenticationService {
 
   signOut(): void {
     localStorage.removeItem(this.key);
+    this.socialAuthService.signOut()
+      .then(() => {
+      })
+      .catch(() => {
+      });
     this.user = null;
     this._user$$.next(null);
   }

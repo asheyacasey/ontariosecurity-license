@@ -7,6 +7,7 @@ import {LanguageService} from "../../../services/language.service";
 import {FaqService} from "../../../services/faq.service";
 import {LandingRegisterModalComponent} from "../register-modal/landing-register-modal.component";
 import {ViewportScroller} from "@angular/common";
+import {SocialAuthService} from "@abacritt/angularx-social-login";
 
 // todo: move elsewhere
 export interface Course {

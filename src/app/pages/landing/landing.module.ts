@@ -19,33 +19,40 @@ import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component'
 import {TermsOfServiceComponent} from './terms-of-service/terms-of-service.component';
 import { StaticComponent } from './static/static.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
+import {SocialLoginModule} from "@abacritt/angularx-social-login";
+import { SignInWithGoogleComponent } from './sign-in-with-google/sign-in-with-google.component';
 
 
 @NgModule({
-  declarations: [
-    LandingV1Component,
-    CoursesListComponent,
-    MainComponent,
-    FaqComponent,
-    FooterComponent,
-    LandingV3Component,
-    LandingRegisterComponent,
-    TestimonialsComponent,
-    EligibilityTestComponent,
-    LandingRegisterModalComponent,
-    LandingRedirectComponent,
-    PrivacyPolicyComponent,
-    TermsOfServiceComponent,
-    StaticComponent,
-    TopMenuComponent,
-  ],
-  imports: [
-    CommonModule,
-    PartialsModule,
-    LandingRoutingModule,
-    ReactiveFormsModule,
-    CountUpModule,
-  ]
+    declarations: [
+        LandingV1Component,
+        CoursesListComponent,
+        MainComponent,
+        FaqComponent,
+        FooterComponent,
+        LandingV3Component,
+        LandingRegisterComponent,
+        TestimonialsComponent,
+        EligibilityTestComponent,
+        LandingRegisterModalComponent,
+        LandingRedirectComponent,
+        PrivacyPolicyComponent,
+        TermsOfServiceComponent,
+        StaticComponent,
+        TopMenuComponent,
+        SignInWithGoogleComponent,
+    ],
+    exports: [
+        SignInWithGoogleComponent
+    ],
+    imports: [
+        CommonModule,
+        PartialsModule,
+        LandingRoutingModule,
+        ReactiveFormsModule,
+        CountUpModule,
+        SocialLoginModule,
+    ]
 })
 export class LandingModule {
 }

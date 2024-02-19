@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'http://127.0.0.1:8000',
-  googleTag: 'GTM-MJTCLK9'
+  googleTag: 'GTM-MJTCLK9',
+  googleOAuthClientId: '1094998117677-jiivqp4c1m81qdqcng5715qks9jr7pfe.apps.googleusercontent.com'
 };
 
 /*

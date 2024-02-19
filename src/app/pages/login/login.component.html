@@ -8,7 +8,27 @@
           <p class="signin-subheader">Enter your details below</p>
         </div>
       </div>
+      <div class="row" [class.invisible]="error === null">
+        <div class="col-12">
+          <div class="alert alert-warning d-flex align-items-center" role="alert"
+               [class.invisible]="error === null">
+            <div>
+              {{ error }}
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="row">
+        <div class="col d-flex align-items-center justify-content-center">
+          <app-sign-in-with-google text="signin_with"></app-sign-in-with-google>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col d-flex align-items-center justify-content-center">
+          or
+        </div>
+      </div>
+      <div class="row mt-3">
         <div class="col d-flex align-items-center justify-content-center">
           <form class="signin-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="mb-3">
@@ -31,12 +51,6 @@
                 Sign in
               </ng-template>
             </button>
-            <div class="alert alert-warning d-flex align-items-center" role="alert"
-                 [class.invisible]="!showError">
-              <div>
-                The supplied credentials are incorrect.
-              </div>
-            </div>
           </form>
         </div>
       </div>

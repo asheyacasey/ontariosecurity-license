@@ -1,9 +1,16 @@
+export enum AuthenticationProvider {
+  Local = 'LOCAL',
+  Google = 'GOOGLE'
+}
+
 export interface UserRegisterRequest {
-  username: string
+  provider: AuthenticationProvider
+  email: string
   password: string
 }
 
 export interface UserRegisterError {
+  status: number;
   message: string;
   suggestLogin: boolean;
 }
@@ -13,6 +20,7 @@ export interface UserLoginError {
 }
 
 export interface UserLoginRequest {
+  provider: AuthenticationProvider;
   username: string;
   password: string;
 }
