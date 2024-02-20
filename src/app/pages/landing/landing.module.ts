@@ -21,6 +21,7 @@ import { StaticComponent } from './static/static.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import {SocialLoginModule} from "@abacritt/angularx-social-login";
 import { SignInWithGoogleComponent } from './sign-in-with-google/sign-in-with-google.component';
+import { JobOffersCountComponent } from './job-offers-count/job-offers-count.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { SignInWithGoogleComponent } from './sign-in-with-google/sign-in-with-go
         StaticComponent,
         TopMenuComponent,
         SignInWithGoogleComponent,
+        JobOffersCountComponent,
     ],
     exports: [
         SignInWithGoogleComponent
