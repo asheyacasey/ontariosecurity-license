@@ -11,6 +11,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {GoogleTagManagerModule} from "angular-google-tag-manager";
 import {environment} from "../environments/environment";
 import {CountUpModule} from "ngx-countup";
+import {GoogleLoginProvider} from "@abacritt/angularx-social-login";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,17 @@ import {CountUpModule} from "ngx-countup";
     CountUpModule
   ],
   providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [{
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider(environment.googleOAuthClientId)
+        }
+        ]
+      }
+    },
     {
       provide: APP_INITIALIZER,
       useFactory: AuthenticationServiceFactory,

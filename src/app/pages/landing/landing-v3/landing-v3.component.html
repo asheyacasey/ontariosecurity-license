@@ -17,9 +17,12 @@
             guard job. We’ll guide you step by step.
           </p>
 
-          <a class="btn btn-action flex-grow-1 flex-lg-grow-0" (click)="goToSignUp()">Get Started Now</a>
-
-          <!--<img class="google-customer-reviews" alt="Customer reviews" src="/assets/v3/google-customer-reviews.png"/>-->
+          <div class="sign-up d-flex justify-content-center align-items-center">
+            <a class="btn btn-action flex-grow-1 flex-lg-grow-0" (click)="goToSignUp()">Get Started Now</a>
+            <app-sign-in-with-google text="signup_with"></app-sign-in-with-google>
+          </div>
+          <img class="customer-reviews" alt="Customer reviews" src="/assets/v3/customer-reviews.png"/>
+          <app-job-offers-count></app-job-offers-count>
         </div>
         <div class="hero-phone d-none d-md-flex align-items-end justify-content-start">
           <div class="person"></div>
@@ -188,7 +191,8 @@
                   <label class="form-check-label" for="flexCheckChecked">
                     I already have a valid CPR certificate
                   </label>
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="changeCourseType($event)">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                         (change)="changeCourseType($event)">
                 </div>
               </div>
             </div>
@@ -255,12 +259,12 @@
           <span class="red-highlight">We help you find a high paying job:</span> we work with all major Ontario guard
           companies.
         </p>
-        <p class="description">
+        <p class="description mt-3">
           Since your our student, you will be <span
           class="red-highlight">prioritized ahead of all other applicants</span> fighting for the same high paying job
           at top companies.
         </p>
-        <div class="pros-list mt-5 mt-md-0">
+        <div class="pros-list mt-3">
           <div class="pros-list-item d-flex justify-content-start align-items-center">
             <div class="pros-list-item-icon flex-shrink-0 d-flex align-items-center justify-content-center">
               <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">

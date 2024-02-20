@@ -1,0 +1,5 @@
+<div *ngIf="(isLoading$ | async) === true" class="spinner-grow" style="width: 22px; height: 22px;" role="status">
+</div>
+<p class="offer" *ngIf="(isLoading$ | async) === false">
+  {{ count }} jobs in {{ city }} currently available only for our students
+</p>

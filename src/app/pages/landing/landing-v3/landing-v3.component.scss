@@ -110,10 +110,24 @@ span.red-highlight {
     color: #595E71;
   }
 
-  .google-customer-reviews {
+  .sign-up {
+    app-sign-in-with-google {
+      margin-left: 10px;
+    }
+
+    @media (max-width: 1250px) {
+      flex-direction: column;
+
+      app-sign-in-with-google {
+        margin-top: 25px;
+      }
+    }
+  }
+
+  .customer-reviews {
     margin-top: 56px;
 
-    width: 224px;
+    width: 252px;
     height: auto;
   }
 }

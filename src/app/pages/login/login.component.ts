@@ -2,8 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
-import {UserLoginRequest, UserRegisterRequest} from "../../models/user";
-import {BehaviorSubject, filter, finalize, Subject, switchMap, takeUntil, tap} from "rxjs";
+import {AuthenticationProvider, UserLoginRequest} from "../../models/user";
+import {BehaviorSubject, filter, finalize, Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -16,28 +16,33 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    provider: new FormControl(AuthenticationProvider.Local)
   })
 
-  showError: boolean = false;
+  error: string | null = null;
 
 
-  constructor(private authService: AuthenticationService, private router: Router) {
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router
+  ) {
   }
 
   ngOnInit(): void {
     this.loginForm.valueChanges.pipe(
       takeUntil(this.destroy$)
     ).subscribe(() => {
-      this.showError = false;
+      this.error = null;
     })
   }
 
   onSubmit(): void {
     this.isLoading$.next(true);
-    this.showError = false;
+    this.error = null;
 
     const data = this.loginForm.value as UserLoginRequest;
+
     this.authService.signIn(data).pipe(
       filter((details) => details !== null),
       finalize(() => this.isLoading$.next(false))
@@ -45,8 +50,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       next: () => {
         this.router.navigate(['/start/course'])
       },
-      error: () => {
-        this.showError = true;
+      error: (err) => {
+        this.error = err.error.detail;
       }
     })
   }

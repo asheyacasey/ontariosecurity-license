@@ -8,7 +8,6 @@ import {Title} from "@angular/platform-browser";
 import {BehaviorSubject, filter, finalize, Subject, switchMap, take, takeUntil, tap} from "rxjs";
 import {Language} from "../../../models/language";
 import {LanguageService} from "../../../services/language.service";
-import {ReadMoreOptions} from "@minni/read-more";
 
 @Component({
   selector: 'app-choose-course',
