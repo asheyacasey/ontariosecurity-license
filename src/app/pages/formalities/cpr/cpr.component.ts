@@ -26,8 +26,11 @@ export function validCPRProviderValidator(): ValidatorFn {
   ],
 })
 export class CprComponent implements OnInit, OnDestroy {
+  MAX_CPR_SIZE: number = 2097152; // size in bytes
+
   destroy$: Subject<boolean> = new Subject<boolean>();
   isLoading$: Subject<boolean> = new BehaviorSubject<boolean>(false);
+
 
   cprForm = new FormGroup({
     file: new FormControl(null, Validators.required),
@@ -78,6 +81,19 @@ export class CprComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
+  }
+
+  onSelectFile($event: Event) {
+    const target = $event.target as HTMLInputElement;
+    const file = target.files && target.files[0];
+    if (file && file.size > this.MAX_CPR_SIZE) {
+      const control = this.cprForm.get('file');
+      if (control) {
+        control.setErrors({
+          serverError: 'File size cannot exceed 2MB'
+        })
+      }
+    }
   }
 
   onSubmit(): void {
