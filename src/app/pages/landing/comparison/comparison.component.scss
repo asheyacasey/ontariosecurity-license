@@ -27,7 +27,7 @@
     margin-left: 20px;
     padding: 20px 0;
 
-    width: 120px;
+    width: 25%;
 
     @include media-breakpoint-up(md) {
       background: #F3F4FA;
@@ -64,7 +64,7 @@
     margin-left: 20px;
     padding: 20px 0;
 
-    width: 120px;
+    width: 25%;
 
     @include media-breakpoint-up(md) {
       border: 2px solid #F3F4FA;
@@ -142,7 +142,7 @@
       margin-left: 20px;
       padding: 10px;
 
-      width: 120px;
+      width: 25%;
       @include media-breakpoint-up(md) {
         padding: 20px 85px;
         width: 340px;
@@ -165,7 +165,7 @@
       margin-left: 20px;
       padding: 10px;
 
-      width: 120px;
+      width: 25%;
       @include media-breakpoint-up(md) {
         padding: 20px 85px;
         width: 340px;

@@ -1,33 +1,27 @@
-<div class="row testimonial-tabs-container">
-  <div class="col-10 offset-1 d-flex flex-wrap justify-content-between">
-    <ng-container *ngFor="let testimonial of testimonials; let i = index">
-      <div (click)="selectTestimonial(testimonial)" class="testimonial-tab flex-fill m-1"
-           [ngClass]="{'active': currentTestimonial === testimonial}">
-        <strong>{{ testimonial.name }}</strong>, {{ testimonial.role }}
-      </div>
-    </ng-container>
-  </div>
-</div>
 <div class="row">
-  <div class="col-10 offset-1">
-    <div class="testimonial d-flex flex-column justify-content-center align-items-center">
-      <i class="testimonial-quote testimonial-quote-start"></i>
-      <i class="testimonial-quote testimonial-quote-end"></i>
+  <div class="col-12 col-md-10 offset-md-1">
+    <ngb-carousel>
+      <ng-template *ngFor="let testimonial of testimonials" ngbSlide>
+        <div class="testimonial d-flex flex-column justify-content-center align-items-center">
+          <i class="testimonial-quote testimonial-quote-start"></i>
+          <i class="testimonial-quote testimonial-quote-end"></i>
 
-      <div class="testimonial-title">{{ currentTestimonial.title }}</div>
-      <div class="testimonial-content">
-        {{ currentTestimonial.content }}
-      </div>
-      <div class="testimonial-signature-container d-flex justify-content-center">
-        <div class="testimonial-signature-photo">
-          <img src="{{ currentTestimonial.pictureUrl }}"/>
+          <div class="testimonial-title">{{ testimonial.title }}</div>
+          <div class="testimonial-content">
+            {{ testimonial.content }}
+          </div>
+          <div class="testimonial-signature-container d-flex justify-content-center">
+            <div class="testimonial-signature-photo">
+              <img src="{{ testimonial.pictureUrl }}"/>
+            </div>
+            <div class="testimonial-signature d-flex flex-column">
+              <div class="testimonial-signature-name">{{ testimonial.name }}</div>
+              <div class="testimonial-signature-role">{{ testimonial.role }}</div>
+            </div>
+          </div>
         </div>
-        <div class="testimonial-signature d-flex flex-column">
-          <div class="testimonial-signature-name">{{ currentTestimonial.name }}</div>
-          <div class="testimonial-signature-role">{{ currentTestimonial.role }}</div>
-        </div>
-      </div>
-    </div>
+      </ng-template>
+    </ngb-carousel>
   </div>
 </div>
 

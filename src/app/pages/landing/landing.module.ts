@@ -23,6 +23,7 @@ import {SocialLoginModule} from "@abacritt/angularx-social-login";
 import { SignInWithGoogleComponent } from './sign-in-with-google/sign-in-with-google.component';
 import { JobOffersCountComponent } from './job-offers-count/job-offers-count.component';
 import { ComparisonComponent } from './comparison/comparison.component';
+import {NgbCarouselModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { ComparisonComponent } from './comparison/comparison.component';
         ReactiveFormsModule,
         CountUpModule,
         SocialLoginModule,
+        NgbCarouselModule,
     ]
 })
 export class LandingModule {
