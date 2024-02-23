@@ -1,13 +1,12 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {first, Observable, Subject, take, takeUntil} from "rxjs";
-import {NgbModal, NgbOffcanvas, NgbOffcanvasRef} from "@ng-bootstrap/ng-bootstrap";
+import {ActivatedRoute} from "@angular/router";
+import {first, Subject, takeUntil} from "rxjs";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Language} from "../../../models/language";
 import {LanguageService} from "../../../services/language.service";
 import {FaqService} from "../../../services/faq.service";
 import {LandingRegisterModalComponent} from "../register-modal/landing-register-modal.component";
 import {ViewportScroller} from "@angular/common";
-import {SocialAuthService} from "@abacritt/angularx-social-login";
 
 // todo: move elsewhere
 export interface Course {
@@ -41,6 +40,9 @@ export class LandingV3Component implements OnInit, OnDestroy, AfterViewInit {
 
   faqLanguages: Language[] = [];
   faqLanguage: Language | null = null;
+
+  @ViewChild('comparison') comparison!: ElementRef<HTMLElement>;
+  @ViewChild('eligibilityTest') eligibilityTest!: ElementRef<HTMLElement>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -89,5 +91,17 @@ export class LandingV3Component implements OnInit, OnDestroy, AfterViewInit {
 
   changeCourseType($event: Event) {
     this.currentCourse = COURSES[(($event.target as HTMLInputElement).checked.toString())]
+  }
+
+  goToEligibilityTest(): void {
+    this.scrollTo(this.eligibilityTest.nativeElement);
+  }
+
+  goToComparison(): void {
+    this.scrollTo(this.comparison.nativeElement);
+  }
+
+  scrollTo(element: HTMLElement): void {
+    element.scrollIntoView({behavior: 'smooth'});
   }
 }

@@ -81,7 +81,7 @@
       </div>
     </div>
   </section>
-  <section id="comparison" class="comparison container-xxl">
+  <section id="comparison" class="comparison container-xxl" #comparison>
     <div class="row">
       <div
         class="col-12">
@@ -97,8 +97,21 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 text-center">
+        <h2 class="summary">We’re more than just training, we go above and beyond to support, guide and nurture
+          <strong>You</strong> on your entire security guard journey. </h2>
 
+        <a class="btn btn-action mt-3" (click)="goToSignUp()">
+          Purchase ${{ currentCourse.price }} Course <br>
+          & Get Access in Less Than 3 Mins
+        </a>
+        <div class="form-check course-selection-checkbox d-flex align-items-center justify-content-center">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                 (change)="changeCourseType($event)">
+          <label class="form-check-label" for="flexCheckChecked">
+            I already have a valid CPR certificate
+          </label>
+        </div>
       </div>
     </div>
   </section>
@@ -356,9 +369,105 @@
     </div>
   </section>
   <section id="licensing-process" class="licensing-process container-xxl">
-
+    <div class="row">
+      <div
+        class="col-12">
+        <div class="d-flex flex-column">
+          <span class="subheader">How To</span>
+          <h2 class="header">The Licensing Process</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div
+        class="col-12">
+        <div class="steps-container d-flex flex-column flex-lg-row">
+          <div class="step d-flex flex-column align-items-center">
+            <div class="step-number">1</div>
+            <div class="step-header">Be Eligible</div>
+            <div class="step-description">
+              <a class="text" (click)="goToEligibilityTest()">Take the quiz here to find out.</a>
+            </div>
+          </div>
+          <div class="step d-flex flex-column align-items-center">
+            <div class="step-number">2</div>
+            <div class="step-header">Complete
+              Security Training
+              & CPR
+            </div>
+            <div class="step-description flex-grow-1 d-flex flex-column justify-content-between">
+              <div class="step-description-content">
+                You must complete our course to get the Training Completion Number (TCN). Without it, you cannot book
+                the Ministry exam.
+                <br><br>
+                <a class="text" (click)="goToComparison()">See all the perks of our course</a>
+                <br>
+                Over $400+ of value
+                <p class="mt-3 mb-3">
+                  <a class="btn btn-action flex-grow-1 flex-lg-grow-0" (click)="goToSignUp()">
+                    Buy Course
+                    <br> & <br>
+                    Start Instantly
+                  </a>
+                </p>
+              </div>
+              <div class="step-description-footer">Cost: $133 w/CPR ($99 without)</div>
+            </div>
+          </div>
+          <div class="step d-flex flex-column align-items-center">
+            <div class="step-number">3</div>
+            <div class="step-header">Pass Ministry
+              Exam
+            </div>
+            <div class="step-description flex-grow-1 d-flex flex-column justify-content-between">
+              <div class="step-description-content">
+                Exam can be done in person or online from the comfort of your own home.
+                <br><br>
+                Exam is booked here: <a class="text" href="https://ontariosecuritytesting.com/book-a-test.html"
+                                        target="_blank">https://ontariosecuritytesting.com/book-a-test.html</a>
+              </div>
+              <div class="step-description-footer">Ministry Cost: $80</div>
+            </div>
+          </div>
+          <div class="step d-flex flex-column align-items-center">
+            <div class="step-number">4</div>
+            <div class="step-header">Submit
+              Application
+            </div>
+            <div class="step-description flex-grow-1 d-flex flex-column justify-content-between">
+              <div class="step-description-content">
+                After passing, (99% of our students do so on first try), you to need to fill out several forms, attach a
+                passport-sized photo, copies of IDs and a few other documents.
+                <br><br>
+                Our 24/7 helpline will help fill out all forms for free. We provide a free passport-size photo as well.
+              </div>
+              <div class="step-description-footer">
+                Ministry Cost: $70
+              </div>
+            </div>
+          </div>
+          <div class="step d-flex flex-column align-items-center">
+            <div class="step-number">5</div>
+            <div class="step-header">We Get You Hired!
+            </div>
+            <div class="step-description flex-grow-1 d-flex flex-column justify-content-between">
+              <div class="step-description-content">
+                Use the free resume builder and take advantage of our network of companies looking for you. Your resume
+                will be sent directly to them.
+                <br><br>
+                Start connecting with recruiters, bypass all other applicants and land that job.
+              </div>
+              <div class="step-description-footer">
+                Job Placement Cost: FREE for our students!<br>
+                ($369 for non students)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
-  <section class="security-knowledge-test" #requirements>
+  <section class="security-knowledge-test" #eligibilityTest>
     <div class="row">
       <div class="col-12">
         <app-eligibility-test></app-eligibility-test>

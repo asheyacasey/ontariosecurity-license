@@ -309,20 +309,25 @@ p.description {
 
       color: #31374D;
     }
+  }
 
-    .course-selection-checkbox {
-      margin-top: 26px;
+}
 
-      font-family: 'Manrope', sans-serif;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 24px;
-      /* identical to box height, or 171% */
+.course-selection-checkbox {
+  margin-top: 26px;
 
-      color: #31374D;
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
 
-    }
+  color: #31374D;
+
+  .form-check-input {
+    margin-top: 0;
+    margin-right: 5px;
   }
 
 }
@@ -586,6 +591,25 @@ p.description {
 
 .comparison {
   margin-top: 100px;
+
+  h2.summary {
+    margin-top: 30px;
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 160%;
+    text-align: center;
+
+    color: #31374D;
+
+    @include media-breakpoint-up(md) {
+      margin-top: 133px;
+      font-size: 36px;
+      line-height: 49px;
+    }
+  }
+
 }
 
 .testimonials {
@@ -691,5 +715,72 @@ p.description {
   @include media-breakpoint-up(md) {
     margin-top: 165px;
     padding: 90px 125px;
+  }
+}
+
+.licensing-process {
+  margin-top: 100px;
+
+  .steps-container {
+    margin-top: 27px;
+
+    .step {
+      flex: 1;
+      padding: 10px 40px;
+      @include media-breakpoint-up(md) {
+        padding: 20px;
+      }
+
+      &:nth-of-type(2n+1) {
+        background: #F3F4FA;
+        border-radius: 24px;
+      }
+
+      .step-number {
+        font-family: 'Manrope', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 96px;
+        line-height: 120%;
+        /* or 115px */
+        text-align: center;
+
+        color: #31374D;
+      }
+
+      .step-header {
+        min-height: 100px;
+        font-family: 'Manrope', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 130%;
+        /* or 31px */
+        text-align: center;
+
+        color: #354FA9;
+      }
+
+      .step-description {
+        font-family: 'Manrope', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 165%;
+        /* or 20px */
+        text-align: center;
+
+        color: #595E71;
+
+        a.text {
+          color: #595E71;
+          text-decoration: underline;
+        }
+
+        a.btn {
+          font-size: 12px;
+        }
+      }
+    }
   }
 }
