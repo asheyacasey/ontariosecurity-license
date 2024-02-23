@@ -8,11 +8,21 @@
       <div class="row">
         <div
           class="hero col-10 offset-1 col-md-5 offset-md-1 d-flex flex-column text-center text-md-start align-items-center align-items-md-start justify-content-center mb-5">
-          <div class="headline">We Train <span class="strong">You</span></div>
-          <div class="headline">We Help <span class="strong">You</span> Pass The Test</div>
-          <div class="headline">We Find <span class="strong">You</span> a $19+/hr Security Job</div>
+          <div class="headline">We Train <span class="strong">You</span><span class="d-inline-block d-md-none">.</span>
+          </div>
+          <div class="headline">We Help <span class="strong">You</span> Pass The Test<span
+            class="d-inline-block d-md-none">.</span></div>
+          <div class="headline">We Find <span class="strong">You</span> a $19+/hr Security Job<span
+            class="d-inline-block d-md-none">.</span></div>
 
-          <p class="description">
+          <p class="description d-block d-md-none">
+            Our course includes:<br>
+            *24/7 helpline<br>
+            *license application assistance<br>
+            *free passport-sized photo<br>
+            *direct communication with companies looking to hire people just like <strong>You</strong>
+          </p>
+          <p class="description d-none d-md-block">
             Our $199 training includes: 24/7 helpline, license application assistance, free passport-sized photo &
             direct communication with companies looking to hire people just like you.
           </p>
@@ -20,6 +30,9 @@
           <div class="sign-up d-flex justify-content-center align-items-center">
             <a class="btn btn-action flex-grow-1 flex-lg-grow-0" (click)="goToSignUp()">Get Started Now</a>
             <app-sign-in-with-google text="signup_with"></app-sign-in-with-google>
+          </div>
+          <div class="helpline d-block d-md-none">Helpline: Text Only 647-514-4978
+            (Mon-Fri 7am-3pm)
           </div>
           <img class="customer-reviews" alt="Customer reviews" src="/assets/v3/customer-reviews.png"/>
           <app-job-offers-count></app-job-offers-count>
@@ -101,8 +114,8 @@
               <span class="subheader black">Our Promise</span>
               <h2 class="header">100% Money Back Guarantee</h2>
               <p class="description">
-                We are so confident in the caliber of our training and relations with companies, that if you do not get
-                a job after getting licensed, we will <span class="red-highlight">refund you your money.</span>
+                We’re so confident in the caliber of our training and relations with companies, that if you’re not
+                satisfied after getting licensed, we will <strong>refund you your money.</strong>
               </p>
               <a class="btn btn-action d-flex flex-grow-1 flex-lg-grow-0 align-self-center align-self-md-start mt-3"
                  (click)="goToSignUp()">Purchase Course Risk Free</a>
