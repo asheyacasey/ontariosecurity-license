@@ -24,6 +24,7 @@ import { SignInWithGoogleComponent } from './sign-in-with-google/sign-in-with-go
 import { JobOffersCountComponent } from './job-offers-count/job-offers-count.component';
 import { ComparisonComponent } from './comparison/comparison.component';
 import {NgbCarouselModule} from "@ng-bootstrap/ng-bootstrap";
+import { HiringPartnersComponent } from './hiring-partners/hiring-partners.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import {NgbCarouselModule} from "@ng-bootstrap/ng-bootstrap";
         SignInWithGoogleComponent,
         JobOffersCountComponent,
         ComparisonComponent,
+        HiringPartnersComponent,
     ],
     exports: [
         SignInWithGoogleComponent

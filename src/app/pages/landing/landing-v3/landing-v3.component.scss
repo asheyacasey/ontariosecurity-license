@@ -149,12 +149,14 @@ span.red-highlight {
 
   .person {
     margin-left: 15px;
+    width: calc(100% - 15px);
     @media (min-width: 890px) {
       margin-left: 100px;
+      width: calc(100% - 100px);
     }
 
     background-image: url("/assets/v3/person-1.png");
-    width: 100%;
+
     max-width: 597px;
     height: 550px;
     background-size: cover;
@@ -164,6 +166,9 @@ span.red-highlight {
     position: absolute;
     top: 315px;
     left: 30px;
+    @media (max-width: 1399px) {
+      display: none;
+    }
   }
 }
 
@@ -229,33 +234,7 @@ p.description {
 }
 
 .partners {
-  .header {
-    font-family: 'Manrope', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 22px;
 
-    color: #31374D;
-  }
-
-  .partner-logos {
-    .partner-logo {
-      height: 50px;
-      width: 100px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      img {
-        height: 50px;
-        padding: 10px;
-      }
-    }
-
-
-  }
 }
 
 .course-selection {

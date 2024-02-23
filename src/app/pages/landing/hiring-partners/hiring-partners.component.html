@@ -1,0 +1,92 @@
+<div class="row d-none d-md-flex">
+  <!-- lg -->
+  <div
+    class="d-1400-flex col-6 offset-0 justify-content-between align-items-center">
+    <h4 class="header">
+      Our<br>
+      Hiring<br>
+      Partners</h4>
+    <div
+      class="partner-logos-container d-flex flex-row flex-md-column flex-wrap justify-content-center align-items-center">
+      <div class="partner-logos d-flex justify-content-between">
+        <ng-container *ngFor="let partner of hiringPartnersSplitLeft().firstLine">
+          <div class="partner-logo">
+            <img alt="{{ partner.name }}" class="img-fluid" src="{{ partner.logoUri }}"/>
+          </div>
+        </ng-container>
+      </div>
+      <div class="partner-logos d-flex justify-content-between">
+        <ng-container *ngFor="let partner of hiringPartnersSplitLeft().secondLine">
+          <div class="partner-logo">
+            <img alt="{{ partner.name }}" class="img-fluid" src="{{ partner.logoUri }}"/>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div
+    class="d-1400-flex col-4 offset-2 justify-content-end align-items-center flex-column flex-md-row">
+    <div
+      class="partner-logos-container d-flex flex-row flex-md-column flex-wrap justify-content-center align-items-center">
+      <div class="partner-logos d-flex justify-content-between">
+        <ng-container *ngFor="let partner of hiringPartnersSplitRight().firstLine">
+          <div class="partner-logo">
+            <img alt="{{ partner.name }}" class="img-fluid" src="{{ partner.logoUri }}"/>
+          </div>
+        </ng-container>
+      </div>
+      <div class="partner-logos d-flex justify-content-between">
+        <ng-container *ngFor="let partner of hiringPartnersSplitRight().secondLine">
+          <div class="partner-logo">
+            <img alt="{{ partner.name }}" class="img-fluid" src="{{ partner.logoUri }}"/>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <!-- lg end -->
+  <!-- md -->
+  <div
+    class="d-1400-none col-10 offset-1 justify-content-between align-items-center">
+    <h4 class="header flex-grow-0 flex-shrink-0">
+      Our<br>
+      Hiring<br>
+      Partners</h4>
+    <div
+      class="partner-logos-container d-flex flex-row flex-md-column flex-wrap justify-content-center align-items-center flex-shrink-1">
+      <div class="partner-logos d-flex justify-content-start flex-wrap">
+        <ng-container
+          *ngFor="let partner of hiringPartnersSingle().firstLine.concat(hiringPartnersSingle().secondLine)">
+          <div class="partner-logo">
+            <img alt="{{ partner.name }}" class="img-fluid" src="{{ partner.logoUri }}"/>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <!-- md end -->
+</div>
+<div class="row d-flex d-md-none mt-3">
+  <!-- sm -->
+  <div class="d-flex col-10 offset-1 justify-content-start align-items-center flex-column">
+    <h4 class="header">Our Hiring Partners</h4>
+    <ngb-carousel class="mt-3">
+      <ng-template
+        *ngFor="let batch of hiringPartnersPartitioned"
+        ngbSlide>
+        <div
+          class="partner-logos-container d-flex flex-row flex-md-column flex-wrap justify-content-center align-items-center flex-shrink-1">
+          <div class="partner-logos d-flex justify-content-center align-items-center flex-wrap">
+            <ng-container
+              *ngFor="let partner of batch">
+              <div class="partner-logo">
+                <img alt="{{ partner.name }}" class="img-fluid" src="{{ partner.logoUri }}"/>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+  <!-- sm end -->
+</div>
