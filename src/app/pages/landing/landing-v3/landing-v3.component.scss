@@ -551,10 +551,6 @@ p.description {
     }
   }
 
-  @include media-breakpoint-up(md) {
-    margin-top: 165px;
-  }
-
   font-family: 'Manrope', sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -583,7 +579,7 @@ p.description {
     color: #31374D;
 
     @include media-breakpoint-up(md) {
-      margin-top: 133px;
+      margin-top: 80px;
       font-size: 36px;
       line-height: 49px;
     }

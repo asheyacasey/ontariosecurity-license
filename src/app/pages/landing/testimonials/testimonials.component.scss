@@ -176,8 +176,8 @@
 
     &-photo {
       img {
-        width: 48px;
-        height: 48px;
+        width: 59px;
+        height: 59px;
         border-radius: 50%;
       }
     }
@@ -187,8 +187,19 @@
     }
 
     &-role {
+      margin-top: 4px;
+
+      font-size: 10px;
       font-weight: 400;
+      line-height: 140%;
     }
+
+    &-completed {
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 140%;
+    }
+
   }
 }
 
