@@ -31,7 +31,7 @@
             <a class="btn btn-action flex-grow-1 flex-lg-grow-0" (click)="goToSignUp()">Get Started Now</a>
             <app-sign-in-with-google text="signup_with"></app-sign-in-with-google>
           </div>
-          <div class="helpline d-block d-md-none">Helpline: Text Only 647-514-4978
+          <div class="helpline d-block d-xl-none">Helpline: Text Only 647-514-4978
             (Mon-Fri 7am-3pm)
           </div>
           <img class="customer-reviews" alt="Customer reviews" src="/assets/v3/customer-reviews.png"/>
@@ -51,10 +51,9 @@
       </div>
     </div>
   </div>
-  <section class="partners container-xxl mt-5 mt-md-0">
+  <section id="job" class="partners container-xxl mt-5 mt-md-0">
     <app-hiring-partners></app-hiring-partners>
   </section>
-
   <section id="after-enrolling" class="after-enrolling container-fluid text-center">
     <div class="gray-bg-container">
       <div class="container-xxl">
@@ -68,7 +67,7 @@
       </div>
     </div>
   </section>
-  <section id="comparison" class="comparison container-xxl" #comparison>
+  <section id="why-us" class="comparison container-xxl" #comparison>
     <div class="row">
       <div
         class="col-12">
@@ -355,7 +354,7 @@
       </div>
     </div>
   </section>
-  <section id="licensing-process" class="licensing-process container-xxl">
+  <section id="how-to" class="licensing-process container-xxl">
     <div class="row">
       <div
         class="col-12">
@@ -456,7 +455,7 @@
       </div>
     </div>
   </section>
-  <section class="security-knowledge-test" #eligibilityTest>
+  <section id="quiz" class="security-knowledge-test" #eligibilityTest>
     <div class="row">
       <div class="col-12">
         <app-eligibility-test></app-eligibility-test>
