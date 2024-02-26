@@ -1,0 +1,214 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
+h2.header {
+  margin-top: 30px;
+  margin-bottom: 50px;
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 120%;
+  color: #31374D;
+}
+
+.field-description {
+  padding-left: 25px;
+  @include media-breakpoint-up(md) {
+    padding-left: 60px;
+  }
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #ACADBF;
+}
+
+.field-option {
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @include media-breakpoint-up(md) {
+    padding-right: 60px;
+  }
+}
+
+.btn-submit {
+  margin-left: 15px;
+  margin-right: 15px;
+
+  @include media-breakpoint-up(md) {
+    margin-right: 50px;
+  }
+}
+
+
+// todo: merge with landing-v3
+.licensing-process {
+  margin-top: 50px;
+
+  .steps-container {
+    margin-top: 27px;
+
+    .step {
+      flex: 1;
+      padding: 24px;
+
+      @include media-breakpoint-up(md) {
+        min-height: 450px;
+        padding: 10px 24px 54px 24px;
+      }
+
+      &:nth-of-type(2n+1) {
+        background: #F3F4FA;
+        border-radius: 24px;
+      }
+
+      .step-number {
+        font-family: 'Manrope', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 120%;
+        /* or 115px */
+
+        color: #31374D;
+
+        min-width: 50px;
+
+        @include media-breakpoint-up(md) {
+          text-align: center;
+          font-size: 40px;
+          min-width: 0;
+        }
+      }
+
+      .step-header {
+        @include media-breakpoint-up(md) {
+          margin-top: 10px;
+          min-height: 100px;
+        }
+        font-family: 'Manrope', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 130%;
+        /* or 31px */
+
+        @include media-breakpoint-up(md) {
+          text-align: center;
+        }
+
+        color: #354FA9;
+      }
+
+      .step-description {
+        margin-top: 20px;
+
+        font-family: 'Manrope', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 165%;
+        /* or 20px */
+
+        padding-left: 50px;
+
+        @include media-breakpoint-up(md) {
+          text-align: center;
+          padding-left: 0;
+        }
+
+        color: #595E71;
+
+        a.text {
+          color: #595E71;
+          text-decoration: underline;
+        }
+
+        a.btn {
+          font-size: 12px;
+        }
+      }
+
+      .step-description-footer {
+        margin-top: 20px;
+
+        font-family: 'Manrope', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 165%;
+        /* or 20px */
+        color: #595E71;
+
+        text-align: center;
+
+      }
+    }
+  }
+}
+
+.gray-bg-container {
+  margin-top: 50px;
+
+  padding: 50px 24px;
+  @include media-breakpoint-up(md) {
+    padding: 40px 130px;
+  }
+
+  background: #F3F4FA;
+  border-radius: 10px;
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+
+  line-height: 160%;
+  /* or 32px */
+  text-align: center;
+
+  @include media-breakpoint-up(md) {
+    font-weight: 800;
+    font-size: 20px;
+  }
+
+
+  color: #31374D;
+
+  .highlight {
+    margin-top: 20px;
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 120%;
+    /* identical to box height, or 29px */
+    text-align: center;
+
+    color: #354FA9;
+  }
+}
+
+.btn-action {
+  background-color: #354FA9;
+  color: #F3F4FA;
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 22px 48px;
+
+  // max-width: 280px;
+
+  &:hover {
+    background-color: rgba(53, 79, 169, 0.9);
+    color: #F3F4FA !important;
+  }
+
+}

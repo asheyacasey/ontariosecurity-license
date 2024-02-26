@@ -111,7 +111,8 @@ export class TopMenuComponent implements OnInit {
 
   goToSignUp(): void {
     this.closeOffcanvasCallback(() => {
-      this.modalService.open(LandingRegisterModalComponent, {size: 'lg'});
+      this.router.navigate(['/start/tell-us-about-you'])
+      // this.modalService.open(LandingRegisterModalComponent, {size: 'lg'});
     });
   }
 

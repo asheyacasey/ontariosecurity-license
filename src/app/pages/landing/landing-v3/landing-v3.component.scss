@@ -55,6 +55,13 @@
 
 }
 
+.whatsapp-link {
+  color: #354FA9;
+  svg {
+    margin-top: -2px;
+  }
+}
+
 span.gray-highlight {
   background: #E6E8F1;
   border-radius: 15px;
@@ -707,6 +714,7 @@ p.description {
   }
 }
 
+// todo: merge with tell-us-about-you component
 .licensing-process {
   margin-top: 100px;
 

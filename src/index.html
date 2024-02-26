@@ -32,6 +32,21 @@
     })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
   </script>
 
+  <script>
+    window.fwSettings = {
+      'widget_id': 150000002702
+    };
+    !function () {
+      if ("function" != typeof window.FreshworksWidget) {
+        var n = function () {
+          n.q.push(arguments)
+        };
+        n.q = [], window.FreshworksWidget = n
+      }
+    }()
+  </script>
+  <script type='text/javascript' src='https://widget.freshworks.com/widgets/150000002702.js' async defer></script>
+
 </head>
 <body>
 <app-root></app-root>

@@ -1,0 +1,196 @@
+<div *ngIf="!submitted" class="row">
+  <div class="col-12 text-center">
+    <h2 class="header">Tell Us About You!</h2>
+  </div>
+  <form [formGroup]="tellUsForm" (submit)="onSubmit()">
+    <div class="row d-flex justify-content-center align-items-center mb-4">
+      <div class="col-12 col-md-6 field-description">
+        What type of security job are you looking for:
+      </div>
+      <div class="col-12 col-md-6 field-option mt-3 mt-md-0">
+        <select class="form-select form-select-lg" formControlName="type">
+          <option value="Condominium/Concierge">Condominium/Concierge</option>
+          <option value="Airport">Airport</option>
+          <option value="Loss Prevention">Loss Prevention</option>
+          <option value="Mail Security">Mail Security</option>
+          <option value="Bouncer">Bouncer</option>
+          <option value="Events">Events</option>
+          <option value="Suit and Tie">Suit and Tie</option>
+          <option value="Bodyguarding">Bodyguarding</option>
+          <option value="Armed Guard">Armed Guard</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center mb-4">
+      <div class="col-12 col-md-6 field-description">
+        Where in Ontario would You like to work?
+      </div>
+      <div class="col-12 col-md-6 field-option mt-3 mt-md-0">
+        <select class="form-select form-select-lg" formControlName="placement">
+          <option value="Anywhere in GTA">Anywhere in GTA</option>
+          <option value="In Toronto, but only TTC accessible areas">In Toronto, but only TTC accessible areas</option>
+          <option value="Anywhere in Toronto ">Anywhere in Toronto</option>
+          <option value="Hamilton">Hamilton</option>
+          <option value="Brampton ">Brampton</option>
+          <option value="Mississauga">Mississauga</option>
+          <option value="Brantford">Brantford</option>
+          <option value="Burlington">Burlington</option>
+          <option value="Niagara Falls">Niagara Falls</option>
+          <option value="St. Catharines ">St. Catharines</option>
+          <option value="Barrie/Orillia">Barrie/Orillia</option>
+          <option value="Durham Region (Pickering, Ajax, Oshawa, Whitby)">Durham Region (Pickering, Ajax, Oshawa,
+            Whitby)
+          </option>
+          <option value="Kitchener/Waterloo/Guelph">Kitchener/Waterloo/Guelph</option>
+          <option value="London">London</option>
+          <option value="Ottawa/Cornwall">Ottawa/Cornwall</option>
+          <option value="Kingston">Kingston</option>
+          <option value="Bowmanville ">Bowmanville</option>
+          <option value="York Region (Vaughan, Woodbridge, Richmond Hill)">York Region (Vaughan, Woodbridge, Richmond
+            Hill)
+          </option>
+          <option value="Windsor/Chatham">Windsor/Chatham</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center mb-4">
+      <div class="col-12 col-md-6 field-description">
+        How quickly do you need to get licensed?
+      </div>
+      <div class="col-12 col-md-6 field-option mt-3 mt-md-0">
+        <select class="form-select form-select-lg" formControlName="howQuickly">
+          <option value="ASAP">ASAP</option>
+          <option value="Sometime within next 3 months ">Sometime within next 3 months</option>
+          <option value="I’m in no hurry, just want to know process">I’m in no hurry, just want to know process</option>
+          <option value="I can wait more than 6 months ">I can wait more than 6 months</option>
+        </select>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center mb-4">
+      <div class="col-12 col-md-6 field-description">
+        Why do you want to work in security?
+      </div>
+      <div class="col-12 col-md-6 field-option mt-3 mt-md-0">
+        <select class="form-select form-select-lg" formControlName="why">
+          <option value="I’m looking to eventually get into Policing or Military ">I’m looking to eventually get into
+            Policing or Military
+          </option>
+          <option value="I’m in school and security works well for my schedule ">I’m in school and security works well
+            for my schedule
+          </option>
+          <option value="I have previous experience in the security field">I have previous experience in the security
+            field
+          </option>
+          <option value="I just need a job for the time being">I just need a job for the time being</option>
+          <option value="I am in between jobs">I am in between jobs</option>
+          <option value="I need something while I look for the job I really want ">I need something while I look for the
+            job I really want
+          </option>
+          <option value="It’s a field I think can be good for me even though I have no experience">It’s a field I think
+            can be good for me even though I have no experience
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center mb-4">
+      <div class="col-12 col-md-6 field-description">
+        Are you willing to relocate within Ontario to work your ideal security job?
+      </div>
+      <div class="col-12 col-md-6 field-option mt-3 mt-md-0">
+        <select class="form-select form-select-lg" formControlName="relocate">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Depends on the opportunity">Depends on the opportunity</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-submit float-end float-none float-md-end" [disabled]="!tellUsForm.valid">Next</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div *ngIf="submitted">
+  <section id="how-to" class="licensing-process container-xxl">
+    <div class="row">
+      <div
+        class="col-12">
+        <div class="d-flex flex-column text-center">
+          <h2 class="header">To get a guard job, there are 4 steps you need to take:</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div
+        class="col-12">
+        <div class="steps-container d-flex flex-column flex-md-row">
+          <div class="step d-flex flex-column align-items-center justify-content-between">
+            <div class="d-flex flex-md-column align-items-center justify-content-start w-100">
+              <div class="step-number">1</div>
+              <div class="step-header">Purchase the Course & Complete it</div>
+            </div>
+            <div class="step-description">
+              Once you complete the course, we will issue you a special code that will allow you to go onto the Ministry
+              website and book the test. Without the special code, which only we can provide, you can’t book or write
+              the test.
+            </div>
+            <div class="step-description-footer">Cost: $199 w/CPR ($99 without)</div>
+          </div>
+          <div class="step d-flex flex-column align-items-center justify-content-between">
+            <div class="d-flex flex-md-column align-items-center justify-content-start w-100">
+              <div class="step-number">2</div>
+              <div class="step-header">Book the Ministry Exam & Pass It
+              </div>
+            </div>
+            <div class="step-description">You can take the test online from your own home or in person at a Service
+              Ontario it’s your choice. 99% of our students pass on their very first try. We’ll make sure you do to.
+            </div>
+            <div class="step-description-footer">Ministry Cost: $35 + HST</div>
+          </div>
+          <div class="step d-flex flex-column align-items-center justify-content-between">
+            <div class="d-flex flex-md-column align-items-center justify-content-start w-100">
+              <div class="step-number">3</div>
+              <div class="step-header">Submit Application & Get the License</div>
+            </div>
+            <div class="step-description">You’ll know if you passed after 2-3 days after writing the exam. You’ll need
+              to fill out some basic government forms and attach some IDs, we’ll help with this to
+            </div>
+            <div class="step-description-footer">Ministry Cost: $70 + HST</div>
+          </div>
+          <div class="step d-flex flex-column align-items-center justify-content-between">
+            <div class="d-flex flex-md-column align-items-center justify-content-start w-100">
+              <div class="step-number">4</div>
+              <div class="step-header">Return here to upload your resume and book interviews with our partner
+                companies
+              </div>
+            </div>
+            <div class="step-description">Get ready to start going to interviews, dust off your best clothes and work on
+              your handshake, this is the start of a new chapter
+            </div>
+            <div class="step-description-footer">Job Placement Cost: FREE for our students! <br> ($369 for non students)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 gray-bg-container">
+        We’ll guide you step by step. We’ve done the same for tens of thousands of students just like you who are now
+        working great security jobs with great security companies all across Ontario.
+
+        <p class="highlight">It's your turn now!</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <a routerLink="/start/register" class="btn btn-action mt-5">
+          Purchase Course <br>
+          & Get Access In Less Than 18 Seconds
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
