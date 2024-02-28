@@ -17,16 +17,14 @@
         <div class="col-12 col-xl-6 mb-3 mb-xl-0">
           <app-title></app-title>
         </div>
-        <div class="col-12 col-xl-3 mb-3 mb-xl-0">
+        <div class="col-12 col-xl-3 offset-xl-3 mb-3 mb-xl-0">
           <app-language-select [currentLanguage]="currentLanguage"
                                [languages]="languages"
                                (languageChanged)="onLanguageChanged($event)"
                                *ngIf="showLanguageSelect"></app-language-select>
         </div>
-        <div class="col-12 col-xl-3 mb-3 mb-xl-0">
-          <app-course-timer></app-course-timer>
-        </div>
       </div>
+      <app-course-timer></app-course-timer>
       <hr class="spacer">
       <router-outlet></router-outlet>
     </div>

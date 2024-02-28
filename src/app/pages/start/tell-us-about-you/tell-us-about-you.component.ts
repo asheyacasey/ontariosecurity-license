@@ -9,7 +9,7 @@ import {AboutYouForm} from "../../../models/user";
   styleUrls: ['./tell-us-about-you.component.scss', '../../../shared/shared.scss']
 })
 export class TellUsAboutYouComponent implements OnInit {
-  submitted: boolean = true;
+  submitted: boolean = false;
 
   tellUsForm = new FormGroup({
     type: new FormControl('', [Validators.required]),

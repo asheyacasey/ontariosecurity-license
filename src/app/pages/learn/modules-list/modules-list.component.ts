@@ -38,6 +38,10 @@ export class ModulesListComponent implements OnInit, OnDestroy {
     });
   }
 
+  firstLockedIndex(): number {
+    return this.modules.findIndex(m => m.locked);
+  }
+
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();

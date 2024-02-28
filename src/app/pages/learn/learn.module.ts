@@ -13,6 +13,8 @@ import {QuizQuestionComponent} from './quiz/quiz-question/quiz-question.componen
 import {RedirectComponent} from './redirect/redirect.component';
 import { ModuleTimerComponent } from './module-timer/module-timer.component';
 import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
+import { WhyModuleLockedButtonComponent } from './why-module-locked-button/why-module-locked-button.component';
+import { WhyModuleLockedModalComponent } from './why-module-locked-modal/why-module-locked-modal.component';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
     QuizQuestionComponent,
     RedirectComponent,
     ModuleTimerComponent,
+    WhyModuleLockedButtonComponent,
+    WhyModuleLockedModalComponent,
   ],
   exports: [
     ModulesListComponent
