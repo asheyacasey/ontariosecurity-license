@@ -45,7 +45,7 @@
           </p>
 
           <div class="sign-up d-flex justify-content-center align-items-center">
-            <a class="btn btn-action flex-grow-1 flex-lg-grow-0" routerLink="/start/tell-us-about-you">Get Started Now</a>
+            <a class="btn btn-action flex-grow-1 flex-lg-grow-0" (click)="goToSignUp()">Get Started Now</a>
             <app-sign-in-with-google text="signup_with"></app-sign-in-with-google>
           </div>
           <img class="customer-reviews" alt="Customer reviews" src="/assets/v3/customer-reviews.png"/>
@@ -359,7 +359,7 @@
     </div>
     <div class="row action">
       <div class="col-10 offset-1 action-col text-center">
-        <a routerLink="/start/tell-us-about-you">Get Started Now
+        <a (click)="goToSignUp()">Get Started Now
           <svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1 7.5H20M20 7.5L13.8043 1M20 7.5L13.8043 14" stroke="#354FA9" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round"/>

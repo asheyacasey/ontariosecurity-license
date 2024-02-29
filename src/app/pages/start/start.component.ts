@@ -12,15 +12,7 @@ export class StartComponent implements OnInit, OnDestroy {
 
   showMenu: boolean = true;
 
-  constructor(private router: Router) {
-    this.router.events.pipe(
-      takeUntil(this.destroy$)
-    ).subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.showMenu = !event.urlAfterRedirects.includes('start/tell-us-about-you');
-      }
-    });
-  }
+  constructor() { }
 
   ngOnInit(): void {
 

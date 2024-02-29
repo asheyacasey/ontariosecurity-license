@@ -5,7 +5,6 @@ import {AuthenticationService} from "../../../services/authentication.service";
 import {Router} from "@angular/router";
 import {AuthenticationProvider, UserRegisterRequest} from "../../../models/user";
 import {GoogleTagManagerService} from "angular-google-tag-manager";
-import {AboutYouService} from "../../../services/about-you.service";
 
 @Component({
   selector: 'app-landing-register',
@@ -28,7 +27,6 @@ export class LandingRegisterComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router,
     private gtmService: GoogleTagManagerService,
-    private aboutYouService: AboutYouService
   ) {
   }
 
@@ -39,10 +37,6 @@ export class LandingRegisterComponent implements OnInit {
     this.isLoading$.next(true);
 
     const data = this.registerForm.value as UserRegisterRequest;
-    if (!this.aboutYouService.empty) {
-      data.about = this.aboutYouService.data;
-      this.aboutYouService.clear();
-    }
 
     this.authService.signUp(data).pipe(
       tap((err) => {

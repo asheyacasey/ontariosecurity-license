@@ -1,17 +1,24 @@
 import { Injectable } from '@angular/core';
 import {LocalStorageService} from "./local-storage.service";
-import {AboutYouForm} from "../models/user";
+import {AboutYouForm, UserDetails} from "../models/user";
+import {catchError, Observable, throwError} from "rxjs";
+import {DiscountCode} from "../models/discount-code";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AboutYouService {
+  private apiUrl: string = environment.apiUrl;
+
   private key: string = 'about-you-v1';
 
   private _data: AboutYouForm | null = null;
 
   constructor(
     private localStorageService: LocalStorageService,
+    private http: HttpClient
   ) {
   }
 
@@ -50,5 +57,10 @@ export class AboutYouService {
 
   get empty(): boolean {
     return this.data === null;
+  }
+
+  saveForm(data: AboutYouForm): Observable<UserDetails> {
+    this.addForm(data);
+    return this.http.post<UserDetails>(`${this.apiUrl}/user/about-you`, data);
   }
 }

@@ -27,7 +27,8 @@ export class TellUsAboutYouComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.aboutYouService.addForm(this.tellUsForm.value as AboutYouForm);
-    this.submitted = true;
+    this.aboutYouService.saveForm(this.tellUsForm.value as AboutYouForm).subscribe(() => {
+      this.submitted = true;
+    });
   }
 }

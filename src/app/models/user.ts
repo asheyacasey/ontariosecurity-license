@@ -7,7 +7,6 @@ export interface UserRegisterRequest {
   provider: AuthenticationProvider
   email: string
   password: string
-  about?: AboutYouForm | null
 }
 
 export interface UserRegisterError {
@@ -35,6 +34,7 @@ export interface UserDetails {
   admin: boolean;
   email: string;
   hasCourseAccess: boolean;
+  aboutYouCompleted: boolean;
 }
 
 export interface AboutYouForm {

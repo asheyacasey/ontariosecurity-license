@@ -6,7 +6,6 @@ import {BehaviorSubject, filter, finalize, Subject, switchMap, tap} from "rxjs";
 import {Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {GoogleTagManagerService} from "angular-google-tag-manager";
-import {AboutYouService} from "../../../services/about-you.service";
 
 @Component({
   selector: 'app-register',
@@ -30,7 +29,6 @@ export class RegisterComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router,
     private gtmService: GoogleTagManagerService,
-    private aboutYouService: AboutYouService
   ) {
   }
 
@@ -42,10 +40,6 @@ export class RegisterComponent implements OnInit {
     this.isLoading$.next(true);
 
     const data = this.registerForm.value as UserRegisterRequest;
-    if (!this.aboutYouService.empty) {
-      data.about = this.aboutYouService.data;
-      this.aboutYouService.clear()
-    }
     this.authService.signUp(data).pipe(
       tap((err) => {
         if (err !== null) {

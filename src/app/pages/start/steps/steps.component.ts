@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {NavigationEnd, Router} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {RegisterStep} from "./register-step";
-import {Subject, Subscription, takeUntil} from "rxjs";
+import {filter, startWith, Subject, takeUntil} from "rxjs";
 
 
 @Component({
@@ -15,10 +15,10 @@ export class StepsComponent implements OnInit, OnDestroy {
   steps: RegisterStep[] = [
     {
       number: '01',
-      title: 'Sign up',
+      title: 'About You',
       completed: false,
       active: false,
-      link: ['/start', 'register']
+      link: ['/start', 'tell-us-about-you']
     },
     {
       number: '02',
@@ -36,9 +36,10 @@ export class StepsComponent implements OnInit, OnDestroy {
     }
   ]
 
-  constructor(private router: Router) {
-    router.events.pipe(
-      takeUntil(this.destroy$)
+  constructor(private router: Router, private route: ActivatedRoute) {
+    this.router.events.pipe(
+      filter((e) => e instanceof NavigationEnd),
+      takeUntil(this.destroy$),
     ).subscribe((e) => {
       if (e instanceof NavigationEnd) {
         const currentUrl = e.urlAfterRedirects;
