@@ -44,3 +44,16 @@ export interface AboutYouForm {
   why: string;
   relocate: string;
 }
+
+export interface UserPasswordResetRequest {
+  email: string;
+}
+
+export interface UserPasswordResetResponse {
+  error?: 'external'
+}
+
+export interface UserPasswordResetSetRequest {
+  code: string;
+  password: string;
+}

@@ -1,0 +1,47 @@
+<ng-container *ngIf="resetSuccessful === true">
+  <div class="row text-center mt-5">
+    <div class="col">
+      <div class="alert alert-success d-flex align-items-center justify-content-center" role="alert">
+          Your password has been reset successfully! Redirecting to login..
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="resetSuccessful === null && codeValid === true">
+  <div class="row text-center mt-5">
+    <div class="col">
+      <h1 class="forgot-header">Set your new password</h1>
+      <p class="forgot-subheader">Enter it below</p>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col d-flex align-items-center justify-content-center">
+      <form class="forgot-form" [formGroup]="resetPasswordForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="password" class="form-label">New password</label>
+          <input type="password" class="form-control" id="password" formControlName="password">
+        </div>
+
+        <button type="submit" class="btn btn-submit w-100 mb-3"
+                [disabled]="!resetPasswordForm.valid || (isLoading$ | async) === true">
+          <ng-container *ngIf="(isLoading$ | async) === true; else submit">
+            <div class="spinner-border spinner-border-sm text-secondary" role="status">
+              <span class="visually-hidden">Saving...</span>
+            </div>
+          </ng-container>
+          <ng-template #submit>
+            Set new password
+          </ng-template>
+        </button>
+      </form>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="codeValid === false">
+  <div class="row text-center mt-5">
+    <div class="col">
+      <h1 class="forgot-header">The code is invalid</h1>
+      <p class="forgot-subheader">Please try again</p>
+    </div>
+  </div>
+</ng-container>

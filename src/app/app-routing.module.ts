@@ -13,6 +13,11 @@ const routes: Routes = [
     title: 'Login | Ontario Security License'
   },
   {
+    path: 'forgot',
+    loadChildren: () => import('./pages/forgot/forgot.module').then((m) => m.ForgotModule),
+    title: 'Forgot password | Ontario Security License'
+  },
+  {
     path: 'start',
     loadChildren: () => import('./pages/start/start.module').then((m) => m.StartModule)
   },
