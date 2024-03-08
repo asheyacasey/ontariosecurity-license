@@ -5,6 +5,7 @@ import {DocumentsComponent} from "./documents/documents.component";
 import {CprComponent} from "./cpr/cpr.component";
 import {ConsentComponent} from "./consent/consent.component";
 import {TcnComponent} from "./tcn/tcn.component";
+import {ResumeComponent} from "./resume/resume.component";
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
         path: 'tcn',
         component: TcnComponent,
         title: 'TCN | Ontario Security License'
+      },
+      {
+        path: 'resume',
+        component: ResumeComponent,
+        title: 'Resume | Ontario Security License'
       }
     ]
   }

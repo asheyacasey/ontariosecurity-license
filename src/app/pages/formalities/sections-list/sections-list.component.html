@@ -1,10 +1,12 @@
 <ng-template #menu>
   <ul class="section-selector list-group">
-    <li (click)="onModulesClick()" class="list-group-item d-flex flex-column" [class.completed]="formalitiesStatus?.modules?.stepCompleted">
+    <li (click)="onModulesClick()" class="list-group-item d-flex flex-column"
+        [class.completed]="formalitiesStatus?.modules?.stepCompleted">
       <div class="section-header d-flex justify-content-between align-items-center">
         <div>Modules</div>
         <div class="d-flex">
-          <div class="section-header-count">{{ formalitiesStatus?.modules?.completed }}/{{ formalitiesStatus?.modules?.total }}</div>
+          <div class="section-header-count">{{ formalitiesStatus?.modules?.completed }}
+            /{{ formalitiesStatus?.modules?.total }}</div>
           <div class="section-header-checkmark">
             <svg width="18" height="13" viewBox="0 0 18 13" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
@@ -15,7 +17,8 @@
         </div>
       </div>
     </li>
-    <li (click)="closeOffcanvas()" routerLink="./cpr" routerLinkActive="active" class="list-group-item d-flex flex-column" [class.completed]="status?.cpr?.stepCompleted">
+    <li (click)="closeOffcanvas()" routerLink="./cpr" routerLinkActive="active"
+        class="list-group-item d-flex flex-column" [class.completed]="status?.cpr?.stepCompleted">
       <div class="section-header d-flex justify-content-between align-items-center">
         <div>CPR</div>
         <div class="section-header-checkmark">
@@ -27,7 +30,8 @@
         </div>
       </div>
     </li>
-    <li (click)="closeOffcanvas()" routerLink="./consent" routerLinkActive="active" class="list-group-item d-flex flex-column" [class.completed]="status?.consent?.stepCompleted">
+    <li (click)="closeOffcanvas()" routerLink="./consent" routerLinkActive="active"
+        class="list-group-item d-flex flex-column" [class.completed]="status?.consent?.stepCompleted">
       <div class="section-header d-flex justify-content-between align-items-center">
         <div>Consent form</div>
         <div class="section-header-checkmark">
@@ -39,9 +43,23 @@
         </div>
       </div>
     </li>
-    <li (click)="closeOffcanvas()" routerLink="./tcn" routerLinkActive="active" class="list-group-item d-flex flex-column" [class.completed]="status?.tcn?.stepCompleted">
+    <li (click)="closeOffcanvas()" routerLink="./tcn" routerLinkActive="active"
+        class="list-group-item d-flex flex-column" [class.completed]="status?.tcn?.stepCompleted">
       <div class="section-header d-flex justify-content-between align-items-center">
         <div>TCN</div>
+        <div class="section-header-checkmark">
+          <svg width="18" height="13" viewBox="0 0 18 13" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 5.6993L6.6 11.1818L17 1" stroke="#ACADBF" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </li>
+    <li (click)="closeOffcanvas()" routerLink="./resume" routerLinkActive="active"
+        class="list-group-item d-flex flex-column" [class.completed]="status?.resume?.stepCompleted">
+      <div class="section-header d-flex justify-content-between align-items-center">
+        <div>Resume</div>
         <div class="section-header-checkmark">
           <svg width="18" height="13" viewBox="0 0 18 13" fill="none"
                xmlns="http://www.w3.org/2000/svg">

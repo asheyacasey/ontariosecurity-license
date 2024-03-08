@@ -1,0 +1,93 @@
+.white-bg {
+  background: #FFFFFF;
+}
+
+.form-label {
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+
+  color: #31374D;
+}
+
+.field-description {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 120%;
+
+  color: #31374D;
+}
+
+.form-select {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+
+  border: 1px solid #DBDCE7;
+  border-radius: 8px;
+
+  height: 56px;
+
+  &:not([disabled]) {
+    background-color: #FFFFFF;
+  }
+}
+
+.field-shown {
+  opacity: 1;
+  visibility: inherit;
+  transition: all 0.2s ease-in-out;
+}
+
+.field-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.min-height-form {
+  min-height: 64px;
+}
+
+.btn-submit {
+  background-color: #31374D;
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  padding: 24px 76px;
+
+  border-radius: 8px;
+
+  &:hover {
+    background-color: rgba(49, 55, 77, 0.9);
+    color: #F3F4FA !important;
+  }
+
+  &.btn-small {
+    padding: 17px;
+  }
+}
+
+.form-check-inline {
+  display: flex;
+  align-items: center;
+
+  input {
+    margin-top: 0;
+    flex-shrink: 0;
+  }
+
+  label {
+    margin-left: 8px;
+  }
+}

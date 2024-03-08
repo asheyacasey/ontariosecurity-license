@@ -37,7 +37,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/app/shared/multiselect-dropdown.theme.scss"
             ],
             "scripts": []
           },
@@ -129,7 +130,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/app/shared/multiselect-dropdown.theme.scss"
             ],
             "scripts": []
           }

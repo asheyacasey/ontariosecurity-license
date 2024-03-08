@@ -12,6 +12,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {NgbDatepickerModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgxSignaturePadModule} from "@eve-sama/ngx-signature-pad";
 import {ClipboardModule} from "ngx-clipboard";
+import { ResumeComponent } from './resume/resume.component';
+import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
 
 
 
@@ -22,19 +24,21 @@ import {ClipboardModule} from "ngx-clipboard";
         SectionsListComponent,
         CprComponent,
         ConsentComponent,
-        TcnComponent
+        TcnComponent,
+        ResumeComponent
     ],
     exports: [
         FormalitiesComponent
     ],
-    imports: [
-        CommonModule,
-        FormalitiesRoutingModule,
-        PartialsModule,
-        ReactiveFormsModule,
-        NgbDatepickerModule,
-        NgxSignaturePadModule,
-        ClipboardModule
-    ]
+  imports: [
+    CommonModule,
+    FormalitiesRoutingModule,
+    PartialsModule,
+    ReactiveFormsModule,
+    NgbDatepickerModule,
+    NgxSignaturePadModule,
+    ClipboardModule,
+    NgMultiSelectDropDownModule,
+  ]
 })
 export class FormalitiesModule { }

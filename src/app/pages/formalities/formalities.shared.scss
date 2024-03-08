@@ -1,3 +1,5 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
 .content {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
@@ -17,7 +19,36 @@
 
     color: #31374D;
 
-
   }
+
+  .file-upload-container {
+    border: 1px dashed #ACADBF;
+    border-radius: 4px;
+  }
+
+  .file-upload-inner {
+    padding: 18px 16px;
+  }
+
+  .file-upload-filename {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+
+    color: #31374D;
+
+    @include media-breakpoint-up(md) {
+      margin-left: 37px;
+    }
+  }
+
+  .btn-submit {
+    &.btn-small {
+      padding: 14px 42px !important;
+    }
+  }
+
 
 }

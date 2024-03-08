@@ -12,18 +12,18 @@ import {ModulesListingComponent} from "./modules-listing/modules-listing.compone
     HeaderComponent,
     LanguageSelectComponent,
     CourseCardComponent,
-    ModulesListingComponent
+    ModulesListingComponent,
   ],
   exports: [
     HeaderComponent,
     LanguageSelectComponent,
     CourseCardComponent,
-    ModulesListingComponent
+    ModulesListingComponent,
   ],
   imports: [
     CommonModule,
     RouterLinkWithHref,
-    RouterLinkActive
+    RouterLinkActive,
   ]
 })
 export class PartialsModule {

@@ -1,0 +1,307 @@
+<ng-container *ngIf="formalitiesStatus === null; else content">
+  <div class="d-flex align-items-center justify-content-center mt-5">
+    <div class="spinner-border spinner-border text-secondary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #content>
+  <div class="content container-xxl">
+    <ng-container *ngIf="!formalitiesStatus?.resume?.stepCompleted; else completed;">
+      <h2 class="mb-3">Once you pass the ministry exam and apply for a license, you will get a digital license shortly
+        after.
+        (The physical one takes a few weeks to come through the mail) </h2>
+
+      <form class="resume-form mb-3" [formGroup]="resumeForm" (ngSubmit)="onSubmit()">
+        <div class="row mt-5 mb-5">
+          <div class="col-12 col-xl-12">
+            <label for="license-file" class="form-label">Upload digital license / license *</label>
+            <div class="file-upload-container">
+              <input #fileInput id="license-file" type="file" class="d-none" formControlName="licenseFile"
+                     (change)="onSelectFile($event)"
+                     accept=".png,.jpeg,.jpg,.pdf"
+                     [ngClass]="{'is-invalid': resumeForm.get('licenseFile')?.errors?.['serverError']}">
+              <div class="file-upload-inner d-flex flex-column flex-md-row align-items-center">
+                <button type="button" class="btn-submit btn-small mb-3 mb-md-0" (click)="fileInput.click()">Choose File
+                </button>
+                <span class="file-upload-filename">{{ file?.name || 'Please choose file' }}</span>
+              </div>
+            </div>
+            <div
+              [ngClass]="{'invisible': !resumeForm.get('licenseFile')?.errors?.['serverError'], 'invalid-feedback': resumeForm.get('licenseFile')?.errors?.['serverError']}">
+              {{ resumeForm.get('licenseFile')?.errors?.['serverError'] }}
+            </div>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center align-items-center mb-4">
+          <div class="col-12 col-xl-8 field-description">
+            When are you looking to start?
+          </div>
+          <div class="col-12 col-xl-4 field-option mt-3 mt-xl-0">
+            <select class="form-select form-select-lg" formControlName="startWhen">
+              <option value="ASAP">ASAP</option>
+              <option value="I'm not in a rush">I'm not in a rush</option>
+              <option value="Within next few weeks">Within next few weeks</option>
+              <option value="1 month +">1 month +</option>
+            </select>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center align-items-center mb-4">
+          <div class="col-12 col-xl-8 field-description">
+            Do you have access to a personal vehicle you can use to get to work?
+          </div>
+          <div class="col-12 col-xl-4 field-option mt-3 mt-xl-0">
+            <select class="form-select form-select-lg" formControlName="ownsCar">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center align-items-center mb-4"
+             [ngClass]="{'field-hidden': resumeForm.get('ownsCar')?.value  !== 'No', 'field-shown': resumeForm.get('ownsCar')?.value  === 'No'}">
+          <div class="col-12 col-xl-8 field-description">
+            How will you get to and from work?
+          </div>
+          <div class="col-12 col-xl-4 field-option mt-3 mt-xl-0">
+            <select class="form-select form-select-lg" formControlName="transportMethod">
+              <option value="Public transit">Public transit</option>
+              <option value="Get a ride from family/friend">Get a ride from family/friend</option>
+              <option value="I need something within walking/biking distance">I need something within walking/biking
+                distance
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center align-items-center mb-4">
+          <div class="col-12 col-xl-8 field-description">
+            Where in Ontario are you willing to work in or commute to?
+          </div>
+          <div class="col-12 col-xl-4 field-option mt-3 mt-xl-0">
+            <ng-multiselect-dropdown
+              formControlName="where"
+              [settings]="dropdownSettings['workIn']"
+              [data]="dropdownData['workIn']">
+            </ng-multiselect-dropdown>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center align-items-center mb-4">
+          <div class="col-12 col-xl-8 field-description">
+            How many hours can you reliably work per week?
+          </div>
+          <div class="col-12 col-xl-4 field-option mt-3 mt-xl-0">
+            <select class="form-select form-select-lg" formControlName="howManyHours">
+              <option value="Part-Time (less than 30 hours a week)">Part-Time (less than 30 hours a week)</option>
+              <option value="Full-Time (up to 44 hours a week)">Full-Time (up to 44 hours a week)</option>
+              <option value="Casual, pick up shifts here and there">Casual, pick up shifts here and there</option>
+            </select>
+          </div>
+        </div>
+        <div formGroupName="weekdays" class="row d-flex justify-content-center align-items-center mb-4">
+          <div class="col-12 col-xl-12 field-description mb-3">
+            What will your availability be?
+          </div>
+          <div *ngFor="let day of weekdays" class="row d-flex align-items-center mb-1 min-height-form">
+            <div class="col-12 col-xl-3 field-option">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" [checked]="true"
+                       [formControlName]="day" id="day-{{ day }}">
+                <label class="form-check-label" for="day-{{ day }}">
+                  {{ day }}
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-xl-5">
+              <ng-multiselect-dropdown [ngClass]="{'field-hidden': !weekdaySelected(day)}"
+                                       formControlName="{{ day }}Availability"
+                                       [settings]="dropdownSettings['weekdays']"
+                                       [data]="dropdownData['weekdays']">
+              </ng-multiselect-dropdown>
+            </div>
+          </div>
+        </div>
+        <div  class="row d-flex justify-content-center align-items-center mb-4">
+          <div class="col-12 col-xl-12 field-description mb-3">
+            What type of security do you think you'll thrive in?
+          </div>
+          <div class="row d-flex align-items-start mb-1">
+            <div *ngFor="let securityType of securityTypes; let i = index;" class="col-12 col-xl-4 field-option">
+              <div formArrayName="securityType" class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox"
+                       id="security-type-{{ i }}" formControlName="{{ i }}">
+                <label class="form-check-label" for="security-type-{{ i }}">
+                  {{ securityType }}
+                </label>
+              </div>
+              <input formControlName="securityTypeOther" *ngIf="securityType === 'Other, specify'" [ngClass]="{'field-hidden': !showSecurityTypeOtherField(securityType)}" type="text" class="form-control bg-white" placeholder="Please write.."/>
+            </div>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center align-items-center mb-4">
+          <div class="col-12 col-xl-8 field-description">
+            Expectations of hourly rate:
+          </div>
+          <div class="col-12 col-xl-4 field-option mt-3 mt-xl-0">
+            <select class="form-select form-select-lg" formControlName="hourlyRate">
+              <option value="Minimum wage, I'm happy with anything to start">Minimum wage, I'm happy with anything to
+                start
+              </option>
+              <option value="$17">$17</option>
+              <option value="$18">$18</option>
+              <option value="$19">$19</option>
+              <option value="$20">$20</option>
+              <option value="$21">$21</option>
+              <option value="$22+">$22+</option>
+            </select>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center align-items-center mb-4"
+             [ngClass]="{'field-hidden': resumeForm.get('hourlyRate')?.value  === 'Minimum wage, I\'m happy with anything to start', 'field-shown': resumeForm.get('hourlyRate')?.value  !== 'Minimum wage, I\'m happy with anything to start'}">
+          <div class="col-12 col-xl-12 field-description mb-3">
+            How negotiable is your expected hourly rate:
+          </div>
+          <div class="row d-flex align-items-center mb-1">
+            <div class="col-12 col-xl-12 field-option">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio"
+                       id="hourly-rate-negotiate-no" formControlName="hourlyRateNegotiate" value="No">
+                <label class="form-check-label" for="hourly-rate-negotiate-no">
+                  If I don't get {{ resumeForm.get('hourlyRate')?.value }} then I can't work
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-xl-12 field-option">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio"
+                       id="hourly-rate-negotiate-yes" formControlName="hourlyRateNegotiate" value="Yes">
+                <label class="form-check-label" for="hourly-rate-negotiate-yes">
+                  Open to starting lower and working my way up
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div formArrayName="actions" class="row d-flex justify-content-center align-items-center mb-4">
+          <div class="col-12 col-xl-12 field-description mb-3">
+            How comfortable are you with each of the following:
+          </div>
+          <div *ngFor="let action of actions; let i = index" class="row d-flex align-items-center mb-1">
+            <div class="col-12 col-xl-8 field-option">
+              {{ action }}
+            </div>
+            <div class="col-12 col-xl-4 d-flex justify-content-end">
+              <select class="form-select form-select-lg" formControlName="{{ i }}">
+                <option value="Happy to do so">Happy to do so</option>
+                <option value="Can accept">Can accept</option>
+                <option value="Not really comfortable">Not really comfortable</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div formGroupName="languages" class="row d-flex justify-content-center align-items-center mb-4">
+          <div class="col-12 col-xl-12 field-description mb-3">
+            Languages you speak:
+          </div>
+          <div *ngFor="let language of languages" class="row d-flex align-items-center mb-1 min-height-form">
+            <div class="col-12 col-xl-3 field-option">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" [checked]="true"
+                       [formControlName]="language" id="language-{{ language }}">
+                <label class="form-check-label" for="language-{{ language }}">
+                  {{ language }}
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-xl-5">
+              <select [ngClass]="{'field-hidden': !languageSelected(language)}"
+                      class="form-select form-select-lg"
+                      formControlName="{{ language }}Proficiency">
+                <option value="Basic">Basic</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div formGroupName="personDescriptions" class="row d-flex justify-content-center align-items-center mb-4">
+          <div class="col-12 col-xl-12 field-description mb-3">
+            What best describes you currently:
+          </div>
+          <div class="row d-flex align-items-center mb-1">
+            <div *ngFor="let description of personDescriptions; let i = index;" class="col-12 col-xl-12 field-option">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" [formControlName]="i"
+                       id="person-description-{{ i }}">
+                <label class="form-check-label" for="person-description-{{ i }}">
+                  {{ description }}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div formGroupName="companyDescriptions" class="row d-flex justify-content-center align-items-center mb-4">
+          <div class="col-12 col-xl-12 field-description mb-3">
+            What best describes your ideal job you'd like to work at:
+          </div>
+          <div class="row d-flex align-items-center mb-1">
+            <div *ngFor="let description of companyDescriptions; let i = index;" class="col-12 col-xl-12 field-option">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" [formControlName]="i"
+                       id="ideal-company-description-{{ i }}">
+                <label class="form-check-label" for="ideal-company-description-{{ i }}">
+                  {{ description }}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div formGroupName="jobDescriptions" class="row d-flex justify-content-center align-items-center mb-4">
+          <div class="col-12 col-xl-12 field-description mb-3">
+            What best describes your ideal company you'd like to work at:
+          </div>
+          <div class="row d-flex align-items-center mb-1">
+            <div *ngFor="let description of jobDescriptions; let i = index;" class="col-12 col-xl-12 field-option">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" [formControlName]="i"
+                       id="ideal-job-description-{{ i }}">
+                <label class="form-check-label" for="ideal-job-description-{{ i }}">
+                  {{ description }}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center align-items-center mb-4">
+          <div class="col-12 col-xl-12 field-description mb-3">
+            Specify why you should be hired over all others, sell yourself.
+          </div>
+          <div class="row d-flex align-items-center mb-1">
+            <textarea class="form-control h-100 white-bg" id="why-you" formControlName="whyYou" rows="5"></textarea>
+          </div>
+        </div>
+        <div class="row d-flex mb-4">
+          <div class="col-12 col-xl-4">
+            <button type="submit" class="btn btn-small btn-submit w-100"
+                    [disabled]="!resumeForm.valid || (isLoading$ | async) === true">
+              <ng-container *ngIf="(isLoading$ | async) === true; else apply">
+                <div class="spinner-border spinner-border-sm text-secondary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </ng-container>
+              <ng-template #apply>
+                Send my resume to companies
+              </ng-template>
+            </button>
+          </div>
+        </div>
+      </form>
+    </ng-container>
+    <ng-template #completed>
+      <div class="alert alert-success d-flex align-items-center" role="alert">
+        <div>
+          You've successfully submitted your resume!
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</ng-template>
