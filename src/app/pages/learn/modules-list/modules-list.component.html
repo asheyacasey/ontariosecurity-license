@@ -2,7 +2,8 @@
   <ng-container [ngSwitch]="!!modules.length">
     <ng-container *ngSwitchCase="true">
       <ul class="module-selector list-group">
-        <ng-container *ngFor="let module of modules">
+        <ng-container *ngFor="let module of modules; let i = index">
+          <app-why-module-locked-button *ngIf="firstLockedIndex() === i"></app-why-module-locked-button>
           <li class="list-group-item d-flex flex-column"
               (click)="onSelectionChange(module)"
               [class.completed]="module.completed"

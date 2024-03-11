@@ -1,0 +1,63 @@
+.header {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 41px;
+
+  color: #31374D;
+}
+
+.partner-logos {
+  .partner-logo {
+    margin-left: 10px;
+    height: 67px;
+    width: 111px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      height: 67px;
+    }
+  }
+
+
+}
+
+.d-1400-flex {
+  display: none;
+  @media (min-width: 1400px) {
+    display: flex;
+  }
+}
+
+.d-1400-none {
+  display: flex;
+  @media (min-width: 1400px) {
+    display: none;
+  }
+}
+
+ngb-carousel {
+  min-height: 140px;
+}
+
+
+.carousel-indicators {
+  bottom: -60px;
+
+  [data-bs-target] {
+    height: 15px;
+    width: 15px;
+
+    margin-left: 10px;
+    margin-right: 10px;
+
+    border-radius: 50%;
+    background: #354FA9;
+
+    border: 0;
+  }
+}

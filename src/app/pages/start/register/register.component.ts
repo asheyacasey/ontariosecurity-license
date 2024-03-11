@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
     private titleService: Title,
     private authService: AuthenticationService,
     private router: Router,
-    private gtmService: GoogleTagManagerService
+    private gtmService: GoogleTagManagerService,
   ) {
   }
 

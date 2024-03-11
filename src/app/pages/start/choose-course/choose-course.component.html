@@ -44,13 +44,8 @@
       </div>
     </div>
     <div class="col-12 col-xl-5 py-3 py-xl-0 d-inline-block d-xl-none price-button-sticky">
-      <div class="d-flex justify-content-xl-end justify-content-between">
-        <div
-          class="course-price-container d-flex flex-column justify-content-around justify-content-xl-center align-items-start align-items-xl-end">
-          <div class="course-price">${{ selectedCourse.price}}</div>
-          <div class="course-price-description">Course price</div>
-        </div>
-        <a (click)="onCourseAction(selectedCourse)" class="btn btn-purchase">Buy</a>
+      <div class="d-flex justify-content-xl-end justify-content-start">
+        <a (click)="onCourseAction(selectedCourse)" class="btn btn-purchase">Buy for ${{ selectedCourse.price}}</a>
       </div>
     </div>
   </ng-container>

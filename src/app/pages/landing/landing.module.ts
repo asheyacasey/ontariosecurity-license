@@ -22,6 +22,9 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
 import {SocialLoginModule} from "@abacritt/angularx-social-login";
 import { SignInWithGoogleComponent } from './sign-in-with-google/sign-in-with-google.component';
 import { JobOffersCountComponent } from './job-offers-count/job-offers-count.component';
+import { ComparisonComponent } from './comparison/comparison.component';
+import {NgbCarouselModule} from "@ng-bootstrap/ng-bootstrap";
+import { HiringPartnersComponent } from './hiring-partners/hiring-partners.component';
 
 
 @NgModule({
@@ -43,6 +46,8 @@ import { JobOffersCountComponent } from './job-offers-count/job-offers-count.com
         TopMenuComponent,
         SignInWithGoogleComponent,
         JobOffersCountComponent,
+        ComparisonComponent,
+        HiringPartnersComponent,
     ],
     exports: [
         SignInWithGoogleComponent
@@ -54,6 +59,7 @@ import { JobOffersCountComponent } from './job-offers-count/job-offers-count.com
         ReactiveFormsModule,
         CountUpModule,
         SocialLoginModule,
+        NgbCarouselModule,
     ]
 })
 export class LandingModule {

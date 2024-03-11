@@ -7,7 +7,7 @@
 </ng-container>
 
 <ng-template #content>
-  <div class="content">
+  <div class="content container-xxl">
     <h2 class="mb-3">Upload CPR Document</h2>
 
     <ng-container *ngIf="!formalitiesStatus?.cpr?.stepCompleted; else completed;">
@@ -17,6 +17,8 @@
             <label for="file" class="form-label">Upload certificate *</label>
             <div class="file-upload-container">
               <input #fileInput id="file" type="file" class="d-none" formControlName="file"
+                     (change)="onSelectFile($event)"
+                     accept=".png,.jpeg,.jpg,.pdf"
                      [ngClass]="{'is-invalid': cprForm.get('file')?.errors?.['serverError']}">
               <div class="file-upload-inner d-flex flex-column flex-md-row align-items-center">
                 <button type="button" class="btn-submit btn-small mb-3 mb-md-0" (click)="fileInput.click()">Choose File

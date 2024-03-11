@@ -1,4 +1,12 @@
 <ng-container *ngIf="!moduleQuiz && quiz; else questions">
+  <div *ngIf="quiz.module.video" class="course-content row mb-5">
+    <div class="col-12 text-center">
+      <video width="100%" controls>
+        <source src="{{ quiz.module.video }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
   <div class="course-content row">
     <div class="col-12">
       <p>This quiz consists of <strong>{{ quiz.questionsNumber}}</strong> questions.</p>

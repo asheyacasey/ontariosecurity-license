@@ -19,11 +19,16 @@ export interface FormalityTCNStatus {
   tcn?: number;
 }
 
+export interface FormalityResumeStatus {
+  stepCompleted: boolean;
+}
+
 export interface FormalitiesStatus {
   modules: FormalityModulesStatus;
   cpr: FormalityCPRStatus;
   consent: FormalityConsentStatus;
   tcn: FormalityTCNStatus;
+  resume: FormalityResumeStatus;
 }
 
 
@@ -65,4 +70,39 @@ export interface ConsentUpload {
   differentMailingAddress: boolean;
   mailingAddress?: ConsentAddress;
   signature: string;
+}
+
+export interface ResumeDaySchedule {
+  day: string;
+  time: string[];
+}
+
+export interface ResumeLanguageProficiency {
+  language: string;
+  proficiency: string;
+}
+
+export interface ResumeLicenseUpload {
+  licenseFile: File;
+}
+
+export interface ResumeDataUpload {
+  startWhen: string;
+  ownsCar: string;
+  transportMethod: string | null;
+  where: string[];
+  howManyHours: string;
+  weekdays: ResumeDaySchedule[];
+  securityType: string[];
+  hourlyRate: string;
+  hourlyRateNegotiate: string;
+  languages: ResumeLanguageProficiency[];
+  actions: string[];
+  personDescriptions: string[];
+  jobDescriptions: string[];
+  companyDescriptions: string[];
+  whyYou: string;
+}
+
+export interface ResumeUpload extends ResumeLicenseUpload, ResumeDataUpload {
 }

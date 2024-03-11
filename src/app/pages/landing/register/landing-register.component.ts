@@ -26,7 +26,7 @@ export class LandingRegisterComponent implements OnInit {
   constructor(
     private authService: AuthenticationService,
     private router: Router,
-    private gtmService: GoogleTagManagerService
+    private gtmService: GoogleTagManagerService,
   ) {
   }
 

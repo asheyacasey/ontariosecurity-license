@@ -34,4 +34,26 @@ export interface UserDetails {
   admin: boolean;
   email: string;
   hasCourseAccess: boolean;
+  aboutYouCompleted: boolean;
+}
+
+export interface AboutYouForm {
+  type: string;
+  placement: string;
+  howQuickly: string;
+  why: string;
+  relocate: string;
+}
+
+export interface UserPasswordResetRequest {
+  email: string;
+}
+
+export interface UserPasswordResetResponse {
+  error?: 'external'
+}
+
+export interface UserPasswordResetSetRequest {
+  code: string;
+  password: string;
 }

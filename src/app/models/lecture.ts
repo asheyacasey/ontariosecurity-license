@@ -18,6 +18,7 @@ export interface LinkedLectureModule {
   lectureIds: number[];
   hasQuiz: boolean;
   quizId?: number;
+  video?: string;
 }
 
 export interface LinkedLectureIterator {

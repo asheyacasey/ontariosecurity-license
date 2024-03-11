@@ -12,6 +12,7 @@ import {GoogleTagManagerModule} from "angular-google-tag-manager";
 import {environment} from "../environments/environment";
 import {CountUpModule} from "ngx-countup";
 import {GoogleLoginProvider} from "@abacritt/angularx-social-login";
+import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {GoogleLoginProvider} from "@abacritt/angularx-social-login";
     GoogleTagManagerModule.forRoot({
       id: environment.googleTag
     }),
-    CountUpModule
+    CountUpModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
     {

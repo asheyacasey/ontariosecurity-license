@@ -13,6 +13,7 @@ import {CompletedComponent} from './completed/completed.component';
 import {DiscountComponent} from './pay/discount/discount.component';
 import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
 import {OrderSummaryComponent} from './pay/order-summary/order-summary.component';
+import { TellUsAboutYouComponent } from './tell-us-about-you/tell-us-about-you.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {OrderSummaryComponent} from './pay/order-summary/order-summary.component
         CompletedComponent,
         DiscountComponent,
         OrderSummaryComponent,
+        TellUsAboutYouComponent,
     ],
     exports: [
         RegisterComponent

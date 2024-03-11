@@ -90,26 +90,26 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav text-center">
-          <li class="nav-item" (click)="goToTestimonials()">
-            <a class="nav-link">Testimonials</a>
-          </li>
-          <li class="nav-item" (click)="goToCourses()">
-            <a class="nav-link">Courses</a>
-          </li>
+<!--          <li class="nav-item" (click)="goToTestimonials()">-->
+<!--            <a class="nav-link">Testimonials</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item" (click)="goToCourses()">-->
+<!--            <a class="nav-link">Courses</a>-->
+<!--          </li>-->
           <!--
           <li class="nav-item" (click)="goToLicenseRequirements()">
             <a class="nav-link">License Requirements</a>
           </li>
           -->
-          <li class="nav-item" (click)="goToWhyUs()">
-            <a class="nav-link">Why Us</a>
-          </li>
-          <li class="nav-item" (click)="goToInternationalStudents()">
-            <a class="nav-link">Intl. Students</a>
-          </li>
-          <li class="nav-item" (click)="goToFAQ()">
-            <a class="nav-link">FAQ</a>
-          </li>
+<!--          <li class="nav-item" (click)="goToWhyUs()">-->
+<!--            <a class="nav-link">Why Us</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item" (click)="goToInternationalStudents()">-->
+<!--            <a class="nav-link">Intl. Students</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item" (click)="goToFAQ()">-->
+<!--            <a class="nav-link">FAQ</a>-->
+<!--          </li>-->
           <li class="nav-item" (click)="goToLogin()">
             <a class="nav-link">Log In</a>
           </li>
@@ -120,6 +120,7 @@
       </div>
     </ng-template>
 
+    <!--
     <ul class="navbar-nav d-none d-xl-flex flex-row">
       <li class="nav-item" (click)="goToTestimonials()">
         <a class="nav-link">Testimonials</a>
@@ -127,11 +128,11 @@
       <li class="nav-item" (click)="goToCourses()">
         <a class="nav-link">Courses</a>
       </li>
-      <!--
+
       <li class="nav-item" (click)="goToLicenseRequirements()">
         <a class="nav-link">License Requirements</a>
       </li>
-      -->
+
       <li class="nav-item" (click)="goToWhyUs()">
         <a class="nav-link">Why Us</a>
       </li>
@@ -142,9 +143,11 @@
         <a class="nav-link">FAQ</a>
       </li>
     </ul>
+    -->
 
   </div>
-  <div class="navbar-text">
+  <div class="navbar-text d-flex align-items-center">
+    <span class="d-none d-xl-inline-flex me-5">Text Helpline: 647-514-4978  (Mon-Fri 7am-3pm)<br>Punjabi/Hindi Helpline: 647-677-0773 (WhatsApp only)</span>
     <button class="btn btn-secondary-action me-3 d-none d-md-inline-flex" (click)="goToLogin()">Log in</button>
     <button class="btn btn-primary-action" (click)="goToSignUp()">Get Started</button>
   </div>

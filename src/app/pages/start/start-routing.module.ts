@@ -10,6 +10,9 @@ import {LoggedInGuard} from "./guards/logged-in.guard";
 import {CourseSelectedGuard} from "./guards/course-selected.guard";
 import {CompletedComponent} from "./completed/completed.component";
 import {CoursePaymentStartedGuard} from "./guards/course-payment-started.guard";
+import {TellUsAboutYouComponent} from "./tell-us-about-you/tell-us-about-you.component";
+import {NoAboutYouCompletedGuard} from "./guards/no-about-you-completed.guard";
+import {AboutYouCompletedGuard} from "./guards/about-you-completed.guard";
 
 const routes: Routes = [
   {
@@ -22,14 +25,19 @@ const routes: Routes = [
         canActivate: [NotLoggedInGuard]
       },
       {
+        path: 'tell-us-about-you',
+        component: TellUsAboutYouComponent,
+        canActivate: [LoggedInGuard, NoCourseBoughtGuard, NoAboutYouCompletedGuard]
+      },
+      {
         path: 'course',
         component: ChooseCourseComponent,
-        canActivate: [LoggedInGuard, NoCourseBoughtGuard]
+        canActivate: [LoggedInGuard, NoCourseBoughtGuard, AboutYouCompletedGuard]
       },
       {
         path: 'pay',
         component: PayComponent,
-        canActivate: [LoggedInGuard, NoCourseBoughtGuard, CourseSelectedGuard]
+        canActivate: [LoggedInGuard, NoCourseBoughtGuard, AboutYouCompletedGuard, CourseSelectedGuard]
       },
       {
         path: 'completed',

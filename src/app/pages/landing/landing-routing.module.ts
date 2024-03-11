@@ -45,22 +45,7 @@ const routes: Routes = [
   },
   // redirects to fragments
   {
-    path: 'testimonials',
-    component: LandingRedirectComponent,
-    canActivate: [NotLoggedInGuard]
-  },
-  {
-    path: 'course',
-    component: LandingRedirectComponent,
-    canActivate: [NotLoggedInGuard]
-  },
-  {
-    path: 'guarantee',
-    component: LandingRedirectComponent,
-    canActivate: [NotLoggedInGuard]
-  },
-  {
-    path: 'in-person',
+    path: 'job',
     component: LandingRedirectComponent,
     canActivate: [NotLoggedInGuard]
   },
@@ -70,17 +55,22 @@ const routes: Routes = [
     canActivate: [NotLoggedInGuard]
   },
   {
-    path: 'international-students',
+    path: 'guarantee',
     component: LandingRedirectComponent,
     canActivate: [NotLoggedInGuard]
   },
   {
-    path: 'faq',
+    path: 'testimonials',
     component: LandingRedirectComponent,
     canActivate: [NotLoggedInGuard]
   },
   {
-    path: 'sign-up',
+    path: 'how-to',
+    component: LandingRedirectComponent,
+    canActivate: [NotLoggedInGuard]
+  },
+  {
+    path: 'quiz',
     component: LandingRedirectComponent,
     canActivate: [NotLoggedInGuard]
   },
