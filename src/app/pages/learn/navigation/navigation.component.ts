@@ -41,8 +41,8 @@ export class NavigationComponent implements OnInit {
   }
 
   hasPrevious(): boolean {
-    return (!!this.previousLecture && this.currentLecture?.module.id === this.previousLecture.moduleId)
-      || (!!this.previousQuiz && this.currentQuiz?.module.id === this.previousQuiz.moduleId);
+    return (!!this.previousLecture && (this.currentLecture?.module.id || this.currentQuiz?.module.id) === this.previousLecture.moduleId)
+      || (!!this.previousQuiz && (this.currentLecture?.module.id || this.currentQuiz?.module.id) === this.previousQuiz.moduleId);
   }
 
   previous(): void {
