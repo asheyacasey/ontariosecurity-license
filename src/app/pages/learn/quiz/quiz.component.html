@@ -7,6 +7,11 @@
       </video>
     </div>
   </div>
+  <div class="course-content row mb-5">
+    <div class="col-12">
+      <h1 class="section-title">Module {{ quiz.module.moduleNumber }} knowledge test</h1>
+    </div>
+  </div>
   <div class="course-content row">
     <div class="col-12">
       <p>This quiz consists of <strong>{{ quiz.questionsNumber}}</strong> questions.</p>
@@ -37,6 +42,7 @@
   </div>
 
   <app-navigation
+    [currentQuiz]="quiz || null"
     [previousLecture]="quiz.previousLecture || null"
     [nextLecture]="quiz.nextLecture || null"
   ></app-navigation>

@@ -3,6 +3,7 @@
   </div>
 </div>
 <app-navigation
+  [currentLecture]="lecture || null"
   [previousLecture]="lecture?.previousLecture || null"
   [previousQuiz]="lecture?.previousQuiz || null"
   [nextLecture]="lecture?.nextLecture || null"
@@ -11,7 +12,7 @@
   [currentLectureId]="lecture?.id || null">
 
 </app-navigation>
-<div *ngIf="lecture?.module?.hasQuiz"
+<div *ngIf="false && lecture?.module?.hasQuiz"
      (click)="goToQuiz()"
      class="course-navigation-quiz d-flex justify-content-center justify-content-md-end mt-3">
   <a class="btn btn-quiz">Take Quiz</a>
