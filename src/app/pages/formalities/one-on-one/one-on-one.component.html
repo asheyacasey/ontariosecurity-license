@@ -1,0 +1,33 @@
+<script type="text/javascript" src="/assets/calendly/widget.js" async></script>
+
+<ng-container *ngIf="!paid">
+  <div class="row" [ngClass]="{'d-none': paid}">
+    <div class="col-12 header">
+      You haven't purchased our 1-on-1 tutoring session. If you have changed your mind, please email us at <a
+      href="mailto:tcn@ontariosecuritylicense.ca">tcn@ontariosecuritylicense.ca</a>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="paid">
+  <div class="row mb-3" [ngClass]="{'d-none': !paid}">
+    <div class="col-12 header">
+      Congrats, you had also purchased a 1 on 1 tutoring session to skyrocket your chances of passing
+      the ministry exam on your first try.
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 header">
+      Go ahead and book in a time slot from the ones below, try to book a date close to your Ministry Exam date.
+    </div>
+  </div>
+</ng-container>
+
+<div class="row">
+  <div class="col-12">
+    <!-- Calendly inline widget begin -->
+    <div class="calendly-inline-widget"></div>
+    <!-- Calendly inline widget end -->
+  </div>
+</div>
+

@@ -106,3 +106,9 @@ export interface ResumeDataUpload {
 
 export interface ResumeUpload extends ResumeLicenseUpload, ResumeDataUpload {
 }
+
+export interface TutoringStatus {
+  paid: boolean;
+  calendlyUrl: string;
+  email: string;
+}

@@ -56,6 +56,19 @@
         </div>
       </div>
     </li>
+        <li (click)="closeOffcanvas()" routerLink="./1-on-1" routerLinkActive="active"
+        class="list-group-item d-flex flex-column">
+      <div class="section-header d-flex justify-content-between align-items-center">
+        <div>1-on-1 Tutoring</div>
+        <div class="section-header-checkmark">
+          <svg width="18" height="13" viewBox="0 0 18 13" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 5.6993L6.6 11.1818L17 1" stroke="#ACADBF" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </li>
     <li (click)="closeOffcanvas()" routerLink="./resume" routerLinkActive="active"
         class="list-group-item d-flex flex-column" [class.completed]="status?.resume?.stepCompleted">
       <div class="section-header d-flex justify-content-between align-items-center">

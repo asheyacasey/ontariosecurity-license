@@ -14,6 +14,7 @@ import {NgxSignaturePadModule} from "@eve-sama/ngx-signature-pad";
 import {ClipboardModule} from "ngx-clipboard";
 import { ResumeComponent } from './resume/resume.component';
 import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
+import { OneOnOneComponent } from './one-on-one/one-on-one.component';
 
 
 
@@ -25,7 +26,8 @@ import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
         CprComponent,
         ConsentComponent,
         TcnComponent,
-        ResumeComponent
+        ResumeComponent,
+        OneOnOneComponent
     ],
     exports: [
         FormalitiesComponent
