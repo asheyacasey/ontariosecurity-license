@@ -31,6 +31,14 @@
           is {{ quiz.result.requiredPercent }}%).
         </div>
       </div>
+
+      <div *ngIf="quiz.result.isReviewable" class="course-content row">
+        <div class="col-12">
+          <ng-container *ngFor="let answer of quiz.result.answers; let i = index">
+            <app-quiz-question-check [answer]="answer" [questionNumber]="i + 1"></app-quiz-question-check>
+          </ng-container>
+        </div>
+      </div>
     </div>
   </ng-container>
 

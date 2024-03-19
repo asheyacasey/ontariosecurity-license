@@ -11,10 +11,19 @@ export interface LinkedQuiz {
   nextLecture?: LinkedLectureIterator;
 }
 
+export interface QuizResultAnswer {
+  question: string;
+  possibleAnswers: string[];
+  correctAnswers: string[];
+  givenAnswers: string[];
+}
+
 export interface QuizResult {
   passed: boolean;
   resultPercent: number;
   requiredPercent: number;
+  answers: QuizResultAnswer[];
+  isReviewable: boolean;
 }
 
 export interface LinkedQuizModule extends LinkedLectureModule {

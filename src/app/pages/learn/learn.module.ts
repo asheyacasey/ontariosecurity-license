@@ -15,6 +15,7 @@ import { ModuleTimerComponent } from './module-timer/module-timer.component';
 import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
 import { WhyModuleLockedButtonComponent } from './why-module-locked-button/why-module-locked-button.component';
 import { WhyModuleLockedModalComponent } from './why-module-locked-modal/why-module-locked-modal.component';
+import { QuizQuestionCheckComponent } from './quiz/quiz-question-check/quiz-question-check.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { WhyModuleLockedModalComponent } from './why-module-locked-modal/why-mod
     ModuleTimerComponent,
     WhyModuleLockedButtonComponent,
     WhyModuleLockedModalComponent,
+    QuizQuestionCheckComponent,
   ],
   exports: [
     ModulesListComponent
