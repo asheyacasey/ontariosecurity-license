@@ -1,0 +1,48 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
+
+.bragging-text {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+
+  max-width: 470px;
+
+  color: #595E71;
+
+  @include media-breakpoint-up(md) {
+    min-width: 545px;
+
+    &:first-of-type {
+      padding: 10px 96px 10px 0;
+    }
+
+    &:not(:first-of-type):not(:last-of-type) {
+      padding: 10px 96px;
+    }
+
+    &:last-of-type {
+      padding: 10px 0 10px 96px;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    &:not(:last-of-type) {
+      border-right: 3px solid #EFF0F5;
+    }
+  }
+
+}
+
+.headline {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 44px;
+  /* identical to box height */
+
+  color: #D03D1C;
+}

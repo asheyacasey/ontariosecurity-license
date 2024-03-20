@@ -1,0 +1,8 @@
+<h1 class="header">Frequently Asked Questions</h1>
+
+<div class="row faq-list">
+  <div *ngFor="let question of answers()" class="col-12 col-md-6 faq-item">
+    <div class="faq-item-header">{{ question.question }}</div>
+    <div class="faq-item-answer">{{ question.answer }}</div>
+  </div>
+</div>

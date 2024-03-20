@@ -1,0 +1,283 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
+.header {
+  margin-top: 200px;
+  margin-bottom: 35px;
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 49px;
+
+  color: #31374D;
+
+  .strong {
+    color: #354FA9;
+  }
+
+  @include media-breakpoint-down(sm) {
+    margin-top: 100px;
+    margin-bottom: 35px;
+
+    font-size: 20px;
+    line-height: 27px;
+  }
+}
+
+.rounded-bg-container {
+  border-radius: 16px;
+
+  padding: 50px;
+  @include media-breakpoint-down(md) {
+    padding: 20px;
+  }
+
+  &.gray {
+    background: #F3F4FA;
+  }
+
+  &.white {
+    background: #FFFFFF;
+  }
+
+  @include media-breakpoint-up(sm) {
+    margin: 0 32px 32px 32px;
+  }
+}
+
+// left side
+.course-logo {
+  margin-bottom: 95px;
+}
+
+.features {
+  margin-bottom: 80px;
+
+  .feature-item {
+    margin-bottom: 30px;
+
+    .feature-item-icon {
+      margin-right: 14px;
+    }
+
+    .feature-item-name {
+      width: 120px;
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+
+      color: #31374D;
+    }
+
+    .feature-item-value {
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      /* identical to box height, or 150% */
+
+      color: #595E71;
+
+    }
+  }
+}
+
+// right side
+
+.main-header {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  /* or 150% */
+
+  color: #31374D;
+}
+
+.languages-list {
+  margin-top: 24px;
+
+  .languages-list-item {
+    margin-right: 10px;
+
+    padding: 5px 30px;
+
+    background: #FFFFFF;
+    border-radius: 16px;
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 15px;
+    /* identical to box height */
+    text-align: center;
+
+    color: #31374D;
+  }
+}
+
+.jobs {
+  .jobs-header {
+    margin-bottom: 37px;
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height, or 120% */
+
+    color: #31374D;
+
+  }
+
+  .job-item {
+    height: 50px;
+
+    .job-item-icon {
+      margin-right: 10px;
+    }
+
+    .job-item-name {
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 22px;
+      /* identical to box height */
+
+      color: #595E71;
+    }
+  }
+}
+
+.modules-list {
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+  .module-item-main {
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  .module-item {
+    .module-item-number {
+      background: #354FA9;
+      border-radius: 50%;
+      padding: 5px;
+
+      width: 36px;
+      height: 36px;
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 16px;
+      line-height: 30px;
+      /* identical to box height, or 188% */
+
+      color: #FFFFFF;
+
+      margin-right: 13px;
+    }
+
+
+    .module-item-name {
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 32px;
+      /* identical to box height, or 200% */
+
+      color: #595E71;
+      flex: 100%;
+    }
+
+    .module-item-description {
+      margin-top: 0;
+      margin-bottom: 22px;
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      /* or 150% */
+
+      color: #595E71;
+
+
+      padding: 0 48px;
+    }
+
+
+    .module-item-show-toggle {
+    }
+  }
+}
+
+
+.description {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+
+  @include media-breakpoint-down(md) {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  color: #595E71;
+
+  .strong {
+    font-weight: 700;
+    color: #354FA9;
+  }
+}
+
+.btn-action {
+  background-color: #354FA9;
+  color: #F3F4FA;
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 22px 48px;
+
+  // max-width: 280px;
+
+  &:hover {
+    background-color: rgba(53, 79, 169, 0.9);
+    color: #F3F4FA !important;
+  }
+
+}
+
+.course-selection-checkbox {
+  margin-top: 26px;
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
+
+  color: #31374D;
+
+  .form-check-input {
+    margin-top: 0;
+    margin-right: 5px;
+  }
+
+}

@@ -3,18 +3,16 @@ import {Routes, RouterModule} from '@angular/router';
 import {LandingV1Component} from "./landing-v1/landing-v1.component";
 import {NotLoggedInGuard} from "./guards/not-logged-in.guard";
 import {CoursesListComponent} from "./courses-list/courses-list.component";
-import {LandingV3Component} from "./landing-v3/landing-v3.component";
 import {LandingRedirectComponent} from "./landing-redirect/landing-redirect.component";
-import {EligibilityTestComponent} from "./eligibility-test/eligibility-test.component";
 import {TermsOfServiceComponent} from "./terms-of-service/terms-of-service.component";
 import {PrivacyPolicyComponent} from "./privacy-policy/privacy-policy.component";
-import {StartComponent} from "../start/start.component";
 import {StaticComponent} from "./static/static.component";
+import {LandingV4Component} from "./landing-v4/landing-v4.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: LandingV3Component,
+    component: LandingV4Component,
     canActivate: [NotLoggedInGuard]
   },
   {

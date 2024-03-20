@@ -1,0 +1,43 @@
+.header {
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 120%;
+  /* or 43px */
+
+  color: #31374D;
+}
+
+.faq-list {
+  margin-top: 75px;
+
+  .faq-item {
+    margin-bottom: 55px;
+
+    .faq-item-header {
+      margin-bottom: 20px;
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+      /* identical to box height */
+
+      color: #354FA9;
+    }
+
+    .faq-item-answer {
+      white-space: pre-wrap;
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 28px;
+
+      color: #595E71;
+    }
+  }
+}
