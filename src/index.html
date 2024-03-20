@@ -21,7 +21,8 @@
   <script src="https://cdn.linkmink.com/lm-js/2.3.1/lm.js"></script>
   <script>
   if (typeof LinkMink==="function") {
-    LinkMink('pub_live_Rkbv2rCQxh5FopNdM8Sy').initTracking().then();
+    window.linkMink = LinkMink('pub_live_Rkbv2rCQxh5FopNdM8Sy');
+    window.linkMink.initTracking().then();
   }
 </script>
 

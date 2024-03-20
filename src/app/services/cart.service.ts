@@ -7,22 +7,35 @@ import {PaymentSession} from "../models/payment";
 import {PaymentSessionService} from "./payment-session.service";
 import {UserLocalStorageService} from "./user-local-storage.service";
 import {DiscountCodeService} from "./discount-code.service";
+import { Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+
+export interface CustomWindow extends Window {
+  linkMink: any;
+}
+
+
+declare var linkMink: any;
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  private window: CustomWindow;
+
   private apiUrl: string = environment.apiUrl;
   private key: string = 'cart-v1';
 
   private _course: CourseBasic | null = null;
 
   constructor(
+    @Inject(DOCUMENT) private document: Document,
     private userLocalStorageService: UserLocalStorageService,
     private paymentSessionService: PaymentSessionService,
     private discountCodeService: DiscountCodeService,
     private http: HttpClient
   ) {
+    this.window = <any>this.document.defaultView;
   }
 
   get course(): CourseBasic | null {
@@ -66,6 +79,11 @@ export class CartService {
     let url = `${this.apiUrl}/course/${this._course?.id}/purchase`;
     if (this.discountCodeService.discountCode) {
       url += `?discount_code=${this.discountCodeService.discountCode.name}`;
+    }
+
+    const referralData = this.window.linkMink.getReferralData();
+    if (referralData) {
+      billingDetails.referral = referralData;
     }
     return this.http.post<PaymentSession>(url, billingDetails).pipe(
       tap((session) => {
