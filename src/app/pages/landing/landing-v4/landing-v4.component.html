@@ -1,0 +1,85 @@
+<div class="container-fluid white-bg">
+  <div class="space-top"></div>
+  <div class="gray-bg-container">
+    <div class="container-xxl">
+      <app-top-menu-v4></app-top-menu-v4>
+    </div>
+    <div class="container-fluid container-exact">
+      <div class="row d-flex d-xl-none">
+        <div class="col-10 d-flex offset-1 justify-content-center align-items-center">
+          <app-helpline></app-helpline>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div
+          class="hero d-md-607 col-10 offset-1 col-md-5 offset-md-1 d-flex flex-column text-center text-md-start align-items-center align-items-md-start justify-content-center mb-5">
+          <div class="headline">
+            Ontario’s #1 Most Popular Online Security Guard Training Course -
+            <span class="strong">we’ve trained over 63 thousand students!</span>
+          </div>
+
+          <p class="description d-none d-md-block">
+            <span class="spaced">We’re also the <span class="strong">fastest</span>: from sign up to passing the Ministry exam it takes <span
+            class="strong">4-5 days</span>.</span>
+
+            <span>Do it from <span class="strong">home</span>, at <span class="strong">your own pace</span> and even <span
+            class="strong">entirely from your phone</span>.</span>
+          </p>
+
+          <div class="sign-up d-flex justify-content-center align-items-center">
+            <a class="btn btn-action flex-grow-1 flex-lg-grow-0" (click)="goToSignUp()">Purchase Course Now & Pass The
+              Test 4 Days From Today</a>
+            <app-sign-in-with-google text="signup_with"></app-sign-in-with-google>
+          </div>
+          <img class="customer-reviews" alt="Customer reviews" src="/assets/v3/customer-reviews.png"/>
+          <div class="push-on-small">
+            <app-job-offers-count></app-job-offers-count>
+          </div>
+        </div>
+        <div class="hero-phone d-none d-md-flex align-items-end justify-content-start">
+          <img alt="Ministry Approval Badge" class="video-badge" src="/assets/v4/ministry-approval-badge.png"/>
+          <img alt="Video Placeholder" class="video-placeholder" src="/assets/v4/video-placeholder.png"/>
+          <img alt="Proof of Certification" class="phone" src="/assets/v3/phone-certificate.png"/>
+        </div>
+      </div>
+      <div class="row d-flex d-md-none">
+        <div class="col-11 offset-1 gx-0">
+          <div class="hero-phone align-items-end justify-content-start">
+            <img alt="Ministry Approval Badge" class="video-badge-small" src="/assets/v4/ministry-approval-badge.png"/>
+            <img alt="Video Placeholder" class="video-placeholder-small" src="/assets/v4/video-placeholder.png"/>
+            <img alt="Proof of Certification" class="phone-small" src="/assets/v3/phone-certificate.png"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section id="job" class="partners container-xxl mt-5 mt-md-0">
+    <app-hiring-partners></app-hiring-partners>
+  </section>
+  <section id="bragging" class="bragging container-xxl">
+    <app-bragging></app-bragging>
+  </section>
+  <section id="course-description" class="course-description container-xxl mt-5">
+    <app-course-description></app-course-description>
+  </section>
+  <section id="course-value" class="course-value container-xxl mt-5">
+    <app-course-value></app-course-value>
+  </section>
+  <section id="testimonials" class="testimonials container-xxl">
+    <app-testimonials></app-testimonials>
+  </section>
+  <section id="money-back-guarantee" class="money-back-guarantee container-xxl d-none d-md-block">
+    <app-money-back-guarantee></app-money-back-guarantee>
+  </section>
+  <section id="licensing-process" class="licensing-process container-xxl mt-5">
+    <app-licensing-process></app-licensing-process>
+  </section>
+  <section id="faq-v2" class="faq-v2 container-xxl">
+    <app-faq-v2></app-faq-v2>
+  </section>
+  <div class="space-bottom"></div>
+
+  <app-footer></app-footer>
+</div>
+
+

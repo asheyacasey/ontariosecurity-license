@@ -11,7 +11,7 @@ import {LanguageService} from "../../../services/language.service";
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.scss', '../learn.component.scss']
+  styleUrls: ['./quiz.component.scss', '../learn.component.scss', '../../../shared/shared.scss']
 })
 export class QuizComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -59,7 +59,7 @@ export class QuizComponent implements OnInit, OnDestroy {
       ).subscribe((quiz) => {
         this.quiz = quiz;
 
-        this.learnService.setTitle('Quiz for module ' + this.quiz?.module.id);
+        this.learnService.setTitle('Summary of module ' + this.quiz?.module.moduleNumber + ' and module test');
         this.learnService.setModuleId(this.quiz.module.id);
 
         this.courseNavigationStateService.addState({

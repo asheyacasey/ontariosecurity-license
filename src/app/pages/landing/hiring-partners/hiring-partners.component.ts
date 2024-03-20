@@ -45,7 +45,6 @@ export class HiringPartnersComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   /**
    * Returns the lines for hiring partners when they are split by the phone image (left and right sides)
    */

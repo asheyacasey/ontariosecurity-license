@@ -15,6 +15,7 @@ export interface LinkedLecture {
 
 export interface LinkedLectureModule {
   id: number;
+  moduleNumber: number;
   lectureIds: number[];
   hasQuiz: boolean;
   quizId?: number;

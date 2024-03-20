@@ -40,7 +40,9 @@
               "src/styles.scss",
               "src/app/shared/multiselect-dropdown.theme.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/calendly/widget.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -133,7 +135,7 @@
               "src/styles.scss",
               "src/app/shared/multiselect-dropdown.theme.scss"
             ],
-            "scripts": []
+            "scripts": ["src/assets/calendly/widget.js"]
           }
         },
         "lint": {

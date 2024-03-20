@@ -14,6 +14,7 @@ import {DiscountComponent} from './pay/discount/discount.component';
 import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
 import {OrderSummaryComponent} from './pay/order-summary/order-summary.component';
 import { TellUsAboutYouComponent } from './tell-us-about-you/tell-us-about-you.component';
+import {LandingModule} from "../landing/landing.module";
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { TellUsAboutYouComponent } from './tell-us-about-you/tell-us-about-you.c
         PartialsModule,
         ReactiveFormsModule,
         NgbTooltipModule,
+        LandingModule,
     ]
 })
 export class StartModule {

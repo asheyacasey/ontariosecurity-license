@@ -1,0 +1,112 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
+.rounded-bg-container {
+  border-radius: 16px;
+
+  .inner {
+    padding: 62px 97px;
+
+    @include media-breakpoint-down(md) {
+      padding: 25px 15px;
+    }
+  }
+
+  &.gray {
+    background: #F3F4FA;
+  }
+
+  &.white {
+    background: #FFFFFF;
+  }
+
+  @include media-breakpoint-up(sm) {
+    margin: 0 32px 32px 32px;
+  }
+}
+
+.header {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 120%;
+  /* or 43px */
+  text-align: center;
+
+  @include media-breakpoint-down(md) {
+    font-size: 20px;
+    text-align: left;
+  }
+
+  color: #31374D;
+
+  .strong {
+    font-size: 40px;
+    color: #D03D1C;
+
+    @include media-breakpoint-down(md) {
+      font-size: 22px;
+    }
+  }
+}
+
+
+.value-item {
+  margin-bottom: 40px;
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: 24px;
+  }
+
+  .value-item-icon {
+    margin-right: 20px;
+  }
+
+  .value-item-name {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+
+    color: #31374D;
+
+    .strong {
+      color: #D03D1C;
+    }
+  }
+}
+
+
+.btn-action {
+  background-color: #354FA9;
+  color: #F3F4FA;
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 22px 48px;
+  width: 100%;
+
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+
+  // max-width: 280px;
+
+  &:hover {
+    background-color: rgba(53, 79, 169, 0.9);
+    color: #F3F4FA !important;
+  }
+
+}
+
+.row-process {
+  margin-top: 140px;
+  margin-bottom: 140px;
+
+  @include media-breakpoint-down(md) {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+}

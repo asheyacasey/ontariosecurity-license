@@ -1,42 +1,21 @@
 <div class="row d-none d-md-flex">
   <!-- lg -->
   <div
-    class="d-1400-flex col-6 offset-0 justify-content-between align-items-center">
+    class="d-1400-flex col-10 offset-1 justify-content-between align-items-start flex-column">
     <h4 class="header">
-      Our<br>
-      Hiring<br>
-      Partners</h4>
+      Our Security Guard Hiring Partners
+    </h4>
     <div
       class="partner-logos-container d-flex flex-row flex-md-column flex-wrap justify-content-center align-items-center">
       <div class="partner-logos d-flex justify-content-between">
-        <ng-container *ngFor="let partner of hiringPartnersSplitLeft().firstLine">
+        <ng-container *ngFor="let partner of hiringPartnersSingle().firstLine">
           <div class="partner-logo">
             <img alt="{{ partner.name }}" class="img-fluid" src="{{ partner.logoUri }}"/>
           </div>
         </ng-container>
       </div>
       <div class="partner-logos d-flex justify-content-between">
-        <ng-container *ngFor="let partner of hiringPartnersSplitLeft().secondLine">
-          <div class="partner-logo">
-            <img alt="{{ partner.name }}" class="img-fluid" src="{{ partner.logoUri }}"/>
-          </div>
-        </ng-container>
-      </div>
-    </div>
-  </div>
-  <div
-    class="d-1400-flex col-4 offset-2 justify-content-end align-items-center flex-column flex-md-row">
-    <div
-      class="partner-logos-container d-flex flex-row flex-md-column flex-wrap justify-content-center align-items-center">
-      <div class="partner-logos d-flex justify-content-between">
-        <ng-container *ngFor="let partner of hiringPartnersSplitRight().firstLine">
-          <div class="partner-logo">
-            <img alt="{{ partner.name }}" class="img-fluid" src="{{ partner.logoUri }}"/>
-          </div>
-        </ng-container>
-      </div>
-      <div class="partner-logos d-flex justify-content-between">
-        <ng-container *ngFor="let partner of hiringPartnersSplitRight().secondLine">
+        <ng-container *ngFor="let partner of hiringPartnersSingle().secondLine">
           <div class="partner-logo">
             <img alt="{{ partner.name }}" class="img-fluid" src="{{ partner.logoUri }}"/>
           </div>
@@ -47,11 +26,8 @@
   <!-- lg end -->
   <!-- md -->
   <div
-    class="d-1400-none col-10 offset-1 justify-content-between align-items-center">
-    <h4 class="header flex-grow-0 flex-shrink-0">
-      Our<br>
-      Hiring<br>
-      Partners</h4>
+    class="d-1400-none col-10 offset-1 justify-content-between align-items-start flex-column">
+    <h4 class="header flex-grow-0 flex-shrink-0">Our Hiring Partners</h4>
     <div
       class="partner-logos-container d-flex flex-row flex-md-column flex-wrap justify-content-center align-items-center flex-shrink-1">
       <div class="partner-logos d-flex justify-content-start flex-wrap">

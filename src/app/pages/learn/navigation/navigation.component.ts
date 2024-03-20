@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {LearnService} from "../../../services/learn.service";
 import {Subject, takeUntil} from "rxjs";
 import {CourseProgressModule} from "../../../models/course";
+import {LinkedQuiz} from "../../../models/quiz";
 
 @Component({
   selector: 'app-navigation',
@@ -12,6 +13,9 @@ import {CourseProgressModule} from "../../../models/course";
 })
 export class NavigationComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
+
+  @Input() currentLecture: LinkedLecture | null = null;
+  @Input() currentQuiz: LinkedQuiz | null = null;
 
   @Input() previousLecture: LinkedLectureIterator | null = null;
   @Input() previousQuiz: LinkedQuizIterator | null = null;
@@ -37,7 +41,8 @@ export class NavigationComponent implements OnInit {
   }
 
   hasPrevious(): boolean {
-    return !!this.previousLecture || !!this.previousQuiz;
+    return (!!this.previousLecture && (this.currentLecture?.module.id || this.currentQuiz?.module.id) === this.previousLecture.moduleId)
+      || (!!this.previousQuiz && (this.currentLecture?.module.id || this.currentQuiz?.module.id) === this.previousQuiz.moduleId);
   }
 
   previous(): void {

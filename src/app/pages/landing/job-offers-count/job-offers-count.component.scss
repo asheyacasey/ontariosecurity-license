@@ -1,3 +1,5 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
 .offer {
   margin-top: 10px;
 
@@ -7,7 +9,16 @@
   font-size: 16px;
   line-height: 22px;
 
-  color: #354FA9;
+  color: #595E71;
+
+  span.strong {
+    color: #354FA9;
+    margin-right: 3px;
+  }
+
+  svg {
+    margin-right: 6px;
+  }
 }
 
 .spinner-grow {

@@ -6,6 +6,7 @@ import {CprComponent} from "./cpr/cpr.component";
 import {ConsentComponent} from "./consent/consent.component";
 import {TcnComponent} from "./tcn/tcn.component";
 import {ResumeComponent} from "./resume/resume.component";
+import {OneOnOneComponent} from "./one-on-one/one-on-one.component";
 
 const routes: Routes = [
   {
@@ -27,6 +28,11 @@ const routes: Routes = [
         path: 'tcn',
         component: TcnComponent,
         title: 'TCN | Ontario Security License'
+      },
+      {
+        path: '1-on-1',
+        component: OneOnOneComponent,
+        title: '1-on-1 Tutoring | Ontario Security License'
       },
       {
         path: 'resume',

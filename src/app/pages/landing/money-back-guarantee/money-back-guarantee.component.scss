@@ -1,0 +1,61 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
+.rounded-bg-container {
+  border-radius: 16px;
+
+  padding: 50px;
+
+  &.blue {
+    background: #354FA9;
+  }
+
+  @include media-breakpoint-up(sm) {
+    margin: 0 32px 32px 32px;
+  }
+}
+
+.btn-action {
+  background-color: #273D89;
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  padding: 30px 24px;
+
+  max-width: 400px;
+
+  &:hover {
+    background-color: rgba(53, 79, 169, 0.9);
+    color: #F3F4FA !important;
+  }
+
+}
+
+
+.header {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 33px;
+  line-height: 45px;
+  /* identical to box height */
+
+  color: #FFFFFF;
+
+  margin-bottom: 10px;
+}
+
+.description {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  color: #FFFFFF;
+
+  margin-bottom: 35px;
+}

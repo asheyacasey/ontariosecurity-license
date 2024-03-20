@@ -7,6 +7,11 @@
       </video>
     </div>
   </div>
+  <div class="course-content row mb-5">
+    <div class="col-12">
+      <h1 class="section-title">Module {{ quiz.module.moduleNumber }} knowledge test</h1>
+    </div>
+  </div>
   <div class="course-content row">
     <div class="col-12">
       <p>This quiz consists of <strong>{{ quiz.questionsNumber}}</strong> questions.</p>
@@ -26,6 +31,14 @@
           is {{ quiz.result.requiredPercent }}%).
         </div>
       </div>
+
+      <div *ngIf="quiz.result.isReviewable" class="course-content row">
+        <div class="col-12">
+          <ng-container *ngFor="let answer of quiz.result.answers; let i = index">
+            <app-quiz-question-check [answer]="answer" [questionNumber]="i + 1"></app-quiz-question-check>
+          </ng-container>
+        </div>
+      </div>
     </div>
   </ng-container>
 
@@ -37,6 +50,7 @@
   </div>
 
   <app-navigation
+    [currentQuiz]="quiz || null"
     [previousLecture]="quiz.previousLecture || null"
     [nextLecture]="quiz.nextLecture || null"
   ></app-navigation>

@@ -1,0 +1,15 @@
+<div class="quiz-question-container d-flex flex-column mt-5">
+  <div class="quiz-question">{{ questionNumber}}. {{ answer.question }} {{ questionIsCorrect() ? '✅' : '❌'}}</div>
+  <div class="quiz-answer" *ngFor="let possibleAnswer of answer.possibleAnswers">
+    <div class="form-check">
+      <input class="form-check-input" type="{{ isMultiselect() ? 'checkbox': 'radio'}}" name="q{{ questionNumber }}"
+             id="q{{ questionNumber }}_{{ possibleAnswer }}" disabled
+             [ngClass]="{'selected-correct': answerIsChecked(possibleAnswer) && answerIsCorrect(possibleAnswer),
+             'selected-incorrect': answerIsChecked(possibleAnswer) && !answerIsCorrect(possibleAnswer),
+             'not-selected-correct': !answerIsChecked(possibleAnswer) && answerIsCorrect(possibleAnswer)}">
+      <label class="form-check-label" for="q{{ questionNumber }}_{{possibleAnswer}}" ngbTooltip="{{ getTooltipText(possibleAnswer) }}" container="body" placement="top">
+        {{ possibleAnswer }}
+      </label>
+    </div>
+  </div>
+</div>

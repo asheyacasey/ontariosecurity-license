@@ -1,0 +1,66 @@
+.header {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 44px;
+  text-align: center;
+
+  color: #31374D;
+}
+
+.subheader {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33px;
+  text-align: center;
+
+  color: #595E71;
+}
+
+.description-container {
+  margin-top: 100px;
+
+  .description {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 40px;
+    /* or 167% */
+    text-align: center;
+
+    color: #595E71;
+
+    .strong {
+      color: #D03D1C;
+    }
+  }
+
+}
+
+.btn-action {
+  margin-top: 40px;
+
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+
+  max-width: 444px;
+
+  color: #FFFFFF;
+
+  padding: 21px 46px;
+
+  background: #273D89;
+
+  &:hover {
+    background-color: rgba(53, 79, 169, 0.9);
+    color: #F3F4FA !important;
+  }
+}

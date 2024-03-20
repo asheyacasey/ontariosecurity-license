@@ -1,0 +1,91 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities";
+
+.offcanvas-body {
+  .navbar-nav {
+    .nav-item {
+      cursor: pointer;
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
+
+      color: #787D8E;
+
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.contact-phone {
+  margin-bottom: 8px;
+
+  svg {
+    margin-right: 5px;
+    width: 16px;
+  }
+}
+
+nav {
+
+  padding: 14px 14px 48px 14px;
+
+  @include media-breakpoint-up(md) {
+    padding: 36px 48px 48px 48px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    padding: 36px 38px 38px 38px;
+  }
+
+  .navbar-nav {
+    margin-left: 20px;
+
+    .nav-item {
+      cursor: pointer;
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 22px;
+
+      color: #787D8E;
+
+      margin-right: 20px;
+    }
+  }
+
+  .navbar-text {
+    .btn-secondary-action {
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+
+      color: #787D8E;
+    }
+
+    .btn-primary-action {
+      padding: 14px 42px;
+
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+
+      color: #354FA9;
+
+      border: 2px solid #354FA9;
+      border-radius: 8px;
+
+      &:hover {
+        background-color: #354FA9;
+        color: #F3F4FA;
+      }
+    }
+  }
+}

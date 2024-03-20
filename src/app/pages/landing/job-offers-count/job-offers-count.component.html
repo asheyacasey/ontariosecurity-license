@@ -1,5 +1,15 @@
 <div *ngIf="(isLoading$ | async) === true" class="spinner-grow" style="width: 22px; height: 22px;" role="status">
 </div>
-<p class="offer" *ngIf="(isLoading$ | async) === false">
-  {{ count }} jobs in {{ city }} currently available only for our students
+<p class="offer d-flex justify-content-center align-items-start" *ngIf="(isLoading$ | async) === false">
+  <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M7 9.55159C8.24264 9.55159 9.25 8.5074 9.25 7.21933C9.25 5.93127 8.24264 4.88708 7 4.88708C5.75736 4.88708 4.75 5.93127 4.75 7.21933C4.75 8.5074 5.75736 9.55159 7 9.55159Z"
+      stroke="#354FA9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path
+      d="M7 16.5483C10 13.4387 13 10.6542 13 7.21933C13 3.78449 10.3137 1 7 1C3.68629 1 1 3.78449 1 7.21933C1 10.6542 4 13.4387 7 16.5483Z"
+      stroke="#354FA9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <span>
+  <span class="strong">{{ count }} students</span> in {{ city }} currently taking the course
+    </span>
 </p>

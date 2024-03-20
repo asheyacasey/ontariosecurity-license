@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-10 offset-1 col-md-8 offset-md-2">
+    <h2 class="header">Over <span class="strong">$900</span> of Value Included for <span class="strong">Free</span>
+      within Our Security Guard Course</h2>
+
+    <div class="rounded-bg-container gray mt-5">
+      <div class="inner">
+        <div *ngFor="let value of getValues()" class="value-item d-flex">
+          <div class="value-item-icon">
+            <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 9L6.90196 14L18.6667 2" stroke="#354FA9" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="value-item-name">
+            <span *ngIf="value.free" class="strong">FREE</span>{{ value.free ? ' ' + value.value : value.value }}
+          </div>
+        </div>
+      </div>
+
+      <a class="btn btn-action mt-3">
+        Purchase Online Security Guard Training Course Now <br/>
+        And Access All The Extras Immediately
+      </a>
+    </div>
+  </div>
+</div>
+<div class="row row-process">
+  <div class="col-10 offset-1">
+    <img class="img-fluid d-none d-md-block" alt="Process" src="/assets/v4/process.png"/>
+    <img class="img-fluid d-block d-md-none" alt="Process" src="/assets/v4/process-small.png"/>
+  </div>
+</div>
