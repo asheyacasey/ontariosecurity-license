@@ -18,8 +18,8 @@ export class ModuleTimerComponent implements OnInit, OnDestroy {
 
   courseId: number | null = null;
 
-  @Input() timeLeft!: number;
-  @Input() moduleId!: number;
+  @Input() timeLeft!: number | undefined;
+  @Input() moduleId!: number | undefined;
 
   moduleTimer?: ModuleTimer
   timerValue: string = '-';
@@ -34,7 +34,14 @@ export class ModuleTimerComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.setModuleTimer({secondsLeft: this.timeLeft});
+    if (!this.moduleId) {
+      this.moduleId = this.learnService.moduleId;
+    }
+    if (!this.timeLeft) {
+      this.timeLeft = 1000;
+    }
+
+    this.setModuleTimer({secondsLeft: this.timeLeft as number});
 
     this.learnService.courseId$.pipe(
       takeUntil(this.destroy$)
@@ -54,7 +61,7 @@ export class ModuleTimerComponent implements OnInit, OnDestroy {
             return;
           }
 
-          if (moduleId == this.moduleId) {
+          if (moduleId == this.moduleId as number) {
             this.startTimer();
           } else {
             if (this.timerSubscription !== null) {
@@ -65,7 +72,7 @@ export class ModuleTimerComponent implements OnInit, OnDestroy {
             this.stopTimer();
           }
         })
-      )
+      );
     })
   }
 
@@ -94,10 +101,10 @@ export class ModuleTimerComponent implements OnInit, OnDestroy {
   }
 
   pingAndNotify(): Observable<ModuleTimer> {
-    return this.moduleTimerService.ping(this.courseId as number, this.moduleId).pipe(
+    return this.moduleTimerService.ping(this.courseId as number, this.moduleId as number).pipe(
       tap((courseTimer) => {
         if (courseTimer.secondsLeft === 0) {
-          this.learnService.setRequiredModuleTimeReached(this.moduleId);
+          this.learnService.setRequiredModuleTimeReached(this.moduleId as number);
         }
       })
     )

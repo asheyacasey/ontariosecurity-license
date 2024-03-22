@@ -10,7 +10,8 @@
     </ng-container>
   </div>
   <div class="course-navigation-next order-1 order-md-2 d-flex flex-column align-items-center justify-content-center">
-    <a (click)="next()" [class.invisible]="!hasNext()" [class.locked]="nextIsLocked()" class="btn btn-next d-flex align-items-center justify-content-center">Next
+    <a (click)="next()" [class.invisible]="!hasNext()" [class.locked]="nextIsLocked()"
+       class="btn btn-next d-flex align-items-center justify-content-center">Next
       <svg class="ms-2" width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="14.5" cy="14.5" r="14.5" fill="white"/>
         <mask id="path-2-inside-1_0_1" fill="white">
@@ -25,6 +26,12 @@
           fill="#ACADBF" mask="url(#path-2-inside-1_0_1)"/>
       </svg>
     </a>
+    <div class="d-flex d-md-none next-unlocks-in">
+      <span class="text">Next unlocks in: </span>
+      <span class="counter">
+        <app-module-timer [moduleId]="currentLecture?.module?.id" *ngIf="nextIsLocked()"></app-module-timer>
+      </span>
+    </div>
     <app-why-module-locked-button *ngIf="nextIsLocked()"></app-why-module-locked-button>
   </div>
 </div>
